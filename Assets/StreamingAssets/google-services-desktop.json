@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "448841912656",
+    "firebase_url": "https://primera-base-de-datos-prueba.firebaseio.com",
+    "project_id": "primera-base-de-datos-prueba",
+    "storage_bucket": "primera-base-de-datos-prueba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448841912656:android:be9caaacb68755cd",
+        "android_client_info": {
+          "package_name": "com.ViOD.YoTambienLeo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448841912656-qskpvj3ef8f6ulgdhoffcbg96db000u7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAkQHYr7iEIbCbQtaI94yP2nSc0lQnxa9M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448841912656-qskpvj3ef8f6ulgdhoffcbg96db000u7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

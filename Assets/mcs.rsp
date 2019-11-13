@@ -1,0 +1,13 @@
+-r:I18N.MidEast.dll
+
+-r:I18N.Other.dll
+
+-r:I18N.Rare.dll
+
+-r:I18N.West.dll
+
+-r:Mono.Data.Sqlite.dll
+
+-r:Mono.Data.SqliteClient.dll
+
+-r:System.Data.dll
