@@ -164,7 +164,7 @@ public class GameManagerParejas : MonoBehaviour
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[0]; i++)
         {
-            if(i > 0)
+            if(i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         }
@@ -216,7 +216,7 @@ public class GameManagerParejas : MonoBehaviour
         planeImageWhenPair.gameObject.SetActive(false);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
-        if(GameManager.m_CurrentToMinigame[0] > 0)
+        if(GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
             m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         m_CurrentNumRep = 1;
@@ -495,6 +495,7 @@ public class GameManagerParejas : MonoBehaviour
 
         if (GameManager.m_CurrentToMinigame[0] >= GameManager.Instance.m_NeededToMinigame)
         {
+            GameManager.ResetPointToMinigame(0);
             m_Scener.RandomMinigame();
         }
         else
@@ -1011,8 +1012,9 @@ public class GameManagerParejas : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         if (!repeating)
         {
-            GameManager.m_CurrentToMinigame[0]++;
-            if (GameManager.m_CurrentToMinigame[0] > 0)
+            if(m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
+                GameManager.SumPointToMinigame(0);
+            if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
         ActivateButtons();
