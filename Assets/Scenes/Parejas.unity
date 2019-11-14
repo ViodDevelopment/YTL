@@ -3035,6 +3035,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LineaArriba
       objectReference: {fileID: 0}
+    - target: {fileID: 7617506766310047005, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7617506766499220765, guid: c97aaca75cec1de418a27440bfd0ea07,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3141,11 +3146,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7617506764771967304, guid: c97aaca75cec1de418a27440bfd0ea07,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7617506766310047005, guid: c97aaca75cec1de418a27440bfd0ea07,
         type: 3}
       propertyPath: m_IsActive
       value: 0

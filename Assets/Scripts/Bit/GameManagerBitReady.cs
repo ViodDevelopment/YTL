@@ -67,7 +67,7 @@ public class GameManagerBitReady : MonoBehaviour
         GameManager.m_CurrentToMinigame[1]++;
 
         if (GameManager.m_CurrentToMinigame[1] >= GameManager.Instance.m_NeededToMinigame)
-            m_Scener.RandomMinigame();
+            m_Scener.NextGame();
 
         else
         {

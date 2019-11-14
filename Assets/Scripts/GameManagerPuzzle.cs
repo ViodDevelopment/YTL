@@ -83,7 +83,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
-            if(i > 0)
+            if(i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
         repeating = false;
@@ -336,14 +336,17 @@ public class GameManagerPuzzle : MonoBehaviour
         m_Completed = false;
 
         if (GameManager.m_CurrentToMinigame[2] >= 3)
-            m_Scener.RandomMinigame();
+        {
+            GameManager.ResetPointToMinigame(2);
+            m_Scener.NextGame();
+        }
 
 
         else
         {
             for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
             {
-                if(i > 0)
+                if (i > 0)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
 
@@ -464,10 +467,11 @@ public class GameManagerPuzzle : MonoBehaviour
         yield return new WaitForSeconds(seconds);
         if (!repeating)
         {
-            GameManager.m_CurrentToMinigame[2]++;
+            if (GameManager.m_CurrentToMinigame[2] < 3)
+                GameManager.SumPointToMinigame(2);
             for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
             {
-                if (i > 0)
+                if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
         }
@@ -482,7 +486,7 @@ public class GameManagerPuzzle : MonoBehaviour
         m_Completed = false;
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
-            if(i > 0)
+            if(i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
 

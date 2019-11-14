@@ -55,7 +55,7 @@ public class GameManagerBit : MonoBehaviour
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[1]; i++)
         {
-            if (i > 0)
+            if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
         repeating = false;
@@ -99,12 +99,15 @@ public class GameManagerBit : MonoBehaviour
         }
 
         if (GameManager.m_CurrentToMinigame[1] >= 7)
-            m_Scener.RandomMinigame();
+        {
+            GameManager.ResetPointToMinigame(1);
+            m_Scener.NextGame();
+        }
         else
         {
             Destroy(m_CurrentBit);
             print("FinishRep");
-            if (GameManager.m_CurrentToMinigame[1] > 0)
+            if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             m_CurrentNumRep = 1;
             RepeatImage(false);
@@ -113,9 +116,12 @@ public class GameManagerBit : MonoBehaviour
 
     public void AddCountMiniGameBit()
     {
-        GameManager.m_CurrentToMinigame[1]++;
+        if(m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
+            GameManager.SumPointToMinigame(1);
         if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
+        {
             m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+        }
     }
 
     public void InicioBit()
@@ -140,7 +146,7 @@ public class GameManagerBit : MonoBehaviour
         }
         Destroy(m_CurrentBit);
         print("FinishRep");
-        if (GameManager.m_CurrentToMinigame[1] > 0)
+        if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
             m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         m_CurrentNumRep = 1;
         RepeatImage(false);

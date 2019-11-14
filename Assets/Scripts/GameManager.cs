@@ -41,7 +41,8 @@ public class GameManager : MonoBehaviour
     #endregion
 
     public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle
-
+    public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
+    public static int currentMiniGame = 0;
     public int m_NeededToMinigame = 5;//Siempre añadir un +1 a lo que necesitan
     [HideInInspector]
     public int m_BitLevel = 1;
@@ -78,6 +79,18 @@ public class GameManager : MonoBehaviour
             }
             return instance;
         }
+    }
+
+    public static void SumPointToMinigame(int _numOfMinigame)
+    {
+        m_CurrentToMinigame[_numOfMinigame]++;
+        ManagamentFalseBD.management.SaveBolasMinijuegos();
+    }
+
+    public static void ResetPointToMinigame(int _numOfMinigame)
+    {
+        m_CurrentToMinigame[_numOfMinigame] = 0;
+        ManagamentFalseBD.management.SaveBolasMinijuegos();
     }
 
     public void SaveWord(InputField input)

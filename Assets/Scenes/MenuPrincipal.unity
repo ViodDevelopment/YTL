@@ -4641,9 +4641,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3766304388f47f4086a299c25b5bb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  recording: {fileID: 0}
-  audioSource: {fileID: 0}
-  startRecordingTime: 0
 --- !u!1 &425550578
 GameObject:
   m_ObjectHideFlags: 0
@@ -20060,6 +20057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1748085819}
   - component: {fileID: 1748085818}
+  - component: {fileID: 1748085820}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -20119,6 +20117,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1748085820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748085817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89786eea257ba1047a2f473d845a88e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  palabrasPredeterminadass: []
 --- !u!1 &1749612226
 GameObject:
   m_ObjectHideFlags: 0
