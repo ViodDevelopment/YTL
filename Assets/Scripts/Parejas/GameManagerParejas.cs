@@ -11,6 +11,9 @@ using UnityEngine.UI;
 public class GameManagerParejas : MonoBehaviour
 
 {
+    public GameObject dumi;
+    public bool dumiActivo = false;
+    public float timerDumi = 0;
 
     public SceneManagement m_Scener;
 
@@ -164,7 +167,7 @@ public class GameManagerParejas : MonoBehaviour
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[0]; i++)
         {
-            if(i > 0 && m_Points.Length > i - 1)
+            if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         }
@@ -201,6 +204,16 @@ public class GameManagerParejas : MonoBehaviour
 
         }
 
+        if (dumiActivo)
+        {
+            timerDumi -= Time.deltaTime;
+            if (timerDumi <= 0)
+            {
+                timerDumi = 0;
+                dumiActivo = false;
+            }
+        }
+
     }
 
 
@@ -216,7 +229,7 @@ public class GameManagerParejas : MonoBehaviour
         planeImageWhenPair.gameObject.SetActive(false);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
-        if(GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
+        if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
             m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         m_CurrentNumRep = 1;
@@ -313,7 +326,7 @@ public class GameManagerParejas : MonoBehaviour
             for (int i = 0; i < 2; i++)
             {
 
-                int k = 1;      
+                int k = 1;
 
                 if (m_FirstPair)
                 {
@@ -375,7 +388,7 @@ public class GameManagerParejas : MonoBehaviour
 
                         l_SecondAudio.RemoveAt(l_RandomPair);
 
-                        k++;                
+                        k++;
                         k++;
                     }
 
@@ -435,7 +448,7 @@ public class GameManagerParejas : MonoBehaviour
                         l_ThirdAudio.Add(l_Audios[l_RandomPair]);
 
                         l_Audios.RemoveAt(l_RandomPair);
-                
+
                         k++;
                         k++;
                     }
@@ -465,7 +478,7 @@ public class GameManagerParejas : MonoBehaviour
                     }
 
                 }
-                m_FirstPair = false;          
+                m_FirstPair = false;
                 m_XPos *= 3f;
 
             }
@@ -501,7 +514,7 @@ public class GameManagerParejas : MonoBehaviour
         else
 
         {
-            if(GameManager.m_CurrentToMinigame[0] > 0)
+            if (GameManager.m_CurrentToMinigame[0] > 0)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
             List<Texture2D> l_Pairs = new List<Texture2D>();
@@ -581,7 +594,7 @@ public class GameManagerParejas : MonoBehaviour
 
                 m_XPos = Screen.width / (m_NumPairs * 2.0f);
 
-                m_YPos = Screen.height / 4;         
+                m_YPos = Screen.height / 4;
 
                 for (int i = 0; i < 2; i++)
                 {
@@ -662,7 +675,7 @@ public class GameManagerParejas : MonoBehaviour
 
             }
 
-            else     
+            else
             {
                 m_XPos = Screen.width / 4;
                 m_YPos = Screen.height / (m_NumPairs * 2.0f);
@@ -733,7 +746,7 @@ public class GameManagerParejas : MonoBehaviour
 
                             l_SecondAudio.RemoveAt(l_RandomPair);
 
-                            k++;                   
+                            k++;
                             k++;
                         }
 
@@ -863,7 +876,7 @@ public class GameManagerParejas : MonoBehaviour
                         l_ThirdPalabra.Add(l_Palabras[l_RandomPair]);
 
                         l_Palabras.RemoveAt(l_RandomPair);
-                  
+
 
 
                         l_SecondAudio.Add(l_Audios[l_RandomPair]);
@@ -957,7 +970,7 @@ public class GameManagerParejas : MonoBehaviour
 
                         l_Audios.RemoveAt(l_RandomPair);
 
-                        k++;                  
+                        k++;
                         k++;
                     }
                 }
@@ -1010,9 +1023,15 @@ public class GameManagerParejas : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+
+        GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+        pinguino.GetComponent<Dumi>().AudioPositivo();
+        dumiActivo = true;
+        timerDumi = 1.5f;
+
         if (!repeating)
         {
-            if(m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
+            if (m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
                 GameManager.SumPointToMinigame(0);
             if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;

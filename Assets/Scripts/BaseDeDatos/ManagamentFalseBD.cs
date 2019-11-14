@@ -16,61 +16,65 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void Start()
     {
-        if (management == null)
+        GameObject go = GameObject.Find("ManagementFalsaBD");
+        if (go == null || go == gameObject)
         {
-            nameRute = Application.persistentDataPath + "/datos.dat";
-            nameRuteBolasMinijuegos = Application.persistentDataPath + "/BolasMinijuegos.dat";
-            management = this;
-            DontDestroyOnLoad(gameObject);
-            InitPalabrasPredeterminadas();
-            bool existente = true;
-            if (File.Exists(nameRute))
+            if (management == null)
             {
-                management.LoadDates();
-
-                #region si no tiene los datos minimos se los creamos
-                List<bool> existe = new List<bool>();
-                foreach (PalabraBD p in palabrasPredeterminadass)
+                nameRute = Application.persistentDataPath + "/datos.dat";
+                nameRuteBolasMinijuegos = Application.persistentDataPath + "/BolasMinijuegos.dat";
+                management = this;
+                DontDestroyOnLoad(gameObject);
+                InitPalabrasPredeterminadas();
+                bool existente = true;
+                if (File.Exists(nameRute))
                 {
-                    existe.Add(false);
-                    foreach (PalabraBD w in palabrasGuardadas)
+                    management.LoadDates();
+
+                    #region si no tiene los datos minimos se los creamos
+                    List<bool> existe = new List<bool>();
+                    foreach (PalabraBD p in palabrasPredeterminadass)
                     {
-                        if (p == w)
+                        existe.Add(false);
+                        foreach (PalabraBD w in palabrasGuardadas)
                         {
-                            existe[existe.Count - 1] = true;
+                            if (p == w)
+                            {
+                                existe[existe.Count - 1] = true;
+                                break;
+                            }
+                        }
+                    }
+
+
+                    foreach (bool b in existe)
+                    {
+                        if (!b)
+                        {
+                            existente = false;
                             break;
                         }
                     }
+                    #endregion
                 }
-
-
-                foreach (bool b in existe)
+                if (!File.Exists(nameRute) || !existente)
                 {
-                    if (!b)
-                    {
-                        existente = false;
-                        break;
-                    }
+                    management.SaveDates();
                 }
-                #endregion
-            }
-            if (!File.Exists(nameRute) || !existente)
-            {
-                management.SaveDates();
-            }
-            if (File.Exists(nameRuteBolasMinijuegos))
-            {
-                management.LoadBolasMinijuegos();
-            }
-            if (!File.Exists(nameRuteBolasMinijuegos))
-            {
-                management.SaveBolasMinijuegos();
-            }
+                if (File.Exists(nameRuteBolasMinijuegos))
+                {
+                    management.LoadBolasMinijuegos();
+                }
+                if (!File.Exists(nameRuteBolasMinijuegos))
+                {
+                    management.SaveBolasMinijuegos();
+                }
 
 
 
+            }
         }
-        else if (management != this)
+        else if (go != gameObject)
             Destroy(gameObject);
     }
 

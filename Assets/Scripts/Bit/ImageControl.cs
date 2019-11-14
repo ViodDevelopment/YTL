@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ImageControl : MonoBehaviour
 {
+    public GameObject dumi;
     bool m_0touch = true;
     bool m_1touch = false;
     Animation m_Animation;
@@ -110,6 +111,8 @@ public class ImageControl : MonoBehaviour
         IEnumerator WaitSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
+            GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+            pinguino.GetComponent<Dumi>().AudioPositivo();
             m_GMBit.ActivateButtons();
             if (!m_GMBit.repeating)
                 m_GMBit.AddCountMiniGameBit();

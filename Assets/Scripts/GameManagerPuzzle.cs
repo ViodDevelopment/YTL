@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class GameManagerPuzzle : MonoBehaviour
 {
+    public GameObject dumi;
     public Animation m_AnimationCenter;
     public Image m_ImageAnim;
     public Text m_TextAnim;
@@ -330,50 +331,52 @@ public class GameManagerPuzzle : MonoBehaviour
     public void PassPuzzle()
     {
         repeating = false;
-        m_ImagesSpawn.SetActive(true);
-        m_CollidersSpawns.SetActive(true);
         m_ImageAnim.gameObject.SetActive(false);
         m_Completed = false;
+
+        foreach (GameObject item in m_Images)
+        {
+            Destroy(item);
+        }
+
+        foreach (GameObject item in m_Colliders)
+        {
+            Destroy(item);
+        }
+
+        foreach (GameObject item in m_Words)
+        {
+            Destroy(item);
+        }
+
+        m_Images.Clear();
+        m_Words.Clear();
+        m_Colliders.Clear();
+        m_Puntuacion = 0;
+        m_Canvas.SetActive(false);
+
+
+        m_CurrentNumRep = 1;
 
         if (GameManager.m_CurrentToMinigame[2] >= 3)
         {
             GameManager.ResetPointToMinigame(2);
+            m_Canvas.SetActive(false);
             m_Scener.NextGame();
         }
-
-
         else
         {
+            m_ImagesSpawn.SetActive(true);
+            m_CollidersSpawns.SetActive(true);
+
             for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
             {
-                if (i > 0)
+                if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
 
-            foreach (GameObject item in m_Images)
-            {
-                Destroy(item);
-            }
-
-            foreach (GameObject item in m_Colliders)
-            {
-                Destroy(item);
-            }
-
-            foreach (GameObject item in m_Words)
-            {
-                Destroy(item);
-            }
-
-            m_Images.Clear();
-            m_Words.Clear();
-            m_Colliders.Clear();
-            m_Puntuacion = 0;
-            m_Canvas.SetActive(false);
             HowManyPieces(PuzzlePiecesPossibilities[Random.Range(0, 2)]);
             ImagesCollsInstantiation();
-
-            m_CurrentNumRep = 1;
 
         }
 
@@ -465,10 +468,14 @@ public class GameManagerPuzzle : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
+        GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+        pinguino.GetComponent<Dumi>().AudioPositivo();
         if (!repeating)
         {
             if (GameManager.m_CurrentToMinigame[2] < 3)
+            {
                 GameManager.SumPointToMinigame(2);
+            }
             for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
             {
                 if (i > 0 && m_Points.Length > i - 1)

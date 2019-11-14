@@ -4886,6 +4886,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78277406f7fef504fb19c0ebcdb84f7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dumi: {fileID: 1126377519121047965, guid: 7a6b15df706bddf47879b651c973e249, type: 3}
   m_Spin: {fileID: 7400000, guid: f77fb3b9a6836b54691180980ae117c8, type: 2}
   m_Slide: {fileID: 7400000, guid: 1a9019c8243e6cb4fb79b926da0c3221, type: 2}
   m_ImagesPool:

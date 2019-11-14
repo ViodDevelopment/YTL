@@ -27,7 +27,7 @@ public class MoveTouch : MonoBehaviour
 
     void Update()
     {
-        if (managerOnlyOne != null )
+        if (managerOnlyOne != null)
         {
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
             {
@@ -138,6 +138,11 @@ public class MoveTouch : MonoBehaviour
             this.transform.SetParent(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Saver.transform);
             if (SceneManager.GetActiveScene().name == "Puzzle")
                 GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Puntuacion++;
+        }
+        else if ((collision.gameObject.name != this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)) && !m_PieceLocked)
+        {
+            GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
+            pinguino.GetComponent<Dumi>().AudioNegativo();
         }
     }
 

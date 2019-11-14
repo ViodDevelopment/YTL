@@ -541,6 +541,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d6b1386c9435f2438ca3454df399fad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dumi: {fileID: 1126377519121047965, guid: 7a6b15df706bddf47879b651c973e249, type: 3}
   m_Scener: {fileID: 2063976664}
   m_Canvas: {fileID: 96899077}
   m_RealCanvas: {fileID: 96899077}

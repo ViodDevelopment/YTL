@@ -218,5 +218,15 @@ public class Pairs : MonoBehaviour
             managerOnlyOne.Catch(false, null);
 
         }
+        else if((collision.gameObject.name != this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)))
+        {
+            if (!m_GameManagerParejas.dumiActivo)
+            {
+                GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
+                pinguino.GetComponent<Dumi>().AudioNegativo();
+                m_GameManagerParejas.dumiActivo = true;
+                m_GameManagerParejas.timerDumi = 1.5f;
+            }
+        }
     }
 }

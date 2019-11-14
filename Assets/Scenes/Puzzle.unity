@@ -1236,6 +1236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5c7bc804876b6a41929233e638f688a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dumi: {fileID: 1126377519121047965, guid: 7a6b15df706bddf47879b651c973e249, type: 3}
   m_AnimationCenter: {fileID: 3973381}
   m_ImageAnim: {fileID: 1063664160}
   m_TextAnim: {fileID: 1681611315}
