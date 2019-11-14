@@ -17,6 +17,8 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject[] AllCanvas;
 
+    private int numOfGames = 0;
+
     public void InicioScene()
     {
         SceneManager.LoadScene(GameManager.Instance.InicioIndex);
@@ -104,11 +106,10 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-    public void RandomMinigame ()
+    public void NextGame () 
     {
-        int Rng = Random.Range(0, 2);
 
-        switch (Rng)
+        switch (GameManager.currentMiniGame)
         {
             case 0:
                 MinijuegoBurbujasScene();
@@ -121,5 +122,9 @@ public class SceneManagement : MonoBehaviour
                 break;
 
         }
+        GameManager.currentMiniGame++;
+        if (GameManager.currentMiniGame >= 2)
+            GameManager.currentMiniGame = 0;
+        ManagamentFalseBD.management.SaveBolasMinijuegos();
     }
 }

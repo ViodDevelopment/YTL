@@ -496,7 +496,7 @@ public class GameManagerParejas : MonoBehaviour
         if (GameManager.m_CurrentToMinigame[0] >= GameManager.Instance.m_NeededToMinigame)
         {
             GameManager.ResetPointToMinigame(0);
-            m_Scener.RandomMinigame();
+            m_Scener.NextGame();
         }
         else
 

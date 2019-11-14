@@ -101,7 +101,7 @@ public class GameManagerBit : MonoBehaviour
         if (GameManager.m_CurrentToMinigame[1] >= 7)
         {
             GameManager.ResetPointToMinigame(1);
-            m_Scener.RandomMinigame();
+            m_Scener.NextGame();
         }
         else
         {

@@ -338,7 +338,7 @@ public class GameManagerPuzzle : MonoBehaviour
         if (GameManager.m_CurrentToMinigame[2] >= 3)
         {
             GameManager.ResetPointToMinigame(2);
-            m_Scener.RandomMinigame();
+            m_Scener.NextGame();
         }
 
 

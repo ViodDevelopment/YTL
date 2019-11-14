@@ -186,6 +186,8 @@ public class ManagamentFalseBD : MonoBehaviour
         for (int i = 0; i < GameManager.m_CurrentToMinigame.Count; i++)
             datos.bolasMinijuegos.Add(GameManager.m_CurrentToMinigame[i]);
 
+        datos.currentMiniGame = GameManager.currentMiniGame;
+
         bf.Serialize(file, datos);
 
         file.Close();
@@ -199,6 +201,9 @@ public class ManagamentFalseBD : MonoBehaviour
         PointsOfMinigames datos = (PointsOfMinigames)bf.Deserialize(file);
         for (int i = 0; i < GameManager.m_CurrentToMinigame.Count; i++)
             GameManager.m_CurrentToMinigame[i] = datos.bolasMinijuegos[i];
+
+        GameManager.currentMiniGame = datos.currentMiniGame;
+
         file.Close();
     }
 
@@ -245,4 +250,5 @@ public class ManagamentFalseBD : MonoBehaviour
 [Serializable] class PointsOfMinigames
 {
     public List<int> bolasMinijuegos = new List<int>();
+    public int currentMiniGame;
 }
