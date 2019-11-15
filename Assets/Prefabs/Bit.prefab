@@ -4923,6 +4923,23 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 98f6acf2808878b41ae3c14183ae5497, type: 3}
   - {fileID: 2800000, guid: 959f3f62efb8d0b4595b3cf016a5c7b0, type: 3}
   - {fileID: 2800000, guid: b1a6873a95829164e909e67db65e5c25, type: 3}
+  m_ImagesPool3:
+  - {fileID: 2800000, guid: d54d0a21848259d45992be8c3e83c63c, type: 3}
+  - {fileID: 2800000, guid: 3fd7330a450ad5f43b56d6be13082a4a, type: 3}
+  - {fileID: 2800000, guid: 990940294eba6274caf1aeb6e756a466, type: 3}
+  - {fileID: 2800000, guid: 6d1f7de0e6aaee1409280318fde61a46, type: 3}
+  - {fileID: 2800000, guid: 1df11c2dfcb352c4cab4d9db06cd7cbf, type: 3}
+  - {fileID: 2800000, guid: 1120dca0c3f75db4aa05a35770eff70a, type: 3}
+  - {fileID: 2800000, guid: 0d90657655b3176458e38be1e699a347, type: 3}
+  - {fileID: 2800000, guid: 28281fada176904459c09c23bb894f80, type: 3}
+  - {fileID: 2800000, guid: 320d05dd3d0394f46a5d24b2ad379555, type: 3}
+  - {fileID: 2800000, guid: 2ccb16dcd79f14c4891be2dda2f9956e, type: 3}
+  - {fileID: 2800000, guid: bd0e97de9eaee79428b540153fac5202, type: 3}
+  - {fileID: 2800000, guid: 0a3c62e93f10188429200bd218961e86, type: 3}
+  - {fileID: 2800000, guid: 37f554f293fd40f499905184da2e764b, type: 3}
+  - {fileID: 2800000, guid: aee13047214f2f342baef318296ef1f9, type: 3}
+  - {fileID: 2800000, guid: e66efebb2ea196f4b95e8ba117a84f79, type: 3}
+  - {fileID: 2800000, guid: 316869c527984d244a708b045dd6509a, type: 3}
   m_PalabrasCastellano:
   - Boca
   - Casa

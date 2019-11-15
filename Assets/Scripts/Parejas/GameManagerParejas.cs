@@ -233,12 +233,12 @@ public class GameManagerParejas : MonoBehaviour
         List<AudioClip> l_Audios = new List<AudioClip>();
 
 
-
-        foreach (Texture2D item in m_ImagePairs)
+        int randomImage = 0;
+        for(int i = 0; i < m_ImagePairs.Count; i += 3)
         {
-
-            l_Pairs.Add(item);
-
+            Random.InitState(Random.seed + 1);
+            randomImage = Random.Range(0, 3);
+            l_Pairs.Add(m_ImagePairs[i + randomImage]);
         }
 
 
@@ -513,11 +513,12 @@ public class GameManagerParejas : MonoBehaviour
 
 
 
-            foreach (Texture2D item in m_ImagePairs)
+            int randomImage = 0;
+            for (int i = 0; i < m_ImagePairs.Count; i += 3)
             {
-
-                l_Pairs.Add(item);
-
+                Random.InitState(Random.seed + 1);
+                randomImage = Random.Range(0, 3);
+                l_Pairs.Add(m_ImagePairs[i + randomImage]);
             }
 
 

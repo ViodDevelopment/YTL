@@ -49,7 +49,6 @@ public class Pairs : MonoBehaviour
     }
     private void Update()
     {
-        print(dentro);
         if (managerOnlyOne != null)
         {
 

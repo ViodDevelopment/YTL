@@ -14,6 +14,9 @@ public class ImageControl : MonoBehaviour
     public AnimationClip m_Slide;
     public List<Texture2D> m_ImagesPool = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
+    public List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
+    private int firstImage = 0;
+
     public List<string> m_PalabrasCastellano = new List<string>();
     public List<string> m_PalabrasCatalan = new List<string>();
     public List<AudioClip> m_AudioPoolCastellano = new List<AudioClip>();
@@ -54,14 +57,55 @@ public class ImageControl : MonoBehaviour
                     l_Number = GameManagerBit.m_Alea;
                     same = false;
                     m_GMBit.numLastImage = l_Number;
-                }else
+                }
+                else
                     Random.InitState(Random.seed + 1);
             }
         }
 
         m_Animation = GetComponent<Animation>();
-        m_Image.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
-        m_ImageBehind.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+        firstImage = Random.Range(0, 3);
+
+        switch (firstImage)
+        {
+            case 0:
+                m_Image.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            case 1:
+                m_Image.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            case 2:
+                m_Image.sprite = Sprite.Create(m_ImagesPool3[l_Number], new Rect(0, 0, m_ImagesPool3[l_Number].width / 1.02f, m_ImagesPool3[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            default:
+                m_Image.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                break;
+        }
+
+        int otherImage = Random.Range(0, 3);
+
+        while (otherImage == firstImage)
+        {
+            Random.InitState(Random.seed + 1);
+            otherImage = Random.Range(0, 3);
+        }
+
+        switch (otherImage)
+        {
+            case 0:
+                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            case 1:
+                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            case 2:
+                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool3[l_Number], new Rect(0, 0, m_ImagesPool3[l_Number].width / 1.02f, m_ImagesPool3[l_Number].height / 1.02f), Vector2.zero);
+                break;
+            default:
+                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                break;
+        }
+
         m_Text.text = PutName(l_Number);
         SearchFont();
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
