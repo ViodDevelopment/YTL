@@ -12,6 +12,7 @@ public class Pairs : MonoBehaviour
     public AudioClip audioClip;
     private Image myImage;
     private bool dentro = false;
+    private int lastFallos = 0;
     private GameObject colision;
     private GameObject otherObject;
 
@@ -168,10 +169,12 @@ public class Pairs : MonoBehaviour
 
                 if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                 {
-                    if (GameObject.Find("Dumi(Clone)") == null)
+                    GameManager.fallosParejas++;
+                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosParejas >= 2 && lastFallos + 1 == GameManager.fallosParejas)
                     {
                         GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
                         pinguino.GetComponent<Dumi>().AudioNegativo();
+                        GameManager.fallosParejas = 0;
                     }
                 }
 
@@ -197,7 +200,7 @@ public class Pairs : MonoBehaviour
             if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
             {
                 timer = 0.02f;
-
+                lastFallos = GameManager.fallosParejas;
                 if (dentro)
                 {
                     this.transform.position = colision.gameObject.transform.position;

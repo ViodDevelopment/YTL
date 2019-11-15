@@ -81,41 +81,23 @@ public class ManagamentFalseBD : MonoBehaviour
     private void InitPalabrasPredeterminadas()
     {
         int count = 0;
-        #region Pera
+
+        #region Agua
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pera_01";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pera_02";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pera_03";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pera";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "agua_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "agua_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "agua_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "agua";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Pera";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Pe-ra";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Agua";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "A-gua";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Pera";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Pe-ra";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
-        count++;
-        #endregion
-        #region Moto
-        palabrasPredeterminadass.Add(new PalabraBD());
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "moto_01";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "moto_02";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "moto_03";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "moto";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Moto";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Mo-to";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Moto";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Mo-to";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Aigua";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Ai-gua";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
         count++;
         #endregion
@@ -138,6 +120,273 @@ public class ManagamentFalseBD : MonoBehaviour
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
         count++;
         #endregion
+        #region Casa
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "casa_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "casa_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "casa_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "casa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Casa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Ca-sa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Casa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Ca-sa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Dedo
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "dedo_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "dedo_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "dedo_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "dedo";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Dedo";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "De-do";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Dit";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Dit";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Gato
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "gato_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "gato_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "gato_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "gato";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Gato";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Ga-to";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Gat";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Gat";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Mano
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "mano_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "mano_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "mano_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "mano";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Mano";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Ma-no";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Mà";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Mà";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Mesa
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "mesa_2-01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "mesa_2-02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "mesa_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "mesa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Mesa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Me-sa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Taula";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Tau-la";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Moto
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "moto_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "moto_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "moto_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "moto";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Moto";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Mo-to";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Moto";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Mo-to";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Niña
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "nina_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "nina_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "nina_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "nina";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Niña";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Ni-ña";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Nena";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Ne-na";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Pan
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pan_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pan_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pan_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pan";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Pan";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Pan";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Pa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Pa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Pelota
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pelota";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pelota_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pelota_04";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pelota";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 2;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Pelota";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Pe-lo-ta";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 2;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Pilota";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Pi-lo-ta";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Pera
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pera_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pera_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pera_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pera";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Pera";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Pe-ra";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Pera";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Pe-ra";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Pie
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pie_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pie_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pie_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pie";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Pie";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Pie";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Peu";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Peu";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Sol
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "sol_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "sol_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "sol_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "sol";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Sol";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Sol";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Sol";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Sol";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Sopa
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "sopa_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "sopa_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "sopa_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "sopa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Sopa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "So-pa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Sopa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "So-pa";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+        #region Vaso
+        palabrasPredeterminadass.Add(new PalabraBD());
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "vaso_01";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "vaso_02";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "vaso_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "vaso";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = "Vaso";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = "Va-so";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = "Got";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = "Got";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+        count++;
+        #endregion
+
         foreach (PalabraBD p in palabrasPredeterminadass)
         {
             p.SeparateSilabas(SingletonLenguage.GetInstance().GetLenguage());

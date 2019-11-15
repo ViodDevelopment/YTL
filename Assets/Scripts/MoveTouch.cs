@@ -108,10 +108,12 @@ public class MoveTouch : MonoBehaviour
 
                 if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                 {
-                    if (GameObject.Find("Dumi(Clone)") == null)
+                    GameManager.fallosPuzzle++;
+                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosPuzzle >= 2)
                     {
                         GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
                         pinguino.GetComponent<Dumi>().AudioNegativo();
+                        GameManager.fallosPuzzle = 0;
                     }
                 }
 

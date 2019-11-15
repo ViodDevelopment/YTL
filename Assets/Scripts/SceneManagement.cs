@@ -22,7 +22,11 @@ public class SceneManagement : MonoBehaviour
     public void InicioScene(bool _DesdeActividad)
     {
         if (_DesdeActividad)
+        {
+            GameManager.fallosParejas = 0;
+            GameManager.fallosPuzzle = 0;
             GameManager.backFromActivity = true;
+        }
         SceneManager.LoadScene(GameManager.Instance.InicioIndex);
     }
     public void PreparadosScene()
