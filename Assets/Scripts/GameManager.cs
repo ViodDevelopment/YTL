@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Font TipoLetra;
     [HideInInspector]
-    public bool Mayus = true, Ayuda = true, Dumi = true, Articulo = false;
+    public bool Ayuda = true, Dumi = true, Articulo = false;
     [HideInInspector]
     public static int Repeticiones =2, Packs = 0;
     #endregion

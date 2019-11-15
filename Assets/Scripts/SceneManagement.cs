@@ -137,7 +137,9 @@ public class SceneManagement : MonoBehaviour
     public void GoBackFromActivity()
     {
         AllCanvas[2].SetActive(true);
+        AllCanvas[4].SetActive(true);
         AllCanvas[0].SetActive(false);
+        AllCanvas[3].SetActive(false);
     }
 
     private void Start()

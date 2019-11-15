@@ -1012,10 +1012,13 @@ public class GameManagerParejas : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameObject.Find("Dumi(Clone)") == null)
+        if (GameManager.Instance.Dumi)
         {
-            GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
-            pinguino.GetComponent<Dumi>().AudioPositivo();
+            if (GameObject.Find("Dumi(Clone)") == null)
+            {
+                GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+                pinguino.GetComponent<Dumi>().AudioPositivo();
+            }
         }
         if (!repeating)
         {

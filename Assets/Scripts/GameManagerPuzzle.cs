@@ -212,7 +212,6 @@ public class GameManagerPuzzle : MonoBehaviour
 
                 while (l_Numbers.Contains(l_Number))
                 {
-                    print(l_Number);
                     l_Number = Random.Range(0, m_NumPieces);
                 }
 
@@ -468,10 +467,13 @@ public class GameManagerPuzzle : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameObject.Find("Dumi(Clone)") == null)
+        if (GameManager.Instance.Dumi)
         {
-            GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
-            pinguino.GetComponent<Dumi>().AudioPositivo();
+            if (GameObject.Find("Dumi(Clone)") == null)
+            {
+                GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+                pinguino.GetComponent<Dumi>().AudioPositivo();
+            }
         }
         if (!repeating)
         {

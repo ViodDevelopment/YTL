@@ -43,11 +43,6 @@ public class ButtonControl : MonoBehaviour
         GameManager.Instance.Idioma = l_Idioma;
     }
 
-    public void TipoLetraMayus(bool l_Mayus)
-    {
-        GameManager.Instance.Mayus = l_Mayus;
-    }
-
     public void TipoLetra(Font l_Font)
     {
         GameManager.Instance.TipoLetra = l_Font;

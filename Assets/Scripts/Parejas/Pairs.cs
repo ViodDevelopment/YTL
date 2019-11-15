@@ -54,45 +54,47 @@ public class Pairs : MonoBehaviour
         {
 
             #region animación
-            if (numImage == 0 && firstTime)
+            if (GameManager.Instance.Ayuda)
             {
-                firstTime = false;
-                maxTimerAnim = 1;
-            }
-
-            if (m_GameManagerParejas.m_CurrentPairs == numImage && !m_PieceClicked)
-            {
-                currentTimerAnim += Time.deltaTime;
-                if (currentTimerAnim >= maxTimerAnim && !m_PieceClicked && !animIsplaying)
+                if (numImage == 0 && firstTime)
                 {
-                    currentTimerAnim = 0;
-                    animIsplaying = true;
-                    maxTimerAnim = Random.Range(1.5f, 3);
+                    firstTime = false;
+                    maxTimerAnim = 1;
                 }
 
-                if (animIsplaying && !m_PieceClicked)
+                if (m_GameManagerParejas.m_CurrentPairs == numImage && !m_PieceClicked)
                 {
-                    if (currentTimerAnim < 0.5f)
-                    {
-                        gameObject.transform.position += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
-                        rectTransform.localScale += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
-                    }
-                    else if (currentTimerAnim < 1f)
-                    {
-                        gameObject.transform.position += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
-                        rectTransform.localScale += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
-                    }
-                    else
+                    currentTimerAnim += Time.deltaTime;
+                    if (currentTimerAnim >= maxTimerAnim && !m_PieceClicked && !animIsplaying)
                     {
                         currentTimerAnim = 0;
-                        animIsplaying = false;
-                        rectTransform.localScale = lastSize;
-                        gameObject.transform.position = lastPosition;
+                        animIsplaying = true;
+                        maxTimerAnim = Random.Range(1.5f, 3);
                     }
+
+                    if (animIsplaying && !m_PieceClicked)
+                    {
+                        if (currentTimerAnim < 0.5f)
+                        {
+                            gameObject.transform.position += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
+                            rectTransform.localScale += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+                        }
+                        else if (currentTimerAnim < 1f)
+                        {
+                            gameObject.transform.position += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+                            rectTransform.localScale += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
+                        }
+                        else
+                        {
+                            currentTimerAnim = 0;
+                            animIsplaying = false;
+                            rectTransform.localScale = lastSize;
+                            gameObject.transform.position = lastPosition;
+                        }
+                    }
+
                 }
-
             }
-
             #endregion
 
 
@@ -166,16 +168,18 @@ public class Pairs : MonoBehaviour
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
-
-                if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
+                if (GameManager.Instance.Dumi)
                 {
-                    if(lastFallos == GameManager.fallosParejas)
-                        GameManager.fallosParejas++;
-                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosParejas >= 2)
+                    if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {
-                        GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
-                        pinguino.GetComponent<Dumi>().AudioNegativo();
-                        GameManager.fallosParejas = 0;
+                        if (lastFallos == GameManager.fallosParejas)
+                            GameManager.fallosParejas++;
+                        if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosParejas >= 2)
+                        {
+                            GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
+                            pinguino.GetComponent<Dumi>().AudioNegativo();
+                            GameManager.fallosParejas = 0;
+                        }
                     }
                 }
 

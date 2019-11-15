@@ -106,14 +106,17 @@ public class MoveTouch : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
+                if (GameManager.Instance.Dumi)
                 {
-                    GameManager.fallosPuzzle++;
-                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosPuzzle >= 2)
+                    if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {
-                        GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
-                        pinguino.GetComponent<Dumi>().AudioNegativo();
-                        GameManager.fallosPuzzle = 0;
+                        GameManager.fallosPuzzle++;
+                        if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosPuzzle >= 2)
+                        {
+                            GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
+                            pinguino.GetComponent<Dumi>().AudioNegativo();
+                            GameManager.fallosPuzzle = 0;
+                        }
                     }
                 }
 
