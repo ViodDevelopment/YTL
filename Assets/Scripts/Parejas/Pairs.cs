@@ -11,6 +11,9 @@ public class Pairs : MonoBehaviour
     public string nombre = "";
     public AudioClip audioClip;
     private Image myImage;
+    private bool dentro = false;
+    private GameObject colision;
+    private GameObject otherObject;
 
     public GameManagerParejas m_GameManagerParejas;
     private AudioSource audioSource;
@@ -46,6 +49,7 @@ public class Pairs : MonoBehaviour
     }
     private void Update()
     {
+        print(dentro);
         if (managerOnlyOne != null)
         {
 
@@ -162,6 +166,16 @@ public class Pairs : MonoBehaviour
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
+
+                if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
+                {
+                    if (GameObject.Find("Dumi(Clone)") == null)
+                    {
+                        GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
+                        pinguino.GetComponent<Dumi>().AudioNegativo();
+                    }
+                }
+
                 if (timer <= 0)
                 {
                     timer = 0;
@@ -171,62 +185,80 @@ public class Pairs : MonoBehaviour
                     rectTransform.localScale = lastSize;
                     m_PieceClicked = false;
                     managerOnlyOne.Catch(false, null);
+                    colision = null;
+                    otherObject = null;
+                    dentro = false;
+
                 }
+
+
 
             }
 
             if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
             {
-                timer = 0.01f;
+                timer = 0.02f;
+
+                if (dentro)
+                {
+                    this.transform.position = colision.gameObject.transform.position;
+                    m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
+                    m_GameManagerParejas.m_TextZoomed.text = nombre;
+                    //m_GameManagerParejas.m_TextZoomed.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_GameManagerParejas.m_TextZoomed.text);
+                    m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                    if (!audioSource.isPlaying)
+                    {
+                        audioSource.clip = audioClip;
+                        audioSource.Play();
+                    }
+                    m_GameManagerParejas.PairDone();
+
+                    if (lastPair)
+                        m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(true);
+                    else
+                        m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
+
+
+                    colision.gameObject.SetActive(false);
+                    gameObject.SetActive(false);
+                    gameObject.transform.position = lastPosition;
+                    rectTransform.localScale = lastSize;
+                    currentTimerAnim = 0;
+                    firstTime = true;
+                    animIsplaying = false;
+                    m_PieceClicked = false;
+                    managerOnlyOne.Catch(false, null);
+                    colision = null;
+                    otherObject = null;
+                    dentro = false;
+                    timer = 0;
+                }
+
             }
         }
 
     }
 
-
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D _collision)
     {
-        if ((collision.gameObject.name == this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)))
+        if (_collision.gameObject.name == this.gameObject.name)
         {
-            this.transform.position = collision.gameObject.transform.position;
-            m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
-            m_GameManagerParejas.m_TextZoomed.text = nombre;
-            //m_GameManagerParejas.m_TextZoomed.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_GameManagerParejas.m_TextZoomed.text);
-            m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
-            if (!audioSource.isPlaying)
-            {
-                audioSource.clip = audioClip;
-                audioSource.Play();
-            }
-            m_GameManagerParejas.PairDone();
-
-            if (lastPair)
-                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(true);
-            else
-                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
-
-
-            collision.gameObject.SetActive(false);
-            gameObject.SetActive(false);
-            gameObject.transform.position = lastPosition;
-            rectTransform.localScale = lastSize;
-            currentTimerAnim = 0;
-            firstTime = true;
-            animIsplaying = false;
-            m_PieceClicked = false;
-            managerOnlyOne.Catch(false, null);
-
+            colision = _collision.gameObject;
+            dentro = true;
         }
-        else if((collision.gameObject.name != this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)))
+        if (colision == null && _collision.gameObject.GetComponent<Pairs>() == null)
+            otherObject = _collision.gameObject;
+    }
+
+    private void OnTriggerExit2D(Collider2D _collision)
+    {
+        if (_collision.gameObject.name == this.gameObject.name)
         {
-            if (!m_GameManagerParejas.dumiActivo)
-            {
-                GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
-                pinguino.GetComponent<Dumi>().AudioNegativo();
-                m_GameManagerParejas.dumiActivo = true;
-                m_GameManagerParejas.timerDumi = 1.5f;
-            }
+            colision = null;
+            dentro = false;
         }
+
+        if (otherObject == _collision.gameObject)
+            otherObject = null;
     }
 }

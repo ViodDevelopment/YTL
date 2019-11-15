@@ -468,8 +468,11 @@ public class GameManagerPuzzle : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
-        pinguino.GetComponent<Dumi>().AudioPositivo();
+        if (GameObject.Find("Dumi(Clone)") == null)
+        {
+            GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+            pinguino.GetComponent<Dumi>().AudioPositivo();
+        }
         if (!repeating)
         {
             if (GameManager.m_CurrentToMinigame[2] < 3)

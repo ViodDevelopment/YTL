@@ -14,7 +14,7 @@ public class ManagamentFalseBD : MonoBehaviour
     private string nameRute;
     private string nameRuteBolasMinijuegos;
 
-    private void Start()
+    private void Awake()
     {
         GameObject go = GameObject.Find("ManagementFalsaBD");
         if (go == null || go == gameObject)

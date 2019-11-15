@@ -12,8 +12,6 @@ public class GameManagerParejas : MonoBehaviour
 
 {
     public GameObject dumi;
-    public bool dumiActivo = false;
-    public float timerDumi = 0;
 
     public SceneManagement m_Scener;
 
@@ -202,16 +200,6 @@ public class GameManagerParejas : MonoBehaviour
 
 
 
-        }
-
-        if (dumiActivo)
-        {
-            timerDumi -= Time.deltaTime;
-            if (timerDumi <= 0)
-            {
-                timerDumi = 0;
-                dumiActivo = false;
-            }
         }
 
     }
@@ -1023,12 +1011,11 @@ public class GameManagerParejas : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-
-        GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
-        pinguino.GetComponent<Dumi>().AudioPositivo();
-        dumiActivo = true;
-        timerDumi = 1.5f;
-
+        if (GameObject.Find("Dumi(Clone)") == null)
+        {
+            GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
+            pinguino.GetComponent<Dumi>().AudioPositivo();
+        }
         if (!repeating)
         {
             if (m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)

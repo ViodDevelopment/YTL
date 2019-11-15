@@ -15,6 +15,9 @@ public class MoveTouch : MonoBehaviour
     public bool Word = false;
     public bool canMove = false;
     private float timer = 0;
+    private bool dentro = false;
+    private GameObject colision;
+    private GameObject otherObject;
 
     public Image mainImage;
     public Text text;
@@ -102,6 +105,16 @@ public class MoveTouch : MonoBehaviour
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
+
+                if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
+                {
+                    if (GameObject.Find("Dumi(Clone)") == null)
+                    {
+                        GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
+                        pinguino.GetComponent<Dumi>().AudioNegativo();
+                    }
+                }
+
                 if (timer <= 0)
                 {
                     timer = 0;
@@ -117,6 +130,19 @@ public class MoveTouch : MonoBehaviour
             if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
             {
                 timer = 0.01f;
+
+                if (dentro)
+                {
+                    this.transform.position = colision.gameObject.transform.position;
+                    m_PieceLocked = true;
+                    this.transform.SetParent(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Saver.transform);
+                    if (SceneManager.GetActiveScene().name == "Puzzle")
+                        GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Puntuacion++;
+                    dentro = false;
+                    colision = null;
+                    otherObject = null;
+                }
+
             }
 
         }
@@ -128,22 +154,27 @@ public class MoveTouch : MonoBehaviour
         yield return new WaitForSeconds(5);
     }
 
-
-    private void OnTriggerStay2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D _collision)
     {
-        if ((collision.gameObject.name == this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)) && !m_PieceLocked)
+        if (_collision.gameObject.name == this.gameObject.name)
         {
-            this.transform.position = collision.gameObject.transform.position;
-            m_PieceLocked = true;
-            this.transform.SetParent(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Saver.transform);
-            if (SceneManager.GetActiveScene().name == "Puzzle")
-                GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Puntuacion++;
+            colision = _collision.gameObject;
+            dentro = true;
         }
-        else if ((collision.gameObject.name != this.gameObject.name) && ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended) || Input.GetMouseButtonUp(0)) && !m_PieceLocked)
+        if (colision == null && _collision.gameObject.GetComponent<MoveTouch>() == null)
+            otherObject = _collision.gameObject;
+    }
+
+    private void OnTriggerExit2D(Collider2D _collision)
+    {
+        if (_collision.gameObject.name == this.gameObject.name)
         {
-            GameObject pinguino = Instantiate(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.position, GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().dumi.transform.rotation);
-            pinguino.GetComponent<Dumi>().AudioNegativo();
+            colision = null;
+            dentro = false;
         }
+
+        if (otherObject == _collision.gameObject)
+            otherObject = null;
     }
 
 
