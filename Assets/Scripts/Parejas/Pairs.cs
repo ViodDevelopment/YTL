@@ -169,8 +169,9 @@ public class Pairs : MonoBehaviour
 
                 if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                 {
-                    GameManager.fallosParejas++;
-                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosParejas >= 2 && lastFallos + 1 == GameManager.fallosParejas)
+                    if(lastFallos == GameManager.fallosParejas)
+                        GameManager.fallosParejas++;
+                    if (GameObject.Find("Dumi(Clone)") == null && GameManager.fallosParejas >= 2)
                     {
                         GameObject pinguino = Instantiate(m_GameManagerParejas.dumi, m_GameManagerParejas.dumi.transform.position, m_GameManagerParejas.dumi.transform.rotation);
                         pinguino.GetComponent<Dumi>().AudioNegativo();

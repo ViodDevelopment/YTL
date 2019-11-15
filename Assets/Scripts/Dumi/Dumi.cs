@@ -50,9 +50,9 @@ public class Dumi : MonoBehaviour
                 audioSource.Play();
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
-                int cat = Random.Range(0, audiosNegativosEsp.Count);
+                int cat = Random.Range(0, audiosNegativosCat.Count);
 
-                audioSource.clip = audiosNegativosEsp[cat];
+                audioSource.clip = audiosNegativosCat[cat];
                 audioSource.Play();
                 break;
         }
