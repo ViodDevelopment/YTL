@@ -19,8 +19,10 @@ public class SceneManagement : MonoBehaviour
 
     private int numOfGames = 0;
 
-    public void InicioScene()
+    public void InicioScene(bool _DesdeActividad)
     {
+        if (_DesdeActividad)
+            GameManager.backFromActivity = true;
         SceneManager.LoadScene(GameManager.Instance.InicioIndex);
     }
     public void PreparadosScene()
@@ -126,5 +128,23 @@ public class SceneManagement : MonoBehaviour
         if (GameManager.currentMiniGame >= 2)
             GameManager.currentMiniGame = 0;
         ManagamentFalseBD.management.SaveBolasMinijuegos();
+    }
+
+    public void GoBackFromActivity()
+    {
+        AllCanvas[2].SetActive(true);
+        AllCanvas[0].SetActive(false);
+    }
+
+    private void Start()
+    {
+        if(GameManager.backFromActivity)
+        {
+            if(SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                GoBackFromActivity();
+                GameManager.backFromActivity = false;
+            }
+        }
     }
 }

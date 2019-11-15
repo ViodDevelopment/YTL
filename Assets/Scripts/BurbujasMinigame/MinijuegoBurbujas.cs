@@ -61,7 +61,7 @@ public class MinijuegoBurbujas : MonoBehaviour
                 }
             }
             GameManager.m_CurrentToMinigame[count] = 0;
-           m_Scener.InicioScene();
+           m_Scener.InicioScene(true);
             //endgame
         }
     }

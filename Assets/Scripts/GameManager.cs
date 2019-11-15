@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle
     public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public static int currentMiniGame = 0;
+    public static bool backFromActivity = false;
     public int m_NeededToMinigame = 5;//Siempre añadir un +1 a lo que necesitan
     [HideInInspector]
     public int m_BitLevel = 1;
