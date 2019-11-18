@@ -182,7 +182,7 @@ public class ImageControl : MonoBehaviour
         IEnumerator WaitSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            if (GameManager.Instance.Dumi)
+            if (GameManager.configurartion.refuerzoPositivo)
             {
                 GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
                 pinguino.GetComponent<Dumi>().AudioPositivo();

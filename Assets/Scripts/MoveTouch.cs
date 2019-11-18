@@ -106,7 +106,7 @@ public class MoveTouch : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                if (GameManager.Instance.Dumi)
+                if (GameManager.configurartion.refuerzoPositivo)
                 {
                     if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {

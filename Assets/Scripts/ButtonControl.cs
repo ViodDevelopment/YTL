@@ -8,12 +8,14 @@ public class ButtonControl : MonoBehaviour
     Button m_MyButton;
     public int m_Position;
     public GameObject[] m_Buttons;
+    private ManagamentFalseBD bd;
 
-    int m_CurrentEditWord =1;
+    int m_CurrentEditWord = 1;
 
     private void Awake()
     {
         m_MyButton = GetComponent<Button>();
+        bd = GameObject.Find("ManagementFalsaBD").GetComponent<ManagamentFalseBD>();
     }
 
     private void Start()
@@ -38,44 +40,40 @@ public class ButtonControl : MonoBehaviour
         }
     }
 
-    public void Idioma(string l_Idioma)
-    {
-        GameManager.Instance.Idioma = l_Idioma;
-    }
-
-    public void TipoLetra(Font l_Font)
-    {
-        GameManager.Instance.TipoLetra = l_Font;
-    }
-
     public void Ayuda(bool l_Ayuda)
     {
-        GameManager.Instance.Ayuda = l_Ayuda;
+        GameManager.configurartion.ayudaVisual = l_Ayuda;
+        bd.SaveConfig();
     }
 
     public void Animacion(bool l_Animacion)
     {
-        GameManager.Instance.Dumi = l_Animacion;
+        GameManager.configurartion.refuerzoPositivo = l_Animacion;
+        bd.SaveConfig();
     }
 
     public void Articulo(bool l_Articulo)
     {
-        GameManager.Instance.Articulo = l_Articulo;
+        GameManager.configurartion.palabrasConArticulo = l_Articulo;
+        bd.SaveConfig();
     }
 
     public void Repeticiones(int l_Repeticiones)
     {
-        GameManager.Repeticiones = l_Repeticiones;
-    }
-   
-    public void Pack(int l_Packs)
-    {
-        GameManager.Packs = l_Packs;
+        GameManager.configurartion.repetitionsOfExercise = l_Repeticiones;
+        bd.SaveConfig();
     }
 
-    public void Dificultad(string Dificultad)
+    public void Pack(int l_Packs)
     {
-        GameManager.Instance.WordDifficulty = Dificultad;
+        GameManager.configurartion.paquete = l_Packs;
+        bd.SaveConfig();
+    }
+
+    public void Dificultad(int Dificultad)
+    {
+        GameManager.configurartion.difficult = Dificultad;
+        bd.SaveConfig();
     }
 
     public void PalabraEditar(Text l_Texto)
@@ -83,7 +81,7 @@ public class ButtonControl : MonoBehaviour
         m_CurrentEditWord++;
         if (m_CurrentEditWord > 8)
             m_CurrentEditWord = 1;
-        l_Texto.text = m_CurrentEditWord.ToString() +" de 8";
+        l_Texto.text = m_CurrentEditWord.ToString() + " de 8";
     }
 
     public void SetFont(int _font)
@@ -100,11 +98,14 @@ public class ButtonControl : MonoBehaviour
                 SingletonLenguage.GetInstance().SetFont(SingletonLenguage.OurFont.MANUSCRITA);
                 break;
         }
+        GameManager.configurartion.currentFont = SingletonLenguage.GetInstance().GetFont();
+        bd.SaveConfig();
+
     }
 
     public void SetLenguage(int _lengauge)
     {
-        switch(_lengauge)
+        switch (_lengauge)
         {
             case 0:
                 SingletonLenguage.GetInstance().SetLenguage(SingletonLenguage.Lenguage.CASTELLANO);
@@ -113,6 +114,8 @@ public class ButtonControl : MonoBehaviour
                 SingletonLenguage.GetInstance().SetLenguage(SingletonLenguage.Lenguage.CATALAN);
                 break;
         }
+        GameManager.configurartion.currentLenguaje = SingletonLenguage.GetInstance().GetLenguage();
+        bd.SaveConfig();
     }
 
 }

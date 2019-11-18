@@ -1001,7 +1001,7 @@ public class GameManagerParejas : MonoBehaviour
 
         m_Siguiente.SetActive(true);
 
-        if (m_CurrentNumRep < GameManager.Repeticiones)
+        if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
         {
             m_Repetir.SetActive(true);
         }
@@ -1012,7 +1012,7 @@ public class GameManagerParejas : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameManager.Instance.Dumi)
+        if (GameManager.configurartion.refuerzoPositivo)
         {
             if (GameObject.Find("Dumi(Clone)") == null)
             {

@@ -12,13 +12,7 @@ public class GameManager : MonoBehaviour
 
     #region Configuracion
     [HideInInspector]
-    public string Idioma = "Español";
-    [HideInInspector]
-    public Font TipoLetra;
-    [HideInInspector]
-    public bool Ayuda = true, Dumi = true, Articulo = false;
-    [HideInInspector]
-    public static int Repeticiones =2, Packs = 0;
+    public static Configurartion configurartion;
     #endregion
 
     #region ScenesIndex
@@ -36,7 +30,6 @@ public class GameManager : MonoBehaviour
     #endregion
 
     #region WordAdding(Cambiar de Sitio)
-    public string WordDifficulty;
     public string Word;
     #endregion
 
@@ -108,6 +101,12 @@ public class GameManager : MonoBehaviour
             return true;
 
         return false;
+    }
+
+    public void ChangeConfig()
+    {
+        SingletonLenguage.GetInstance().SetLenguage(configurartion.currentLenguaje);
+        SingletonLenguage.GetInstance().SetFont(configurartion.currentFont);
     }
 
 

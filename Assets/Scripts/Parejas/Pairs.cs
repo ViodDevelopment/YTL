@@ -54,7 +54,7 @@ public class Pairs : MonoBehaviour
         {
 
             #region animación
-            if (GameManager.Instance.Ayuda)
+            if (GameManager.configurartion.ayudaVisual)
             {
                 if (numImage == 0 && firstTime)
                 {
@@ -168,7 +168,7 @@ public class Pairs : MonoBehaviour
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
-                if (GameManager.Instance.Dumi)
+                if (GameManager.configurartion.refuerzoPositivo)
                 {
                     if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {

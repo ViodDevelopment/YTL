@@ -13,7 +13,7 @@ public class ManagamentFalseBD : MonoBehaviour
     private List<PalabraBD> palabrasGuardadas = new List<PalabraBD>();
     [SerializeField] private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
     private List<FraseBD> frasesGuardadas = new List<FraseBD>();
-    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos;
+    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration;
 
     private void Awake()
     {
@@ -25,6 +25,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRute = Application.persistentDataPath + "/datos.dat";
                 nameRuteFrase = Application.persistentDataPath + "/datosFrases.dat";
                 nameRuteBolasMinijuegos = Application.persistentDataPath + "/BolasMinijuegos.dat";
+                nameConfiguration = Application.persistentDataPath + "/Configuration.dat";
                 management = this;
                 DontDestroyOnLoad(gameObject);
                 InitPalabrasPredeterminadas();
@@ -106,12 +107,22 @@ public class ManagamentFalseBD : MonoBehaviour
                 {
                     management.LoadBolasMinijuegos();
                 }
-                if (!File.Exists(nameRuteBolasMinijuegos))
+                else if (!File.Exists(nameRuteBolasMinijuegos))
                 {
                     management.SaveBolasMinijuegos();
                 }
 
+                if(File.Exists(nameConfiguration))
+                {
+                    management.LoadConfig();
+                }
+                else if(!File.Exists(nameConfiguration))
+                {
+                    if (GameManager.configurartion == null)
+                        GameManager.configurartion = new Configurartion();
 
+                    management.SaveConfig();
+                }
 
             }
         }
@@ -556,6 +567,37 @@ public class ManagamentFalseBD : MonoBehaviour
         file.Close();
     }
 
+
+    public void SaveConfig()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(nameConfiguration);
+
+        PlayerConfiguration datos = new PlayerConfiguration();
+
+        datos.config = GameManager.configurartion;
+
+        bf.Serialize(file, datos);
+
+        file.Close();
+    }
+
+    public void LoadConfig()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(nameConfiguration, FileMode.Open);
+
+        PlayerConfiguration datos = (PlayerConfiguration)bf.Deserialize(file);
+
+        GameManager.configurartion = datos.config;
+
+        file.Close();
+
+        GameManager.Instance.ChangeConfig();
+    }
+
+
+
     public void LoadDatesOfPlayer()
     {
 
@@ -631,4 +673,10 @@ class PointsOfMinigames
 {
     public List<int> bolasMinijuegos = new List<int>();
     public int currentMiniGame;
+}
+
+[Serializable]
+class PlayerConfiguration
+{
+    public Configurartion config;
 }

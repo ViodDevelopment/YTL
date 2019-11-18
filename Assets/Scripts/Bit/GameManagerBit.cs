@@ -155,7 +155,7 @@ public class GameManagerBit : MonoBehaviour
     public void ActivateButtons()
     {
         m_Siguiente.SetActive(true);
-        if (m_CurrentNumRep <= GameManager.Repeticiones)
+        if (m_CurrentNumRep <= GameManager.configurartion.repetitionsOfExercise)
             m_Repetir.SetActive(true);
     }
 }
