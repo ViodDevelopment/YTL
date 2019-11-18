@@ -15,6 +15,7 @@ public class ImageControl : MonoBehaviour
     public List<Texture2D> m_ImagesPool = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
+    private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     private int firstImage = 0;
 
     public List<string> m_PalabrasCastellano = new List<string>();
@@ -31,9 +32,34 @@ public class ImageControl : MonoBehaviour
     public int l_Number;
     void Awake()
     {
-        m_Length = m_AudioPoolCastellano.Count;
+        RecolectPalabrasBD();
+        m_Length = palabrasDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
         GameManagerBit.m_Alea = Random.Range(0, m_Length);
+    }
+
+    private void RecolectPalabrasBD()
+    {
+        m_ImagesPool.Clear();
+        m_ImagesPool2.Clear();
+        m_ImagesPool3.Clear();
+        m_PalabrasCastellano.Clear();
+        m_PalabrasCatalan.Clear();
+        m_AudioPoolCastellano.Clear();
+        m_AudioPoolCatalan.Clear();
+        palabrasDisponibles.Clear();
+
+        foreach(PalabraBD p in GameManager.palabrasDisponibles)
+        {
+            /*m_ImagesPool.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image1));
+            m_ImagesPool2.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image2));
+            m_ImagesPool3.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image3));
+            m_PalabrasCastellano.Add(p.nameSpanish);
+            m_PalabrasCatalan.Add(p.nameCatalan);
+            m_AudioPoolCastellano.Add(p.GetAudioClip(p.audio));
+            m_AudioPoolCatalan.Add(p.GetAudioClip(p.audio));*/
+            palabrasDisponibles.Add(p);
+        }
     }
 
     void Start()
@@ -69,16 +95,16 @@ public class ImageControl : MonoBehaviour
         switch (firstImage)
         {
             case 0:
-                m_Image.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
                 break;
             case 1:
-                m_Image.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2); 
                 break;
             case 2:
-                m_Image.sprite = Sprite.Create(m_ImagesPool3[l_Number], new Rect(0, 0, m_ImagesPool3[l_Number].width / 1.02f, m_ImagesPool3[l_Number].height / 1.02f), Vector2.zero);
+                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3); 
                 break;
             default:
-                m_Image.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
                 break;
         }
 
@@ -93,23 +119,23 @@ public class ImageControl : MonoBehaviour
         switch (otherImage)
         {
             case 0:
-                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool[l_Number], new Rect(0, 0, m_ImagesPool[l_Number].width / 1.02f, m_ImagesPool[l_Number].height / 1.02f), Vector2.zero);
+                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
                 break;
             case 1:
-                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2);
                 break;
             case 2:
-                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool3[l_Number], new Rect(0, 0, m_ImagesPool3[l_Number].width / 1.02f, m_ImagesPool3[l_Number].height / 1.02f), Vector2.zero);
+                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3);
                 break;
             default:
-                m_ImageBehind.sprite = Sprite.Create(m_ImagesPool2[l_Number], new Rect(0, 0, m_ImagesPool2[l_Number].width / 1.02f, m_ImagesPool2[l_Number].height / 1.02f), Vector2.zero);
+                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
                 break;
         }
 
-        m_Text.text = PutName(l_Number);
+        m_Text.text = palabrasDisponibles[l_Number].palabraActual;
         SearchFont();
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
-        m_AS.clip = PutAudio(l_Number);
+        m_AS.clip = palabrasDisponibles[l_Number].GetAudioClip(palabrasDisponibles[l_Number].audio);
 
 
     }

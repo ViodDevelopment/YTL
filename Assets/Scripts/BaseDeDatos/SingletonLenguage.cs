@@ -23,7 +23,14 @@ public class SingletonLenguage
 
     public void SetLenguage(Lenguage _leng)
     {
-        currentLenguage = _leng;
+        if (_leng != currentLenguage)
+        {
+            currentLenguage = _leng;
+            foreach (PalabraBD p in GameManager.palabrasDisponibles)
+            {
+                p.SetPalabraActual(_leng);
+            }
+        }
     }
 
     public Lenguage GetLenguage()
