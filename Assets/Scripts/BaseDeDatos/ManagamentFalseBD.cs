@@ -11,8 +11,9 @@ public class ManagamentFalseBD : MonoBehaviour
 
     [SerializeField] private List<PalabraBD> palabrasPredeterminadass = new List<PalabraBD>();
     private List<PalabraBD> palabrasGuardadas = new List<PalabraBD>();
-    private string nameRute;
-    private string nameRuteBolasMinijuegos;
+    [SerializeField] private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
+    private List<FraseBD> frasesGuardadas = new List<FraseBD>();
+    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class ManagamentFalseBD : MonoBehaviour
             if (management == null)
             {
                 nameRute = Application.persistentDataPath + "/datos.dat";
+                nameRuteFrase = Application.persistentDataPath + "/datosFrases.dat";
                 nameRuteBolasMinijuegos = Application.persistentDataPath + "/BolasMinijuegos.dat";
                 management = this;
                 DontDestroyOnLoad(gameObject);
@@ -38,7 +40,7 @@ public class ManagamentFalseBD : MonoBehaviour
                         existe.Add(false);
                         foreach (PalabraBD w in palabrasGuardadas)
                         {
-                            if (p == w)
+                            if (p.palabraActual == w.palabraActual)
                             {
                                 existe[existe.Count - 1] = true;
                                 break;
@@ -61,6 +63,45 @@ public class ManagamentFalseBD : MonoBehaviour
                 {
                     management.SaveDates();
                 }
+
+                InitFrasesPredeterminadas();
+                bool existenteFrase = true;
+
+                if (File.Exists(nameRuteFrase))
+                {
+                    management.LoadDatesFrase();
+
+                    #region si no tiene los datos minimos se los creamos
+                    List<bool> existeFrase = new List<bool>();
+                    foreach (FraseBD p in frasesPredeterminadas)
+                    {
+                        existeFrase.Add(false);
+                        foreach (FraseBD w in frasesGuardadas)
+                        {
+                            if (p.actualFrase == w.actualFrase)
+                            {
+                                existeFrase[existeFrase.Count - 1] = true;
+                                break;
+                            }
+                        }
+                    }
+
+
+                    foreach (bool b in existeFrase)
+                    {
+                        if (!b)
+                        {
+                            existenteFrase = false;
+                            break;
+                        }
+                    }
+                    #endregion
+                }
+                if (!File.Exists(nameRuteFrase) || !existenteFrase)
+                {
+                    management.SaveDatesFrase();
+                }
+
                 if (File.Exists(nameRuteBolasMinijuegos))
                 {
                     management.LoadBolasMinijuegos();
@@ -394,6 +435,27 @@ public class ManagamentFalseBD : MonoBehaviour
         }
     }
 
+    private void InitFrasesPredeterminadas()
+    {
+        int count = 0;
+        #region Frase1
+        frasesPredeterminadas.Add(new FraseBD());
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "Cualquier imagen";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Pera Moto Casa";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "El que sigui";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "cualquier audio";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].dificultad = 1;
+        count++;
+        #endregion
+        foreach (FraseBD f in frasesPredeterminadas)
+        {
+            f.SeparatePerPalabras();
+        }
+    }
+
     public void SaveDates()
     {
         BinaryFormatter bf = new BinaryFormatter();
@@ -427,6 +489,40 @@ public class ManagamentFalseBD : MonoBehaviour
             palabrasGuardadas.Add(p);
         }
 
+    }
+
+    public void SaveDatesFrase()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fileFrase = File.Create(nameRuteFrase);
+
+        DatesFrasesToSave datos = new DatesFrasesToSave();
+        datos.ChangeDates(frasesPredeterminadas);
+
+        bf.Serialize(fileFrase, datos);
+
+        fileFrase.Close();
+    }
+
+    public void LoadDatesFrase()
+    {
+        List<FraseBD> frases = new List<FraseBD>();
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream fileFrase = File.Open(nameRuteFrase, FileMode.Open);
+
+        DatesFrasesToSave datos = (DatesFrasesToSave)bf.Deserialize(fileFrase);
+        frases = datos.GetListOfFrases();
+
+        fileFrase.Close();
+
+
+        GameManager.frasesDisponibles.Clear();
+        frasesGuardadas.Clear();
+        foreach (FraseBD p in frases)
+        {
+            GameManager.frasesDisponibles.Add(p);
+            frasesGuardadas.Add(p);
+        }
     }
 
     public void SaveBolasMinijuegos()
@@ -468,7 +564,8 @@ public class ManagamentFalseBD : MonoBehaviour
 }
 
 
-[Serializable] class DatesToSave
+[Serializable]
+class DatesToSave
 {
     private List<PalabraBD> palabrasPredeterminadas = new List<PalabraBD>();
 
@@ -495,12 +592,42 @@ public class ManagamentFalseBD : MonoBehaviour
     }
 }
 
-[Serializable] class DatesOfPlayer
+[Serializable]
+class DatesFrasesToSave
+{
+    private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
+
+    public void ChangeDates(List<FraseBD> _frases)
+    {
+        frasesPredeterminadas.Clear();
+        foreach (FraseBD f in _frases)
+        {
+            frasesPredeterminadas.Add(f);
+        }
+    }
+
+    public void AddFrases(List<FraseBD> _frases)
+    {
+        foreach (FraseBD f in _frases)
+        {
+            frasesPredeterminadas.Add(f);
+        }
+    }
+
+    public List<FraseBD> GetListOfFrases()
+    {
+        return frasesPredeterminadas;
+    }
+}
+
+[Serializable]
+class DatesOfPlayer
 {
 
 }
 
-[Serializable] class PointsOfMinigames
+[Serializable]
+class PointsOfMinigames
 {
     public List<int> bolasMinijuegos = new List<int>();
     public int currentMiniGame;

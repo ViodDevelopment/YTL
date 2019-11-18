@@ -222,10 +222,10 @@ public class ManagementBD : MonoBehaviour
         {
             m_frase.Add(new FraseBD());
             m_frase[m_frase.Count - 1].id = reader.GetInt32(0);
-            m_frase[m_frase.Count - 1].frase = reader.GetString(1);
+            //m_frase[m_frase.Count - 1].frase = reader.GetString(1);
             m_frase[m_frase.Count - 1].image = reader.GetString(2);
             m_frase[m_frase.Count - 1].sound = reader.GetString(3);
-            m_frase[m_frase.Count - 1].idioma = reader.GetInt32(4);
+            //m_frase[m_frase.Count - 1].idioma = reader.GetInt32(4);
             m_frase[m_frase.Count - 1].dificultad = reader.GetInt32(5);
             // Debug.Log("Id = " + id + "  Nombre 1 =" + nombre1 + "  imagen 1 =" + imagen1 + " imagen 2 =" + imagen2);
 
@@ -234,7 +234,7 @@ public class ManagementBD : MonoBehaviour
         {
             foreach (FraseBD f in m_frase)
             {
-                f.palabras = ObtainFrase(f.frase);
+                f.palabras = ObtainFrase(f.image);//cambiar por frase si fuera la bd
             }
         }
         else Debug.Log("No existe");
