@@ -155,13 +155,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 74808665}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b834e012f6a8bd04081b1de458bb5b69, type: 3}
+  m_Script: {fileID: 11500000, guid: 4fb21244aa763b04cb569af19f33477a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Scener: {fileID: 74808669}
-  m_NewBit: {fileID: 1780016133251178021, guid: caa459d4538548a479c2a3334000c1b6,
+  m_NewBit: {fileID: 6022547754874520363, guid: 953b3928fe39a944492d25f932ce43bb,
     type: 3}
   m_NewBitPosition: {fileID: 292266495}
+  m_NewFrasePosition: {fileID: 615038937}
   m_CompletedPoint: {fileID: 21300000, guid: 73e4cfb17b6a6434684c856e88729cc3, type: 3}
   m_IncompletedPoint: {fileID: 21300000, guid: 5bc1241bbe8b29d4d9870ea56e793a26, type: 3}
   m_CurrentBit: {fileID: 0}
@@ -792,11 +793,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 74808666}
+      objectReference: {fileID: 0}
     - target: {fileID: 7617506766310046993, guid: c97aaca75cec1de418a27440bfd0ea07,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 74808666}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97aaca75cec1de418a27440bfd0ea07, type: 3}

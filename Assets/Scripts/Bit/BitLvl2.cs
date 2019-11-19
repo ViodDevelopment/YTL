@@ -12,32 +12,31 @@ public class BitLvl2 : MonoBehaviour
     GameManagerBit m_GMBit;
     public AnimationClip m_Spin;
     public AnimationClip m_Slide;
-    private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
+    private List<FraseBD> frasesDisponibles = new List<FraseBD>();
     private int firstImage = 0;
 
     public static int m_Length;
     public Image m_Image;
-    public Image m_ImageBehind;
-    public Text m_Text;
+    public GameObject rectanglePrefab;
+    private List<GameObject> rectanglesInScene = new List<GameObject>();
+    public List<Sprite> listOfRectangles = new List<Sprite>(); //Ordenarlos para saber el orden para ponerlos abajo
     public List<Font> ourFonts = new List<Font>();
     public AudioSource m_AS;
     public int l_Number;
     void Awake()
     {
-        RecolectPalabrasBD();
-        m_Length = palabrasDisponibles.Count;
+        RecolectFrasesBD();
+        m_Length = frasesDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
         GameManagerBit.m_Alea = Random.Range(0, m_Length);
     }
 
-    private void RecolectPalabrasBD()
+    private void RecolectFrasesBD()
     {
-        palabrasDisponibles.Clear();
-
-        foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        frasesDisponibles.Clear();
+        foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-            if (p.color == "Naranja")
-                palabrasDisponibles.Add(p);
+            frasesDisponibles.Add(f);
         }
     }
 
@@ -71,51 +70,14 @@ public class BitLvl2 : MonoBehaviour
         m_Animation = GetComponent<Animation>();
         firstImage = Random.Range(0, 3);
 
-        switch (firstImage)
-        {
-            case 0:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
-                break;
-            case 1:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2);
-                break;
-            case 2:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3);
-                break;
-            default:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
-                break;
-        }
+        m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + frasesDisponibles[l_Number].image);
 
-        int otherImage = Random.Range(0, 3);
+        //crear imagenes de los rectangulos
+        InstanciacionDeRectangulos();
+    }
 
-        while (otherImage == firstImage)
-        {
-            Random.InitState(Random.seed + 1);
-            otherImage = Random.Range(0, 3);
-        }
-
-        switch (otherImage)
-        {
-            case 0:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
-                break;
-            case 1:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2);
-                break;
-            case 2:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3);
-                break;
-            default:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
-                break;
-        }
-
-        m_Text.text = palabrasDisponibles[l_Number].palabraActual;
-        SearchFont();
-        //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
-        m_AS.clip = palabrasDisponibles[l_Number].GetAudioClip(palabrasDisponibles[l_Number].audio);
-
+    private void InstanciacionDeRectangulos()
+    {
 
     }
 
@@ -172,25 +134,25 @@ public class BitLvl2 : MonoBehaviour
     }
 
 
-    private void SearchFont()
+    private void SearchFont(Text _text)
     {
         switch (SingletonLenguage.GetInstance().GetFont())
         {
             case SingletonLenguage.OurFont.IMPRENTA:
-                m_Text.text = m_Text.text.ToLower();
-                m_Text.font = ourFonts[0];
+                _text.text = _text.text.ToLower();
+                _text.font = ourFonts[0];
                 break;
             case SingletonLenguage.OurFont.MANUSCRITA:
-                m_Text.text = m_Text.text.ToLower();
-                m_Text.font = ourFonts[1];
+                _text.text = _text.text.ToLower();
+                _text.font = ourFonts[1];
                 break;
             case SingletonLenguage.OurFont.MAYUSCULA:
-                m_Text.text = m_Text.text.ToUpper();
-                m_Text.font = ourFonts[2];
+                _text.text = _text.text.ToUpper();
+                _text.font = ourFonts[2];
                 break;
             default:
-                m_Text.text = m_Text.text.ToLower();
-                m_Text.font = ourFonts[0];
+                _text.text = _text.text.ToLower();
+                _text.font = ourFonts[0];
                 break;
         }
     }

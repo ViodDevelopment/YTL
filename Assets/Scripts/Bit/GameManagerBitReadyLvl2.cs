@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManagerBitReady : MonoBehaviour
+public class GameManagerBitReadyLvl2 : MonoBehaviour
 {
     public SceneManagement m_Scener;
     int m_CurrentNumRep = 0;
     public GameObject m_NewBit;
     public Transform m_NewBitPosition;
+    public Transform m_NewFrasePosition;
     public Sprite m_CompletedPoint;
     public Sprite m_IncompletedPoint;
     [HideInInspector]
