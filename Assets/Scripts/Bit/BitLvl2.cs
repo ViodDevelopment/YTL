@@ -9,7 +9,7 @@ public class BitLvl2 : MonoBehaviour
     bool m_0touch = true;
     bool m_1touch = false;
     Animation m_Animation;
-    GameManagerBit m_GMBit;
+    GameManagerBitReadyLvl2 m_GMBit;
     public AnimationClip m_Spin;
     public AnimationClip m_Slide;
     private List<FraseBD> frasesDisponibles = new List<FraseBD>();
@@ -27,8 +27,10 @@ public class BitLvl2 : MonoBehaviour
     {
         RecolectFrasesBD();
         m_Length = frasesDisponibles.Count;
-        m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
-        GameManagerBit.m_Alea = Random.Range(0, m_Length);
+        if (m_Length == 0)
+            m_Length = 1;
+        m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBitReadyLvl2>();
+        GameManagerBitReadyLvl2.m_Alea = Random.Range(0, m_Length);
     }
 
     private void RecolectFrasesBD()
@@ -57,8 +59,8 @@ public class BitLvl2 : MonoBehaviour
 
                 if (random != m_GMBit.numLastImage)
                 {
-                    GameManagerBit.m_Alea = random;
-                    l_Number = GameManagerBit.m_Alea;
+                    GameManagerBitReadyLvl2.m_Alea = random;
+                    l_Number = GameManagerBitReadyLvl2.m_Alea;
                     same = false;
                     m_GMBit.numLastImage = l_Number;
                 }
@@ -78,6 +80,30 @@ public class BitLvl2 : MonoBehaviour
 
     private void InstanciacionDeRectangulos()
     {
+        Vector3 position = m_GMBit.m_NewFrasePosition.position;
+        int count = 0;
+        foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
+        {
+            foreach(char c in p.palabraActual)
+            {
+                count++;
+            }
+        }
+        position = new Vector3(position.x - 0.3f * count, position.y, position.z);
+        Text texto;
+        Image imagen;
+        foreach(PalabraBD p in frasesDisponibles[l_Number].palabras)
+        {
+            position = new Vector3(position.x + 1.7f + 0.125f * p.palabraActual.Length, position.y, position.z);
+            rectanglesInScene.Add(Instantiate(rectanglePrefab, position, rectanglePrefab.transform.rotation));
+            rectanglesInScene[rectanglesInScene.Count - 1].transform.parent = m_GMBit.m_NewFrasePosition.transform;
+            texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
+            imagen = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Image>();
+            texto.text = p.palabraActual;
+            SearchFont(texto);
+            imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f,0,0);
+            texto = null;
+        }
 
     }
 

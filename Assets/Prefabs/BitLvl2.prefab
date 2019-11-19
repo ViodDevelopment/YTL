@@ -5148,7 +5148,7 @@ MonoBehaviour:
   m_Spin: {fileID: 7400000, guid: f77fb3b9a6836b54691180980ae117c8, type: 2}
   m_Slide: {fileID: 0}
   m_Image: {fileID: 3760140288158211497}
-  rectanglePrefab: {fileID: 1030240645303827437, guid: 0898612dddd2b284483c54a85fedff9b,
+  rectanglePrefab: {fileID: 3614076283422649554, guid: bf464802c1017fc4eb776f171610770b,
     type: 3}
   listOfRectangles:
   - {fileID: 21300000, guid: 54a3fa03c52a5a449bfd65b2ad537ea2, type: 3}

@@ -452,8 +452,20 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Frase1
         frasesPredeterminadas.Add(new FraseBD());
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "Cualquier imagen";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Pera Moto Casa";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "El que sigui";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "cualquier audio";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].dificultad = 1;
+        count++;
+        #endregion
+        #region Frase2
+        frasesPredeterminadas.Add(new FraseBD());
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Niña Moto Casa Pera Agua Pelota";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "El que sigui";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
