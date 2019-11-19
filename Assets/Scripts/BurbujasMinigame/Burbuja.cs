@@ -64,7 +64,6 @@ public class Burbuja : MonoBehaviour
                 {
                     if (l_Hit.collider.tag == "Burbuja")
                     {
-                        Debug.Log("PUM");
                         //Vector3 actualPos = gameObject.transform.position;
                         GameObject l_Ball = Instantiate(m_BubblePS, l_Hit.collider.transform.position, m_BubblePS.transform.rotation);
                         l_Ball.transform.localScale = l_Hit.collider.gameObject.transform.localScale;

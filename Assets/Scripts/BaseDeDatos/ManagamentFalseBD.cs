@@ -41,7 +41,7 @@ public class ManagamentFalseBD : MonoBehaviour
                         existe.Add(false);
                         foreach (PalabraBD w in palabrasGuardadas)
                         {
-                            if (p.palabraActual == w.palabraActual)
+                            if (p.palabraActual == w.palabraActual && p.color == w.color && p.image1 == w.image1)
                             {
                                 existe[existe.Count - 1] = true;
                                 break;
@@ -63,6 +63,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 if (!File.Exists(nameRute) || !existente)
                 {
                     management.SaveDates();
+                    management.LoadDates();
                 }
 
                 InitFrasesPredeterminadas();
@@ -101,6 +102,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 if (!File.Exists(nameRuteFrase) || !existenteFrase)
                 {
                     management.SaveDatesFrase();
+                    management.LoadDatesFrase();
                 }
 
                 if (File.Exists(nameRuteBolasMinijuegos))
@@ -110,6 +112,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 else if (!File.Exists(nameRuteBolasMinijuegos))
                 {
                     management.SaveBolasMinijuegos();
+                    management.LoadBolasMinijuegos();
                 }
 
                 if(File.Exists(nameConfiguration))
@@ -137,7 +140,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Agua
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "agua_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "agua_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "agua_03";
@@ -156,7 +159,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Boca
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "boca_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "boca_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "boca_03";
@@ -175,7 +178,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Casa
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "casa_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "casa_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "casa_03";
@@ -194,7 +197,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Dedo
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "dedo_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "dedo_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "dedo_03";
@@ -213,7 +216,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Gato
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "gato_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "gato_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "gato_03";
@@ -232,7 +235,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Mano
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "mano_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "mano_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "mano_03";
@@ -251,7 +254,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Mesa
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "mesa_2-01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "mesa_2-02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "mesa_03";
@@ -270,7 +273,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Moto
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "moto_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "moto_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "moto_03";
@@ -289,7 +292,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Niña
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "nina_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "nina_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "nina_03";
@@ -308,7 +311,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Pan
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pan_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pan_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pan_03";
@@ -327,7 +330,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Pelota
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pelota";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pelota_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pelota_04";
@@ -346,7 +349,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Pera
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pera_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pera_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pera_03";
@@ -365,7 +368,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Pie
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pie_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pie_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pie_03";
@@ -384,7 +387,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Sol
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "sol_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "sol_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "sol_03";
@@ -403,7 +406,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Sopa
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "sopa_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "sopa_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "sopa_03";
@@ -422,7 +425,7 @@ public class ManagamentFalseBD : MonoBehaviour
         #region Vaso
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Naranja";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "vaso_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "vaso_02";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "vaso_03";

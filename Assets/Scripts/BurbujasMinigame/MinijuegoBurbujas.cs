@@ -49,7 +49,6 @@ public class MinijuegoBurbujas : MonoBehaviour
         }
         else 
         {
-            Debug.Log("End Minigame");
             int mayor = -1;
             int count = 0;
             for (int i = 0; i < GameManager.m_CurrentToMinigame.Count; i++)

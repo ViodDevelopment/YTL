@@ -81,30 +81,78 @@ public class BitLvl2 : MonoBehaviour
     private void InstanciacionDeRectangulos()
     {
         Vector3 position = m_GMBit.m_NewFrasePosition.position;
-        int count = 0;
+        float anchototal = 0;
         foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
-            foreach(char c in p.palabraActual)
-            {
-                count++;
-            }
+            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+                anchototal += p.palabraActual.Length * 0.9f;
+
+            else
+                anchototal += p.palabraActual.Length * 0.7f;
         }
-        position = new Vector3(position.x - 0.3f * count, position.y, position.z);
+        anchototal /= 2;
+        anchototal += 1.25f * (frasesDisponibles[l_Number].palabras.Count - 1);
+        position = new Vector3(position.x - anchototal / 2, position.y, position.z);
         Text texto;
         Image imagen;
         foreach(PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
-            position = new Vector3(position.x + 1.7f + 0.125f * p.palabraActual.Length, position.y, position.z);
+            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+                position = new Vector3(position.x + 1.25f + 0.55f / 2 * p.palabraActual.Length, position.y, position.z);
+            else
+                position = new Vector3(position.x + 1f + 0.45f / 2 * p.palabraActual.Length, position.y, position.z);
+
             rectanglesInScene.Add(Instantiate(rectanglePrefab, position, rectanglePrefab.transform.rotation));
             rectanglesInScene[rectanglesInScene.Count - 1].transform.parent = m_GMBit.m_NewFrasePosition.transform;
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
             imagen = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Image>();
             texto.text = p.palabraActual;
             SearchFont(texto);
-            imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f,0,0);
+            if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+
+            else
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f,0,0);
+
+
+            CambiarRecuadroDependiendoDePalabra(imagen, p);
+
+            rectanglesInScene[rectanglesInScene.Count - 1].SetActive(false);
             texto = null;
         }
 
+    }
+
+    private void CambiarRecuadroDependiendoDePalabra(Image _imagen, PalabraBD _palabra)
+    {
+        switch(_palabra.color)
+        {
+            case "Adjetivo":
+                _imagen.sprite = listOfRectangles[0];
+                break;
+            case "Adverbio":
+                _imagen.sprite = listOfRectangles[1];
+                break;
+            case "Conjuncion":
+                _imagen.sprite = listOfRectangles[2];
+                break;
+            case "Determinante":
+                _imagen.sprite = listOfRectangles[3];
+                break;
+            case "Nombre":
+                _imagen.sprite = listOfRectangles[4];
+                break;
+            case "Preposicion":
+                _imagen.sprite = listOfRectangles[5];
+                break;
+            case "Verbo":
+                _imagen.sprite = listOfRectangles[6];
+                break;
+            case "Pronombre":
+                _imagen.sprite = listOfRectangles[7];
+                break;
+
+        }
     }
 
 
@@ -119,8 +167,12 @@ public class BitLvl2 : MonoBehaviour
                 positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
             {
-               /* m_Animation.clip = m_Slide;
-                m_Animation.Play();*/
+                /* m_Animation.clip = m_Slide;
+                 m_Animation.Play();*/
+                foreach (GameObject go in rectanglesInScene)
+                {
+                    go.SetActive(true);
+                }
                 m_0touch = false;
                 m_1touch = true;
             }
