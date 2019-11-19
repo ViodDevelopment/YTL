@@ -131,8 +131,8 @@ public class BitLvl2 : MonoBehaviour
                 positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
             {
-                m_Animation.clip = m_Slide;
-                m_Animation.Play();
+               /* m_Animation.clip = m_Slide;
+                m_Animation.Play();*/
                 m_0touch = false;
                 m_1touch = true;
             }
@@ -170,6 +170,7 @@ public class BitLvl2 : MonoBehaviour
                 m_GMBit.AddCountMiniGameBit();
         }
     }
+
 
     private void SearchFont()
     {

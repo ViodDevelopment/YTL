@@ -35,7 +35,6 @@ public class GameManagerBit : MonoBehaviour
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         m_Alea = Random.Range(0, ImageControl.m_Length);
 
-        print(m_Points.Length);
         if (l_NumReps % 2 == 0)
         {
             m_CurrentSpawn = m_SpawnPar;
@@ -73,7 +72,6 @@ public class GameManagerBit : MonoBehaviour
         Destroy(m_CurrentBit);
         m_CurrentBit = Instantiate(m_NewBit, m_NewBitPosition);
         m_CurrentNumRep++;
-        print("repeat");
     }
 
     public void NextBit()
@@ -106,7 +104,6 @@ public class GameManagerBit : MonoBehaviour
         else
         {
             Destroy(m_CurrentBit);
-            print("FinishRep");
             if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             m_CurrentNumRep = 1;
@@ -145,7 +142,6 @@ public class GameManagerBit : MonoBehaviour
             }
         }
         Destroy(m_CurrentBit);
-        print("FinishRep");
         if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
             m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         m_CurrentNumRep = 1;

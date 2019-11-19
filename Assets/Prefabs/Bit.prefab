@@ -4843,9 +4843,10 @@ GameObject:
   - component: {fileID: 6981979267437642921}
   - component: {fileID: 6432024554209594822}
   - component: {fileID: 1573539876383939156}
+  - component: {fileID: 8126239639790080047}
   m_Layer: 5
   m_Name: Bit
-  m_TagString: Untagged
+  m_TagString: Bit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4887,6 +4888,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dumi: {fileID: 1126377519121047965, guid: 7a6b15df706bddf47879b651c973e249, type: 3}
+  layer:
+    serializedVersion: 2
+    m_Bits: 32
   m_Spin: {fileID: 7400000, guid: f77fb3b9a6836b54691180980ae117c8, type: 2}
   m_Slide: {fileID: 7400000, guid: 1a9019c8243e6cb4fb79b926da0c3221, type: 2}
   m_ImagesPool:
@@ -5130,6 +5134,32 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!61 &8126239639790080047
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780016133251178021}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 510, y: 510}
+  m_EdgeRadius: 0
 --- !u!1 &4845110780675227489
 GameObject:
   m_ObjectHideFlags: 0
