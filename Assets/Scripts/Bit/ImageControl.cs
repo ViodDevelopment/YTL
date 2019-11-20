@@ -58,7 +58,7 @@ public class ImageControl : MonoBehaviour
             m_PalabrasCatalan.Add(p.nameCatalan);
             m_AudioPoolCastellano.Add(p.GetAudioClip(p.audio));
             m_AudioPoolCatalan.Add(p.GetAudioClip(p.audio));*/
-            if(p.color == "Naranja")
+            if(p.color == "Nombre")
                 palabrasDisponibles.Add(p);
         }
     }

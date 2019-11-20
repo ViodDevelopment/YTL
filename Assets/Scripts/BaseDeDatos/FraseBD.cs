@@ -24,9 +24,9 @@ public class FraseBD
         palabras.Clear();
         string palabra = "";
         List<string> palabrasABuscar = new List<string>();
-        foreach(char c in actualFrase)
+        foreach (char c in actualFrase)
         {
-            if(c != ' ')
+            if (c != ' ')
             {
                 palabra += c;
             }
@@ -43,30 +43,34 @@ public class FraseBD
             palabra = "";
         }
 
-
         bool existe = false;
         foreach (string p in palabrasABuscar)
         {
             existe = false;
             foreach (PalabraBD pal in GameManager.palabrasDisponibles)
             {
-                if(p.ToLower() == pal.palabraActual.ToLower())
+                if (p.ToLower() == pal.palabraActual.ToLower())
                 {
                     existe = true;
                     palabras.Add(pal);
                     break;
                 }
             }
-            if(!existe)
+            if (!existe)
             {
                 Debug.LogError("Esa palabra de la frase no existe: " + p);
             }
         }
+        if (palabras.Count <= 4)
+            dificultad = 0;
+        else
+            dificultad = 1;
+
     }
 
     private void SetPalabraLenguaje()
     {
-        switch(SingletonLenguage.GetInstance().GetLenguage())
+        switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
                 actualFrase = fraseCastellano;

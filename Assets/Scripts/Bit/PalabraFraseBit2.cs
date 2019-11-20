@@ -1,0 +1,112 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class PalabraFraseBit2 : MonoBehaviour
+{
+    public int numImage = 0;
+    public AudioSource audioSource;
+    public BitLvl2 bit;
+    public float distance = 0;
+    private float timer = 3;
+    private bool doingAnimation = false;
+    private Vector3 scaleOriginal;
+    // Start is called before the first frame update
+    void Start()
+    {
+        scaleOriginal = gameObject.transform.localScale;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (bit.currentWord == numImage)
+        {
+            if (numImage != 0)
+            {
+                if (!bit.rectanglesInScene[numImage - 1].GetComponent<PalabraFraseBit2>().audioSource.isPlaying)
+                {
+                    DoingCosas();
+                }
+
+            }
+            else if(!bit.m_AS.isPlaying)
+                DoingCosas();
+
+
+        }
+    }
+
+
+    private void DoingCosas()
+    {
+        if (GameManager.configurartion.ayudaVisual)
+            timer += Time.deltaTime;
+        if (GameManager.Instance.InputRecieved())
+        {
+            Vector3 positionInput;
+            if (Input.touchCount > 0)
+                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+            else
+                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= distance && Mathf.Abs(positionInput.y - gameObject.transform.position.y) <= 1.2f)
+            {
+                audioSource.Play();
+                gameObject.transform.localScale = scaleOriginal;
+                timer = 0;
+                bit.currentWord++;
+                doingAnimation = false;
+            }else
+            {
+                if (!doingAnimation && timer >= Random.Range(0.2f, 2))
+                {
+                    doingAnimation = true;
+                    timer = 0;
+                }
+                else if (doingAnimation && timer <= 1)
+                {
+                    if (timer <= 0.5f)
+                    {
+                        gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                    }
+                    else
+                    {
+                        gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                    }
+                }
+                else if (doingAnimation && timer > 1)
+                {
+                    timer = 0;
+                    doingAnimation = false;
+                    gameObject.transform.localScale = scaleOriginal;
+                }
+            }
+
+        }
+        else
+        {
+            if (!doingAnimation && timer >= Random.Range(0.2f, 2))
+            {
+                doingAnimation = true;
+                timer = 0;
+            }
+            else if (doingAnimation && timer <= 1)
+            {
+                if (timer <= 0.5f)
+                {
+                    gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                }
+                else
+                {
+                    gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                }
+            }
+            else if (doingAnimation && timer > 1)
+            {
+                timer = 0;
+                doingAnimation = false;
+                gameObject.transform.localScale = scaleOriginal;
+            }
+        }
+    }
+}

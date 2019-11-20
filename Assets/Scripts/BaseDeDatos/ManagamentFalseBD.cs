@@ -28,6 +28,20 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameConfiguration = Application.persistentDataPath + "/Configuration.dat";
                 management = this;
                 DontDestroyOnLoad(gameObject);
+
+                if (File.Exists(nameConfiguration))
+                {
+                    management.LoadConfig();
+                }
+                else if (!File.Exists(nameConfiguration))
+                {
+                    if (GameManager.configurartion == null)
+                        GameManager.configurartion = new Configurartion();
+
+                    management.SaveConfig();
+                }
+
+
                 InitPalabrasPredeterminadas();
                 bool existente = true;
                 if (File.Exists(nameRute))
@@ -80,7 +94,7 @@ public class ManagamentFalseBD : MonoBehaviour
                         existeFrase.Add(false);
                         foreach (FraseBD w in frasesGuardadas)
                         {
-                            if (p.actualFrase == w.actualFrase)
+                            if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
                             {
                                 existeFrase[existeFrase.Count - 1] = true;
                                 break;
@@ -114,19 +128,6 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.SaveBolasMinijuegos();
                     management.LoadBolasMinijuegos();
                 }
-
-                if(File.Exists(nameConfiguration))
-                {
-                    management.LoadConfig();
-                }
-                else if(!File.Exists(nameConfiguration))
-                {
-                    if (GameManager.configurartion == null)
-                        GameManager.configurartion = new Configurartion();
-
-                    management.SaveConfig();
-                }
-
             }
         }
         else if (go != gameObject)
@@ -444,8 +445,8 @@ public class ManagamentFalseBD : MonoBehaviour
 
         foreach (PalabraBD p in palabrasPredeterminadass)
         {
-            p.SeparateSilabas(SingletonLenguage.GetInstance().GetLenguage());
-            p.SetPalabraActual(SingletonLenguage.GetInstance().GetLenguage());
+            p.SeparateSilabas();
+            p.SetPalabraActual();
         }
     }
 
@@ -457,23 +458,21 @@ public class ManagamentFalseBD : MonoBehaviour
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Pera Moto Casa";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "El que sigui";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "Pera Moto Casa";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "cualquier audio";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].dificultad = 1;
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "sopa";
         count++;
         #endregion
         #region Frase2
         frasesPredeterminadas.Add(new FraseBD());
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Niña Moto Casa Pera Agua Pelota";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "El que sigui";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Niña Pera Agua Pelota";
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "Nena Pera Aigua Pilota";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
         frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "cualquier audio";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].dificultad = 1;
+        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "sopa";
         count++;
         #endregion
         foreach (FraseBD f in frasesPredeterminadas)

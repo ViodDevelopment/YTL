@@ -89,9 +89,13 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 
-    public void LoadBit()
+    public void LoadBit(int _level)
     {
-        SceneManager.LoadScene(1);
+        if (_level == 1)
+            SceneManager.LoadScene(1);
+        else if (_level == 2)
+            SceneManager.LoadScene(6);
+
     }
 
     public void WebButton()
@@ -112,14 +116,14 @@ public class SceneManagement : MonoBehaviour
         }
     }
 
-    public void NextGame () 
+    public void NextGame()
     {
 
         switch (GameManager.currentMiniGame)
         {
             case 0:
                 MinijuegoBurbujasScene();
-                break; 
+                break;
             case 1:
                 MinijuegoGusanosScene();
                 break;
@@ -144,9 +148,9 @@ public class SceneManagement : MonoBehaviour
 
     private void Start()
     {
-        if(GameManager.backFromActivity)
+        if (GameManager.backFromActivity)
         {
-            if(SceneManager.GetActiveScene().buildIndex == 0)
+            if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 GoBackFromActivity();
                 GameManager.backFromActivity = false;

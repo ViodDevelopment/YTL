@@ -67,10 +67,10 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
         if (m_CurrentBit != null && _repetir)
         {
             numLastImage = m_CurrentBit.GetComponent<BitLvl2>().l_Number;
+            m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
             repetir = _repetir;
             repeating = true;
         }
-        Destroy(m_CurrentBit);
         m_CurrentBit = Instantiate(m_NewBit, m_NewBitPosition);
         m_CurrentNumRep++;
     }
@@ -99,12 +99,13 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
 
         if (GameManager.m_CurrentToMinigame[1] >= 7)
         {
+            m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
             GameManager.ResetPointToMinigame(1);
             m_Scener.NextGame();
         }
         else
         {
-            Destroy(m_CurrentBit);
+            m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
             if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             m_CurrentNumRep = 1;

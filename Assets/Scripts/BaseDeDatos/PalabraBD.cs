@@ -28,10 +28,11 @@ public class PalabraBD
     //eliminar en un futuro y cambiarlo por el original
     //
 
-    public void SeparateSilabas(SingletonLenguage.Lenguage currentLenguage)//separa la linea de string de silabas segun el idioma a un lista en orden de las silabas.
+    public void SeparateSilabas()//separa la linea de string de silabas segun el idioma a un lista en orden de las silabas.
     {
+        silabasActuales.Clear();
         string actualWord = "";
-        switch (currentLenguage)
+        switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
                 actualWord = silabasSpanish;
@@ -69,9 +70,9 @@ public class PalabraBD
         }
     }
 
-    public void SetPalabraActual(SingletonLenguage.Lenguage currentLenguage)
+    public void SetPalabraActual()
     {
-        switch (currentLenguage)
+        switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
                 palabraActual = nameSpanish;

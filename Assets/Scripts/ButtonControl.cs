@@ -115,6 +115,7 @@ public class ButtonControl : MonoBehaviour
                 break;
         }
         GameManager.configurartion.currentLenguaje = SingletonLenguage.GetInstance().GetLenguage();
+        
         bd.SaveConfig();
     }
 

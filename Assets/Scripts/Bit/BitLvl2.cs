@@ -18,11 +18,17 @@ public class BitLvl2 : MonoBehaviour
     public static int m_Length;
     public Image m_Image;
     public GameObject rectanglePrefab;
-    private List<GameObject> rectanglesInScene = new List<GameObject>();
+
+    [HideInInspector]
+    public List<GameObject> rectanglesInScene = new List<GameObject>();
+
     public List<Sprite> listOfRectangles = new List<Sprite>(); //Ordenarlos para saber el orden para ponerlos abajo
     public List<Font> ourFonts = new List<Font>();
     public AudioSource m_AS;
     public int l_Number;
+    public int currentWord = 0;
+    public int LevelBit = 2;
+
     void Awake()
     {
         RecolectFrasesBD();
@@ -38,7 +44,16 @@ public class BitLvl2 : MonoBehaviour
         frasesDisponibles.Clear();
         foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-            frasesDisponibles.Add(f);
+            if (LevelBit == 2)
+            {
+                if (f.dificultad == 0)
+                    frasesDisponibles.Add(f);
+            }
+            else
+            {
+                if (f.dificultad == 1)
+                    frasesDisponibles.Add(f);
+            }
         }
     }
 
@@ -82,50 +97,114 @@ public class BitLvl2 : MonoBehaviour
     {
         Vector3 position = m_GMBit.m_NewFrasePosition.position;
         float anchototal = 0;
+        float scale = 0;
+        float distance = 5.7f;
+        int count = 0;
         foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
-                anchototal += p.palabraActual.Length * 0.9f;
-
+            {
+                scale = p.palabraActual.Length * 0.095f;
+                anchototal += scale * distance + 1.25f;
+                if (frasesDisponibles[l_Number].palabras[0] != p)
+                {
+                    anchototal += frasesDisponibles[l_Number].palabras[count - 1].palabraActual.Length * 0.095f * distance / 2;
+                }
+            }
+            else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+            {
+                scale = p.palabraActual.Length * 0.08f;
+                anchototal += scale * distance + 1.25f;
+                if (frasesDisponibles[l_Number].palabras[0] != p)
+                {
+                    anchototal += frasesDisponibles[l_Number].palabras[count - 1].palabraActual.Length * 0.08f * distance / 2;
+                }
+            }
             else
-                anchototal += p.palabraActual.Length * 0.7f;
+            {
+                scale = p.palabraActual.Length * 0.075f;
+                anchototal += scale * distance + 1f;
+                if (frasesDisponibles[l_Number].palabras[0] != p)
+                {
+                    anchototal += frasesDisponibles[l_Number].palabras[count - 1].palabraActual.Length * 0.075f * distance / 2;
+                }
+            }
+
+            count++;
         }
-        anchototal /= 2;
-        anchototal += 1.25f * (frasesDisponibles[l_Number].palabras.Count - 1);
+        anchototal /= 1.5f;
         position = new Vector3(position.x - anchototal / 2, position.y, position.z);
         Text texto;
         Image imagen;
-        foreach(PalabraBD p in frasesDisponibles[l_Number].palabras)
+        PalabraFraseBit2 palabraBit;
+        foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
-                position = new Vector3(position.x + 1.25f + 0.55f / 2 * p.palabraActual.Length, position.y, position.z);
+            {
+                scale = p.palabraActual.Length * 0.095f;
+                if (rectanglesInScene.Count > 0)
+                {
+                    position = new Vector3(position.x + 1 + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.095f * distance / 2, position.y, position.z);
+                }
+                else
+                    position = new Vector3(position.x + scale * distance / 2, position.y, position.z);
+            }
+            else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+            {
+                scale = p.palabraActual.Length * 0.08f;
+                if (rectanglesInScene.Count > 0)
+                {
+                    position = new Vector3(position.x + 1f + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.08f * distance / 2, position.y, position.z);
+                }
+                else
+                    position = new Vector3(position.x + scale * distance / 2, position.y, position.z);
+            }
             else
-                position = new Vector3(position.x + 1f + 0.45f / 2 * p.palabraActual.Length, position.y, position.z);
-
+            {
+                scale = p.palabraActual.Length * 0.075f;
+                if (rectanglesInScene.Count > 0)
+                {
+                    position = new Vector3(position.x + 1f + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.075f * distance / 2, position.y, position.z);
+                }
+                else
+                    position = new Vector3(position.x + scale * distance / 2, position.y, position.z);
+            }
             rectanglesInScene.Add(Instantiate(rectanglePrefab, position, rectanglePrefab.transform.rotation));
+
+            palabraBit = rectanglesInScene[rectanglesInScene.Count - 1].GetComponent<PalabraFraseBit2>();
+            palabraBit.distance = scale * distance / 1.9f;
+            palabraBit.numImage = rectanglesInScene.Count - 1;
+            palabraBit.bit = this;
+            palabraBit.audioSource.clip = p.GetAudioClip(p.audio);
+
             rectanglesInScene[rectanglesInScene.Count - 1].transform.parent = m_GMBit.m_NewFrasePosition.transform;
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
             imagen = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Image>();
             texto.text = p.palabraActual;
             SearchFont(texto);
-            if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
 
+            else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
             else
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f,0,0);
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
 
 
             CambiarRecuadroDependiendoDePalabra(imagen, p);
 
             rectanglesInScene[rectanglesInScene.Count - 1].SetActive(false);
             texto = null;
+            palabraBit = null;
+            imagen = null;
+            scale = 0;
         }
 
     }
 
     private void CambiarRecuadroDependiendoDePalabra(Image _imagen, PalabraBD _palabra)
     {
-        switch(_palabra.color)
+        switch (_palabra.color)
         {
             case "Adjetivo":
                 _imagen.sprite = listOfRectangles[0];
@@ -173,28 +252,25 @@ public class BitLvl2 : MonoBehaviour
                 {
                     go.SetActive(true);
                 }
+                m_AS.clip = frasesDisponibles[l_Number].GetAudioClip(frasesDisponibles[l_Number].sound);
+                m_AS.Play();
+
                 m_0touch = false;
                 m_1touch = true;
             }
 
         }
-
-        else if (GameManager.Instance.InputRecieved() && m_1touch && !m_Animation.isPlaying && !m_AS.isPlaying)
+        else if (rectanglesInScene.Count > 0)
         {
-            Vector3 positionInput;
-            if (Input.touchCount > 0)
-                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= 3f)
+            if (m_1touch && currentWord == rectanglesInScene.Count && !rectanglesInScene[rectanglesInScene.Count - 1].GetComponent<PalabraFraseBit2>().audioSource.isPlaying)
             {
                 m_Animation.clip = m_Spin;
                 m_Animation.Play();
                 m_1touch = false;
 
                 StartCoroutine(WaitSeconds(3f));
-            }
 
+            }
         }
 
         IEnumerator WaitSeconds(float seconds)
@@ -233,6 +309,15 @@ public class BitLvl2 : MonoBehaviour
                 _text.font = ourFonts[0];
                 break;
         }
+    }
+
+    public void DeletingAllBit()
+    {
+        foreach (GameObject go in rectanglesInScene)
+        {
+            Destroy(go);
+        }
+        Destroy(gameObject);
     }
 
 }

@@ -28,7 +28,13 @@ public class SingletonLenguage
             currentLenguage = _leng;
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
-                p.SetPalabraActual(_leng);
+                p.SetPalabraActual();
+                p.SeparateSilabas();
+            }
+
+            foreach (FraseBD f in GameManager.frasesDisponibles)
+            {
+                f.SeparatePerPalabras();
             }
         }
     }
