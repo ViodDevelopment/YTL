@@ -1395,12 +1395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61991734efef6d145895b739e5527c69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Idioma: "Espa\xF1ol"
-  TipoLetra: {fileID: 0}
-  Mayus: 1
-  Ayuda: 1
-  Dumi: 1
-  Articulo: 0
   PreparadosIndex: 0
   ListosIndex: 0
   YaIndex: 0
@@ -1417,7 +1411,6 @@ MonoBehaviour:
   m_WhiteColor: {r: 0, g: 0, b: 0, a: 0}
   ActiveButton: {fileID: 0}
   DesactivateButton: {fileID: 0}
-  WordDifficulty: 
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
@@ -2033,7 +2026,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -550, y: -515}
+  m_AnchoredPosition: {x: -540, y: -540}
   m_SizeDelta: {x: 98, y: 98}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &7617506765502951011
@@ -2264,7 +2257,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 540, y: -515}
+  m_AnchoredPosition: {x: 540, y: -540}
   m_SizeDelta: {x: 98, y: 98}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &7617506765967790646
