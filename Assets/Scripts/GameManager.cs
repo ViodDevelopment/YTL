@@ -49,9 +49,12 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            for (int i = 0; i < 3; i++)
+            if (m_CurrentToMinigame.Count == 0)
             {
-                m_CurrentToMinigame.Add(0);
+                for (int i = 0; i < 3; i++)
+                {
+                    m_CurrentToMinigame.Add(0);
+                }
             }
         }
         else
