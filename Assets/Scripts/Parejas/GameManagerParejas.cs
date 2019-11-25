@@ -53,7 +53,7 @@ public class GameManagerParejas : MonoBehaviour
 
     private bool completed;
     private bool repeating;
-
+    private bool acabado = false;
 
 
     #region Separador
@@ -200,6 +200,20 @@ public class GameManagerParejas : MonoBehaviour
 
 
 
+        }
+
+        if(acabado)
+        {
+            if(!GameManager.configurartion.refuerzoPositivo)
+            {
+                ActivateButtons();
+                acabado = false;
+            }
+            else if(GameObject.Find("Dumi(Clone)") == null)
+            {
+                ActivateButtons();
+                acabado = false;
+            }
         }
 
     }
@@ -1027,7 +1041,7 @@ public class GameManagerParejas : MonoBehaviour
             if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
-        ActivateButtons();
+        acabado = true;
     }
 
 

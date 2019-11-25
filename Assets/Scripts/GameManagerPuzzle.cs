@@ -58,7 +58,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public int[] PuzzlePiecesPossibilities;
 
-
+    private bool acabado = false;
     public GameObject m_Saver;
 
     private void Start()
@@ -102,11 +102,25 @@ public class GameManagerPuzzle : MonoBehaviour
         if (m_Canvas.activeSelf && (Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
             PassPuzzle();
 
-        if (Input.GetKey(KeyCode.P))
+        if(acabado)
+        {
+            if(!GameManager.configurartion.refuerzoPositivo)
+            {
+                ActivateButtons();
+                acabado = false;
+            }
+            else if(GameObject.Find("Dumi(Clone)") == null)
+            {
+                ActivateButtons();
+                acabado = false;
+            }
+        }
+
+        /*if (Input.GetKey(KeyCode.P))
             PassPuzzle();
 
         if (Input.GetKey(KeyCode.R))
-            RepeatPuzzle();
+            RepeatPuzzle();*/
 
     }
 
@@ -487,7 +501,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
         }
-        ActivateButtons();
+        acabado = true;
     }
 
     public void InicioPuzzle()
