@@ -30,6 +30,7 @@ public class ImageControl : MonoBehaviour
     public List<Font> ourFonts = new List<Font>();
     public AudioSource m_AS;
     public int l_Number;
+    private bool acabado = false;
     void Awake()
     {
         RecolectPalabrasBD();
@@ -178,6 +179,19 @@ public class ImageControl : MonoBehaviour
             }
 
         }
+        else if(acabado)
+        {
+            if(!GameManager.configurartion.refuerzoPositivo)
+            {
+                m_GMBit.ActivateButtons();
+                acabado = false;
+            }
+            else if(GameObject.Find("Dumi(Clone)") == null)
+            {
+                m_GMBit.ActivateButtons();
+                acabado = false;
+            }
+        }
 
         IEnumerator WaitSeconds(float seconds)
         {
@@ -187,9 +201,10 @@ public class ImageControl : MonoBehaviour
                 GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
                 pinguino.GetComponent<Dumi>().AudioPositivo();
             }
-            m_GMBit.ActivateButtons();
             if (!m_GMBit.repeating)
                 m_GMBit.AddCountMiniGameBit();
+            acabado = true;
+
         }
     }
 

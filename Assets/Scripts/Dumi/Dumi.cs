@@ -41,6 +41,8 @@ public class Dumi : MonoBehaviour
 
     public void AudioNegativo()
     {
+        gameObject.transform.position = new Vector3(gameObject.transform.position.x * -1, gameObject.transform.position.y, gameObject.transform.position.z);
+        GetComponent<SpriteRenderer>().flipX = true;
         switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
