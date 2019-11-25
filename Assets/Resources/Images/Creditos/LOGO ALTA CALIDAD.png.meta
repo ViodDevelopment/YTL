@@ -1,0 +1,259 @@
+fileFormatVersion: 2
+guid: 5d300de4453dc9b438406965cb057fa7
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4490784691041911401
+    second: LOGO ALTA CALIDAD_0
+  - first:
+      213: 4684243661021881655
+    second: LOGO ALTA CALIDAD_1
+  - first:
+      213: -2352278893871035416
+    second: LOGO ALTA CALIDAD_2
+  - first:
+      213: 7439589266045975187
+    second: LOGO ALTA CALIDAD_3
+  - first:
+      213: 130298165716865870
+    second: LOGO ALTA CALIDAD_4
+  - first:
+      213: -6809154053559451187
+    second: LOGO ALTA CALIDAD_5
+  - first:
+      213: -5591365058083651342
+    second: LOGO ALTA CALIDAD_6
+  - first:
+      213: 2662559174937120899
+    second: LOGO ALTA CALIDAD_7
+  - first:
+      213: -8108446728067610390
+    second: LOGO ALTA CALIDAD_8
+  - first:
+      213: 5271107961546964230
+    second: LOGO ALTA CALIDAD_9
+  - first:
+      213: -6552720426806937570
+    second: LOGO ALTA CALIDAD_10
+  - first:
+      213: 5210650640968706841
+    second: LOGO ALTA CALIDAD_11
+  - first:
+      213: 1466626077819814735
+    second: LOGO ALTA CALIDAD_12
+  - first:
+      213: -3680871458733700423
+    second: LOGO ALTA CALIDAD_13
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: LOGO ALTA CALIDAD_2
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 219
+        width: 32
+        height: 34
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a27234566fa5aec41bba3b2ed47fe1a0
+      internalID: -2352278893871035416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO ALTA CALIDAD_11
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 56
+        width: 31
+        height: 144
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0d0149c42dbf1d40bd117f51c251f64
+      internalID: 5210650640968706841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO ALTA CALIDAD_12
+      rect:
+        serializedVersion: 2
+        x: 2127
+        y: 129
+        width: 92
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa03f2f38efd2f4693dbe593f72743b
+      internalID: 1466626077819814735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO ALTA CALIDAD_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 280
+        width: 2243
+        height: 2241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ddfe73a5996879b4d8b75ecbbd1f2b18
+      internalID: -4490784691041911401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: LOGO ALTA CALIDAD_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2243
+        height: 284
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dd4485446039ed40989af57ca204a69
+      internalID: 4684243661021881655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 1d5298a27dd8d9346bba6a3d66e7bf5e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
