@@ -29,6 +29,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
     public bool repeating;
 
     public static int m_Alea = 0;
+    public int levelBit = 2;
 
     private void Start()
     {

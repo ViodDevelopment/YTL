@@ -27,15 +27,16 @@ public class BitLvl2 : MonoBehaviour
     public AudioSource m_AS;
     public int l_Number;
     public int currentWord = 0;
-    public int LevelBit = 2;
+    private int levelBit = 2;
 
     void Awake()
     {
+        m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBitReadyLvl2>();
+        levelBit = m_GMBit.levelBit;
         RecolectFrasesBD();
         m_Length = frasesDisponibles.Count;
         if (m_Length == 0)
             m_Length = 1;
-        m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBitReadyLvl2>();
         GameManagerBitReadyLvl2.m_Alea = Random.Range(0, m_Length);
     }
 
@@ -44,7 +45,7 @@ public class BitLvl2 : MonoBehaviour
         frasesDisponibles.Clear();
         foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-            if (LevelBit == 2)
+            if (levelBit == 2)
             {
                 if (f.dificultad == 0)
                     frasesDisponibles.Add(f);
