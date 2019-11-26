@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PairsLvl2 : MonoBehaviour
+public class PairsLvl3 : MonoBehaviour
 {
     [HideInInspector]
     bool m_PieceClicked = false;
@@ -16,12 +16,11 @@ public class PairsLvl2 : MonoBehaviour
     private GameObject colision;
     private GameObject otherObject;
 
-    public GameManagerParejasLvl2 m_GameManagerParejas;
+    public GameManagerParejasLvl3 m_GameManagerParejas;
     private AudioSource audioSource;
     private float timer = 0;
     public int numImage;
-    public Text texto;
-    private float originalSizeText = 0.3f;
+    private float originalSizeText;
 
     private RectTransform rectTransform;
     private float currentTimerAnim = 0;
@@ -34,9 +33,10 @@ public class PairsLvl2 : MonoBehaviour
 
     private void Start()
     {
-        m_GameManagerParejas = GameObject.FindGameObjectWithTag("GMParejas").GetComponent<GameManagerParejasLvl2>();
+        m_GameManagerParejas = GameObject.FindGameObjectWithTag("GMParejas").GetComponent<GameManagerParejasLvl3>();
         audioSource = m_GameManagerParejas.GetComponent<AudioSource>();
-        myImage = gameObject.GetComponent<Image>();        
+        myImage = gameObject.GetComponent<Image>();
+
         rectTransform = GetComponent<RectTransform>();
         lastPosition = gameObject.transform.position;
         lastSize = rectTransform.localScale;
@@ -48,11 +48,7 @@ public class PairsLvl2 : MonoBehaviour
         if (numImage < m_GameManagerParejas.m_NumPairs - 1)
             lastPair = true;
         else lastPair = false;
-
-        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-            texto.gameObject.transform.localScale *= 1.5f;
     }
-
     private void Update()
     {
         if (managerOnlyOne != null)
@@ -81,13 +77,13 @@ public class PairsLvl2 : MonoBehaviour
                     {
                         if (currentTimerAnim < 0.5f)
                         {
-                            gameObject.transform.position += new Vector3(-0.25f * Time.deltaTime, -0.25f * Time.deltaTime, 0);
-                            rectTransform.localScale += new Vector3(0.25f * Time.deltaTime, 0.25f * Time.deltaTime, 0);
+                            gameObject.transform.position += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
+                            rectTransform.localScale += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
                         }
                         else if (currentTimerAnim < 1f)
                         {
-                            gameObject.transform.position += new Vector3(0.25f * Time.deltaTime, 0.25f * Time.deltaTime, 0);
-                            rectTransform.localScale += new Vector3(-0.25f * Time.deltaTime, -0.25f * Time.deltaTime, 0);
+                            gameObject.transform.position += new Vector3(0.5f * Time.deltaTime, 0.5f * Time.deltaTime, 0);
+                            rectTransform.localScale += new Vector3(-0.5f * Time.deltaTime, -0.5f * Time.deltaTime, 0);
                         }
                         else
                         {
@@ -217,8 +213,7 @@ public class PairsLvl2 : MonoBehaviour
                     m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
                     m_GameManagerParejas.m_TextZoomed.text = nombre;
                     if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f;
-                    m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f; m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
                     if (!audioSource.isPlaying)
                     {
                         audioSource.clip = audioClip;
@@ -257,9 +252,10 @@ public class PairsLvl2 : MonoBehaviour
         if (_collision.gameObject.name == this.gameObject.name)
         {
             colision = _collision.gameObject;
+            originalSizeText = colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale.x;
             dentro = true;
         }
-        if (colision == null && _collision.gameObject.GetComponent<PairsLvl2>() == null)
+        if (colision == null && _collision.gameObject.GetComponent<PairsLvl3>() == null)
             otherObject = _collision.gameObject;
     }
 
