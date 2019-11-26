@@ -573,12 +573,9 @@ public class ManagamentFalseBD : MonoBehaviour
         FileStream file = File.Open(nameRuteBolasMinijuegos, FileMode.Open);
 
         PointsOfMinigames datos = (PointsOfMinigames)bf.Deserialize(file);
-        for (int i = 0; i < datos.bolasMinijuegos.Count; i++)
+        for (int i = 0; i < GameManager.m_CurrentToMinigame.Count; i++)
         {
-            if (GameManager.m_CurrentToMinigame.Count >= datos.bolasMinijuegos.Count)
-                GameManager.m_CurrentToMinigame[i] = datos.bolasMinijuegos[i];
-            else
-                GameManager.m_CurrentToMinigame.Add(datos.bolasMinijuegos[i]);
+            GameManager.m_CurrentToMinigame[i] = datos.bolasMinijuegos[i];
         }
 
         GameManager.currentMiniGame = datos.currentMiniGame;
