@@ -241,6 +241,19 @@ public class GameManagerParejas : MonoBehaviour
         foreach (PalabraBD p in listOfPalabras)
         {
             l_Pairs.Add(p);
+            Random.InitState(Random.seed + 1);
+            switch(Random.Range(0,3))
+            {
+                case 0:
+                    l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image1;
+                    break;
+                case 1:
+                    l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image2;
+                    break;
+                case 2:
+                    l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image3;
+                    break;
+            }
         }
 
 
@@ -431,6 +444,19 @@ public class GameManagerParejas : MonoBehaviour
             foreach (PalabraBD p in listOfPalabras)
             {
                 l_Pairs.Add(p);
+                Random.InitState(Random.seed + 1);
+                switch (Random.Range(0, 3))
+                {
+                    case 0:
+                        l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image1;
+                        break;
+                    case 1:
+                        l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image2;
+                        break;
+                    case 2:
+                        l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image3;
+                        break;
+                }
             }
 
 
