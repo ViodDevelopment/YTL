@@ -89,7 +89,6 @@ public class BitLvl2 : MonoBehaviour
         firstImage = Random.Range(0, 3);
 
         m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + frasesDisponibles[l_Number].image);
-
         //crear imagenes de los rectangulos
         InstanciacionDeRectangulos();
     }

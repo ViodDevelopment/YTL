@@ -145,7 +145,6 @@ public class GameManagerPuzzle : MonoBehaviour
             {
                 Destroy(child.gameObject);
             }
-            Debug.Log("AnimPlayed");
 
             StartCoroutine(WaitSeconds(2));
 

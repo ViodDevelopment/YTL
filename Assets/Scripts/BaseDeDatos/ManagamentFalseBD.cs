@@ -315,7 +315,7 @@ public class ManagamentFalseBD : MonoBehaviour
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = "Nombre";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "pan_01";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "pan_02";
-        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pan_03";
+        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "pan_04";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = "pan";
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle = 4;
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;

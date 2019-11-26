@@ -93,6 +93,7 @@ public class ImageControl : MonoBehaviour
 
         m_Animation = GetComponent<Animation>();
         firstImage = Random.Range(0, 3);
+        
 
         switch (firstImage)
         {
@@ -112,11 +113,18 @@ public class ImageControl : MonoBehaviour
 
         int otherImage = Random.Range(0, 3);
 
-        while (otherImage == firstImage)
+        if(otherImage == firstImage)
+        {
+            if (otherImage >= 2)
+                otherImage--;
+            else if (otherImage <= 0)
+                otherImage++;
+        }
+       /*while (otherImage == firstImage)
         {
             Random.InitState(Random.seed + 1);
             otherImage = Random.Range(0, 3);
-        }
+        }*/
 
         switch (otherImage)
         {
