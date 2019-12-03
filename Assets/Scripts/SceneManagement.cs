@@ -79,14 +79,20 @@ public class SceneManagement : MonoBehaviour
         SceneManager.LoadScene(7);
     }
 
-    public void LoadParejas()
+    public void LoadParejas(int _level)
     {
-        SceneManager.LoadScene(2);
+        if (_level == 1)
+            SceneManager.LoadScene(2);
+        else if(_level == 2)
+            SceneManager.LoadScene(8);
+        else if (_level == 3)
+            SceneManager.LoadScene(9);
     }
 
-    public void LoadPuzzle()
+    public void LoadPuzzle(int _level)
     {
-        SceneManager.LoadScene(3);
+        if (_level == 1)
+            SceneManager.LoadScene(3);
     }
 
     public void LoadBit(int _level)
@@ -95,6 +101,8 @@ public class SceneManagement : MonoBehaviour
             SceneManager.LoadScene(1);
         else if (_level == 2)
             SceneManager.LoadScene(6);
+        else if(_level == 3)
+            SceneManager.LoadScene(7);
 
     }
 

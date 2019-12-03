@@ -27,6 +27,15 @@ EditorBuildSettings:
     path: Assets/Scenes/BitLevel2.unity
     guid: b5b68c202079cc047beb602454a521c0
   - enabled: 0
+    path: Assets/Scenes/BitLevel3.unity
+    guid: 5b9192efb9a5174438d7d8a0a44c513f
+  - enabled: 0
+    path: Assets/Scenes/ParejasLevel2.unity
+    guid: 924db89df7c43564b961751cf4eabd09
+  - enabled: 0
+    path: Assets/Scenes/ParejasLevel3.unity
+    guid: 179a8aeb4ff1b06479ee478072f1d6f5
+  - enabled: 0
     path: Assets/Scenes/Minijuego_Colores.unity
     guid: 9e10136e44d156e468e54c9b175a8359
   - enabled: 0

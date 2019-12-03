@@ -4,6 +4,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
+
 public class ManagamentFalseBD : MonoBehaviour
 {
 
@@ -39,6 +40,7 @@ public class ManagamentFalseBD : MonoBehaviour
                         GameManager.configurartion = new Configurartion();
 
                     management.SaveConfig();
+                    management.LoadConfig();
                 }
 
 

@@ -12,11 +12,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public Animation m_AnimationCenter;
     public Image m_ImageAnim;
     public Text m_TextAnim;
-    public List<Texture2D> m_ImagesPool = new List<Texture2D>();
-    public List<string> palabrasCastellano = new List<string>();
-    public List<string> palabrasCatalan = new List<string>();
-    public List<AudioClip> audiosCastellano = new List<AudioClip>();
-    public List<AudioClip> audiosCatalan = new List<AudioClip>();
+    private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
 
     List<GameObject> m_Words = new List<GameObject>();
     public SceneManagement m_Scener;
@@ -27,6 +23,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public GameObject m_ImagesSpawn;
     public GameObject m_Canvas;
 
+    private PalabraBD palabraActual;
     Texture2D m_ImagePuzzle;
     public GameObject m_Word;
     public Transform m_WordTransform;
@@ -63,6 +60,8 @@ public class GameManagerPuzzle : MonoBehaviour
 
     private void Start()
     {
+        InitBaseOfDates();
+
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
         {
@@ -84,12 +83,20 @@ public class GameManagerPuzzle : MonoBehaviour
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
-            if(i > 0 && m_Points.Length > i - 1)
+            if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
         repeating = false;
         m_Completed = false;
         InicioPuzzle();
+    }
+
+    private void InitBaseOfDates()
+    {
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        {
+            palabrasDisponibles.Add(p);
+        }
     }
 
     private void Update()
@@ -102,14 +109,14 @@ public class GameManagerPuzzle : MonoBehaviour
         if (m_Canvas.activeSelf && (Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
             PassPuzzle();
 
-        if(acabado)
+        if (acabado)
         {
-            if(!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configurartion.refuerzoPositivo)
             {
                 ActivateButtons();
                 acabado = false;
             }
-            else if(GameObject.Find("Dumi(Clone)") == null)
+            else if (GameObject.Find("Dumi(Clone)") == null)
             {
                 ActivateButtons();
                 acabado = false;
@@ -133,7 +140,7 @@ public class GameManagerPuzzle : MonoBehaviour
         else if (m_Puntuacion == m_NumPieces + 1 && !m_Completed)
         {
             AudioSource l_AS = GetComponent<AudioSource>();
-            l_AS.clip = PutAudio();
+            l_AS.clip = palabrasDisponibles[numRandom].GetAudioClip(palabrasDisponibles[numRandom].audio);
             l_AS.Play();
 
             m_Completed = true;
@@ -164,7 +171,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (m_ImagePuzzle == null)
         {
-            numRandom = Random.Range(0, m_ImagesPool.Count);
+            numRandom = Random.Range(0, palabrasDisponibles.Count);
 
         }
         else
@@ -176,20 +183,33 @@ public class GameManagerPuzzle : MonoBehaviour
             {
                 count++;
                 Random.InitState(count * System.DateTime.Now.Second);
-                numRandom = Random.Range(0, m_ImagesPool.Count);
+                numRandom = Random.Range(0, palabrasDisponibles.Count);
                 if (rand != numRandom)
                     same = false;
             }
         }
-        m_ImagePuzzle = m_ImagesPool[numRandom];
-        WordInstantiation(m_ImagePuzzle);
-        m_TextAnim.text = PutName();
+        palabraActual = palabrasDisponibles[numRandom];
+        int randomImage = Random.Range(0, 3);
+        switch (randomImage)
+        {
+            case 1:
+                palabraActual.image1 = palabraActual.image2;
+                break;
+            case 2:
+                palabraActual.image1 = palabraActual.image3;
+                break;
+        }
+
+
+
+        m_ImagePuzzle = Resources.Load<Texture2D>("Images/Lite/" + palabraActual.image1); //por ahora solo imagen 1
+        WordInstantiation();
+        m_TextAnim.text = palabrasDisponibles[numRandom].palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = Sprite.Create(m_ImagePuzzle, rectImage, l_Colliders.sizeDelta / 2);
-        m_ImageAnim.sprite = Sprite.Create(m_ImagePuzzle, rectImage, l_Colliders.sizeDelta / 2);
+        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        m_ImageAnim.sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -269,12 +289,12 @@ public class GameManagerPuzzle : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
-        WordInstantiation(m_ImagePuzzle);
+        WordInstantiation();
 
         Sprite l_SpriteImage;
         Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = Sprite.Create(m_ImagePuzzle, rectImage, l_Colliders.sizeDelta / 2);
-        m_ImageAnim.sprite = Sprite.Create(m_ImagePuzzle, rectImage, l_Colliders.sizeDelta / 2);
+        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        m_ImageAnim.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -428,53 +448,22 @@ public class GameManagerPuzzle : MonoBehaviour
             m_Repetir.SetActive(true);
     }
 
-    public void WordInstantiation(Texture2D l_ImagePuzzle)
+    public void WordInstantiation()
     {
         GameObject l_Word = Instantiate(m_Word, m_WordTransform.transform);
         GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
-        l_Word.GetComponentInChildren<Text>().text = PutName();
+        l_Word.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
         l_Word.GetComponentInChildren<ConvertFont>().Convert();
-       // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
+        // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_Word.name = "Word";
-        l_UnseenWord.GetComponentInChildren<Text>().text = PutName();
+        l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
-       // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
+        // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
         m_Words.Add(l_Word);
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().canMove = false;
         m_Words.Add(l_UnseenWord);
-    }
-
-    private string PutName()
-    {
-        string name = "";
-
-        switch (SingletonLenguage.GetInstance().GetLenguage())
-        {
-            case SingletonLenguage.Lenguage.CASTELLANO:
-                name = palabrasCastellano[numRandom];
-                break;
-            case SingletonLenguage.Lenguage.CATALAN:
-                name = palabrasCatalan[numRandom];
-                break;
-        }
-
-        return name;
-    }
-
-    private AudioClip PutAudio()
-    {
-        switch (SingletonLenguage.GetInstance().GetLenguage())
-        {
-            case SingletonLenguage.Lenguage.CASTELLANO:
-                return audiosCastellano[numRandom];
-            case SingletonLenguage.Lenguage.CATALAN:
-                return audiosCatalan[numRandom];
-            default:
-                return audiosCastellano[numRandom];
-
-        }
     }
 
     IEnumerator WaitSeconds(float seconds)
@@ -511,7 +500,7 @@ public class GameManagerPuzzle : MonoBehaviour
         m_Completed = false;
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
-            if(i > 0 && m_Points.Length > i - 1)
+            if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
 
