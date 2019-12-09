@@ -108,9 +108,9 @@ GameObject:
   - component: {fileID: 8652956090916772118}
   - component: {fileID: 8652956090916772115}
   - component: {fileID: 8652956090916772114}
-  - component: {fileID: 2308176341460063198}
+  - component: {fileID: 7451968822552985530}
   m_Layer: 5
-  m_Name: SeenWord
+  m_Name: SeenPalabraLvl3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,7 +125,7 @@ RectTransform:
   m_GameObject: {fileID: 8652956090916772119}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 8652956091669230082}
   - {fileID: 8652956090537760682}
@@ -171,7 +171,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 511.15714, y: 235.46951}
   m_EdgeRadius: 0
---- !u!114 &2308176341460063198
+--- !u!114 &7451968822552985530
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8652956090916772119}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83d37b38981fd0440aa9659d860a27fb, type: 3}
+  m_Script: {fileID: 11500000, guid: 30fbcddc86f3ac94894620bd780aac45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   managerOnlyOne: {fileID: 0}
