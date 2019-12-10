@@ -4,7 +4,6 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-
 public class ManagamentFalseBD : MonoBehaviour
 {
 
@@ -14,7 +13,7 @@ public class ManagamentFalseBD : MonoBehaviour
     private List<PalabraBD> palabrasGuardadas = new List<PalabraBD>();
     [SerializeField] private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
     private List<FraseBD> frasesGuardadas = new List<FraseBD>();
-    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration;
+    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration, nameRutePassword;
 
     private void Awake()
     {
@@ -27,6 +26,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRuteFrase = Application.persistentDataPath + "/datosFrases.dat";
                 nameRuteBolasMinijuegos = Application.persistentDataPath + "/BolasMinijuegos.dat";
                 nameConfiguration = Application.persistentDataPath + "/Configuration.dat";
+                nameRutePassword = Application.persistentDataPath + "/password.dat";
                 management = this;
                 DontDestroyOnLoad(gameObject);
 
@@ -129,6 +129,16 @@ public class ManagamentFalseBD : MonoBehaviour
                 {
                     management.SaveBolasMinijuegos();
                     management.LoadBolasMinijuegos();
+                }
+
+                if(File.Exists(nameRutePassword))
+                {
+                    management.LoadPassword();
+                }
+                else if(!File.Exists(nameRutePassword))
+                {
+                    management.SavePassword();
+                    management.LoadPassword();
                 }
             }
         }
@@ -582,6 +592,36 @@ public class ManagamentFalseBD : MonoBehaviour
 
         GameManager.currentMiniGame = datos.currentMiniGame;
 
+        file.Close();
+    }
+
+    public void SavePassword()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file;
+        if (!File.Exists(nameRutePassword))
+            file = File.Create(nameRutePassword);
+        else
+        {
+            file = File.Open(nameRutePassword, FileMode.Open);
+           
+        }
+        string password = "";//get the password
+        bf.Serialize(file, password);
+        file.Close();
+    }
+
+    public void LoadPassword()
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(nameRutePassword, FileMode.Open);
+        try
+        {
+            string password = (string)bf.Deserialize(file);
+        }catch(Exception e)
+        {
+            Debug.LogException(e, this);
+        }
         file.Close();
     }
 
