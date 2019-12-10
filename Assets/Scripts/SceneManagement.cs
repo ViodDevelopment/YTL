@@ -65,6 +65,7 @@ public class SceneManagement : MonoBehaviour
     {
         SceneManager.LoadScene(4);
     }
+
     public void MinijuegoBurbujasScene()
     {
         SceneManager.LoadScene(5);
