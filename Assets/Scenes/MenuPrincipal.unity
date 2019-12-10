@@ -5961,8 +5961,8 @@ GameObject:
   - component: {fileID: 413337447}
   - component: {fileID: 413337446}
   - component: {fileID: 413337445}
-  - component: {fileID: 413337449}
   - component: {fileID: 413337448}
+  - component: {fileID: 413337449}
   m_Layer: 0
   m_Name: Micro
   m_TagString: Untagged
@@ -6177,7 +6177,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 413337443}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3766304388f47f4086a299c25b5bb60, type: 3}
+  m_Script: {fileID: 11500000, guid: 50a27480a50b86b40a866b1ac4b510d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &424457907
@@ -8572,7 +8572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -15580,7 +15580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.5882353}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -23352,7 +23352,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1730758472}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1657563399}
+        m_MethodName: CameraScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1730758472

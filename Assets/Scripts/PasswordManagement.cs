@@ -26,7 +26,6 @@ public class PasswordManagement : MonoBehaviour
         {
             NewPassword();
         }
-
     }
 
     void NewPassword()
@@ -86,7 +85,8 @@ public class PasswordManagement : MonoBehaviour
 
     void AddPassword(List<char> str, InputField inputField)
     {
-        try{
+        try
+        {
             if (inputField.text[inputField.text.Length - 1] == '*') return;
             if (inputField.text.Length >= str.Count)
             {
@@ -104,7 +104,8 @@ public class PasswordManagement : MonoBehaviour
             }
             
             StartCoroutine(comprovar(inputField));
-        }catch
+        }
+        catch
         {
            
         }
