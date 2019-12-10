@@ -23,6 +23,10 @@ public class MoveTouchLvl3 : MonoBehaviour
     public Image mainImage;
     public Text text;
 
+    private float currentTime = 0;
+    private float maxTime = 0;
+    private Vector3 startSize = Vector3.zero;
+
 
     void Start()
     {
@@ -32,6 +36,10 @@ public class MoveTouchLvl3 : MonoBehaviour
 
     void Update()
     {
+        if (canMove && Word && startSize.x == 0)
+        {
+            startSize = gameObject.transform.localScale;
+        }
         if (managerOnlyOne != null)
         {
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
@@ -39,8 +47,28 @@ public class MoveTouchLvl3 : MonoBehaviour
 
                 if (Word)
                 {
-                    mainImage.color = mainImage.color + new Color(0, 0, 0, 255);
-                    text.color = text.color + new Color(0, 0, 0, 255);
+                    if(canMove && GameManager.configurartion.ayudaVisual)
+                    {
+                        currentTime += Time.deltaTime;
+                        if (maxTime == 0)
+                        {
+                            if (currentTime < 0.7f && currentTime > 0.2f)
+                                gameObject.transform.localScale += new Vector3(Time.deltaTime / 2, Time.deltaTime / 2 , Time.deltaTime / 2);
+                            else if (currentTime < 1.2f && currentTime > 0.7f)
+                                gameObject.transform.localScale -= new Vector3(Time.deltaTime / 2, Time.deltaTime / 2, Time.deltaTime / 2);
+                            else if(currentTime > 1.2f)
+                            {
+                                gameObject.transform.localScale = startSize;
+                                maxTime = Random.Range(1.5f, 3f);
+                                currentTime = 0;
+                            }
+                        }
+                        else if (currentTime >= maxTime)
+                        {
+                            maxTime = 0;
+                            currentTime = 0;
+                        }
+                    }
                 }
 
                 if (Input.touchCount > 0 && managerOnlyOne.go == null)
@@ -78,6 +106,12 @@ public class MoveTouchLvl3 : MonoBehaviour
                             m_ClickedPiecePosition = this.gameObject.transform.position;
                             m_ClickedPiecePosition = this.gameObject.transform.position;
                             managerOnlyOne.Catch(true, gameObject);
+                            if (Word)
+                            {
+                                currentTime = 0;
+                                maxTime = Random.Range(1.5f, 3f);
+                                gameObject.transform.localScale = startSize;
+                            }
                         }
                     }
                 }
