@@ -31,6 +31,7 @@ public class ImageControl : MonoBehaviour
     public AudioSource m_AS;
     public int l_Number;
     private bool acabado = false;
+    private bool AnimFinCaida = false;
     void Awake()
     {
         RecolectPalabrasBD();
@@ -153,6 +154,11 @@ public class ImageControl : MonoBehaviour
 
     void Update()
     {
+        if (AnimFinCaida && !m_Animation.isPlaying)
+        {
+            m_ImageBehind.transform.parent.transform.SetSiblingIndex(1);
+            AnimFinCaida = true;
+        }
         if (GameManager.Instance.InputRecieved() && m_0touch)
         {
             Vector3 positionInput;
@@ -166,6 +172,8 @@ public class ImageControl : MonoBehaviour
                 m_Animation.Play();
                 m_0touch = false;
                 m_1touch = true;
+                AnimFinCaida = true;
+
             }
 
         }
@@ -212,6 +220,7 @@ public class ImageControl : MonoBehaviour
             if (!m_GMBit.repeating)
                 m_GMBit.AddCountMiniGameBit();
             acabado = true;
+         
 
         }
     }
