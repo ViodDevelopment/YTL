@@ -15,8 +15,6 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject ConfiguracionPestaña;
 
-    public GameObject AccesToConf;
-
     public GameObject[] AllCanvas;
 
     private int numOfGames = 0;
@@ -47,11 +45,6 @@ public class SceneManagement : MonoBehaviour
     {
         DisableAllCanvas();
         ConfCanvas.SetActive(true);
-    }
-    public void AccesToConfiguration()
-    {
-        DisableAllCanvas();
-        AccesToConf.SetActive(true);
     }
     public void ConfiguarcionScene()
     {
