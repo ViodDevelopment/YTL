@@ -20,6 +20,7 @@ public class MoveTouch : MonoBehaviour
     private GameObject otherObject;
 
     public Image mainImage;
+    public Image fondoImage;
     public Text text;
 
 
@@ -38,6 +39,7 @@ public class MoveTouch : MonoBehaviour
                 if (Word)
                 {
                     mainImage.color = mainImage.color + new Color(0, 0, 0, 255);
+                    fondoImage.color = fondoImage.color + new Color(0, 0, 0, 255);
                     text.color = text.color + new Color(0, 0, 0, 255);
                 }
 
