@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle
     public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
+    public static List<PalabraBD> palabrasUserDisponibles = new List<PalabraBD>();
     public static List<FraseBD> frasesDisponibles = new List<FraseBD>();
     public static int currentMiniGame = 0;
     public static int fallosPuzzle = 0;

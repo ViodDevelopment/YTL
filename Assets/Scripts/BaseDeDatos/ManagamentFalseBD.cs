@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -11,9 +12,11 @@ public class ManagamentFalseBD : MonoBehaviour
 
     [SerializeField] private List<PalabraBD> palabrasPredeterminadass = new List<PalabraBD>();
     private List<PalabraBD> palabrasGuardadas = new List<PalabraBD>();
+    private List<PalabraBD> palabrasUserGuardadas = new List<PalabraBD>();
     [SerializeField] private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
     private List<FraseBD> frasesGuardadas = new List<FraseBD>();
-    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration, nameRutePassword;
+    private List<FraseBD> frasesUserGuardadas = new List<FraseBD>();
+    private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration, nameRutePassword, nameRuteUser, nameRuteUserFrase;
 
     private void Awake()
     {
@@ -28,6 +31,9 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameConfiguration = Application.persistentDataPath + "/Configuration.dat";
                 nameRutePassword = Application.persistentDataPath + "/password.dat";
                 management = this;
+                ComprobarCarpetaUsuario("UserWords");
+                nameRuteUser = Application.persistentDataPath + "/UserWords/datosUsuario.dat";
+                nameRuteUserFrase = Application.persistentDataPath + "/UserWords/datosFrasesUsuario.dat";
                 DontDestroyOnLoad(gameObject);
 
                 if (File.Exists(nameConfiguration))
@@ -131,14 +137,24 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.LoadBolasMinijuegos();
                 }
 
-                if(File.Exists(nameRutePassword))
+                if (File.Exists(nameRutePassword))
                 {
                     management.LoadPassword();
                 }
-                else if(!File.Exists(nameRutePassword))
+                else if (!File.Exists(nameRutePassword))
                 {
                     management.SavePassword();
                     management.LoadPassword();
+                }
+
+                if (File.Exists(nameRuteUser))
+                {
+                    management.LoadDatesOfPlayer();
+                }
+                else if(!File.Exists(nameRuteUser))
+                {
+                    management.SaveWordUser(null, false);
+                    management.LoadDatesOfPlayer();
                 }
             }
         }
@@ -604,7 +620,7 @@ public class ManagamentFalseBD : MonoBehaviour
         else
         {
             file = File.Open(nameRutePassword, FileMode.Open);
-           
+
         }
         string password = "";//get the password
         bf.Serialize(file, password);
@@ -618,7 +634,8 @@ public class ManagamentFalseBD : MonoBehaviour
         try
         {
             string password = (string)bf.Deserialize(file);
-        }catch(Exception e)
+        }
+        catch (Exception e)
         {
             Debug.LogException(e, this);
         }
@@ -654,10 +671,70 @@ public class ManagamentFalseBD : MonoBehaviour
         GameManager.Instance.ChangeConfig();
     }
 
+    public void SaveWordUser(PalabraBD _pal, bool _add)
+    {
+        if(_pal != null)
+        {
+            if(_add)
+                palabrasUserGuardadas.Add(_pal);
+            else
+                palabrasUserGuardadas.Remove(_pal);
+        }
 
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(nameRuteUser);
+
+        DatesOfPlayer datos = new DatesOfPlayer();
+
+        datos.AddPalabras(palabrasUserGuardadas);
+
+        bf.Serialize(file, datos);
+
+        file.Close();
+    }
 
     public void LoadDatesOfPlayer()
     {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Open(nameRuteUser, FileMode.Open);
+
+        DatesOfPlayer datos = (DatesOfPlayer)bf.Deserialize(file);
+
+        GameManager.palabrasUserDisponibles = datos.GetListOfPalabras();
+
+        file.Close();
+
+        GameManager.Instance.ChangeConfig();
+    }
+
+    private void ComprobarCarpetaUsuario(string fileName)
+    {
+        //Where to copy the db to
+        string destination = Path.Combine(Application.persistentDataPath, fileName);
+
+        //Create Directory if it does not exist
+        if (!Directory.Exists(destination))
+        {
+            Directory.CreateDirectory(destination);
+        }
+
+
+        string otherDestination = destination;
+        otherDestination = Path.Combine(destination, "Images");
+
+        if (!Directory.Exists(otherDestination))
+        {
+            Directory.CreateDirectory(otherDestination);
+        }
+
+
+        otherDestination = destination;
+        otherDestination = Path.Combine(destination, "Sounds");
+
+        if (!Directory.Exists(otherDestination))
+        {
+            Directory.CreateDirectory(otherDestination);
+        }
 
     }
 
@@ -723,7 +800,58 @@ class DatesFrasesToSave
 [Serializable]
 class DatesOfPlayer
 {
+    private List<PalabraBD> palabrasUser = new List<PalabraBD>();
 
+    public void ChangeDates(List<PalabraBD> _palabras)
+    {
+        palabrasUser.Clear();
+        foreach (PalabraBD p in _palabras)
+        {
+            palabrasUser.Add(p);
+        }
+    }
+
+    public void AddPalabras(List<PalabraBD> _palabras)
+    {
+        foreach (PalabraBD p in _palabras)
+        {
+            palabrasUser.Add(p);
+        }
+    }
+
+    public List<PalabraBD> GetListOfPalabras()
+    {
+        return palabrasUser;
+    }
+}
+
+
+[Serializable]
+class FrasesUsers
+{
+    private List<FraseBD> frasesUser = new List<FraseBD>();
+
+    public void ChangeDates(List<FraseBD> _frases)
+    {
+        frasesUser.Clear();
+        foreach (FraseBD f in _frases)
+        {
+            frasesUser.Add(f);
+        }
+    }
+
+    public void AddFrases(List<FraseBD> _frases)
+    {
+        foreach (FraseBD f in _frases)
+        {
+            frasesUser.Add(f);
+        }
+    }
+
+    public List<FraseBD> GetListOfFrases()
+    {
+        return frasesUser;
+    }
 }
 
 [Serializable]
