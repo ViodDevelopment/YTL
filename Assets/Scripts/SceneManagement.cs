@@ -13,6 +13,8 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject MainMenuCanvas;
 
+    public GameObject AccesToConf;
+
     public GameObject ConfiguracionPestaña;
 
     public GameObject[] AllCanvas;
@@ -61,6 +63,13 @@ public class SceneManagement : MonoBehaviour
         DisableAllCanvas();
         ConfCanvas.SetActive(true);
     }
+
+    public void AccesToConfiguration()
+    {
+        DisableAllCanvas();
+        AccesToConf.SetActive(true);
+    }
+
     public void MinijuegoGusanosScene()
     {
         SceneManager.LoadScene(4);
