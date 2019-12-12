@@ -470,7 +470,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         }
         for (int i = 0; i < palabrasDisponibles[numRandom].silabasActuales.Count; i++)
         {
-            int randomNumToPos = posiciones[Random.Range(0, posiciones.Count - 1)];
+            int randomNumToPos = posiciones[Random.Range(0, posiciones.Count)];
             posiciones.Remove(randomNumToPos);
             GameObject l_Word = Instantiate(silabaPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
@@ -493,6 +493,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
             l_UnseenWord.transform.position += position;
             l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
+            if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+                l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.15f,0,0);
+            else if (i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+                l_UnseenWord.GetComponentInChildren<Text>().transform.position -= new Vector3(0.15f, 0, 0);
+            /*else
+                l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;*/
+
             l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
             l_UnseenWord.name = palabrasDisponibles[numRandom].silabasActuales[i];
             //m_Words.Add(l_UnseenWord);
@@ -530,9 +537,9 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         _position += 1;
         Vector3 pos = Vector3.zero;
-        float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.5f;
+        float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.75f;
         if (palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.5f) - multiplier, 0, 0);
+            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.75f) - multiplier, 0, 0);
 
         return pos;
     }
