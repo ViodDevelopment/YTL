@@ -20,6 +20,9 @@ public class MoveTouchLvl2 : MonoBehaviour
     private GameObject colision;
     private GameObject otherObject;
 
+    public List<Sprite> sprites = new List<Sprite>();
+    public int silaba = -5; // -1 inicio, 0 medio, 1 final
+    private bool done = false;
     public Image mainImage;
     public Text text;
 
@@ -34,14 +37,29 @@ public class MoveTouchLvl2 : MonoBehaviour
     {
         if (managerOnlyOne != null)
         {
+            if (Word)
+            {
+                if (!done && silaba != -5)
+                {
+                    switch (silaba)
+                    {
+                        case -1:
+                            mainImage.sprite = sprites[0];
+                            text.rectTransform.position += new Vector3(0.2f, 0, 0);
+                            break;
+                        case 0:
+                            mainImage.sprite = sprites[1];
+                            break;
+                        case 1:
+                            mainImage.sprite = sprites[2];
+                            text.rectTransform.position += new Vector3(-0.2f, 0, 0);
+                            break;
+                    }
+                    done = true;
+                }
+            }
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
             {
-
-                if (Word)
-                {
-                    mainImage.color = mainImage.color + new Color(0, 0, 0, 255);
-                    text.color = text.color + new Color(0, 0, 0, 255);
-                }
 
                 if (Input.touchCount > 0 && managerOnlyOne.go == null)
                 {

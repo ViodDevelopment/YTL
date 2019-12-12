@@ -140,6 +140,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         {
             if (currentSilaba < m_Words.Count)
                 m_Words[currentSilaba].GetComponent<MoveTouchLvl2>().canMove = true;
+
+            foreach(GameObject go in m_Words)
+            {
+                if(go.GetComponent<MoveTouchLvl2>().mainImage.color.a != 1)
+                go.GetComponent<MoveTouchLvl2>().mainImage.color = go.GetComponent<MoveTouchLvl2>().mainImage.color + new Color(0, 0, 0, 255);
+                go.GetComponent<MoveTouchLvl2>().text.color = go.GetComponent<MoveTouchLvl2>().text.color + new Color(0, 0, 0, 255);
+            }
         }
         else if (m_Puntuacion == m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count) && !m_Completed)
         {
@@ -471,6 +478,15 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             l_Word.name = palabrasDisponibles[numRandom].silabasActuales[i];
             l_Word.GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl2>().canMove = false;
+            Color color = new Color();
+            ColorUtility.TryParseHtmlString("#FF4D02", out color);
+            l_Word.GetComponent<MoveTouchLvl2>().mainImage.color = color;
+            if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+                l_Word.GetComponent<MoveTouchLvl2>().silaba = -1;
+            else if(i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+                l_Word.GetComponent<MoveTouchLvl2>().silaba = 1;
+            else
+                l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;
             m_Words.Add(l_Word);
 
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
@@ -516,7 +532,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         Vector3 pos = Vector3.zero;
         float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.5f;
         if (palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 2) - multiplier, 0, 0);
+            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.5f) - multiplier, 0, 0);
 
         return pos;
     }
