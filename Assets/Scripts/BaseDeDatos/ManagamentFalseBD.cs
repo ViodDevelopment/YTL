@@ -9,6 +9,7 @@ public class ManagamentFalseBD : MonoBehaviour
 {
 
     public static ManagamentFalseBD management;
+    public AudioSource audioSource;
 
     [SerializeField] private List<PalabraBD> palabrasPredeterminadass = new List<PalabraBD>();
     private List<PalabraBD> palabrasGuardadas = new List<PalabraBD>();
@@ -151,7 +152,7 @@ public class ManagamentFalseBD : MonoBehaviour
                 {
                     management.LoadDatesOfPlayer();
                 }
-                else if(!File.Exists(nameRuteUser))
+                else if (!File.Exists(nameRuteUser))
                 {
                     management.SaveWordUser(null, false);
                     management.LoadDatesOfPlayer();
@@ -673,9 +674,9 @@ public class ManagamentFalseBD : MonoBehaviour
 
     public void SaveWordUser(PalabraBD _pal, bool _add)
     {
-        if(_pal != null)
+        if (_pal != null)
         {
-            if(_add)
+            if (_add)
                 palabrasUserGuardadas.Add(_pal);
             else
                 palabrasUserGuardadas.Remove(_pal);
@@ -738,7 +739,11 @@ public class ManagamentFalseBD : MonoBehaviour
 
     }
 
+
+
+
 }
+
 
 
 [Serializable]
