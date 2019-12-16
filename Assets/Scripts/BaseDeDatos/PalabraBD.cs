@@ -89,12 +89,12 @@ public class PalabraBD
 
     public Sprite GetSprite(string _name)
     {
-        return Resources.Load<Sprite>("images/Lite/" + _name); //CAMBIAR RUTA DE IMAGEN CUANDO NO SEA LITE
+        return Resources.Load<Sprite>("images/Version1.0/Palabra/" + _name); //CAMBIAR RUTA DE IMAGEN CUANDO NO SEA LITE
     }
 
     public Texture2D GetTexture2D(string _name)
     {
-        return Resources.Load<Texture2D>("images/Lite/" + _name);
+        return Resources.Load<Texture2D>("images/Version1.0/Palabra/" + _name);
     }
 
     public AudioClip GetAudioClip(string _audio)
@@ -103,10 +103,10 @@ public class PalabraBD
         switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
-                completeRute = "Audios/Castellano/Lite/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
+                completeRute = "Audios/Castellano/Version1.0/Palabra/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
-                completeRute = "Audios/Catalan/Lite/" + _audio + "_cat"; //LOMISMO
+                completeRute = "Audios/Catalan/Version1.0/Palabra/" + _audio + "_cat"; //LOMISMO
                 break;
             case SingletonLenguage.Lenguage.INGLES:
                 break;

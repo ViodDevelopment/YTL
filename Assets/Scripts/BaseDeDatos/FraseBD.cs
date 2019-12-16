@@ -93,10 +93,10 @@ public class FraseBD
         switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
-                completeRute = "Audios/Castellano/Lite/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
+                completeRute = "Audios/Castellano/Version1.0/Frase/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
-                completeRute = "Audios/Catalan/Lite/" + _audio + "_cat"; //LOMISMO
+                completeRute = "Audios/Catalan/Version1.0/Frase/" + _audio + "_cat"; //LOMISMO
                 break;
             case SingletonLenguage.Lenguage.INGLES:
                 break;
