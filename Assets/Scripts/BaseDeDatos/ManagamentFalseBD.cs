@@ -167,6 +167,7 @@ public class ManagamentFalseBD : MonoBehaviour
     {
         int count = 0;
 
+        #region palabras
         #region Agenda
         palabrasPredeterminadass.Add(new PalabraBD());
         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = count;
@@ -1802,6 +1803,10 @@ public class ManagamentFalseBD : MonoBehaviour
         count++;
         #endregion
 
+
+
+
+        #endregion
         //borrar esto de la lite
 
 
