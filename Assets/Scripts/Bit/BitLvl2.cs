@@ -204,7 +204,7 @@ public class BitLvl2 : MonoBehaviour
 
     private void CambiarRecuadroDependiendoDePalabra(Image _imagen, PalabraBD _palabra)
     {
-        switch (_palabra.color)
+        switch (_palabra.color)/////////CAMBIAR LOS COLORES POR HEXADECIMAL
         {
             case "Adjetivo":
                 _imagen.sprite = listOfRectangles[0];

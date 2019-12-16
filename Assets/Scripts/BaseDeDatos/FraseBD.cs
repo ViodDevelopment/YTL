@@ -14,6 +14,7 @@ public class FraseBD
     public string fraseIngles;
     public string frasesFrances;
     public string image;
+    public string image2;
     public string sound;
     public int dificultad;
     public List<PalabraBD> palabras = new List<PalabraBD>();
