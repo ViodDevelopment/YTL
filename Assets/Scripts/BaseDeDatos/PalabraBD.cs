@@ -21,7 +21,7 @@ public class PalabraBD
     public int dificultCatalan;
     public string nameCatalan;
     public string silabasCatalan;
-    public int paquet;
+    public int paquet; //Paquete 0 = determinado, 1 = escuela, paquete 2 = color, paquete 3 = animales
     public List<string> silabasActuales = new List<string>();
     public string palabraActual;
 
