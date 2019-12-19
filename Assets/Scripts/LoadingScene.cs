@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
     private bool started = false;
+    public Image carga;
 
     private void Update()
     {
@@ -20,13 +22,16 @@ public class LoadingScene : MonoBehaviour
         
         AsyncOperation async = SceneManager.LoadSceneAsync(GameManager.loadingScene);
 
+
         while (!async.isDone)
         {
-
+            carga.fillAmount = async.progress;
             yield return null;
 
         }
         GameManager.loadingScene = -1;
+
+
         Destroy(gameObject);
 
 
