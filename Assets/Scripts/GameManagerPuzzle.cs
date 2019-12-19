@@ -95,7 +95,11 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            palabrasDisponibles.Add(p);
+            if (p.image1 != "")
+            {
+                if (p.GetSprite(p.image1) != null)
+                    palabrasDisponibles.Add(p);
+            }
         }
     }
 
@@ -202,14 +206,14 @@ public class GameManagerPuzzle : MonoBehaviour
 
 
 
-        m_ImagePuzzle = Resources.Load<Texture2D>("Images/Lite/" + palabraActual.image1); //por ahora solo imagen 1
+        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
         WordInstantiation();
         m_TextAnim.text = palabrasDisponibles[numRandom].palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
-        m_ImageAnim.sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+        m_ImageAnim.sprite = palabraActual.GetSprite( palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -293,8 +297,8 @@ public class GameManagerPuzzle : MonoBehaviour
 
         Sprite l_SpriteImage;
         Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
-        m_ImageAnim.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+        m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];

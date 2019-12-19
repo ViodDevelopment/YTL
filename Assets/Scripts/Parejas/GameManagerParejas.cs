@@ -171,7 +171,11 @@ public class GameManagerParejas : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            listOfPalabras.Add(p);
+            if (p.image1 != "")
+            {
+                if (p.GetSprite(p.image1) != null)
+                    listOfPalabras.Add(p);
+            }
         }
     }
 
@@ -835,7 +839,7 @@ public class GameManagerParejas : MonoBehaviour
                 case 3:
                     if (_firstTime)
                     {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         horizontal3Arriba[_currentPair].name = numJ.ToString();
 
@@ -850,7 +854,7 @@ public class GameManagerParejas : MonoBehaviour
 
                     else
                     {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         horizontal3Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -868,7 +872,7 @@ public class GameManagerParejas : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         horizontal4Arriba[_currentPair].name = numJ.ToString();
 
@@ -883,7 +887,7 @@ public class GameManagerParejas : MonoBehaviour
                     }
                     else
                     {
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         horizontal4Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -906,7 +910,7 @@ public class GameManagerParejas : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         vertical3Left[_currentPair].name = numJ.ToString();
 
@@ -921,7 +925,7 @@ public class GameManagerParejas : MonoBehaviour
                     }
                     else
                     {
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         vertical3Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -939,7 +943,7 @@ public class GameManagerParejas : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         vertical4Left[_currentPair].name = numJ.ToString();
 
@@ -954,7 +958,7 @@ public class GameManagerParejas : MonoBehaviour
                     }
                     else
                     {
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         vertical4Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -980,13 +984,13 @@ public class GameManagerParejas : MonoBehaviour
                 case 3:
                     if (_firstTime)
                     {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         horizontal3Abajo[numJ].name = numJ.ToString();
                         horizontal3Abajo[numJ].SetActive(true);
                     }
                     else
                     {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         horizontal3Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal3Abajo[numJ].SetActive(true);
                     }
@@ -994,13 +998,13 @@ public class GameManagerParejas : MonoBehaviour
                 case 4:
                     if (_firstTime)
                     {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         horizontal4Abajo[numJ].name = numJ.ToString();
                         horizontal4Abajo[numJ].SetActive(true);
                     }
                     else
                     {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         horizontal4Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal4Abajo[numJ].SetActive(true);
                     }
@@ -1016,13 +1020,13 @@ public class GameManagerParejas : MonoBehaviour
 
                     if (_firstTime)
                     {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         vertical3Right[numJ].name = numJ.ToString();
                         vertical3Right[numJ].SetActive(true);
                     }
                     else
                     {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical3Right[numJ].SetActive(true);
                     }
@@ -1031,13 +1035,13 @@ public class GameManagerParejas : MonoBehaviour
 
                     if (_firstTime)
                     {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_Pairs[l_RandomPair].image1);
+                        vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         vertical4Right[numJ].name = numJ.ToString();
                         vertical4Right[numJ].SetActive(true);
                     }
                     else
                     {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + l_SecondPair[l_RandomPair].image1);
+                        vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical4Right[numJ].SetActive(true);
                     }

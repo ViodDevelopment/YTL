@@ -51,17 +51,13 @@ public class ImageControl : MonoBehaviour
         m_AudioPoolCatalan.Clear();
         palabrasDisponibles.Clear();
 
-        foreach(PalabraBD p in GameManager.palabrasDisponibles)
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            /*m_ImagesPool.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image1));
-            m_ImagesPool2.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image2));
-            m_ImagesPool3.Add(Resources.Load<Texture2D>("Images/Lite/" + p.image3));
-            m_PalabrasCastellano.Add(p.nameSpanish);
-            m_PalabrasCatalan.Add(p.nameCatalan);
-            m_AudioPoolCastellano.Add(p.GetAudioClip(p.audio));
-            m_AudioPoolCatalan.Add(p.GetAudioClip(p.audio));*/
-            if(p.color == "Nombre")
-                palabrasDisponibles.Add(p);
+            if (p.image1 != "")
+            {
+                if (p.GetSprite(p.image1) != null)
+                    palabrasDisponibles.Add(p);
+            }
         }
     }
 
@@ -94,52 +90,52 @@ public class ImageControl : MonoBehaviour
 
         m_Animation = GetComponent<Animation>();
         firstImage = Random.Range(0, 3);
-        
+
 
         switch (firstImage)
         {
             case 0:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
+                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
                 break;
             case 1:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2); 
+                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image2);
                 break;
             case 2:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3); 
+                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
                 break;
             default:
-                m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
+                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
                 break;
         }
 
         int otherImage = Random.Range(0, 3);
 
-        if(otherImage == firstImage)
+        if (otherImage == firstImage)
         {
             if (otherImage >= 2)
                 otherImage--;
             else if (otherImage <= 0)
                 otherImage++;
         }
-       /*while (otherImage == firstImage)
-        {
-            Random.InitState(Random.seed + 1);
-            otherImage = Random.Range(0, 3);
-        }*/
+        /*while (otherImage == firstImage)
+         {
+             Random.InitState(Random.seed + 1);
+             otherImage = Random.Range(0, 3);
+         }*/
 
         switch (otherImage)
         {
             case 0:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
+                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
                 break;
             case 1:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image2);
+                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image2);
                 break;
             case 2:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image3);
+                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
                 break;
             default:
-                m_ImageBehind.sprite = Resources.Load<Sprite>("Images/Lite/" + palabrasDisponibles[l_Number].image1);
+                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
                 break;
         }
 
@@ -195,14 +191,14 @@ public class ImageControl : MonoBehaviour
             }
 
         }
-        else if(acabado)
+        else if (acabado)
         {
-            if(!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configurartion.refuerzoPositivo)
             {
                 m_GMBit.ActivateButtons();
                 acabado = false;
             }
-            else if(GameObject.Find("Dumi(Clone)") == null)
+            else if (GameObject.Find("Dumi(Clone)") == null)
             {
                 m_GMBit.ActivateButtons();
                 acabado = false;
@@ -220,7 +216,7 @@ public class ImageControl : MonoBehaviour
             if (!m_GMBit.repeating)
                 m_GMBit.AddCountMiniGameBit();
             acabado = true;
-         
+
 
         }
     }

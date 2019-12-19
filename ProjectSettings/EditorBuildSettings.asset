@@ -8,19 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MenuPrincipal.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Bit.unity
     guid: 25fcabaddc270d9499e49faab5236ce9
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Parejas.unity
     guid: a413c304074867e4591e0bc53628888c
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Puzzle.unity
     guid: d8acf698d29515a45be7daba8f247e90
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Minijuego_Gusanos.unity
     guid: 34a1c647f3559f847ab567b5baab7e03
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Minijuego_Burbujas.unity
     guid: e058be4d659e29f46b67a39926946291
   - enabled: 0

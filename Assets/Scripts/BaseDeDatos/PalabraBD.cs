@@ -13,7 +13,7 @@ public class PalabraBD
     public string image2;
     public string image3;
     public string audio;
-    public int piecesPuzzle;
+    public List<int> piecesPuzzle = new List<int>();
     public int imagePuzzle;
     public int dificultSpanish;
     public string nameSpanish;
