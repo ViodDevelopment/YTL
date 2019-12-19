@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour
     public string Word;
     #endregion
 
+    public static int loadingScene = -1;
+
     public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle
     public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public static List<PalabraBD> palabrasUserDisponibles = new List<PalabraBD>();
