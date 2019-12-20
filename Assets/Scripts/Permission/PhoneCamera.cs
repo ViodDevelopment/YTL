@@ -13,6 +13,7 @@ public class PhoneCamera : MonoBehaviour
     private Texture m_DefaultBackground;
     public RawImage m_Background;
     public AspectRatioFitter fit;
+    Texture newImage;
 
 
     void Start()
@@ -69,7 +70,7 @@ public class PhoneCamera : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P) || ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began)))
         {
-            TakeAShot();
+            TakeTexture();
         }
 
     }
@@ -84,6 +85,11 @@ public class PhoneCamera : MonoBehaviour
     {
         ScreenCapture.CaptureScreenshot("Photo.png");
         yield return new WaitForEndOfFrame();
+    }
+
+    void TakeTexture()
+    {
+        newImage = m_BackCam;
     }
 
 }

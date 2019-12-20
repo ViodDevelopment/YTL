@@ -5,8 +5,9 @@ using UnityEngine;
 
 public class GetFromGallery : MonoBehaviour
 {
-    public GameObject placeHolder;
+    public GameObject placeHolder, txtPlaceholder;
     Image img;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -27,17 +28,42 @@ public class GetFromGallery : MonoBehaviour
             if (path != null)
             {
                 // Create Texture from selected image
-                Texture2D texture = NativeGallery.LoadImageAtPath(path, maxSize);
+                Texture2D texture = NativeGallery.LoadImageAtPath(path);
                 if (texture == null)
                 {
                     Debug.Log("Couldn't load texture from " + path);
                     return;
                 }
-                img.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+                img.sprite = MakeImgEven(texture);
+                txtPlaceholder.SetActive(false);
 
             }
         }, "Select a PNG image", "image/png");
 
         Debug.Log("Permission result: " + permission);
+    }
+
+    Sprite MakeImgEven(Texture2D tex)
+    {
+        int maxSize, offset;
+
+        if(tex.width == tex.height)
+        {
+            return Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        else if(tex.width < tex.height)
+        {
+            maxSize = tex.width;
+            offset = (tex.height - maxSize) / 2;
+            return Sprite.Create(tex, new Rect(0.0f, offset, tex.width, tex.width), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        else
+        {
+            maxSize = tex.height;
+            offset = (tex.width - maxSize) /2;
+            return Sprite.Create(tex, new Rect(offset, 0.0f, tex.height, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+
+        
     }
 }
