@@ -168,6 +168,17 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void ReadCSV()
     {
+        if(File.Exists(Application.streamingAssetsPath + "/Actualizacion.csv"))
+        {
+            if (File.Exists(Application.streamingAssetsPath + "/Palabras.csv"))
+            {
+                File.Delete(Application.streamingAssetsPath + "/Palabras.csv");
+                File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
+            }else
+                File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
+
+        }
+
         if (File.Exists(Application.streamingAssetsPath + "/Palabras.csv"))
         {
             StreamReader streamReader = new StreamReader(Application.streamingAssetsPath + "/Palabras.csv");

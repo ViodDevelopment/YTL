@@ -13,6 +13,8 @@ public class LoadingScene : MonoBehaviour
     {
         if(GameManager.loadingScene != -1 && !started)
             StartCoroutine(LoadNewScene());
+        carga.fillAmount += Time.deltaTime * 1.5f;
+
     }
 
     IEnumerator LoadNewScene()
@@ -21,16 +23,14 @@ public class LoadingScene : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
         AsyncOperation async = SceneManager.LoadSceneAsync(GameManager.loadingScene);
+        GameManager.loadingScene = -1;
 
 
         while (!async.isDone)
         {
-            carga.fillAmount = async.progress;
             yield return null;
-
         }
-        GameManager.loadingScene = -1;
-
+        carga.fillAmount = 1;
 
         Destroy(gameObject);
 

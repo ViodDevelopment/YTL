@@ -97,7 +97,11 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            palabrasDisponibles.Add(p);
+            if (p.image1 != "")
+            {
+                if(p.image2 != "" && p.image3 != "") //Cambiar cuando esté todo el excel hecho
+                palabrasDisponibles.Add(p);
+            }
         }
     }
 
@@ -143,9 +147,11 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             foreach(GameObject go in m_Words)
             {
-                if(go.GetComponent<MoveTouchLvl2>().mainImage.color.a != 1)
-                go.GetComponent<MoveTouchLvl2>().mainImage.color = go.GetComponent<MoveTouchLvl2>().mainImage.color + new Color(0, 0, 0, 255);
-                go.GetComponent<MoveTouchLvl2>().text.color = go.GetComponent<MoveTouchLvl2>().text.color + new Color(0, 0, 0, 255);
+                if (go.GetComponent<MoveTouchLvl2>().mainImage.color.a != 1)
+                {
+                    go.GetComponent<MoveTouchLvl2>().mainImage.color = go.GetComponent<MoveTouchLvl2>().mainImage.color + new Color(0, 0, 0, 255);
+                    go.GetComponent<MoveTouchLvl2>().text.color = go.GetComponent<MoveTouchLvl2>().text.color + new Color(0, 0, 0, 255);
+                }
             }
         }
         else if (m_Puntuacion == m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count) && !m_Completed)
@@ -214,14 +220,18 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
 
 
-        m_ImagePuzzle = Resources.Load<Texture2D>("Images/Lite/" + palabraActual.image1); //por ahora solo imagen 1
+        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
         WordInstantiation();
-        m_TextAnim.text = palabrasDisponibles[numRandom].palabraActual;
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(palabraActual.color, out color);
+        m_TextAnim.transform.parent.GetChild(1).GetComponent<Image>().color = color;
+        m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
-        m_ImageAnim.sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+        m_ImageAnim.sprite = palabraActual.GetSprite(palabraActual.image1);
+        m_ImageAnim.transform.GetChild(0).GetComponent<Image>().color = color;
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -275,6 +285,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 GameObject local2 = Instantiate(m_ColliderTemplate, m_CollidersSpawns.transform);
                 m_Colliders.Add(local2);
                 local2.name = l_CurrentPiece.ToString();
+                local2.transform.parent.GetChild(0).GetComponent<Image>().color = color;
                 local2.GetComponent<RectTransform>().sizeDelta = new Vector2(l_Colliders.sizeDelta.x / m_NumPiecesX, l_Colliders.sizeDelta.y / m_NumPiecesY);
                 local2.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX, sizeY);
                 local2.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
@@ -305,8 +316,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         Sprite l_SpriteImage;
         Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
-        m_ImageAnim.GetComponent<Image>().sprite = Resources.Load<Sprite>("Images/Lite/" + palabraActual.image1);
+        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+        m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -473,17 +484,18 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             int randomNumToPos = posiciones[Random.Range(0, posiciones.Count)];
             posiciones.Remove(randomNumToPos);
             GameObject l_Word = Instantiate(silabaPrefab, m_WordTransform[randomNumToPos]);
-            l_Word.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
+            l_Word.GetComponentInChildren<Text>().text = palabraActual.silabasActuales[i];
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
-            l_Word.name = palabrasDisponibles[numRandom].silabasActuales[i];
+            l_Word.name = palabraActual.silabasActuales[i];
             l_Word.GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl2>().canMove = false;
             Color color = new Color();
-            ColorUtility.TryParseHtmlString("#FF4D02", out color);
+            ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
             l_Word.GetComponent<MoveTouchLvl2>().mainImage.color = color;
-            if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+            ConvertMarco(l_Word.GetComponent<MoveTouchLvl2>().mainImage, palabraActual.silabasActuales[i]);
+            if (i == 0 && palabraActual.silabasActuales.Count > 1)
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = -1;
-            else if(i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+            else if(i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 1;
             else
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;
@@ -491,6 +503,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
+            ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
+            l_UnseenWord.GetComponentInChildren<Image>().color = color;
             l_UnseenWord.transform.position += position;
             l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
             if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
@@ -593,5 +607,26 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             m_NumPiecesX = (int)Mathf.Sqrt(l_NumPieces);
             m_NumPiecesY = (int)Mathf.Sqrt(l_NumPieces) + 1;
         }
+    }
+
+    private void ConvertMarco(Image _imagen, string _silaba)
+    {
+        switch(_silaba.Length)
+        {
+            case 1:
+                _imagen.rectTransform.localScale -= new Vector3(_imagen.rectTransform.localScale.x / 5, 0, 0);
+                break;
+            case 3:
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 5, 0, 0);
+                break;
+            case 4:
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4, 0, 0);
+                break;
+            case 5:
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 3, 0, 0);
+                break;
+                    
+        }
+
     }
 }
