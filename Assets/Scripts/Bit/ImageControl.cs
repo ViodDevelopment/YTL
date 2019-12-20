@@ -16,6 +16,7 @@ public class ImageControl : MonoBehaviour
     public List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
+    public List<Image> marcos = new List<Image>();
     private int firstImage = 0;
 
     public List<string> m_PalabrasCastellano = new List<string>();
@@ -86,6 +87,13 @@ public class ImageControl : MonoBehaviour
                 else
                     Random.InitState(Random.seed + 1);
             }
+        }
+
+        Color color = new Color();
+        foreach (Image i in marcos)
+        {
+            ColorUtility.TryParseHtmlString(palabrasDisponibles[l_Number].color, out color);
+            i.color = color;
         }
 
         m_Animation = GetComponent<Animation>();

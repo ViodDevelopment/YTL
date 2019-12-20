@@ -99,8 +99,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         {
             if (p.image1 != "")
             {
-                if(p.image2 != "" && p.image3 != "") //Cambiar cuando esté todo el excel hecho
-                palabrasDisponibles.Add(p);
+                if (p.image2 != "" && p.image3 != "") //Cambiar cuando esté todo el excel hecho
+                    palabrasDisponibles.Add(p);
             }
         }
     }
@@ -140,18 +140,17 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     public void PuzzleComplete()
     {
 
-        if (m_Puntuacion >= m_NumPieces && m_Puntuacion  <= m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count - 1))
+        if (m_Puntuacion >= m_NumPieces && m_Puntuacion <= m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count - 1))
         {
             if (currentSilaba < m_Words.Count)
                 m_Words[currentSilaba].GetComponent<MoveTouchLvl2>().canMove = true;
 
-            foreach(GameObject go in m_Words)
+            foreach (GameObject go in m_Words)
             {
-                if (go.GetComponent<MoveTouchLvl2>().mainImage.color.a != 1)
-                {
-                    go.GetComponent<MoveTouchLvl2>().mainImage.color = go.GetComponent<MoveTouchLvl2>().mainImage.color + new Color(0, 0, 0, 255);
-                    go.GetComponent<MoveTouchLvl2>().text.color = go.GetComponent<MoveTouchLvl2>().text.color + new Color(0, 0, 0, 255);
-                }
+
+                go.GetComponent<MoveTouchLvl2>().mainImage.color = go.GetComponent<MoveTouchLvl2>().mainImage.color + new Color(0, 0, 0, 255);
+                go.GetComponent<MoveTouchLvl2>().text.color = go.GetComponent<MoveTouchLvl2>().text.color + new Color(0, 0, 0, 255);
+
             }
         }
         else if (m_Puntuacion == m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count) && !m_Completed)
@@ -495,7 +494,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             ConvertMarco(l_Word.GetComponent<MoveTouchLvl2>().mainImage, palabraActual.silabasActuales[i]);
             if (i == 0 && palabraActual.silabasActuales.Count > 1)
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = -1;
-            else if(i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
+            else if (i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 1;
             else
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;
@@ -508,9 +507,17 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             l_UnseenWord.transform.position += position;
             l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
             if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-                l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.15f,0,0);
+                l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.17f, 0, 0);
             else if (i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-                l_UnseenWord.GetComponentInChildren<Text>().transform.position -= new Vector3(0.15f, 0, 0);
+                l_UnseenWord.GetComponentInChildren<Text>().transform.position -= new Vector3(0.17f, 0, 0);
+            ConvertMarco(l_UnseenWord.GetComponentInChildren<Image>(), palabraActual.silabasActuales[i]);
+            if (i == 0 && palabraActual.silabasActuales.Count > 1)
+                l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(-1);
+            else if (i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
+                l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(1);
+            else
+                l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(0);
+
             /*else
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;*/
 
@@ -551,9 +558,9 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         _position += 1;
         Vector3 pos = Vector3.zero;
-        float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.75f;
+        float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.62f;
         if (palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.75f) - multiplier, 0, 0);
+            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.62f) - multiplier, 0, 0);
 
         return pos;
     }
@@ -611,7 +618,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private void ConvertMarco(Image _imagen, string _silaba)
     {
-        switch(_silaba.Length)
+        switch (_silaba.Length)
         {
             case 1:
                 _imagen.rectTransform.localScale -= new Vector3(_imagen.rectTransform.localScale.x / 5, 0, 0);
@@ -625,7 +632,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             case 5:
                 _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 3, 0, 0);
                 break;
-                    
+
         }
 
     }
