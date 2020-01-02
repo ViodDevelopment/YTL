@@ -107,6 +107,10 @@ public class SceneManagement : MonoBehaviour
 
         if (_level == 1)
             GameManager.loadingScene = 3;
+        else if (_level == 2)
+            GameManager.loadingScene = 10;
+        else if (_level == 3)
+            GameManager.loadingScene = 11;
     }
 
     public void LoadBit(int _level)
