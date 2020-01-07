@@ -5,13 +5,13 @@ using UnityEngine;
 public class GameManagerGusanos : MonoBehaviour
 {
     public float m_MaxTime = 30;
-    private float currentTime = 0;
+    private float m_CurrentTime = 0;
     public SceneManagement m_Scener;
 
     void Update()
     {
-        currentTime += Time.deltaTime;
-        if (currentTime >= m_MaxTime)
+        m_CurrentTime += Time.deltaTime;
+        if (m_CurrentTime >= m_MaxTime)
         {
             int mayor = -1;
             int count = 0;

@@ -55,7 +55,6 @@ public class GameManagerParejas : MonoBehaviour
     public GameObject m_PlantillaPareja;
 
 
-
     private int currentNumOfPairs = 0;
 
     public int m_NumPairs;
@@ -108,6 +107,8 @@ public class GameManagerParejas : MonoBehaviour
     public GameObject m_Siguiente;
 
     public GameObject m_Repetir;
+
+    public Image m_ActivitiesButton;
 
     #endregion
 
@@ -788,6 +789,7 @@ public class GameManagerParejas : MonoBehaviour
 
     public void ActivateButtons()
     {
+        m_ActivitiesButton.color = new Color(255, 255, 255, 1);
 
         m_Siguiente.SetActive(true);
 
@@ -1086,5 +1088,10 @@ public class GameManagerParejas : MonoBehaviour
             item.SetActive(false);
         }
 
+    }
+
+    public void ReturnColor()
+    {
+        m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
     }
 }
