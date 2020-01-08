@@ -4940,6 +4940,9 @@ MonoBehaviour:
   - {fileID: 2800000, guid: aee13047214f2f342baef318296ef1f9, type: 3}
   - {fileID: 2800000, guid: e66efebb2ea196f4b95e8ba117a84f79, type: 3}
   - {fileID: 2800000, guid: 316869c527984d244a708b045dd6509a, type: 3}
+  marcos:
+  - {fileID: 1545797111571077246}
+  - {fileID: 9153904701947479807}
   m_PalabrasCastellano:
   - Boca
   - Casa
