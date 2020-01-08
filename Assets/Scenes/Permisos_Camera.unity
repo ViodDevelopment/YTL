@@ -399,6 +399,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Background: {fileID: 1813751491}
   fit: {fileID: 0}
+  placeHolder: {fileID: 0}
+  txtPlaceholder: {fileID: 0}
 --- !u!4 &1746178709
 Transform:
   m_ObjectHideFlags: 0

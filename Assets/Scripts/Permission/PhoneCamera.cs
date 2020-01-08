@@ -14,6 +14,9 @@ public class PhoneCamera : MonoBehaviour
     public RawImage m_Background;
     public AspectRatioFitter fit;
     Texture newImage;
+    Image img;
+    public GameObject placeHolder, txtPlaceholder;
+
 
 
     void Start()
