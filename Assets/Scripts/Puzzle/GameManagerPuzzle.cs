@@ -52,6 +52,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public GameObject m_Siguiente;
     public GameObject m_Repetir;
+    public Image m_ActivitiesButton;
 
     public int[] PuzzlePiecesPossibilities;
 
@@ -447,6 +448,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void ActivateButtons()
     {
+        m_ActivitiesButton.color = new Color(255,255,255,1);
         m_Siguiente.SetActive(true);
         if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
             m_Repetir.SetActive(true);
@@ -545,5 +547,10 @@ public class GameManagerPuzzle : MonoBehaviour
             m_NumPiecesX = (int)Mathf.Sqrt(l_NumPieces);
             m_NumPiecesY = (int)Mathf.Sqrt(l_NumPieces) + 1;
         }
+    }
+
+    public void ReturnColor()
+    {
+        m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
     }
 }

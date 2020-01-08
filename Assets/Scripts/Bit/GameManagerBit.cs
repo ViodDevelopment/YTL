@@ -23,6 +23,7 @@ public class GameManagerBit : MonoBehaviour
 
     public GameObject m_Siguiente;
     public GameObject m_Repetir;
+    public Image m_ActivitiesButton;
     public bool repetir = false;
     public int numLastImage = 0;
     public bool repeating;
@@ -150,8 +151,14 @@ public class GameManagerBit : MonoBehaviour
 
     public void ActivateButtons()
     {
+        m_ActivitiesButton.color = new Color(255, 255, 255, 1);
         m_Siguiente.SetActive(true);
         if (m_CurrentNumRep <= GameManager.configurartion.repetitionsOfExercise)
             m_Repetir.SetActive(true);
+    }
+
+    public void ReturnColor()
+    {
+        m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
     }
 }
