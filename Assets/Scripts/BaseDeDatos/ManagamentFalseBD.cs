@@ -16,7 +16,6 @@ public class ManagamentFalseBD : MonoBehaviour
     private List<FraseBD> frasesGuardadas = new List<FraseBD>();
     private List<FraseBD> frasesUserGuardadas = new List<FraseBD>();
     private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration, nameRutePassword, nameRuteUser, nameRuteUserFrase;
-
     private void Awake()
     {
         GameObject go = GameObject.Find("ManagementFalsaBD");
@@ -48,88 +47,7 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.LoadConfig();
                 }
 
-
-                InitPalabrasPredeterminadas();
-                bool existente = true;
-                if (File.Exists(nameRute))
-                {
-                    management.LoadDates();
-
-                    #region si no tiene los datos minimos se los creamos
-                    List<bool> existe = new List<bool>();
-                    if (palabrasPredeterminadass.Count == GameManager.palabrasDisponibles.Count)
-                    {
-                        foreach (PalabraBD p in palabrasPredeterminadass)
-                        {
-                            existe.Add(false);
-                            foreach (PalabraBD w in GameManager.palabrasDisponibles)
-                            {
-                                if (p.palabraActual == w.palabraActual && p.color == w.color && p.image1 == w.image1)
-                                {
-                                    existe[existe.Count - 1] = true;
-                                    break;
-                                }
-                            }
-                        }
-
-
-                        foreach (bool b in existe)
-                        {
-                            if (!b)
-                            {
-                                existente = false;
-                                break;
-                            }
-                        }
-                    }
-                    else
-                        existente = false;
-                    #endregion
-                }
-                if (!File.Exists(nameRute) || !existente)
-                {
-                    management.SaveDates();
-                    management.LoadDates();
-                }
-
-                InitFrasesPredeterminadas();
-                bool existenteFrase = true;
-
-                if (File.Exists(nameRuteFrase))
-                {
-                    management.LoadDatesFrase();
-
-                    #region si no tiene los datos minimos se los creamos
-                    List<bool> existeFrase = new List<bool>();
-                    foreach (FraseBD p in frasesPredeterminadas)
-                    {
-                        existeFrase.Add(false);
-                        foreach (FraseBD w in frasesGuardadas)
-                        {
-                            if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
-                            {
-                                existeFrase[existeFrase.Count - 1] = true;
-                                break;
-                            }
-                        }
-                    }
-
-
-                    foreach (bool b in existeFrase)
-                    {
-                        if (!b)
-                        {
-                            existenteFrase = false;
-                            break;
-                        }
-                    }
-                    #endregion
-                }
-                if (!File.Exists(nameRuteFrase) || !existenteFrase)
-                {
-                    management.SaveDatesFrase();
-                    management.LoadDatesFrase();
-                }
+                StartCoroutine(CopyPalabrasBinaryToPersistentPath("PalabrasBinario.dat"));
 
                 if (File.Exists(nameRuteBolasMinijuegos))
                 {
@@ -168,13 +86,14 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void ReadCSV()
     {
-        if(File.Exists(Application.streamingAssetsPath + "/Actualizacion.csv"))
+        if (File.Exists(Application.streamingAssetsPath + "/Actualizacion.csv"))
         {
             if (File.Exists(Application.streamingAssetsPath + "/Palabras.csv"))
             {
                 File.Delete(Application.streamingAssetsPath + "/Palabras.csv");
                 File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
-            }else
+            }
+            else
                 File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
 
         }
@@ -301,12 +220,148 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void InitPalabrasPredeterminadas()
     {
-        ReadCSV();
+        bool existente = true;
+        if (File.Exists(nameRute))
+        {
+            management.LoadDates();
+
+            #region si no tiene los datos minimos se los creamos
+            List<bool> existe = new List<bool>();
+            if (palabrasPredeterminadass.Count == GameManager.palabrasDisponibles.Count)
+            {
+                foreach (PalabraBD p in palabrasPredeterminadass)
+                {
+                    existe.Add(false);
+                    foreach (PalabraBD w in GameManager.palabrasDisponibles)
+                    {
+                        if (p.palabraActual == w.palabraActual && p.color == w.color && p.image1 == w.image1)
+                        {
+                            existe[existe.Count - 1] = true;
+                            break;
+                        }
+                    }
+                }
+
+
+                foreach (bool b in existe)
+                {
+                    if (!b)
+                    {
+                        existente = false;
+                        break;
+                    }
+                }
+            }
+            else
+                existente = false;
+            #endregion
+        }
+        if (!File.Exists(nameRute) || !existente)
+        {
+            management.SaveDates();
+            management.LoadDates();
+        }
+
+        InitFrasesPredeterminadas();
+        bool existenteFrase = true;
+
+        if (File.Exists(nameRuteFrase))
+        {
+            management.LoadDatesFrase();
+
+            #region si no tiene los datos minimos se los creamos
+            List<bool> existeFrase = new List<bool>();
+            foreach (FraseBD p in frasesPredeterminadas)
+            {
+                existeFrase.Add(false);
+                foreach (FraseBD w in frasesGuardadas)
+                {
+                    if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
+                    {
+                        existeFrase[existeFrase.Count - 1] = true;
+                        break;
+                    }
+                }
+            }
+
+
+            foreach (bool b in existeFrase)
+            {
+                if (!b)
+                {
+                    existenteFrase = false;
+                    break;
+                }
+            }
+            #endregion
+        }
+        if (!File.Exists(nameRuteFrase) || !existenteFrase)
+        {
+            management.SaveDatesFrase();
+            management.LoadDatesFrase();
+        }
+    }
+
+    IEnumerator CopyPalabrasBinaryToPersistentPath(string fileName)
+    {
+        //Where to copy the db to
+        string dbDestination = Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat");
+
+        //Check if the File do not exist then copy it
+
+        //Where the db file is at
+        string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
+
+        byte[] result;
+
+        //Read the File from streamingAssets. Use WWW for Android
+        if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
+        {
+            WWW www = new WWW(dbStreamingAsset);
+            yield return www;
+            result = www.bytes;
+        }
+        else
+        {
+            result = File.ReadAllBytes(dbStreamingAsset);
+        }
+
+        //Create Directory if it does not exist
+        if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
+        }
+
+        //Copy the data to the persistentDataPath where the database API can freely access the file
+        File.WriteAllBytes(dbDestination, result);
+        Debug.Log("Copied palabras predeterminadas file");
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat")))
+        {
+            List<PalabraBD> palabras = new List<PalabraBD>();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat"), FileMode.Open);
+
+            DatesToSave datos = (DatesToSave)bf.Deserialize(file);
+            palabras = datos.GetListOfPalabras();
+
+            file.Close();
+
+
+            palabrasPredeterminadass.Clear();
+            foreach (PalabraBD p in palabras)
+            {
+                palabrasPredeterminadass.Add(p);
+            }
+
+        }
+ 
+
         foreach (PalabraBD p in palabrasPredeterminadass)
         {
             p.SeparateSilabas();
             p.SetPalabraActual();
         }
+        InitPalabrasPredeterminadas();
     }
 
     private void InitFrasesPredeterminadas()
@@ -591,7 +646,7 @@ public class ManagamentFalseBD : MonoBehaviour
 
 
 [Serializable]
-class DatesToSave
+public class DatesToSave
 {
     private List<PalabraBD> palabrasPredeterminadas = new List<PalabraBD>();
 
