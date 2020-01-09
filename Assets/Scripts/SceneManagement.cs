@@ -94,7 +94,7 @@ public class SceneManagement : MonoBehaviour
         //SceneManager.LoadScene("LoadingScene");
 
         if (_level == 1)
-            GameManager.loadingScene = 2;
+            SceneManager.LoadScene("Parejas");
         else if (_level == 2)
             GameManager.loadingScene = 8;
         else if (_level == 3)
@@ -106,7 +106,7 @@ public class SceneManagement : MonoBehaviour
         //SceneManager.LoadScene("LoadingScene");
 
         if (_level == 1)
-            GameManager.loadingScene = 3;
+            SceneManager.LoadScene("Puzzle");
         else if (_level == 2)
             GameManager.loadingScene = 11;
         else if (_level == 3)
@@ -115,10 +115,10 @@ public class SceneManagement : MonoBehaviour
 
     public void LoadBit(int _level)
     {
-       // SceneManager.LoadScene("LoadingScene");
+        //SceneManager.LoadScene("LoadingScene");
 
         if (_level == 1)
-            GameManager.loadingScene = 1;
+            SceneManager.LoadScene("Bit");
         else if (_level == 2)
             GameManager.loadingScene = 6;
         else if (_level == 3)

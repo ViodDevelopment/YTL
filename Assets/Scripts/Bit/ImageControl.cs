@@ -124,6 +124,7 @@ public class ImageControl : MonoBehaviour
                 otherImage--;
             else if (otherImage <= 0)
                 otherImage++;
+            else otherImage++;
         }
         /*while (otherImage == firstImage)
          {
