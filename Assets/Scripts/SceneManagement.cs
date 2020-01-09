@@ -86,7 +86,7 @@ public class SceneManagement : MonoBehaviour
 
     public void CameraScene()
     {
-        SceneManager.LoadScene(10);
+        SceneManager.LoadScene(6);
     }
 
     public void LoadParejas(int _level)

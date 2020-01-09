@@ -7,11 +7,19 @@ public class GetFromGallery : MonoBehaviour
 {
     public GameObject placeHolder, txtPlaceholder;
     Image img;
+
+    GameManager gm;
     
     // Start is called before the first frame update
     void Start()
     {
+        gm = GameManager.Instance;
         img = placeHolder.GetComponent<Image>();
+
+        if(gm.GetPhoto())
+        {
+           img.sprite =  MakeImgEven((Texture2D)gm.GetPhoto().texture);
+        }
     }
 
     // Update is called once per frame

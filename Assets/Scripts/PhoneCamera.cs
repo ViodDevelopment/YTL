@@ -12,13 +12,18 @@ public class PhoneCamera : MonoBehaviour
     public RawImage background;
     public AspectRatioFitter fit;
 
-    public RawImage newImage;
+    
 
     public Button buttonMakePhoto;
+
+    GameManager gm;
     // Start is called before the first frame update
     void Start()
     {
+       
+
         buttonMakePhoto.onClick.AddListener(delegate { TakePhoto(); });
+
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
 
@@ -70,7 +75,11 @@ public class PhoneCamera : MonoBehaviour
 
     void TakePhoto()
     {
-        newImage.texture = background.texture;
+        gm = GameManager.Instance;
+
+        gm.SetPhoto(background);
+
+     
     }
 
     

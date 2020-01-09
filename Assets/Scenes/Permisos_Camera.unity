@@ -858,3 +858,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   background: {fileID: 1813751491}
   fit: {fileID: 1813751490}
+  buttonMakePhoto: {fileID: 1033936302}
