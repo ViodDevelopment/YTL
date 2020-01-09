@@ -12,6 +12,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public Animation m_AnimationCenter;
     public Image m_ImageAnim;
     public Text m_TextAnim;
+    public List<Image> marcos = new List<Image>();
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
 
     List<GameObject> m_Words = new List<GameObject>();
@@ -205,16 +206,20 @@ public class GameManagerPuzzle : MonoBehaviour
                 break;
         }
 
+        foreach (Image i in marcos)
+        {
+            PonerColorMarco(palabraActual.color, i);
+        }
 
 
         m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
         WordInstantiation();
-        m_TextAnim.text = palabrasDisponibles[numRandom].palabraActual;
+        m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
         l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.sprite = palabraActual.GetSprite( palabraActual.image1);
+        m_ImageAnim.sprite = palabraActual.GetSprite(palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -448,7 +453,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void ActivateButtons()
     {
-        m_ActivitiesButton.color = new Color(255,255,255,1);
+        m_ActivitiesButton.color = new Color(255, 255, 255, 1);
         m_Siguiente.SetActive(true);
         if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
             m_Repetir.SetActive(true);
@@ -466,6 +471,9 @@ public class GameManagerPuzzle : MonoBehaviour
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
+        PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
+        PonerColorMarco(palabraActual.color, l_UnseenWord.transform.GetChild(1).GetComponent<Image>());
+
         m_Words.Add(l_Word);
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().canMove = false;
@@ -552,5 +560,12 @@ public class GameManagerPuzzle : MonoBehaviour
     public void ReturnColor()
     {
         m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
+    }
+    public void PonerColorMarco(string _color, Image _marco)
+    {
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(_color, out color);
+        _marco.color = color;
+
     }
 }

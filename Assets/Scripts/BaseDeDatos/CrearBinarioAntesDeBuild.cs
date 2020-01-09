@@ -12,8 +12,8 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //ReadCSV();
-        ReadCSVLite();
+        ReadCSV();
+        //ReadCSVLite();
         ConvertBinnary();
     }
     private void ReadCSVLite()

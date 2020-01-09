@@ -19,6 +19,8 @@ public class GameManagerParejas : MonoBehaviour
 
     public GameObject m_RealCanvas;
 
+    public List<Image> marcos = new List<Image>();
+
     [HideInInspector]
 
     public Animation m_Animation;
@@ -247,7 +249,7 @@ public class GameManagerParejas : MonoBehaviour
         {
             l_Pairs.Add(p);
             Random.InitState(Random.seed + 1);
-            switch(Random.Range(0,3))
+            switch (Random.Range(0, 3))
             {
                 case 0:
                     l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image1;
@@ -847,11 +849,16 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
+                        horizontal3Arriba[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
+
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         horizontal3Arriba[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(0).GetComponent<Image>());
+
                     }
 
                     else
@@ -862,11 +869,16 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
+                        horizontal3Arriba[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         horizontal3Arriba[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(0).GetComponent<Image>());
+
                     }
                     break;
 
@@ -880,11 +892,15 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
+                        horizontal4Arriba[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
+
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         horizontal4Arriba[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(0).GetComponent<Image>());
 
                     }
                     else
@@ -895,11 +911,16 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
+                        horizontal4Arriba[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         horizontal4Arriba[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(0).GetComponent<Image>());
+
                     }
                     break;
             }
@@ -918,11 +939,15 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
+                        vertical3Left[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
+
                         vertical3Left[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         vertical3Left[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(0).GetComponent<Image>());
 
                     }
                     else
@@ -933,11 +958,15 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
+                        vertical3Left[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
                         vertical3Left[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         vertical3Left[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(0).GetComponent<Image>());
 
                     }
                     break;
@@ -951,11 +980,15 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
+                        vertical4Left[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
+
                         vertical4Left[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         vertical4Left[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(0).GetComponent<Image>());
 
                     }
                     else
@@ -966,11 +999,16 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
+                        vertical4Left[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
                         vertical4Left[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
 
                         vertical4Left[_currentPair].SetActive(true);
+
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(0).GetComponent<Image>());
+
                     }
                     break;
             }
@@ -989,12 +1027,15 @@ public class GameManagerParejas : MonoBehaviour
                         horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         horizontal3Abajo[numJ].name = numJ.ToString();
                         horizontal3Abajo[numJ].SetActive(true);
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     else
                     {
                         horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         horizontal3Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal3Abajo[numJ].SetActive(true);
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(0).GetComponent<Image>());
+
                     }
                     break;
                 case 4:
@@ -1003,12 +1044,14 @@ public class GameManagerParejas : MonoBehaviour
                         horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         horizontal4Abajo[numJ].name = numJ.ToString();
                         horizontal4Abajo[numJ].SetActive(true);
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     else
                     {
                         horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         horizontal4Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal4Abajo[numJ].SetActive(true);
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     break;
             }
@@ -1025,12 +1068,15 @@ public class GameManagerParejas : MonoBehaviour
                         vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         vertical3Right[numJ].name = numJ.ToString();
                         vertical3Right[numJ].SetActive(true);
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     else
                     {
                         vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical3Right[numJ].SetActive(true);
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
+
                     }
                     break;
                 case 4:
@@ -1040,12 +1086,14 @@ public class GameManagerParejas : MonoBehaviour
                         vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
                         vertical4Right[numJ].name = numJ.ToString();
                         vertical4Right[numJ].SetActive(true);
+                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     else
                     {
                         vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
                         vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical4Right[numJ].SetActive(true);
+                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
                     }
                     break;
             }
@@ -1093,5 +1141,13 @@ public class GameManagerParejas : MonoBehaviour
     public void ReturnColor()
     {
         m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
+    }
+
+    public void PonerColorMarco(string _color, Image _marco)
+    {
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(_color, out color);
+        _marco.color = color;
+
     }
 }
