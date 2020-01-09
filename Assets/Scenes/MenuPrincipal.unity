@@ -26239,6 +26239,26 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -190
       objectReference: {fileID: 0}
+    - target: {fileID: 372331786880951944, guid: 05d8b5095308b0b469975f888ba148db,
+        type: 3}
+      propertyPath: m_ContentType
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 372331786880951944, guid: 05d8b5095308b0b469975f888ba148db,
+        type: 3}
+      propertyPath: m_KeyboardType
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 372331786880951944, guid: 05d8b5095308b0b469975f888ba148db,
+        type: 3}
+      propertyPath: m_CharacterValidation
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 372331786880951944, guid: 05d8b5095308b0b469975f888ba148db,
+        type: 3}
+      propertyPath: m_InputType
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 372331787522270166, guid: 05d8b5095308b0b469975f888ba148db,
         type: 3}
       propertyPath: m_IsActive
