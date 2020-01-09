@@ -81,7 +81,6 @@ public class GameManagerPuzzle : MonoBehaviour
             m_Points[i] = Instantiate(m_Point, m_CurrentSpawn.transform);
             m_Points[i].GetComponent<RectTransform>().anchoredPosition += new Vector2(m_Points[i].transform.position.x + (i * 75), 0);
         }
-        HowManyPieces(m_NumPieces);
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
@@ -91,6 +90,7 @@ public class GameManagerPuzzle : MonoBehaviour
         repeating = false;
         m_Completed = false;
         InicioPuzzle();
+
     }
 
     private void InitBaseOfDates()
@@ -166,12 +166,6 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void ImagesCollsInstantiation()
     {
-        RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
-        RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
-        float sizeX = -l_Colliders.sizeDelta.x / (m_NumPiecesX);
-        float sizeY = l_Colliders.sizeDelta.y / m_NumPiecesY;
-        float l_Width = l_Colliders.sizeDelta.x / (m_NumPiecesX);
-        float l_Height = l_Colliders.sizeDelta.y / m_NumPiecesY;
         int l_CurrentPiece = 0;
         int k = 0;
 
@@ -195,7 +189,17 @@ public class GameManagerPuzzle : MonoBehaviour
             }
         }
         palabraActual = palabrasDisponibles[numRandom];
-        int randomImage = Random.Range(0, 3);
+
+        m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
+        HowManyPieces(m_NumPieces);
+        RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
+        RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
+        float sizeX = -l_Colliders.sizeDelta.x / (m_NumPiecesX);
+        float sizeY = l_Colliders.sizeDelta.y / m_NumPiecesY;
+        float l_Width = l_Colliders.sizeDelta.x / (m_NumPiecesX);
+        float l_Height = l_Colliders.sizeDelta.y / m_NumPiecesY;
+
+        int randomImage = palabraActual.imagePuzzle - 1;
         switch (randomImage)
         {
             case 1:
@@ -340,7 +344,6 @@ public class GameManagerPuzzle : MonoBehaviour
 
                 while (l_Numbers.Contains(l_Number))
                 {
-                    print(l_Number);
                     l_Number = Random.Range(0, m_NumPieces);
                 }
 

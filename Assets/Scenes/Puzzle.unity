@@ -1027,6 +1027,10 @@ MonoBehaviour:
   m_AnimationCenter: {fileID: 3973381}
   m_ImageAnim: {fileID: 1063664160}
   m_TextAnim: {fileID: 1681611315}
+  marcos:
+  - {fileID: 2123195556}
+  - {fileID: 2001564947}
+  - {fileID: 2146511323}
   m_Scener: {fileID: 1618241205}
   m_ImageTemplate: {fileID: 7736469374024194581, guid: 1a6d43be7dae84c429ddc5ccc4adf93b,
     type: 3}
@@ -1277,6 +1281,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 609631330}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2001564947 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8652956091669230081, guid: 0fa924cdc97b37044bdb6721d7ae4d72,
+    type: 3}
+  m_PrefabInstance: {fileID: 609631330}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2102864814
 GameObject:
   m_ObjectHideFlags: 0
