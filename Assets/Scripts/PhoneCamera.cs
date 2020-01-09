@@ -11,22 +11,27 @@ public class PhoneCamera : MonoBehaviour
 
     public RawImage background;
     public AspectRatioFitter fit;
+
+    public RawImage newImage;
+
+    public Button buttonMakePhoto;
     // Start is called before the first frame update
     void Start()
     {
+        buttonMakePhoto.onClick.AddListener(delegate { TakePhoto(); });
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
 
-        if(devices.Length == 0)
+        if (devices.Length == 0)
         {
             Debug.Log("No camera detected");
             camAvaliable = false;
             return;
         }
 
-        for(int i = 0; i < devices.Length; i++)
+        for (int i = 0; i < devices.Length; i++)
         {
-            if(!devices[i].isFrontFacing)
+            if (!devices[i].isFrontFacing)
             {
                 backCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
 
@@ -34,7 +39,7 @@ public class PhoneCamera : MonoBehaviour
 
         }
 
-        if(backCam == null)
+        if (backCam == null)
         {
             Debug.Log("Unable to find back camera");
             return;
@@ -60,5 +65,13 @@ public class PhoneCamera : MonoBehaviour
 
         int orient = -backCam.videoRotationAngle;
         background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+
     }
+
+    void TakePhoto()
+    {
+        newImage.texture = background.texture;
+    }
+
+    
 }
