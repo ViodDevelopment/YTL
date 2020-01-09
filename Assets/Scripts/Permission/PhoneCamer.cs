@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using System.Data;
 using System.IO;
 
-public class PhoneCamera : MonoBehaviour
+public class PhoneCamer : MonoBehaviour
 {
 
     private bool m_CamAvaible;
