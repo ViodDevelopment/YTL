@@ -42,7 +42,7 @@ public class MinijuegoBurbujas : MonoBehaviour
                 //Instantiate(m_Globo, m_Spawn.transform.position + new Vector3(Random.Range(-7, 7), Random.Range(-0.5f, 0.5f), 0), Quaternion.identity);
                 Instantiate(m_Burbuja, m_Spawn.transform.position, Quaternion.identity);
                 m_TimeToSpawn = 0;
-                m_TimeToNext = Random.Range(0.75f, 1f);
+                m_TimeToNext = Random.Range(0.25f, 0.75f);
             }
             else
                 m_TimeToSpawn += Time.deltaTime;

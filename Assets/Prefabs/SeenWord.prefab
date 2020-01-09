@@ -262,7 +262,7 @@ MonoBehaviour:
   m_PieceLocked: 0
   Word: 1
   canMove: 0
-  mainImage: {fileID: 8652956091669230081}
+  marco: {fileID: 8652956091669230081}
   fondoImage: {fileID: 1427031128015536643}
   text: {fileID: 8652956090537760681}
 --- !u!1 &8652956091669230083

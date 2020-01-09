@@ -12,6 +12,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public Animation m_AnimationCenter;
     public Image m_ImageAnim;
     public Text m_TextAnim;
+    public List<Image> marcos = new List<Image>();
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
 
     List<GameObject> m_Words = new List<GameObject>();
@@ -80,7 +81,6 @@ public class GameManagerPuzzle : MonoBehaviour
             m_Points[i] = Instantiate(m_Point, m_CurrentSpawn.transform);
             m_Points[i].GetComponent<RectTransform>().anchoredPosition += new Vector2(m_Points[i].transform.position.x + (i * 75), 0);
         }
-        HowManyPieces(m_NumPieces);
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
@@ -90,6 +90,7 @@ public class GameManagerPuzzle : MonoBehaviour
         repeating = false;
         m_Completed = false;
         InicioPuzzle();
+
     }
 
     private void InitBaseOfDates()
@@ -165,12 +166,6 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void ImagesCollsInstantiation()
     {
-        RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
-        RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
-        float sizeX = -l_Colliders.sizeDelta.x / (m_NumPiecesX);
-        float sizeY = l_Colliders.sizeDelta.y / m_NumPiecesY;
-        float l_Width = l_Colliders.sizeDelta.x / (m_NumPiecesX);
-        float l_Height = l_Colliders.sizeDelta.y / m_NumPiecesY;
         int l_CurrentPiece = 0;
         int k = 0;
 
@@ -194,7 +189,17 @@ public class GameManagerPuzzle : MonoBehaviour
             }
         }
         palabraActual = palabrasDisponibles[numRandom];
-        int randomImage = Random.Range(0, 3);
+
+        m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
+        HowManyPieces(m_NumPieces);
+        RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
+        RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
+        float sizeX = -l_Colliders.sizeDelta.x / (m_NumPiecesX);
+        float sizeY = l_Colliders.sizeDelta.y / m_NumPiecesY;
+        float l_Width = l_Colliders.sizeDelta.x / (m_NumPiecesX);
+        float l_Height = l_Colliders.sizeDelta.y / m_NumPiecesY;
+
+        int randomImage = palabraActual.imagePuzzle - 1;
         switch (randomImage)
         {
             case 1:
@@ -205,16 +210,20 @@ public class GameManagerPuzzle : MonoBehaviour
                 break;
         }
 
+        foreach (Image i in marcos)
+        {
+            PonerColorMarco(palabraActual.color, i);
+        }
 
 
         m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
         WordInstantiation();
-        m_TextAnim.text = palabrasDisponibles[numRandom].palabraActual;
+        m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
         l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.sprite = palabraActual.GetSprite( palabraActual.image1);
+        m_ImageAnim.sprite = palabraActual.GetSprite(palabraActual.image1);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -335,7 +344,6 @@ public class GameManagerPuzzle : MonoBehaviour
 
                 while (l_Numbers.Contains(l_Number))
                 {
-                    print(l_Number);
                     l_Number = Random.Range(0, m_NumPieces);
                 }
 
@@ -448,7 +456,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void ActivateButtons()
     {
-        m_ActivitiesButton.color = new Color(255,255,255,1);
+        m_ActivitiesButton.color = new Color(255, 255, 255, 1);
         m_Siguiente.SetActive(true);
         if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
             m_Repetir.SetActive(true);
@@ -466,6 +474,9 @@ public class GameManagerPuzzle : MonoBehaviour
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
+        PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
+        PonerColorMarco(palabraActual.color, l_UnseenWord.transform.GetChild(1).GetComponent<Image>());
+
         m_Words.Add(l_Word);
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
         m_Words[m_Words.Count - 1].GetComponent<MoveTouch>().canMove = false;
@@ -552,5 +563,12 @@ public class GameManagerPuzzle : MonoBehaviour
     public void ReturnColor()
     {
         m_ActivitiesButton.color = new Color(255, 255, 255, 0.5f);
+    }
+    public void PonerColorMarco(string _color, Image _marco)
+    {
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(_color, out color);
+        _marco.color = color;
+
     }
 }

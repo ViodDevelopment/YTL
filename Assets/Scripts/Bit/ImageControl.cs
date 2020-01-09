@@ -99,7 +99,6 @@ public class ImageControl : MonoBehaviour
         m_Animation = GetComponent<Animation>();
         firstImage = Random.Range(0, 3);
 
-
         switch (firstImage)
         {
             case 0:
@@ -118,14 +117,21 @@ public class ImageControl : MonoBehaviour
 
         int otherImage = Random.Range(0, 3);
 
-        if (otherImage == firstImage)
+        int contador = 0;
+        while(otherImage == firstImage && contador <= 99999)
+        {
+            contador++;
+            Random.InitState(Random.seed + Random.Range(-5,5));
+            otherImage = Random.Range(0, 3);
+        }
+        /*if (otherImage == firstImage)
         {
             if (otherImage >= 2)
                 otherImage--;
             else if (otherImage <= 0)
                 otherImage++;
             else otherImage++;
-        }
+        }*/
         /*while (otherImage == firstImage)
          {
              Random.InitState(Random.seed + 1);

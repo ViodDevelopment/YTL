@@ -546,6 +546,9 @@ MonoBehaviour:
   m_Scener: {fileID: 2063976664}
   m_Canvas: {fileID: 96899077}
   m_RealCanvas: {fileID: 96899077}
+  marcos:
+  - {fileID: 7081414336503434274}
+  - {fileID: 7081414335940727099}
   m_Animation: {fileID: 0}
   m_ImageZoom: {fileID: 431479408485075425}
   m_ImageZoomed: {fileID: 7081414336055826275}
