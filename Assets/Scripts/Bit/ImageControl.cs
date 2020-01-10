@@ -151,6 +151,8 @@ public class ImageControl : MonoBehaviour
                 break;
         }
 
+        m_GMBit.textoPrueba.text = firstImage + " " + " --> " + otherImage + " " + contador + " " + palabrasDisponibles[l_Number].image1 + " " + palabrasDisponibles[l_Number].image2 + " " + palabrasDisponibles[l_Number].image3;
+
         m_Text.text = palabrasDisponibles[l_Number].palabraActual;
         SearchFont();
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);

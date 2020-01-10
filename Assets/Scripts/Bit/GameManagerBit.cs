@@ -27,6 +27,7 @@ public class GameManagerBit : MonoBehaviour
     public bool repetir = false;
     public int numLastImage = 0;
     public bool repeating;
+    public Text textoPrueba;
 
     public static int m_Alea = 0;
 
