@@ -13,7 +13,7 @@ public class ScaleProportion : MonoBehaviour
         Height = Camera.main.scaledPixelHeight;
         Width = Camera.main.pixelWidth;
         print(Mathf.Round(Width / Height * 100));
-        if (Mathf.Round(Width / Height * 100) == Mathf.Round(4f / 3f * 100))
+        if (Mathf.Round(Width / Height * 100) < Mathf.Round(1.5f * 100))
         {
             for (int i = 0; i < Objetos.Count; i++)
             {
