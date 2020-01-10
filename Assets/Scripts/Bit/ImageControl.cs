@@ -15,6 +15,7 @@ public class ImageControl : MonoBehaviour
     public List<Texture2D> m_ImagesPool = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
     public List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
+    private string imageAPoner = "";
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public List<Image> marcos = new List<Image>();
     private int firstImage = 0;
@@ -88,7 +89,6 @@ public class ImageControl : MonoBehaviour
                     Random.InitState(Random.seed + 1);
             }
         }
-
         Color color = new Color();
         foreach (Image i in marcos)
         {
@@ -97,6 +97,8 @@ public class ImageControl : MonoBehaviour
         }
 
         m_Animation = GetComponent<Animation>();
+
+        Random.InitState(Random.seed + Random.Range(-5, 5));
         firstImage = Random.Range(0, 3);
 
         switch (firstImage)
@@ -110,11 +112,9 @@ public class ImageControl : MonoBehaviour
             case 2:
                 m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
                 break;
-            default:
-                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
-                break;
         }
 
+        Random.InitState(Random.seed + Random.Range(-5, 5));
         int otherImage = Random.Range(0, 3);
 
         int contador = 0;
@@ -148,9 +148,6 @@ public class ImageControl : MonoBehaviour
                 break;
             case 2:
                 m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
-                break;
-            default:
-                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
                 break;
         }
 
