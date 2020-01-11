@@ -503,7 +503,10 @@ public class ManagamentFalseBD : MonoBehaviour
         PointsOfMinigames datos = (PointsOfMinigames)bf.Deserialize(file);
         for (int i = 0; i < GameManager.m_CurrentToMinigame.Count; i++)
         {
-            GameManager.m_CurrentToMinigame[i] = datos.bolasMinijuegos[i];
+            if (datos.bolasMinijuegos.Count - 1 < i)
+                GameManager.m_CurrentToMinigame[i] = 0;
+            else
+                GameManager.m_CurrentToMinigame[i] = datos.bolasMinijuegos[i];
         }
 
         GameManager.currentMiniGame = datos.currentMiniGame;

@@ -247,7 +247,9 @@ public class GameManagerParejas : MonoBehaviour
 
         foreach (PalabraBD p in listOfPalabras)
         {
-            l_Pairs.Add(p);
+            PalabraBD pal = new PalabraBD();
+            CopyWords(p, ref pal);
+            l_Pairs.Add(pal);
             Random.InitState(Random.seed + 1);
             switch (Random.Range(0, 3))
             {
@@ -262,7 +264,6 @@ public class GameManagerParejas : MonoBehaviour
                     break;
             }
         }
-
 
         List<PalabraBD> l_SecondPair = new List<PalabraBD>();
 
@@ -450,7 +451,9 @@ public class GameManagerParejas : MonoBehaviour
 
             foreach (PalabraBD p in listOfPalabras)
             {
-                l_Pairs.Add(p);
+                PalabraBD pal = new PalabraBD();
+                CopyWords(p, ref pal);
+                l_Pairs.Add(pal);
                 Random.InitState(Random.seed + 1);
                 switch (Random.Range(0, 3))
                 {
@@ -1098,6 +1101,16 @@ public class GameManagerParejas : MonoBehaviour
                     break;
             }
         }
+    }
+
+    private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
+    {
+        palabra.image1 = toCopy.image1;
+        palabra.image2 = toCopy.image2;
+        palabra.image3 = toCopy.image3;
+        palabra.audio = toCopy.audio;
+        palabra.palabraActual = toCopy.palabraActual;
+        palabra.color = toCopy.color;
     }
 
 
