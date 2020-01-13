@@ -15,6 +15,8 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject AccesToConf;
 
+    public GameObject CameraCanvas;
+
     public GameObject ConfiguracionPestaña;
 
     public GameObject[] AllCanvas;
@@ -62,6 +64,12 @@ public class SceneManagement : MonoBehaviour
     {
         DisableAllCanvas();
         ConfCanvas.SetActive(true);
+    }
+
+    public void CanvasCamera()
+    {
+        DisableAllCanvas();
+        CameraCanvas.SetActive(true);
     }
 
     public void AccesToConfiguration()
