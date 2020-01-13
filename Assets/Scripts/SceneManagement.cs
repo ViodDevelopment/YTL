@@ -66,6 +66,16 @@ public class SceneManagement : MonoBehaviour
         ConfCanvas.SetActive(true);
     }
 
+    public void AddWordCanvas()
+    {
+        DisableAllCanvas();
+        ConfCanvas.SetActive(true);
+
+        ConfCanvas.transform.Find("ConfPestaña").gameObject.SetActive(false);
+        ConfCanvas.transform.Find("AñadirPalabra").gameObject.SetActive(true);
+    }
+
+
     public void CanvasCamera()
     {
         DisableAllCanvas();
