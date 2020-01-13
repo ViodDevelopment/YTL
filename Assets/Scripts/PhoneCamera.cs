@@ -15,7 +15,7 @@ public class PhoneCamera : MonoBehaviour
 
     
 
-    public Button buttonMakePhoto;
+    public Button buttonMakePhoto, buttonCancel;
 
     GameManager gm;
     // Start is called before the first frame update
@@ -24,6 +24,7 @@ public class PhoneCamera : MonoBehaviour
        
 
         buttonMakePhoto.onClick.AddListener(delegate { TakePhoto(); });
+        buttonCancel.onClick.AddListener(delegate { CancelPhoto(); });
 
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
@@ -81,8 +82,21 @@ public class PhoneCamera : MonoBehaviour
 
         gm.SetPhoto(background);
 
-        SceneManager.LoadScene(0);
+        try{
+            backCam.Stop();
+        }
+        catch { Debug.Log("Couldn't stop the camera"); }
     }
 
-    
+    void CancelPhoto()
+    {
+
+        try
+        {
+            backCam.Stop();
+        }
+        catch { Debug.Log("Couldn't stop the camera"); }
+    }
+
+
 }
