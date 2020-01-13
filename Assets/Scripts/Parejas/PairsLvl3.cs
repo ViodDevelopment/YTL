@@ -9,6 +9,7 @@ public class PairsLvl3 : MonoBehaviour
     bool m_PieceClicked = false;
     public OnlyOneManager managerOnlyOne;
     public string nombre = "";
+    public string color = "";
     public AudioClip audioClip;
     private Image myImage;
     private bool dentro = false;
@@ -212,6 +213,12 @@ public class PairsLvl3 : MonoBehaviour
                     this.transform.position = colision.gameObject.transform.position;
                     m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
                     m_GameManagerParejas.m_TextZoomed.text = nombre;
+
+                    foreach (Image i in m_GameManagerParejas.marcos)
+                    {
+                        m_GameManagerParejas.PonerColorMarco(color, i);
+                    }
+
                     if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                         m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f; m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
                     if (!audioSource.isPlaying)
