@@ -995,6 +995,9 @@ MonoBehaviour:
   dumi: {fileID: 1126377519121047965, guid: 7a6b15df706bddf47879b651c973e249, type: 3}
   m_Scener: {fileID: 2063976664}
   m_Canvas: {fileID: 96899077}
+  marcos:
+  - {fileID: 7081414336503434274}
+  - {fileID: 7081414335940727099}
   m_RealCanvas: {fileID: 96899077}
   m_Animation: {fileID: 0}
   m_ImageZoom: {fileID: 431479408485075425}
@@ -4540,7 +4543,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1749789762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4548,17 +4551,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749789761}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.988, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -0.0030519927}
+  m_LocalScale: {x: 1, y: 0.98800004, z: 1}
   m_Children: []
-  m_Father: {fileID: 7081414336503434275}
+  m_Father: {fileID: 4565080471537044262}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1.7999878, y: -1.199997}
-  m_SizeDelta: {x: -20.3, y: -26.4}
+  m_AnchoredPosition: {x: 1.7999878, y: -340.2}
+  m_SizeDelta: {x: 410.7, y: 71.600006}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1749789763
 MonoBehaviour:
@@ -5459,6 +5462,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!4 &2063976665
@@ -5587,7 +5592,7 @@ RectTransform:
   m_Children:
   - {fileID: 7081414336055826276}
   m_Father: {fileID: 4565080471537044262}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5605,6 +5610,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 50}
   m_LocalScale: {x: 0.12999, y: 0.12999, z: 0.12999}
   m_Children:
+  - {fileID: 1749789762}
   - {fileID: 7081414336503434275}
   - {fileID: 523517688728292846}
   - {fileID: 7081414335940727100}
@@ -5644,7 +5650,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ebb49b755c3c9734d83368a2f677f2af, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 942bc63c1c82de0459230f26f79069d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5665,7 +5671,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4565080471537044262}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5818,7 +5824,7 @@ RectTransform:
   m_LocalScale: {x: 0.31507248, y: 0.31507248, z: 0.31507248}
   m_Children: []
   m_Father: {fileID: 7081414336503434275}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -5889,7 +5895,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 7f8d5b3db37e3734bbe0a68e1c8a7ed2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2d85478ac51a1d41a20768f27581d01, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -5909,10 +5915,9 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1749789762}
   - {fileID: 7081414336341522810}
   m_Father: {fileID: 4565080471537044262}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
