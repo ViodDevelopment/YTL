@@ -16,10 +16,7 @@ public class GetFromGallery : MonoBehaviour
         gm = GameManager.Instance;
         img = placeHolder.GetComponent<Image>();
 
-        if(gm.GetPhoto())
-        {
-           img.sprite =  MakeImgEven((Texture2D)gm.GetPhoto().texture);
-        }
+       
     }
 
     // Update is called once per frame
@@ -51,6 +48,14 @@ public class GetFromGallery : MonoBehaviour
         Debug.Log("Permission result: " + permission);
     }
 
+    void SetPhotoFromCamera()
+    {
+        if (gm.PhotoFromCam)
+        {
+            img.sprite = MakeImgEven((Texture2D)gm.PhotoFromCam.texture);
+            txtPlaceholder.SetActive(false);
+        }
+    }
     Sprite MakeImgEven(Texture2D tex)
     {
         int maxSize, offset;
@@ -74,4 +79,6 @@ public class GetFromGallery : MonoBehaviour
 
         
     }
+
+    
 }

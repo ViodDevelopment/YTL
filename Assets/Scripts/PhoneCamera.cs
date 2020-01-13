@@ -80,7 +80,7 @@ public class PhoneCamera : MonoBehaviour
     {
         gm = GameManager.Instance;
 
-        gm.SetPhoto(background);
+        gm.PhotoFromCam = background;
 
         try{
             backCam.Stop();

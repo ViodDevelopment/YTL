@@ -47,8 +47,8 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int m_BitLevel = 1;
 
-    [HideInInspector]
-    public static RawImage PhotoFromCam;
+    //[HideInInspector]
+    public RawImage PhotoFromCam;
 
     void Awake()
     {
@@ -93,15 +93,7 @@ public class GameManager : MonoBehaviour
         ManagamentFalseBD.management.SaveBolasMinijuegos();
     }
 
-    public void SetPhoto(RawImage img)
-    {
-        PhotoFromCam = img;
-    }
-
-    public RawImage GetPhoto()
-    {
-        return PhotoFromCam;
-    }
+   
 
     public static void ResetPointToMinigame(int _numOfMinigame)
     {

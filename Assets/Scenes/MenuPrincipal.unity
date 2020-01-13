@@ -5708,6 +5708,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 450970292}
   m_CullTransparentMesh: 0
+--- !u!114 &456817257 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+    type: 3}
+  m_PrefabInstance: {fileID: 659167278}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &458385642
 GameObject:
   m_ObjectHideFlags: 0
@@ -8021,6 +8033,71 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1657563399}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddWordCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1657563399}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddWordCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426683577274670, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: buttonCancel
+      value: 
+      objectReference: {fileID: 456817257}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd25e86efba95846979a6586d6ce845, type: 3}
 --- !u!1 &659167279 stripped
@@ -19964,6 +20041,7 @@ MonoBehaviour:
   - {fileID: 1161951823}
   - {fileID: 592734746}
   - {fileID: 2099629308}
+  - {fileID: 659167279}
 --- !u!4 &1657563400
 Transform:
   m_ObjectHideFlags: 0
@@ -21178,6 +21256,7 @@ MonoBehaviour:
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
+  PhotoFromCam: {fileID: 0}
 --- !u!4 &1748085819
 Transform:
   m_ObjectHideFlags: 0
