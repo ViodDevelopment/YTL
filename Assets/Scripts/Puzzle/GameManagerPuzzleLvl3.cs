@@ -466,7 +466,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             GameObject l_Word = Instantiate(palabraPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = frasesDisponibles[numRandom].palabras[i].palabraActual;
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
-            l_Word.name = frasesDisponibles[numRandom].palabras[i].palabraActual;
+            l_Word.name = fraseActual.palabras[i].palabraActual;
             l_Word.GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl3>().canMove = false;
             l_Word.SetActive(false);
@@ -476,18 +476,12 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 if(go.name == l_Word.name)
                 {
                     l_Word.gameObject.transform.localScale = go.transform.localScale;
-                    l_Word.gameObject.GetComponentInChildren<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
+                    l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
+                    l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
+                    CambiarRecuadroDependiendoDePalabra(l_Word.gameObject.transform.GetChild(1).GetComponent<Image>(), fraseActual.palabras[i].color);
                 }
             }
             m_Words.Add(l_Word);
-
-            /* Vector3 position = SearchPosition(m_UnseenWordTransform, i);
-             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
-             l_UnseenWord.transform.position += position;
-             l_UnseenWord.GetComponentInChildren<Text>().text = frasesDisponibles[numRandom].palabras[i].palabraActual;
-             l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
-             l_UnseenWord.name = frasesDisponibles[numRandom].palabras[i].palabraActual;*/
-            // m_Words.Add(l_UnseenWord);
         }
     }
 
@@ -660,17 +654,28 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             rectanglesInScene[rectanglesInScene.Count - 1].transform.localScale = new Vector3(0.5f,0.5f,0.5f);
             rectanglesInScene[rectanglesInScene.Count - 1].name = p.palabraActual;
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
-            imagen = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Image>();
+            imagen = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(1).GetComponent<Image>();
+            Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             texto.text = p.palabraActual;
             rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<ConvertFont>().Convert();
             imagen.gameObject.transform.localScale = new Vector3(0.25f,0.6f,0.6f);
+            fondo.gameObject.transform.localScale = new Vector3(0.25f, 0.6f, 0.6f);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+            }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
+            }
             else
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
-                
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+            }
+
 
             CambiarRecuadroDependiendoDePalabra(imagen, p.color);
 
