@@ -1109,6 +1109,8 @@ public class GameManagerParejas : MonoBehaviour
         palabra.image2 = toCopy.image2;
         palabra.image3 = toCopy.image3;
         palabra.audio = toCopy.audio;
+        palabra.imagePuzzle = toCopy.imagePuzzle;
+        palabra.piecesPuzzle = toCopy.piecesPuzzle;
         palabra.palabraActual = toCopy.palabraActual;
         palabra.color = toCopy.color;
     }

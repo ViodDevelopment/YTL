@@ -24,7 +24,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public GameObject m_ImagesSpawn;
     public GameObject m_Canvas;
 
-    private PalabraBD palabraActual;
+    private PalabraBD palabraActual = new PalabraBD();
     Texture2D m_ImagePuzzle;
     public GameObject m_Word;
     public Transform m_WordTransform;
@@ -97,10 +97,21 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.image1 != "")
+
+            switch(p.imagePuzzle)
             {
-                if (p.GetSprite(p.image1) != null)
-                    palabrasDisponibles.Add(p);
+                case 1:
+                    if (p.GetSprite(p.image1) != null)
+                        palabrasDisponibles.Add(p);
+                    break;
+                case 2:
+                    if (p.GetSprite(p.image2) != null)
+                        palabrasDisponibles.Add(p);
+                    break;
+                case 3:
+                    if (p.GetSprite(p.image3) != null)
+                        palabrasDisponibles.Add(p);
+                    break;
             }
         }
     }
@@ -189,7 +200,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     same = false;
             }
         }
-        palabraActual = palabrasDisponibles[numRandom];
+        CopyWords(palabrasDisponibles[numRandom], ref palabraActual);
 
         Random.InitState(Random.seed + Random.Range(-5, 5));
         m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
@@ -574,4 +585,16 @@ public class GameManagerPuzzle : MonoBehaviour
         _marco.color = color;
 
     }
+    private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
+    {
+        palabra.image1 = toCopy.image1;
+        palabra.image2 = toCopy.image2;
+        palabra.image3 = toCopy.image3;
+        palabra.audio = toCopy.audio;
+        palabra.imagePuzzle = toCopy.imagePuzzle;
+        palabra.piecesPuzzle = toCopy.piecesPuzzle;
+        palabra.palabraActual = toCopy.palabraActual;
+        palabra.color = toCopy.color;
+    }
+
 }

@@ -47,12 +47,12 @@ public class BitLvl2 : MonoBehaviour
         {
             if (levelBit == 2)
             {
-                if (f.dificultad == 0)
+                if (f.dificultad == 0)//cambiar esto
                     frasesDisponibles.Add(f);
             }
             else
             {
-                if (f.dificultad == 1)
+                if (f.dificultad == 0)//cambiar esto
                     frasesDisponibles.Add(f);
             }
         }
@@ -179,19 +179,27 @@ public class BitLvl2 : MonoBehaviour
 
             rectanglesInScene[rectanglesInScene.Count - 1].transform.parent = m_GMBit.m_NewFrasePosition.transform;
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
-            imagen = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Image>();
+            imagen = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(1).GetComponent<Image>();
+            Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             texto.text = p.palabraActual;
             SearchFont(texto);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
-
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+            }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+            }
             else
+            {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+            }
 
-
-            CambiarRecuadroDependiendoDePalabra(imagen, p);
+            CambiarRecuadroDependiendoDePalabra(imagen, p.color);
 
             rectanglesInScene[rectanglesInScene.Count - 1].SetActive(false);
             texto = null;
@@ -202,36 +210,11 @@ public class BitLvl2 : MonoBehaviour
 
     }
 
-    private void CambiarRecuadroDependiendoDePalabra(Image _imagen, PalabraBD _palabra)
+    private void CambiarRecuadroDependiendoDePalabra(Image _imagen, string _color)
     {
-        switch (_palabra.color)/////////CAMBIAR LOS COLORES POR HEXADECIMAL
-        {
-            case "Adjetivo":
-                _imagen.sprite = listOfRectangles[0];
-                break;
-            case "Adverbio":
-                _imagen.sprite = listOfRectangles[1];
-                break;
-            case "Conjuncion":
-                _imagen.sprite = listOfRectangles[2];
-                break;
-            case "Determinante":
-                _imagen.sprite = listOfRectangles[3];
-                break;
-            case "Nombre":
-                _imagen.sprite = listOfRectangles[4];
-                break;
-            case "Preposicion":
-                _imagen.sprite = listOfRectangles[5];
-                break;
-            case "Verbo":
-                _imagen.sprite = listOfRectangles[6];
-                break;
-            case "Pronombre":
-                _imagen.sprite = listOfRectangles[7];
-                break;
-
-        }
+            Color color = new Color();
+            ColorUtility.TryParseHtmlString(_color, out color);
+            _imagen.color = color;
     }
 
 

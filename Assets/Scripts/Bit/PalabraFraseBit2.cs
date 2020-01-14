@@ -33,7 +33,6 @@ public class PalabraFraseBit2 : MonoBehaviour
             else if(!bit.m_AS.isPlaying)
                 DoingCosas();
 
-
         }
     }
 
@@ -58,7 +57,39 @@ public class PalabraFraseBit2 : MonoBehaviour
                 doingAnimation = false;
             }else
             {
-                if (!doingAnimation && timer >= Random.Range(0.2f, 2))
+                if (GameManager.configurartion.ayudaVisual)
+                {
+                    if (!doingAnimation && timer >= Random.Range(0.75f, 2))
+                    {
+                        doingAnimation = true;
+                        timer = 0;
+                    }
+                    else if (doingAnimation && timer <= 1)
+                    {
+                        if (timer <= 0.5f)
+                        {
+                            gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                        }
+                        else
+                        {
+                            gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
+                        }
+                    }
+                    else if (doingAnimation && timer > 1)
+                    {
+                        timer = 0;
+                        doingAnimation = false;
+                        gameObject.transform.localScale = scaleOriginal;
+                    }
+                }
+            }
+
+        }
+        else
+        {
+            if (GameManager.configurartion.ayudaVisual)
+            {
+                if (!doingAnimation && timer >= Random.Range(0.75f, 2))
                 {
                     doingAnimation = true;
                     timer = 0;
@@ -80,32 +111,6 @@ public class PalabraFraseBit2 : MonoBehaviour
                     doingAnimation = false;
                     gameObject.transform.localScale = scaleOriginal;
                 }
-            }
-
-        }
-        else
-        {
-            if (!doingAnimation && timer >= Random.Range(0.2f, 2))
-            {
-                doingAnimation = true;
-                timer = 0;
-            }
-            else if (doingAnimation && timer <= 1)
-            {
-                if (timer <= 0.5f)
-                {
-                    gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                }
-                else
-                {
-                    gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                }
-            }
-            else if (doingAnimation && timer > 1)
-            {
-                timer = 0;
-                doingAnimation = false;
-                gameObject.transform.localScale = scaleOriginal;
             }
         }
     }

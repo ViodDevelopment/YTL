@@ -88,6 +88,16 @@ public class FraseBD
         }
     }
 
+    public Sprite GetSprite(string _name)
+    {
+        return Resources.Load<Sprite>("images/Version1.0/Frase/" + _name); 
+    }
+
+    public Texture2D GetTexture2D(string _name)
+    {
+        return Resources.Load<Texture2D>("images/Version1.0/Frase/" + _name);
+    }
+
     public AudioClip GetAudioClip(string _audio)
     {
         string completeRute = "";
