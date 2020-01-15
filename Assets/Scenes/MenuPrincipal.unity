@@ -7918,6 +7918,36 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1657563399}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AddWordCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5487426684581158475, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8063,35 +8093,30 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 1657563399}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: AddWordCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 5487426684656808911, guid: cdd25e86efba95846979a6586d6ce845,
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 5487426683577274670, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
@@ -9532,6 +9557,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   placeHolder: {fileID: 540631408}
   txtPlaceholder: {fileID: 1258025965}
+  photoAvaliable: 0
 --- !u!1 &800353579
 GameObject:
   m_ObjectHideFlags: 0
@@ -21019,6 +21045,17 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 779465069}
+        m_MethodName: SetPhotoAvaliable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null

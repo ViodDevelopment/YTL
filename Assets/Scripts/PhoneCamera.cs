@@ -13,7 +13,7 @@ public class PhoneCamera : MonoBehaviour
     public RawImage background;
     public AspectRatioFitter fit;
 
-    
+    bool wasActive;
 
     public Button buttonMakePhoto, buttonCancel;
 
@@ -26,6 +26,52 @@ public class PhoneCamera : MonoBehaviour
         buttonMakePhoto.onClick.AddListener(delegate { TakePhoto(); });
         buttonCancel.onClick.AddListener(delegate { CancelPhoto(); });
 
+        ReloadCam();
+ 
+    }
+
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (!camAvaliable) return;
+
+        float ratio = (float)backCam.width / (float)backCam.height;
+        fit.aspectRatio = ratio;
+
+        float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
+        background.rectTransform.localScale = new Vector3(1f, scaleY, 1f);
+
+        int orient = -backCam.videoRotationAngle;
+        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
+
+    }
+
+    void TakePhoto()
+    {
+        gm = GameManager.Instance;
+
+        gm.PhotoFromCam = background.texture;
+
+        //try
+        //{
+        //    backCam.Stop();
+        //}
+        //catch { Debug.Log("Couldn't stop the camera"); }
+    }
+
+    void CancelPhoto()
+    {
+
+        //try
+        //{
+        //    backCam.Stop();
+        //}
+        //catch { Debug.Log("Couldn't stop the camera"); }
+    }
+
+    void ReloadCam()
+    {
         defaultBackground = background.texture;
         WebCamDevice[] devices = WebCamTexture.devices;
 
@@ -53,50 +99,9 @@ public class PhoneCamera : MonoBehaviour
         }
 
         backCam.Play();
-        
+
         background.texture = backCam;
 
         camAvaliable = true;
     }
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!camAvaliable) return;
-
-        float ratio = (float)backCam.width / (float)backCam.height;
-        fit.aspectRatio = ratio;
-
-        float scaleY = backCam.videoVerticallyMirrored ? -1f : 1f;
-        background.rectTransform.localScale = new Vector3(1f, scaleY, 1f);
-
-        int orient = -backCam.videoRotationAngle;
-        background.rectTransform.localEulerAngles = new Vector3(0, 0, orient);
-
-    }
-
-    void TakePhoto()
-    {
-        gm = GameManager.Instance;
-
-        gm.PhotoFromCam = background;
-
-        try{
-            backCam.Stop();
-        }
-        catch { Debug.Log("Couldn't stop the camera"); }
-    }
-
-    void CancelPhoto()
-    {
-
-        try
-        {
-            backCam.Stop();
-        }
-        catch { Debug.Log("Couldn't stop the camera"); }
-    }
-
-
 }

@@ -47,8 +47,11 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int m_BitLevel = 1;
 
+
+    bool camAvaliable;
+    WebCamTexture backCam;
     //[HideInInspector]
-    public RawImage PhotoFromCam;
+    public Texture PhotoFromCam;
 
     void Awake()
     {
@@ -68,7 +71,34 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
-       
+
+        WebCamDevice[] devices = WebCamTexture.devices;
+
+        if (devices.Length == 0)
+        {
+            Debug.Log("No camera detected");
+            camAvaliable = false;
+            return;
+        }
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if (!devices[i].isFrontFacing)
+            {
+                backCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+
+            }
+
+        }
+
+        if (backCam == null)
+        {
+            Debug.Log("Unable to find back camera");
+            return;
+        }
+
+        backCam.Play();
+        backCam.Stop();
     }
 
     public static GameManager Instance
