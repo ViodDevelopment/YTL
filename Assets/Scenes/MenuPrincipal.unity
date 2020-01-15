@@ -8063,6 +8063,16 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5487426683577274666, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5487426683577274666, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -381.48145
+      objectReference: {fileID: 0}
     - target: {fileID: 5487426684357749317, guid: cdd25e86efba95846979a6586d6ce845,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -8123,6 +8133,11 @@ PrefabInstance:
       propertyPath: buttonCancel
       value: 
       objectReference: {fileID: 456817257}
+    - target: {fileID: 5704360402031463477, guid: cdd25e86efba95846979a6586d6ce845,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cdd25e86efba95846979a6586d6ce845, type: 3}
 --- !u!1 &659167279 stripped
