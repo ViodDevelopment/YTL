@@ -6,15 +6,12 @@ using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
-    private bool started = false;
-    public Image carga;
+    public bool started = false;
 
     private void Update()
     {
-        if(GameManager.loadingScene != -1 && !started)
+        if(started)
             StartCoroutine(LoadNewScene());
-        carga.fillAmount += Time.deltaTime * 1.5f;
-
     }
 
     IEnumerator LoadNewScene()
@@ -30,7 +27,6 @@ public class LoadingScene : MonoBehaviour
         {
             yield return null;
         }
-        carga.fillAmount = 1;
 
         Destroy(gameObject);
 

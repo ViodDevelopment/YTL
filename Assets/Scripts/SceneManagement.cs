@@ -110,37 +110,50 @@ public class SceneManagement : MonoBehaviour
     public void LoadParejas(int _level)
     {
         //SceneManager.LoadScene("LoadingScene");
+        if (!gameObject.GetComponent<LoadingScene>().started)
+        {
+            if (_level == 1)
+                GameManager.loadingScene = SceneManager.GetSceneByName("Parejas").buildIndex;
+            else if (_level == 2)
+                GameManager.loadingScene = 8;
+            else if (_level == 3)
+                GameManager.loadingScene = 9;
 
-        if (_level == 1)
-            SceneManager.LoadScene("Parejas");
-        else if (_level == 2)
-            GameManager.loadingScene = 8;
-        else if (_level == 3)
-            GameManager.loadingScene = 9;
+            gameObject.GetComponent<LoadingScene>().started = true;
+        }
+
     }
 
     public void LoadPuzzle(int _level)
     {
         //SceneManager.LoadScene("LoadingScene");
+        if (!gameObject.GetComponent<LoadingScene>().started)
+        {
+            if (_level == 1)
+                GameManager.loadingScene = SceneManager.GetSceneByName("Puzzle").buildIndex;
+            else if (_level == 2)
+                GameManager.loadingScene = 11;
+            else if (_level == 3)
+                GameManager.loadingScene = 12;
 
-        if (_level == 1)
-            SceneManager.LoadScene("Puzzle");
-        else if (_level == 2)
-            GameManager.loadingScene = 11;
-        else if (_level == 3)
-            GameManager.loadingScene = 12;
+            gameObject.GetComponent<LoadingScene>().started = true;
+        }
     }
 
     public void LoadBit(int _level)
     {
         //SceneManager.LoadScene("LoadingScene");
+        if (!gameObject.GetComponent<LoadingScene>().started)
+        {
+            if (_level == 1)
+                GameManager.loadingScene = SceneManager.GetSceneByName("Bit").buildIndex;
+            else if (_level == 2)
+                GameManager.loadingScene = 6;
+            else if (_level == 3)
+                GameManager.loadingScene = 7;
 
-        if (_level == 1)
-            SceneManager.LoadScene("Bit");
-        else if (_level == 2)
-            GameManager.loadingScene = 6;
-        else if (_level == 3)
-            GameManager.loadingScene = 7;
+            gameObject.GetComponent<LoadingScene>().started = true;
+        }
 
     }
 
