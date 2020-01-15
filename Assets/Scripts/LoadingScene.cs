@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class LoadingScene : MonoBehaviour
 {
     public bool started = false;
-
+    public bool doing = false;
+    private int numScene = 0;
     private void Update()
     {
         if(started)
@@ -16,21 +17,23 @@ public class LoadingScene : MonoBehaviour
 
     IEnumerator LoadNewScene()
     {
-        started = true;
-        yield return new WaitForSeconds(0.5f);
-        
-        AsyncOperation async = SceneManager.LoadSceneAsync(GameManager.loadingScene);
-        GameManager.loadingScene = -1;
-
+        started = false;
+        yield return new WaitForSeconds(0.75f);
+        AsyncOperation async = SceneManager.LoadSceneAsync(numScene);
 
         while (!async.isDone)
         {
             yield return null;
         }
 
-        Destroy(gameObject);
+    }
 
-
+    public void ActiveLoading()
+    {
+        numScene = GameManager.loadingScene;
+        GameManager.loadingScene = -1;
+        started = true;
+        doing = true;
     }
 
 }
