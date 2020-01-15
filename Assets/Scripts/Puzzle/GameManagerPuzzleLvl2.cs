@@ -530,7 +530,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(-1);
             else if (i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
                 l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(1);
-            else if(palabraActual.silabasActuales.Count > 1)
+            else if (palabraActual.silabasActuales.Count > 1)
                 l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(0);
             else
                 l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(2);
@@ -575,21 +575,15 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     private Vector3 SearchPosition(Transform _trans, float _position)
     {
         Vector3 pos = Vector3.zero;
-        float distancePerSilaba = 1.5f;
+        float distancePerSilaba = 1.75f;
         float distanceMax = (palabrasDisponibles[numRandom].silabasActuales.Count - 1) * distancePerSilaba;
-        if (palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+        if (palabraActual.silabasActuales.Count > 1)
         {
             float distanceInit = -distanceMax / 2;
             float distanceForMySilaba = _position * distancePerSilaba + distanceInit;
-            print(distanceInit);
             pos = new Vector3(distanceForMySilaba, 0, 0);
         }
 
-        /*
-        float multiplier = (palabrasDisponibles[numRandom].silabasActuales.Count) / 2 * 1.65f;
-        if (palabrasDisponibles[numRandom].silabasActuales.Count > 1)
-            pos = new Vector3((_position / (palabrasDisponibles[numRandom].silabasActuales.Count) * multiplier * 1.65f) - multiplier, 0, 0);
-            */
         return pos;
     }
 
