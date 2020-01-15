@@ -3043,6 +3043,7 @@ GameObject:
   - component: {fileID: 216212625}
   - component: {fileID: 216212624}
   - component: {fileID: 216212623}
+  - component: {fileID: 216212626}
   m_Layer: 5
   m_Name: Bit
   m_TagString: Untagged
@@ -3112,6 +3113,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 216212626}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadBit
         m_Mode: 3
@@ -3121,7 +3133,7 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -3145,7 +3157,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c33240f646204e4438f58e7a8170f38d, type: 3}
+  m_Sprite: {fileID: -4491427478147300749, guid: c33240f646204e4438f58e7a8170f38d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3162,6 +3175,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 216212621}
   m_CullTransparentMesh: 0
+--- !u!114 &216212626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216212621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &229721565
 GameObject:
   m_ObjectHideFlags: 0
@@ -5305,6 +5331,7 @@ GameObject:
   - component: {fileID: 438960493}
   - component: {fileID: 438960492}
   - component: {fileID: 438960491}
+  - component: {fileID: 438960494}
   m_Layer: 5
   m_Name: Bit
   m_TagString: Untagged
@@ -5374,6 +5401,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 438960494}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadBit
         m_Mode: 3
@@ -5383,7 +5421,7 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -5424,6 +5462,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 438960489}
   m_CullTransparentMesh: 0
+--- !u!114 &438960494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438960489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &439201819
 GameObject:
   m_ObjectHideFlags: 0
@@ -9947,6 +9998,7 @@ GameObject:
   - component: {fileID: 850992517}
   - component: {fileID: 850992516}
   - component: {fileID: 850992515}
+  - component: {fileID: 850992518}
   m_Layer: 5
   m_Name: Parejas
   m_TagString: Untagged
@@ -10016,6 +10068,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 850992518}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadParejas
         m_Mode: 3
@@ -10025,7 +10088,7 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -10066,6 +10129,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 850992513}
   m_CullTransparentMesh: 0
+--- !u!114 &850992518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 850992513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &855681264
 GameObject:
   m_ObjectHideFlags: 0
@@ -10157,6 +10233,7 @@ GameObject:
   - component: {fileID: 856354228}
   - component: {fileID: 856354227}
   - component: {fileID: 856354226}
+  - component: {fileID: 856354229}
   m_Layer: 5
   m_Name: Puzzle
   m_TagString: Untagged
@@ -10226,6 +10303,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 856354229}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadPuzzle
         m_Mode: 3
@@ -10235,7 +10323,7 @@ MonoBehaviour:
           m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -10276,6 +10364,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 856354224}
   m_CullTransparentMesh: 0
+--- !u!114 &856354229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856354224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &864750053
 GameObject:
   m_ObjectHideFlags: 0
@@ -11209,6 +11310,7 @@ GameObject:
   - component: {fileID: 953455702}
   - component: {fileID: 953455701}
   - component: {fileID: 953455700}
+  - component: {fileID: 953455703}
   m_Layer: 5
   m_Name: Puzzle
   m_TagString: Untagged
@@ -11278,6 +11380,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 953455703}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadPuzzle
         m_Mode: 3
@@ -11287,7 +11400,7 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -11328,6 +11441,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 953455698}
   m_CullTransparentMesh: 0
+--- !u!114 &953455703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 953455698}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &953711819
 GameObject:
   m_ObjectHideFlags: 0
@@ -12138,6 +12264,7 @@ GameObject:
   - component: {fileID: 1018027230}
   - component: {fileID: 1018027229}
   - component: {fileID: 1018027228}
+  - component: {fileID: 1018027231}
   m_Layer: 5
   m_Name: Parejas
   m_TagString: Untagged
@@ -12207,6 +12334,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1018027231}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadParejas
         m_Mode: 3
@@ -12216,7 +12354,7 @@ MonoBehaviour:
           m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -12257,6 +12395,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1018027226}
   m_CullTransparentMesh: 0
+--- !u!114 &1018027231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1018027226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &1018388164
 GameObject:
   m_ObjectHideFlags: 0
@@ -14557,6 +14708,7 @@ GameObject:
   - component: {fileID: 1224913065}
   - component: {fileID: 1224913064}
   - component: {fileID: 1224913063}
+  - component: {fileID: 1224913066}
   m_Layer: 5
   m_Name: Bit
   m_TagString: Untagged
@@ -14626,6 +14778,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1224913066}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadBit
         m_Mode: 3
@@ -14635,7 +14798,7 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -14676,6 +14839,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1224913061}
   m_CullTransparentMesh: 0
+--- !u!114 &1224913066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224913061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &1238332939
 GameObject:
   m_ObjectHideFlags: 0
@@ -20049,6 +20225,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1657563400}
   - component: {fileID: 1657563399}
+  - component: {fileID: 1657563401}
   m_Layer: 0
   m_Name: SceneManager
   m_TagString: Untagged
@@ -20097,6 +20274,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1657563401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657563398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd3fd283f22d16438dfb3b86e03281c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  doing: 0
 --- !u!1 &1658938669
 GameObject:
   m_ObjectHideFlags: 0
@@ -23256,6 +23446,7 @@ GameObject:
   - component: {fileID: 1902350371}
   - component: {fileID: 1902350370}
   - component: {fileID: 1902350369}
+  - component: {fileID: 1902350372}
   m_Layer: 5
   m_Name: Puzzle
   m_TagString: Untagged
@@ -23325,6 +23516,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1224913066}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadPuzzle
         m_Mode: 3
@@ -23334,7 +23536,7 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -23375,6 +23577,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902350367}
   m_CullTransparentMesh: 0
+--- !u!114 &1902350372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902350367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &1912865076
 GameObject:
   m_ObjectHideFlags: 0
@@ -24042,6 +24257,7 @@ GameObject:
   - component: {fileID: 1951917142}
   - component: {fileID: 1951917141}
   - component: {fileID: 1951917140}
+  - component: {fileID: 1951917143}
   m_Layer: 5
   m_Name: Parejas
   m_TagString: Untagged
@@ -24111,6 +24327,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1224913066}
+        m_MethodName: TurnActivo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 1657563399}
         m_MethodName: LoadParejas
         m_Mode: 3
@@ -24120,7 +24347,7 @@ MonoBehaviour:
           m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -24161,6 +24388,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1951917138}
   m_CullTransparentMesh: 0
+--- !u!114 &1951917143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951917138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  loadingScene: {fileID: 1657563401}
 --- !u!1 &1958762012
 GameObject:
   m_ObjectHideFlags: 0

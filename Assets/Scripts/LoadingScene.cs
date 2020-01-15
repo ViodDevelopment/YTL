@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class LoadingScene : MonoBehaviour
 {
-    public bool started = false;
+    private bool started = false;
     public bool doing = false;
     private int numScene = 0;
     private void Update()
