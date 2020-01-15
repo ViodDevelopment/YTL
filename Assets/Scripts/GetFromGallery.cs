@@ -9,20 +9,23 @@ public class GetFromGallery : MonoBehaviour
     Image img;
 
     GameManager gm;
-    
+
+    public bool photoAvaliable;
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.Instance;
         img = placeHolder.GetComponent<Image>();
 
+        photoAvaliable = true;
        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        SetPhotoFromCamera();
     }
 
     public void PickImage(int maxSize)
@@ -50,10 +53,12 @@ public class GetFromGallery : MonoBehaviour
 
     void SetPhotoFromCamera()
     {
-        if (gm.PhotoFromCam)
+        if (gm.PhotoFromCam && photoAvaliable)
         {
-            img.sprite = MakeImgEven((Texture2D)gm.PhotoFromCam.texture);
+            img.sprite = MakeImgEven(TextureToTexture2D(gm.PhotoFromCam));
             txtPlaceholder.SetActive(false);
+            gm.PhotoFromCam = null;
+            photoAvaliable = false;
         }
     }
     Sprite MakeImgEven(Texture2D tex)
@@ -80,5 +85,26 @@ public class GetFromGallery : MonoBehaviour
         
     }
 
-    
+    private Texture2D TextureToTexture2D(Texture texture)
+    {
+        Texture2D texture2D = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false);
+        RenderTexture currentRT = RenderTexture.active;
+        RenderTexture renderTexture = RenderTexture.GetTemporary(texture.width, texture.height, 32);
+        Graphics.Blit(texture, renderTexture);
+
+        RenderTexture.active = renderTexture;
+        texture2D.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        texture2D.Apply();
+
+        RenderTexture.active = currentRT;
+        RenderTexture.ReleaseTemporary(renderTexture);
+        return texture2D;
+    }
+
+    public void SetPhotoAvaliable(bool var)
+    {
+        photoAvaliable = var;
+    }
+
+
 }
