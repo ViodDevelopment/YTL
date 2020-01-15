@@ -45,14 +45,17 @@ public class MoveTouchLvl2 : MonoBehaviour
                     {
                         case -1:
                             mainImage.sprite = sprites[0];
-                            text.rectTransform.position += new Vector3(0.15f, 0, 0);
+                            text.rectTransform.position += new Vector3(0.175f, 0, 0);
                             break;
                         case 0:
                             mainImage.sprite = sprites[1];
                             break;
                         case 1:
                             mainImage.sprite = sprites[2];
-                            text.rectTransform.position += new Vector3(-0.15f, 0, 0);
+                            text.rectTransform.position += new Vector3(-0.175f, 0, 0);
+                            break;
+                        case 2:
+                            mainImage.sprite = sprites[3];
                             break;
                     }
                     done = true;
