@@ -15,9 +15,16 @@ public class FraseBD
     public string frasesFrances;
     public string image;
     public string image2;
+    public List<int> piecesPuzzle = new List<int>();
+    public int imagePuzzle;
     public string sound;
-    public int dificultad;
+    public int actualDificultad;
+    public int dificultadCatalan;
+    public int dificultadSpanish;
+    public int dificultadIngles;
+    public int dificultaFrances;
     public List<PalabraBD> palabras = new List<PalabraBD>();
+    public int paquet;
 
     public void SeparatePerPalabras()
     {
@@ -62,10 +69,6 @@ public class FraseBD
                 Debug.LogError("Esa palabra de la frase no existe: " + p);
             }
         }
-        if (palabras.Count <= 4)
-            dificultad = 0;
-        else
-            dificultad = 1;
 
     }
 
@@ -75,15 +78,19 @@ public class FraseBD
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
                 actualFrase = fraseCastellano;
+                actualDificultad = dificultadSpanish;
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
                 actualFrase = fraseCatalan;
+                actualDificultad = dificultadCatalan;
                 break;
             case SingletonLenguage.Lenguage.INGLES:
                 actualFrase = fraseIngles;
+                actualDificultad = dificultadIngles;
                 break;
             case SingletonLenguage.Lenguage.FRANCES:
                 actualFrase = frasesFrances;
+                actualDificultad = dificultaFrances;
                 break;
         }
     }

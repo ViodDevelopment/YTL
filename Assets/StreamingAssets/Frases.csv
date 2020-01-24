@@ -1,0 +1,16 @@
+,,,,,,,,
+IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dificultad CASTELLANO,Cartellano,Nivel dificultad CATALAN,Catalan,PAQUET
+frase_01_01 frase_01_02,frase_01,9 12 16,1,1,El niño come sopa,1,El nen menja sopa,x
+silla_01 frase_02,frase_02,6 9,2,1,La silla es verde,1,La cadira és verda,x
+frase-03_01 frase-03_02,frase_03,9 12 16,2,2,La niña come una piruleta,2,La nena menja una piruleta,x
+frase_04_02,frase_04,9 12 16,2,2,La niña juega con la pelota,2,La nena juga amb la pilota,x
+frase_05,frase_05,9 12 16,1,2,El niño lava los platos,2,El nen renta els plats,x
+frase_06_01 frase_06_02,frase_06,9 12 16,1,2,La niña se lava los dientes,2,La nena es renta les dents,x
+limon_01 limon_02,frase_07,9,2,1,El limón es amarillo,1,La llimona és groga,x
+fresas_01 fresas_03,frase_08,9 12 16,1,2,Las fresas son rojas,2,Les maduixes son vermelles,x
+ leche_01 leche_02,frase_09,9 12,2,1,Un vaso de leche,1,Un got de llet,x
+pelota_02 pelota_03,frase_10,9,2,2,La pelota es redonda,2,La pilota és rodona,x
+frase_16_01 frase_16_02,frase_16,9 12 16,1,1,La niña come sopa,1,La nena menja sopa,x
+correr_03,frase_17,6,3,1,La niña corre,1,La nena corre,x
+frase_22_01 asustado_02,frase_22,9 12 16,1,1,El niño está asustado,1,El nen esta espantat,x
+frase-25_01,frase_25,6 9,1,1,La niña está contenta,1,La nena està contenta,x

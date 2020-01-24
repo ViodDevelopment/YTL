@@ -290,12 +290,17 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
+        CopyFrase(frasesDisponibles[numRandom], fraseActual);
+
+
+        m_ImagePuzzle = fraseActual.GetTexture2D(fraseActual.image); //por ahora solo imagen 1
         WordInstantiation();
+        m_TextAnim.text = fraseActual.palabras[0].palabraActual; //HACERLO CON TODAS LAS PALABRAS
+        m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
         l_SpriteImage = fraseActual.GetSprite(fraseActual.image);
-        m_ImageAnim.GetComponent<Image>().sprite = fraseActual.GetSprite(fraseActual.image);
+        m_ImageAnim.sprite = fraseActual.GetSprite(fraseActual.image);
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -326,7 +331,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 #region ImageInstantiation
                 GameObject local = Instantiate(m_ImageTemplate, m_ImagesSpawn.transform);
                 m_Images.Add(local);
-                m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+                m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
 
                 while (l_Numbers.Contains(l_Number))
@@ -381,9 +386,15 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Destroy(item);
         }
 
+        foreach(GameObject item in rectanglesInScene)
+        {
+            Destroy(item);
+        }
+
         m_Images.Clear();
         m_Words.Clear();
         m_Colliders.Clear();
+        rectanglesInScene.Clear();
         currentPalabra = 0;
         m_Puntuacion = 0;
         m_Canvas.SetActive(false);
@@ -433,9 +444,15 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Destroy(item);
         }
 
+        foreach(GameObject item in rectanglesInScene)
+        {
+            Destroy(item);
+        }
+
         m_Images.Clear();
         m_Words.Clear();
         m_Colliders.Clear();
+        rectanglesInScene.Clear();
         currentPalabra = 0;
         m_Puntuacion = 0;
         m_Canvas.SetActive(false);
@@ -580,6 +597,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         float scale = 0;
         float distance = 5.7f;
         int count = 0;
+
         foreach (PalabraBD p in fraseActual.palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
@@ -701,6 +719,6 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         _frase.image = _toCopy.image;
         _frase.image2 = _toCopy.image2;
         _frase.sound = _toCopy.sound;
-        _frase.dificultad = _toCopy.dificultad;
+        _frase.actualDificultad = _toCopy.actualDificultad;
     }
 }

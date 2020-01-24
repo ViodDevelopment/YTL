@@ -17,6 +17,7 @@ public class BitLvl2 : MonoBehaviour
 
     public static int m_Length;
     public Image m_Image;
+    public Image otherImage;
     public GameObject rectanglePrefab;
 
     [HideInInspector]
@@ -47,12 +48,12 @@ public class BitLvl2 : MonoBehaviour
         {
             if (levelBit == 2)
             {
-                if (f.dificultad == 0)//cambiar esto
+                if (f.actualDificultad == 1)//cambiar esto
                     frasesDisponibles.Add(f);
             }
             else
             {
-                if (f.dificultad == 0)//cambiar esto
+                if (f.actualDificultad >= 1)//cambiar esto
                     frasesDisponibles.Add(f);
             }
         }
@@ -86,9 +87,10 @@ public class BitLvl2 : MonoBehaviour
         }
 
         m_Animation = GetComponent<Animation>();
-        firstImage = Random.Range(0, 3);
 
-        m_Image.sprite = Resources.Load<Sprite>("Images/Lite/" + frasesDisponibles[l_Number].image);
+        
+        m_Image.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image);
+        otherImage.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image2);
         //crear imagenes de los rectangulos
         InstanciacionDeRectangulos();
     }

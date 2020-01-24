@@ -84,139 +84,7 @@ public class ManagamentFalseBD : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void ReadCSV()
-    {
-        if (File.Exists(Application.streamingAssetsPath + "/Actualizacion.csv"))
-        {
-            if (File.Exists(Application.streamingAssetsPath + "/Palabras.csv"))
-            {
-                File.Delete(Application.streamingAssetsPath + "/Palabras.csv");
-                File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
-            }
-            else
-                File.Move(Application.streamingAssetsPath + "/Actualizacion.csv", Application.streamingAssetsPath + "/Palabras.csv");
-
-        }
-
-        if (File.Exists(Application.streamingAssetsPath + "/Palabras.csv"))
-        {
-            StreamReader streamReader = new StreamReader(Application.streamingAssetsPath + "/Palabras.csv");
-            bool ended = false;
-            int fila = 0;
-            while (!ended)
-            {
-                string data = streamReader.ReadLine();
-                fila++;
-                if (data == null || streamReader == null || fila > 999999)
-                {
-                    ended = true;
-                    break;
-                }
-                var valor = data.Split(',');
-
-                if (valor[0] != null && fila > 2 && valor[0] != "")
-                {
-                    palabrasPredeterminadass.Add(new PalabraBD());
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = palabrasPredeterminadass.Count - 1;
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = valor[0];
-                    if (valor[1] != null || valor[1].Length > 0)
-                    {
-                        var imagenes = valor[1].Split(' ');
-
-                        if (imagenes != null)
-                        {
-                            fila = fila;
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = imagenes[0];
-                            if (imagenes.Length > 1)
-                            {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = imagenes[1];
-                                if (imagenes.Length > 2)
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = imagenes[2];
-                                else
-                                {
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
-                                }
-                            }
-                            else
-                            {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
-                            }
-                        }
-                        else
-                        {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
-                        }
-
-                    }
-                    else
-                    {
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
-                    }
-
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = valor[2];
-
-                    if (valor[3] != "" || valor[3].Length > 0)
-                    {
-                        var pieces = valor[3].Split(' ');
-                        for (int i = 0; i < pieces.Length; i++)
-                        {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
-                        }
-                        if (palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Count == 0)
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(4);
-                    }
-
-                    if (valor[4] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = int.Parse(valor[4]);
-                    else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 1;
-
-                    if (valor[5] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = int.Parse(valor[5]);
-                    else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
-
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = valor[6];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = valor[7];
-
-                    if (valor[8] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = int.Parse(valor[8]);
-                    else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
-
-
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = valor[9];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = valor[10];
-                    switch (valor[11])
-                    {
-                        case "palabra_frase":
-                        case "":
-                        case "x":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
-                            break;
-                        case "color":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 2;
-                            break;
-                        case "animales":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 3;
-                            break;
-                        case "escuela":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 1;
-                            break;
-                    }
-
-                }
-                if (valor.Length == 0)
-                    ended = true;
-            }
-        }
-        else print("no existe");
-    }
+   
 
     private void InitPalabrasPredeterminadas()
     {
@@ -224,7 +92,7 @@ public class ManagamentFalseBD : MonoBehaviour
         if (File.Exists(nameRute))
         {
             management.LoadDates();
-
+            print(palabrasPredeterminadass.Count);
             #region si no tiene los datos minimos se los creamos
             List<bool> existe = new List<bool>();
             if (palabrasPredeterminadass.Count == GameManager.palabrasDisponibles.Count)
@@ -262,44 +130,7 @@ public class ManagamentFalseBD : MonoBehaviour
             management.LoadDates();
         }
 
-        InitFrasesPredeterminadas();
-        bool existenteFrase = true;
-
-        if (File.Exists(nameRuteFrase))
-        {
-            management.LoadDatesFrase();
-
-            #region si no tiene los datos minimos se los creamos
-            List<bool> existeFrase = new List<bool>();
-            foreach (FraseBD p in frasesPredeterminadas)
-            {
-                existeFrase.Add(false);
-                foreach (FraseBD w in frasesGuardadas)
-                {
-                    if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
-                    {
-                        existeFrase[existeFrase.Count - 1] = true;
-                        break;
-                    }
-                }
-            }
-
-
-            foreach (bool b in existeFrase)
-            {
-                if (!b)
-                {
-                    existenteFrase = false;
-                    break;
-                }
-            }
-            #endregion
-        }
-        if (!File.Exists(nameRuteFrase) || !existenteFrase)
-        {
-            management.SaveDatesFrase();
-            management.LoadDatesFrase();
-        }
+        StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
     }
 
     IEnumerator CopyPalabrasBinaryToPersistentPath(string fileName)
@@ -364,48 +195,113 @@ public class ManagamentFalseBD : MonoBehaviour
         InitPalabrasPredeterminadas();
     }
 
+    IEnumerator CopyFrasesBinaryToPersistentPath(string fileName)
+    {
+        //Where to copy the db to
+        string dbDestination = Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat");
+
+        //Check if the File do not exist then copy it
+
+        //Where the db file is at
+        string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
+
+        byte[] result;
+
+        //Read the File from streamingAssets. Use WWW for Android
+        if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
+        {
+            WWW www = new WWW(dbStreamingAsset);
+            yield return www;
+            result = www.bytes;
+        }
+        else
+        {
+            result = File.ReadAllBytes(dbStreamingAsset);
+        }
+
+        //Create Directory if it does not exist
+        if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
+        }
+
+        //Copy the data to the persistentDataPath where the database API can freely access the file
+        File.WriteAllBytes(dbDestination, result);
+        Debug.Log("Copied frases predeterminadas file");
+        if (File.Exists(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat")))
+        {
+            List<FraseBD> frases = new List<FraseBD>();
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat"), FileMode.Open);
+
+            DatesFrasesToSave datos = (DatesFrasesToSave)bf.Deserialize(file);
+            frases = datos.GetListOfFrases();
+
+            file.Close();
+
+
+            frasesPredeterminadas.Clear();
+            foreach (FraseBD p in frases)
+            {
+                frasesPredeterminadas.Add(p);
+            }
+
+        }
+
+
+        foreach (FraseBD p in frasesPredeterminadas)
+        {
+            p.SeparatePerPalabras();
+        }
+        InitFrasesPredeterminadas();
+    }
+
+
+
     private void InitFrasesPredeterminadas()
     {
-        int count = 0;
-        //borrar frases lite
-        #region Frase1
-        frasesPredeterminadas.Add(new FraseBD());
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Pera Moto Casa";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "Pera Moto Casa";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "sopa";
-        count++;
-        #endregion
-        #region Frase2
-        frasesPredeterminadas.Add(new FraseBD());
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_02";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Niña Pera Agua Pelota";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "Nena Pera Aigua Pilota";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "sopa";
-        count++;
-        #endregion
-        #region Frase3
-        frasesPredeterminadas.Add(new FraseBD());
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].id = count;
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_01";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].image = "moto_02";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCastellano = "Niña Pera Agua Pelota";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseCatalan = "Nena Pera Aigua Pilota";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].fraseIngles = "Por ahora no";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].frasesFrances = "Oh mamma";
-        frasesPredeterminadas[frasesPredeterminadas.Count - 1].sound = "sopa";
-        count++;
-        #endregion
-        foreach (FraseBD f in frasesPredeterminadas)
+        bool existenteFrase = true;
+
+        if (File.Exists(nameRuteFrase))
         {
-            f.SeparatePerPalabras();
+            management.LoadDatesFrase();
+
+            if (frasesGuardadas.Count == frasesPredeterminadas.Count)
+            {
+                #region si no tiene los datos minimos se los creamos
+                List<bool> existeFrase = new List<bool>();
+                foreach (FraseBD p in frasesPredeterminadas)
+                {
+                    existeFrase.Add(false);
+                    foreach (FraseBD w in frasesGuardadas)
+                    {
+                        if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
+                        {
+                            existeFrase[existeFrase.Count - 1] = true;
+                            break;
+                        }
+                    }
+                }
+
+
+
+                foreach (bool b in existeFrase)
+                {
+                    if (!b)
+                    {
+                        existenteFrase = false;
+                        break;
+                    }
+                }
+                #endregion
+            }
+            else
+                existenteFrase = false;
+        }
+        if (!File.Exists(nameRuteFrase) || !existenteFrase)
+        {
+            management.SaveDatesFrase();
+            management.LoadDatesFrase();
         }
     }
 

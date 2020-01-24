@@ -226,7 +226,7 @@ public class ManagementBD : MonoBehaviour
             m_frase[m_frase.Count - 1].image = reader.GetString(2);
             m_frase[m_frase.Count - 1].sound = reader.GetString(3);
             //m_frase[m_frase.Count - 1].idioma = reader.GetInt32(4);
-            m_frase[m_frase.Count - 1].dificultad = reader.GetInt32(5);
+            //m_frase[m_frase.Count - 1].dificultad = reader.GetInt32(5);
             // Debug.Log("Id = " + id + "  Nombre 1 =" + nombre1 + "  imagen 1 =" + imagen1 + " imagen 2 =" + imagen2);
 
         }

@@ -119,6 +119,7 @@ public class SceneManagement : MonoBehaviour
             else if (_level == 3)
                 GameManager.loadingScene = 9;
 
+            GameManager.lastLevelActivity = _level;
 
             gameObject.GetComponent<LoadingScene>().ActiveLoading();
 
@@ -139,6 +140,8 @@ public class SceneManagement : MonoBehaviour
             else if (_level == 3)
                 GameManager.loadingScene = 12;
 
+            GameManager.lastLevelActivity = _level;
+
             gameObject.GetComponent<LoadingScene>().ActiveLoading();
 
 
@@ -156,6 +159,8 @@ public class SceneManagement : MonoBehaviour
                 GameManager.loadingScene = 6;
             else if (_level == 3)
                 GameManager.loadingScene = 7;
+
+            GameManager.lastLevelActivity = _level;
 
             gameObject.GetComponent<LoadingScene>().ActiveLoading();
         }
@@ -204,7 +209,22 @@ public class SceneManagement : MonoBehaviour
 
     public void GoBackFromActivity()
     {
-        AllCanvas[2].SetActive(true);
+        switch(GameManager.lastLevelActivity)
+        {
+            case 1:
+                AllCanvas[2].SetActive(true);
+                break;
+            case 2:
+                AllCanvas[7].SetActive(true);
+                break;
+            case 3:
+                AllCanvas[8].SetActive(true);
+                break;
+            default:
+                AllCanvas[2].SetActive(true);
+                break;
+
+        }
         AllCanvas[4].SetActive(true);
         AllCanvas[0].SetActive(false);
         AllCanvas[3].SetActive(false);
@@ -218,6 +238,7 @@ public class SceneManagement : MonoBehaviour
             {
                 GoBackFromActivity();
                 GameManager.backFromActivity = false;
+                GameManager.lastLevelActivity = 0;
             }
         }
     }

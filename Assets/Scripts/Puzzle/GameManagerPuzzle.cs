@@ -97,21 +97,23 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-
-            switch(p.imagePuzzle)
+            if (p.imagePuzzle != 0)
             {
-                case 1:
-                    if (p.GetSprite(p.image1) != null)
-                        palabrasDisponibles.Add(p);
-                    break;
-                case 2:
-                    if (p.GetSprite(p.image2) != null)
-                        palabrasDisponibles.Add(p);
-                    break;
-                case 3:
-                    if (p.GetSprite(p.image3) != null)
-                        palabrasDisponibles.Add(p);
-                    break;
+                switch (p.imagePuzzle)
+                {
+                    case 1:
+                        if (p.GetSprite(p.image1) != null)
+                            palabrasDisponibles.Add(p);
+                        break;
+                    case 2:
+                        if (p.GetSprite(p.image2) != null)
+                            palabrasDisponibles.Add(p);
+                        break;
+                    case 3:
+                        if (p.GetSprite(p.image3) != null)
+                            palabrasDisponibles.Add(p);
+                        break;
+                }
             }
         }
     }

@@ -5148,8 +5148,10 @@ MonoBehaviour:
   m_Spin: {fileID: 7400000, guid: f77fb3b9a6836b54691180980ae117c8, type: 2}
   m_Slide: {fileID: 0}
   m_Image: {fileID: 3760140288158211497}
+  otherImage: {fileID: 6287060821079140474}
   rectanglePrefab: {fileID: 3614076283422649554, guid: bf464802c1017fc4eb776f171610770b,
     type: 3}
+  rectanglesInScene: []
   listOfRectangles:
   - {fileID: 21300000, guid: 54a3fa03c52a5a449bfd65b2ad537ea2, type: 3}
   - {fileID: 21300000, guid: 39e87f422e193dc4a8c157a8fa92e7af, type: 3}
@@ -5165,6 +5167,7 @@ MonoBehaviour:
   - {fileID: 12800000, guid: 997576ae6f1d9b64b9c51820c092d284, type: 3}
   m_AS: {fileID: 1325364754079355080}
   l_Number: 0
+  currentWord: 0
 --- !u!82 &1325364754079355080
 AudioSource:
   m_ObjectHideFlags: 0

@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public static int fallosPuzzle = 0;
     public static int fallosParejas = 0;
     public static bool backFromActivity = false;
+    public static int lastLevelActivity = 0;
     public int m_NeededToMinigame = 5;//Siempre añadir un +1 a lo que necesitan
     [HideInInspector]
     public int m_BitLevel = 1;
@@ -76,7 +77,6 @@ public class GameManager : MonoBehaviour
 
         if (devices.Length == 0)
         {
-            Debug.Log("No camera detected");
             camAvaliable = false;
             return;
         }
@@ -93,7 +93,6 @@ public class GameManager : MonoBehaviour
 
         if (backCam == null)
         {
-            Debug.Log("Unable to find back camera");
             return;
         }
 
