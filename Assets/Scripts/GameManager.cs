@@ -72,8 +72,31 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
+        WebCamDevice[] devices = WebCamTexture.devices;
 
-       
+        if (devices.Length == 0)
+        {
+            camAvaliable = false;
+            return;
+        }
+
+        for (int i = 0; i < devices.Length; i++)
+        {
+            if (!devices[i].isFrontFacing)
+            {
+                backCam = new WebCamTexture(devices[i].name, Screen.width, Screen.height);
+
+            }
+
+        }
+
+        if (backCam == null)
+        {
+            return;
+        }
+
+        
+
     }
 
     public static GameManager Instance

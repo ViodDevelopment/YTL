@@ -18,6 +18,12 @@ public class PhoneCamera : MonoBehaviour
     public Button buttonMakePhoto, buttonCancel;
 
     GameManager gm;
+
+    private void Awake()
+    {
+        ReloadCam();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
