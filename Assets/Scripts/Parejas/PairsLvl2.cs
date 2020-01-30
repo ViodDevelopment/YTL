@@ -239,7 +239,9 @@ public class PairsLvl2 : MonoBehaviour
                     else
                         m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
 
-                    colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.5f;
+                    if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                        colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.5f;
+
                     colision.gameObject.SetActive(false);
                     gameObject.SetActive(false);
                     gameObject.transform.position = lastPosition;

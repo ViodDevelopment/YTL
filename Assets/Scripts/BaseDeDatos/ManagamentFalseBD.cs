@@ -92,7 +92,6 @@ public class ManagamentFalseBD : MonoBehaviour
         if (File.Exists(nameRute))
         {
             management.LoadDates();
-            print(palabrasPredeterminadass.Count);
             #region si no tiene los datos minimos se los creamos
             List<bool> existe = new List<bool>();
             if (palabrasPredeterminadass.Count == GameManager.palabrasDisponibles.Count)

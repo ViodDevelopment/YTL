@@ -168,7 +168,11 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            listOfPalabras.Add(p);
+            if (p.image1 != "")
+            {
+                if (p.GetSprite(p.image1) != null)
+                    listOfPalabras.Add(p);
+            }
         }
     }
 
