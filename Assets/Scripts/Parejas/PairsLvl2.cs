@@ -51,7 +51,7 @@ public class PairsLvl2 : MonoBehaviour
         else lastPair = false;
 
         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-            texto.gameObject.transform.localScale *= 1.5f;
+            texto.gameObject.transform.localScale *= 1.3f;
     }
 
     private void Update()
@@ -240,7 +240,7 @@ public class PairsLvl2 : MonoBehaviour
                         m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
 
                     if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.5f;
+                        colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.3f;
 
                     colision.gameObject.SetActive(false);
                     gameObject.SetActive(false);
