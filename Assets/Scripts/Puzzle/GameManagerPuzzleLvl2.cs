@@ -97,20 +97,20 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            switch (p.imagePuzzle)
+            if (p.paquet == 0)
             {
-                case 1:
-                    if (p.GetSprite(p.image1) != null)
+                switch (p.imagePuzzle)
+                {
+                    case 1:
                         palabrasDisponibles.Add(p);
-                    break;
-                case 2:
-                    if (p.GetSprite(p.image2) != null)
+                        break;
+                    case 2:
                         palabrasDisponibles.Add(p);
-                    break;
-                case 3:
-                    if (p.GetSprite(p.image3) != null)
+                        break;
+                    case 3:
                         palabrasDisponibles.Add(p);
-                    break;
+                        break;
+                }
             }
         }
     }
@@ -165,24 +165,32 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         }
         else if (m_Puntuacion == m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count) && !m_Completed)
         {
-            AudioSource l_AS = GetComponent<AudioSource>();
-            l_AS.clip = palabrasDisponibles[numRandom].GetAudioClip(palabrasDisponibles[numRandom].audio);
-            l_AS.Play();
-
             m_Completed = true;
-            currentSilaba = 0;
-            m_ImageAnim.gameObject.SetActive(true);
-            m_AnimationCenter.Play();
-            m_ImagesSpawn.SetActive(false);
-            m_CollidersSpawns.SetActive(false);
-            foreach (Transform child in m_Saver.transform)
-            {
-                Destroy(child.gameObject);
-            }
 
-            StartCoroutine(WaitSeconds(2));
+            StartCoroutine(FirstWaitSeconds(0.5f));
+
 
         }
+    }
+
+    IEnumerator FirstWaitSeconds(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        AudioSource l_AS = GetComponent<AudioSource>();
+        l_AS.clip = palabrasDisponibles[numRandom].GetAudioClip(palabrasDisponibles[numRandom].audio);
+        l_AS.Play();
+
+        currentSilaba = 0;
+        m_ImageAnim.gameObject.SetActive(true);
+        m_AnimationCenter.Play();
+        m_ImagesSpawn.SetActive(false);
+        m_CollidersSpawns.SetActive(false);
+        foreach (Transform child in m_Saver.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length));
+
     }
 
     public void ImagesCollsInstantiation()

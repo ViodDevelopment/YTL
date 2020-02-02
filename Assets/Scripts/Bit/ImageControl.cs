@@ -12,18 +12,18 @@ public class ImageControl : MonoBehaviour
     GameManagerBit m_GMBit;
     public AnimationClip m_Spin;
     public AnimationClip m_Slide;
-    public List<Texture2D> m_ImagesPool = new List<Texture2D>();
-    public List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
-    public List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
+    private List<Texture2D> m_ImagesPool = new List<Texture2D>();
+    private List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
+    private List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
     private string imageAPoner = "";
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public List<Image> marcos = new List<Image>();
     private int firstImage = 0;
 
-    public List<string> m_PalabrasCastellano = new List<string>();
-    public List<string> m_PalabrasCatalan = new List<string>();
-    public List<AudioClip> m_AudioPoolCastellano = new List<AudioClip>();
-    public List<AudioClip> m_AudioPoolCatalan = new List<AudioClip>();
+    private List<string> m_PalabrasCastellano = new List<string>();
+    private List<string> m_PalabrasCatalan = new List<string>();
+    private List<AudioClip> m_AudioPoolCastellano = new List<AudioClip>();
+    private List<AudioClip> m_AudioPoolCatalan = new List<AudioClip>();
 
     public static int m_Length;
     public Image m_Image;
@@ -44,21 +44,14 @@ public class ImageControl : MonoBehaviour
 
     private void RecolectPalabrasBD()
     {
-        m_ImagesPool.Clear();
-        m_ImagesPool2.Clear();
-        m_ImagesPool3.Clear();
-        m_PalabrasCastellano.Clear();
-        m_PalabrasCatalan.Clear();
-        m_AudioPoolCastellano.Clear();
-        m_AudioPoolCatalan.Clear();
-        palabrasDisponibles.Clear();
-
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.image1 != "")
+            if (p.paquet == 0)
             {
-                if (p.GetSprite(p.image1) != null)
+                if (p.image1 != "")
+                {
                     palabrasDisponibles.Add(p);
+                }
             }
         }
     }
@@ -118,10 +111,10 @@ public class ImageControl : MonoBehaviour
         int otherImage = Random.Range(0, 3);
 
         int contador = 0;
-        while(otherImage == firstImage && contador <= 99999)
+        while (otherImage == firstImage && contador <= 99999)
         {
             contador++;
-            Random.InitState(Random.seed + Random.Range(-5,5));
+            Random.InitState(Random.seed + Random.Range(-5, 5));
             otherImage = Random.Range(0, 3);
         }
         /*if (otherImage == firstImage)
@@ -200,7 +193,7 @@ public class ImageControl : MonoBehaviour
                 m_Animation.Play();
                 m_1touch = false;
 
-                StartCoroutine(WaitSeconds(3f));
+                StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f));
             }
 
         }

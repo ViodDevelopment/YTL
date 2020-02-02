@@ -174,10 +174,12 @@ public class GameManagerParejas : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.image1 != "")
+            if (p.paquet == 0)
             {
-                if (p.GetSprite(p.image1) != null)
+                if (p.image1 != "")
+                {
                     listOfPalabras.Add(p);
+                }
             }
         }
     }

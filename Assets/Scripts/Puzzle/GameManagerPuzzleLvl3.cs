@@ -16,8 +16,6 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
     List<GameObject> m_Words = new List<GameObject>();
     public int currentPalabra = 0;
-    public List<Sprite> listOfRectangles = new List<Sprite>();
-    public GameObject rectanglePrefab;
     public SceneManagement m_Scener;
     int m_CurrentNumRep = 1;
     public GameObject m_ImageTemplate;
@@ -160,12 +158,13 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             m_AnimationCenter.Play();
             m_ImagesSpawn.SetActive(false);
             m_CollidersSpawns.SetActive(false);
-            foreach (Transform child in m_Saver.transform)
+
+            for(int i = 0; i < m_NumPieces; i++)
             {
-                Destroy(child.gameObject);
+               DestroyImmediate(m_Saver.transform.GetChild(0).gameObject);
             }
 
-            StartCoroutine(WaitSeconds(2));
+            StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length * 0.5f));
 
         }
     }

@@ -168,10 +168,13 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.image1 != "")
+
+            if (p.paquet == 0)
             {
-                if (p.GetSprite(p.image1) != null)
+                if (p.image1 != "")
+                {
                     listOfPalabras.Add(p);
+                }
             }
         }
     }
@@ -245,7 +248,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             CopyWords(p, ref pal);
             l_Pairs.Add(pal);
             Random.InitState(Random.seed + 1);
-            switch (Random.Range(0,3))
+            switch (Random.Range(0, 3))
             {
                 case 0:
                     l_Pairs[l_Pairs.Count - 1].image1 = l_Pairs[l_Pairs.Count - 1].image1;
@@ -1114,7 +1117,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
-                        if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                             vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
                         vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical4Right[numJ].SetActive(true);

@@ -528,6 +528,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SeenWord
       objectReference: {fileID: 0}
+    - target: {fileID: 8652956090916772119, guid: 0fa924cdc97b37044bdb6721d7ae4d72,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8652956090916772118, guid: 0fa924cdc97b37044bdb6721d7ae4d72,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1226,17 +1231,6 @@ MonoBehaviour:
   m_ImageAnim: {fileID: 1063664160}
   m_TextAnim: {fileID: 1681611315}
   currentPalabra: 0
-  listOfRectangles:
-  - {fileID: 21300000, guid: 54a3fa03c52a5a449bfd65b2ad537ea2, type: 3}
-  - {fileID: 21300000, guid: 39e87f422e193dc4a8c157a8fa92e7af, type: 3}
-  - {fileID: 21300000, guid: b8c8e9f199ba84d46b3305e52206339f, type: 3}
-  - {fileID: 21300000, guid: 1d434d2ac0fbcbf438d715a483d858cd, type: 3}
-  - {fileID: 21300000, guid: 41c5b295705603b4c8dec44515d4b701, type: 3}
-  - {fileID: 21300000, guid: 88e3411c5e53f744ea322b536d0ed90d, type: 3}
-  - {fileID: 21300000, guid: 1d2073fb8839d8a43bee0e7e21d5aec4, type: 3}
-  - {fileID: 21300000, guid: 931a35edc529c5a4a9a0cd9ed01c6041, type: 3}
-  rectanglePrefab: {fileID: 3614076283422649554, guid: f3f60ac53e5bdd545b9390f021affedd,
-    type: 3}
   m_Scener: {fileID: 1618241205}
   m_ImageTemplate: {fileID: 7736469374024194581, guid: ad913e88cd4fa654a8d8a2e6848c5db8,
     type: 3}
@@ -1412,6 +1406,7 @@ MonoBehaviour:
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
+  PhotoFromCam: {fileID: 0}
 --- !u!114 &1618241205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1428,6 +1423,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!114 &1618241206
