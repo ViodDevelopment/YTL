@@ -218,7 +218,7 @@ public class PairsLvl2 : MonoBehaviour
                     m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
                     m_GameManagerParejas.m_TextZoomed.text = nombre;
                     if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f;
+                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
 
 
                     foreach (Image i in m_GameManagerParejas.marcos)

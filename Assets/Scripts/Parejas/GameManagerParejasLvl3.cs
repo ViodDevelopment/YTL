@@ -44,6 +44,9 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     private bool completed;
     private bool repeating;
     private bool acabado = false;
+    private bool cambiarTamanoFont = false;
+
+    private int maxLetters = 0;
 
 
     #region Separador
@@ -412,6 +415,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             }
 
         }
+        ReduceFont();
 
     }
 
@@ -419,6 +423,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
     public void NextPairs(bool next = false)
     {
+        RevertFont();
         m_CurrentPairs = 0;
         completed = false;
         repeating = false;
@@ -618,14 +623,14 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
             }
         }
-
+        ReduceFont();
     }
 
 
 
     public void RepeatPairs()
     {
-
+        RevertFont();
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
         m_CurrentNumRep++;
@@ -785,6 +790,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             }
 
         }
+        ReduceFont();
 
     }
 
@@ -799,6 +805,100 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         {
             m_Repetir.SetActive(true);
         }
+    }
+
+    private void ReduceFont()
+    {
+        if (cambiarTamanoFont)
+        {
+            if (m_IsHorizontal)
+            {
+                switch (m_NumPairs)
+                {
+                    case 3:
+                        for (int i = 0; i < horizontal3Abajo.Count; i++)
+                        {
+                            horizontal3Abajo[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                    case 4:
+                        for (int i = 0; i < horizontal4Abajo.Count; i++)
+                        {
+                            horizontal4Abajo[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                switch (m_NumPairs)
+                {
+                    case 3:
+                        for (int i = 0; i < horizontal3Abajo.Count; i++)
+                        {
+                            vertical3Right[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                    case 4:
+                        for (int i = 0; i < horizontal4Abajo.Count; i++)
+                        {
+                            vertical4Right[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                }
+            }
+            //solo lo hago con las horizontales
+            m_TextZoomed.transform.localScale *= 1 / (0.15f * maxLetters);
+            cambiarTamanoFont = false;
+            maxLetters = 0;
+        }
+    }
+
+    private void RevertFont()
+    {
+
+        if (m_IsHorizontal)
+        {
+            switch (m_NumPairs)
+            {
+                case 3:
+                    for (int i = 0; i < horizontal3Abajo.Count; i++)
+                    {
+                        horizontal3Abajo[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+                    }
+                    break;
+                case 4:
+                    for (int i = 0; i < horizontal4Abajo.Count; i++)
+                    {
+                        horizontal4Abajo[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+                    }
+                    break;
+
+            }
+
+        }
+        else
+        {
+            switch (m_NumPairs)
+            {
+                case 3:
+                    for (int i = 0; i < horizontal3Abajo.Count; i++)
+                    {
+                        vertical3Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+                    }
+                    break;
+
+                case 4:
+                    for (int i = 0; i < horizontal4Abajo.Count; i++)
+                    {
+                        vertical4Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.17f, 0.17f, 0.17f);
+                    }
+                    break;
+
+
+            }
+        }
+        m_TextZoomed.transform.localScale = new Vector3(0.3150725f, 0.3150725f, 0.3150725f);
     }
 
 
@@ -1017,6 +1117,29 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
     private void InstiantateCopy(bool _firstTime, bool _horizontal, int l_RandomPair, List<PalabraBD> l_Pairs, List<PalabraBD> l_SecondPair, List<PalabraBD> l_ThirdPair, int _numofPairs, int _currentPair, int numJ)
     {
+
+        if (_firstTime)
+        {
+            if (l_Pairs[l_RandomPair].palabraActual.Length > 0)
+            {
+                cambiarTamanoFont = true;
+                if (l_Pairs[l_RandomPair].palabraActual.Length > maxLetters)
+                    maxLetters = l_Pairs[l_RandomPair].palabraActual.Length;
+            }
+        }
+        else
+        {
+            if (l_SecondPair[l_RandomPair].palabraActual.Length > 0)
+            {
+                cambiarTamanoFont = true;
+                if (l_SecondPair[l_RandomPair].palabraActual.Length > maxLetters)
+                    maxLetters = l_SecondPair[l_RandomPair].palabraActual.Length;
+            }
+        }
+
+        if (maxLetters < 6)
+            maxLetters = 6;
+
         if (_horizontal)
         {
             switch (_numofPairs)

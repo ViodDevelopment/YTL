@@ -220,7 +220,10 @@ public class PairsLvl3 : MonoBehaviour
                     }
 
                     if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f; m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
+
+                    m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+
                     if (!audioSource.isPlaying)
                     {
                         audioSource.clip = audioClip;

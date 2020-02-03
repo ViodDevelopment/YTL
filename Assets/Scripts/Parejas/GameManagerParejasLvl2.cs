@@ -44,6 +44,9 @@ public class GameManagerParejasLvl2 : MonoBehaviour
     private bool completed;
     private bool repeating;
     private bool acabado = false;
+    private bool cambiarTamanoFont = false;
+
+    private int maxLetters = 0;
 
 
     #region Separador
@@ -411,12 +414,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
         }
 
+        ReduceFont();
+
     }
 
 
 
     public void NextPairs(bool next = false)
     {
+        RevertFont();
         m_CurrentPairs = 0;
         completed = false;
         repeating = false;
@@ -617,13 +623,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
             }
         }
 
+        ReduceFont();
+
     }
 
 
 
     public void RepeatPairs()
     {
-
+        RevertFont();
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
         m_CurrentNumRep++;
@@ -783,6 +791,8 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
         }
 
+        ReduceFont();
+
     }
 
 
@@ -831,412 +841,513 @@ public class GameManagerParejasLvl2 : MonoBehaviour
             completed = true;
     }
 
-    private void InstiantatePair(bool _firstTime, bool _horizontal, int l_RandomPair, List<PalabraBD> l_Pairs, List<PalabraBD> l_SecondPair, List<PalabraBD> l_ThirdPair, int _numofPairs, int _currentPair, int numJ)
+    private void ReduceFont()
     {
-        if (_horizontal)
+        if (cambiarTamanoFont)
         {
-            switch (_numofPairs)
+            if (m_IsHorizontal)
+            {
+                switch (m_NumPairs)
+                {
+                    case 3:
+                        for (int i = 0; i < horizontal3Abajo.Count; i++)
+                        {
+                            horizontal3Abajo[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                            horizontal3Arriba[i].GetComponent<PairsLvl2>().texto.transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                    case 4:
+                        for (int i = 0; i < horizontal4Abajo.Count; i++)
+                        {
+                            horizontal4Abajo[i].GetComponentInChildren<Text>().transform.localScale *= 1 / (0.15f * maxLetters);
+                            horizontal4Arriba[i].GetComponent<PairsLvl2>().texto.transform.localScale *= 1 / (0.15f * maxLetters);
+                        }
+                        break;
+                }
+            }
+            //solo lo hago con las horizontales
+            m_TextZoomed.gameObject.transform.localScale *= 1 / (0.15f * maxLetters);
+            cambiarTamanoFont = false;
+            maxLetters = 0;
+        }
+    }
+
+    private void RevertFont()
+    {
+
+        if (m_IsHorizontal)
+        {
+            switch (m_NumPairs)
             {
                 case 3:
-                    if (_firstTime)
+                    for (int i = 0; i < horizontal3Abajo.Count; i++)
                     {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-
-                        horizontal3Arriba[_currentPair].name = numJ.ToString();
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
-
-                        horizontal3Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        horizontal3Arriba[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-
-                    else
-                    {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-
-                        horizontal3Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
-
-                        horizontal3Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        horizontal3Arriba[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
+                        horizontal3Abajo[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     }
                     break;
-
                 case 4:
-                    if (_firstTime)
+                    for (int i = 0; i < horizontal4Abajo.Count; i++)
                     {
-
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-
-                        horizontal4Arriba[_currentPair].name = numJ.ToString();
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
-
-                        horizontal4Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        horizontal4Arriba[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    else
-                    {
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-
-                        horizontal4Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
-
-                        horizontal4Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        horizontal4Arriba[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
+                        horizontal4Abajo[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     }
                     break;
+
             }
+
         }
         else
         {
-            switch (_numofPairs)
+            switch (m_NumPairs)
             {
                 case 3:
-                    if (_firstTime)
+                    for (int i = 0; i < horizontal3Abajo.Count; i++)
                     {
-
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-
-                        vertical3Left[_currentPair].name = numJ.ToString();
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
-
-                        vertical3Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        vertical3Left[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    else
-                    {
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-
-                        vertical3Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
-
-                        vertical3Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        vertical3Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        vertical3Left[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
+                        vertical3Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     }
                     break;
+
                 case 4:
-                    if (_firstTime)
+                    for (int i = 0; i < horizontal4Abajo.Count; i++)
                     {
-
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-
-                        vertical4Left[_currentPair].name = numJ.ToString();
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
-
-                        vertical4Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        vertical4Left[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    else
-                    {
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-
-                        vertical4Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
-
-                        vertical4Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
-
-                        vertical4Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-
-                        vertical4Left[_currentPair].SetActive(true);
-
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
-
+                        vertical4Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
                     }
                     break;
+
+
             }
         }
+        m_TextZoomed.gameObject.transform.localScale = new Vector3(0.3150725f, 0.3150725f, 0.3150725f);
     }
 
-    private void InstiantateCopy(bool _firstTime, bool _horizontal, int l_RandomPair, List<PalabraBD> l_Pairs, List<PalabraBD> l_SecondPair, List<PalabraBD> l_ThirdPair, int _numofPairs, int _currentPair, int numJ)
-    {
-        if (_horizontal)
+
+
+        private void InstiantatePair(bool _firstTime, bool _horizontal, int l_RandomPair, List<PalabraBD> l_Pairs, List<PalabraBD> l_SecondPair, List<PalabraBD> l_ThirdPair, int _numofPairs, int _currentPair, int numJ)
         {
-            switch (_numofPairs)
+
+            if (_firstTime)
             {
-                case 3:
-                    if (_firstTime)
-                    {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                        horizontal3Abajo[numJ].name = numJ.ToString();
-                        horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            horizontal3Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
-                        horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        horizontal3Abajo[numJ].SetActive(true);
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
-
-
-                    }
-                    else
-                    {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                        horizontal3Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-                        horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            horizontal3Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
-                        horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        horizontal3Abajo[numJ].SetActive(true);
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    break;
-                case 4:
-                    if (_firstTime)
-                    {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                        horizontal4Abajo[numJ].name = numJ.ToString();
-                        horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            horizontal4Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
-                        horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        horizontal4Abajo[numJ].SetActive(true);
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    else
-                    {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                        horizontal4Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-                        horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            horizontal4Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
-                        horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        horizontal4Abajo[numJ].SetActive(true);
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
-
-                    }
-                    break;
+                if (l_Pairs[l_RandomPair].palabraActual.Length > 6)
+                {
+                    cambiarTamanoFont = true;
+                    if (l_Pairs[l_RandomPair].palabraActual.Length > maxLetters)
+                        maxLetters = l_Pairs[l_RandomPair].palabraActual.Length;
+                }
             }
-        }
-
-        else
-        {
-            switch (_numofPairs)
+            else
             {
-                case 3:
+                if (l_SecondPair[l_RandomPair].palabraActual.Length > 6)
+                {
+                    cambiarTamanoFont = true;
+                    if (l_SecondPair[l_RandomPair].palabraActual.Length > maxLetters)
+                        maxLetters = l_SecondPair[l_RandomPair].palabraActual.Length;
+                }
+            }
 
-                    if (_firstTime)
-                    {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                        vertical3Right[numJ].name = numJ.ToString();
-                        vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
-                        vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        vertical3Right[numJ].SetActive(true);
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(2).GetComponent<Image>());
+            if (_horizontal)
+            {
+                switch (_numofPairs)
+                {
+                    case 3:
+                        if (_firstTime)
+                        {
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
-                    }
-                    else
-                    {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                        vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-                        vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
-                        vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        vertical3Right[numJ].SetActive(true);
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(2).GetComponent<Image>());
+                            horizontal3Arriba[_currentPair].name = numJ.ToString();
 
-                    }
-                    break;
-                case 4:
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
-                    if (_firstTime)
-                    {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                        vertical4Right[numJ].name = numJ.ToString();
-                        vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
-                        vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        vertical4Right[numJ].SetActive(true);
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
-                        PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(2).GetComponent<Image>());
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
 
-                    }
-                    else
-                    {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                        vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
-                        vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
-                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
-                        vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
-                        vertical4Right[numJ].SetActive(true);
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
-                        PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(2).GetComponent<Image>());
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
 
-                    }
-                    break;
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
+
+                            horizontal3Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            horizontal3Arriba[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+
+                        else
+                        {
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
+                            horizontal3Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
+
+                            horizontal3Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            horizontal3Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            horizontal3Arriba[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+
+                    case 4:
+                        if (_firstTime)
+                        {
+
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                            horizontal4Arriba[_currentPair].name = numJ.ToString();
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
+
+                            horizontal4Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            horizontal4Arriba[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
+                            horizontal4Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
+
+                            horizontal4Arriba[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            horizontal4Arriba[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            horizontal4Arriba[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Arriba[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                }
+            }
+            else
+            {
+                switch (_numofPairs)
+                {
+                    case 3:
+                        if (_firstTime)
+                        {
+
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                            vertical3Left[_currentPair].name = numJ.ToString();
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
+
+                            vertical3Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            vertical3Left[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
+                            vertical3Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
+
+                            vertical3Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            vertical3Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            vertical3Left[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                    case 4:
+                        if (_firstTime)
+                        {
+
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                            vertical4Left[_currentPair].name = numJ.ToString();
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_Pairs[l_RandomPair].palabraActual;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_Pairs[l_RandomPair].palabraActual;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().color = l_Pairs[l_RandomPair].color;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
+
+                            vertical4Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            vertical4Left[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
+                            vertical4Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().nombre = l_SecondPair[l_RandomPair].palabraActual;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().texto.text = l_SecondPair[l_RandomPair].palabraActual;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().color = l_SecondPair[l_RandomPair].color;
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
+
+                            vertical4Left[_currentPair].GetComponentInChildren<ConvertFont>().Convert();
+
+                            vertical4Left[_currentPair].GetComponent<PairsLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+
+                            vertical4Left[_currentPair].SetActive(true);
+
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Left[_currentPair].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                }
             }
         }
+
+
+        private void InstiantateCopy(bool _firstTime, bool _horizontal, int l_RandomPair, List<PalabraBD> l_Pairs, List<PalabraBD> l_SecondPair, List<PalabraBD> l_ThirdPair, int _numofPairs, int _currentPair, int numJ)
+        {
+
+            if (_horizontal)
+            {
+                switch (_numofPairs)
+                {
+                    case 3:
+                        if (_firstTime)
+                        {
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            horizontal3Abajo[numJ].name = numJ.ToString();
+                            horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                horizontal3Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
+                            horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            horizontal3Abajo[numJ].SetActive(true);
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            horizontal3Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+                            horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                horizontal3Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
+                            horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            horizontal3Abajo[numJ].SetActive(true);
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal3Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                    case 4:
+                        if (_firstTime)
+                        {
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            horizontal4Abajo[numJ].name = numJ.ToString();
+                            horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                horizontal4Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
+                            horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            horizontal4Abajo[numJ].SetActive(true);
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            horizontal4Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+                            horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                horizontal4Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
+                            horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            horizontal4Abajo[numJ].SetActive(true);
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(1).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, horizontal4Abajo[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                }
+            }
+
+            else
+            {
+                switch (_numofPairs)
+                {
+                    case 3:
+
+                        if (_firstTime)
+                        {
+                            vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            vertical3Right[numJ].name = numJ.ToString();
+                            vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            vertical3Right[numJ].SetActive(true);
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+                            vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            vertical3Right[numJ].SetActive(true);
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                    case 4:
+
+                        if (_firstTime)
+                        {
+                            vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            vertical4Right[numJ].name = numJ.ToString();
+                            vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            vertical4Right[numJ].SetActive(true);
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
+                            PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        else
+                        {
+                            vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
+                            vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
+                            vertical4Right[numJ].SetActive(true);
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
+                            PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(2).GetComponent<Image>());
+
+                        }
+                        break;
+                }
+            }
+        }
+
+
+        public void Clear()
+        {
+            foreach (var item in horizontal4Arriba)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in horizontal4Abajo)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in horizontal3Arriba)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in horizontal3Abajo)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in vertical4Left)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in vertical4Right)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in vertical3Left)
+            {
+                item.SetActive(false);
+            }
+            foreach (var item in vertical3Right)
+            {
+                item.SetActive(false);
+            }
+
+        }
+
+        private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
+        {
+            palabra.image1 = toCopy.image1;
+            palabra.image2 = toCopy.image2;
+            palabra.image3 = toCopy.image3;
+            palabra.audio = toCopy.audio;
+            palabra.palabraActual = toCopy.palabraActual;
+            palabra.color = toCopy.color;
+        }
+
+        public void PonerColorMarco(string _color, Image _marco)
+        {
+            Color color = new Color();
+            ColorUtility.TryParseHtmlString(_color, out color);
+            _marco.color = color;
+
+        }
     }
-
-
-    public void Clear()
-    {
-        foreach (var item in horizontal4Arriba)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in horizontal4Abajo)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in horizontal3Arriba)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in horizontal3Abajo)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in vertical4Left)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in vertical4Right)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in vertical3Left)
-        {
-            item.SetActive(false);
-        }
-        foreach (var item in vertical3Right)
-        {
-            item.SetActive(false);
-        }
-
-    }
-
-    private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
-    {
-        palabra.image1 = toCopy.image1;
-        palabra.image2 = toCopy.image2;
-        palabra.image3 = toCopy.image3;
-        palabra.audio = toCopy.audio;
-        palabra.palabraActual = toCopy.palabraActual;
-        palabra.color = toCopy.color;
-    }
-
-    public void PonerColorMarco(string _color, Image _marco)
-    {
-        Color color = new Color();
-        ColorUtility.TryParseHtmlString(_color, out color);
-        _marco.color = color;
-
-    }
-}
