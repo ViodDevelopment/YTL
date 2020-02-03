@@ -72,6 +72,12 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
+       
+
+    }
+
+    private void Start()
+    {
         WebCamDevice[] devices = WebCamTexture.devices;
 
         if (devices.Length == 0)
@@ -95,10 +101,18 @@ public class GameManager : MonoBehaviour
             return;
         }
 
-        
-
+        backCam.Play();
+        backCam.Pause();
+        InvokeRepeating("CamIsPlaying", 0f, 5f);
+      
     }
 
+    void CamIsPlaying()
+    {
+        Debug.Log("Camera trasera" + backCam.isPlaying);
+    }
+
+   
     public static GameManager Instance
     {
         get
