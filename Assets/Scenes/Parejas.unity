@@ -5086,6 +5086,7 @@ MonoBehaviour:
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
   AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!4 &2063976665

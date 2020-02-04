@@ -195,7 +195,6 @@ public class GameManagerParejas : MonoBehaviour
 
     private void Update()
     {
-
         if (completed)
         {
 

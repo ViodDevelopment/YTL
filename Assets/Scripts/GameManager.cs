@@ -104,6 +104,7 @@ public class GameManager : MonoBehaviour
         backCam.Play();
         backCam.Pause();
         InvokeRepeating("CamIsPlaying", 0f, 5f);
+
       
     }
 
