@@ -46,7 +46,14 @@ public class ImageControl : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.paquet == 0)
+            if (p.paquet == GameManager.configurartion.paquete)
+            {
+                if (p.image1 != "")
+                {
+                    palabrasDisponibles.Add(p);
+                }
+            }
+            else if(GameManager.configurartion.paquete == -1)
             {
                 if (p.image1 != "")
                 {
@@ -106,6 +113,8 @@ public class ImageControl : MonoBehaviour
                 m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
                 break;
         }
+
+        print(palabrasDisponibles[l_Number].paquet + "   GM " + GameManager.configurartion.paquete);
 
         Random.InitState(Random.seed + Random.Range(-5, 5));
         int otherImage = Random.Range(0, 3);

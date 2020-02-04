@@ -165,20 +165,14 @@ public class StartConfiguración : MonoBehaviour
         buttonActive = 0;
         switch (GameManager.configurartion.paquete)
         {
-            case 0:
+            case -1:
                 buttonActive = 0;
                 break;
-            case 1:
+            case 0:
                 buttonActive = 1;
                 break;
-            case 2:
-                buttonActive = 2;
-                break;
             case 3:
-                buttonActive = 3;
-                break;
-            case 4:
-                buttonActive = 4;
+                buttonActive = 2;
                 break;
         }
 

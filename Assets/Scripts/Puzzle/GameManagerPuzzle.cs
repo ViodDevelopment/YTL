@@ -97,22 +97,34 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.paquet == 0)
+            if (p.paquet == GameManager.configurartion.paquete)
             {
 
                 if (p.imagePuzzle != 0)
                 {
-                    switch (p.imagePuzzle)
+
+                    for (int i = 0; i < p.piecesPuzzle.Count; i++)
                     {
-                        case 1:
+                        if(p.piecesPuzzle[i] >= 4)
+                        {
                             palabrasDisponibles.Add(p);
                             break;
-                        case 2:
+                        }
+                    }
+                }
+            }
+            else if(GameManager.configurartion.paquete == -1)
+            {
+                if (p.imagePuzzle != 0)
+                {
+
+                    for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                    {
+                        if (p.piecesPuzzle[i] >= 4)
+                        {
                             palabrasDisponibles.Add(p);
                             break;
-                        case 3:
-                            palabrasDisponibles.Add(p);
-                            break;
+                        }
                     }
                 }
             }
