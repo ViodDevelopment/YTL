@@ -68,6 +68,7 @@ public class ButtonControl : MonoBehaviour
     {
         GameManager.configurartion.paquete = l_Packs;
         bd.SaveConfig();
+        print(GameManager.configurartion.paquete);
     }
 
     public void Dificultad(int Dificultad)

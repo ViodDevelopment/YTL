@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GirarImagenEternamente : MonoBehaviour
 {
@@ -15,7 +16,10 @@ public class GirarImagenEternamente : MonoBehaviour
 
     public void TurnActivo(bool _activo)
     {
-        if(!loadingScene.doing)
+        if (!loadingScene.doing)
+        {
             activo = _activo;
+            GameObject.Find("InicioPrep").GetComponent<Button>().interactable = false;
+        }
     }
 }

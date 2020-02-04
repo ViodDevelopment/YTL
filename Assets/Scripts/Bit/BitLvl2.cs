@@ -48,13 +48,24 @@ public class BitLvl2 : MonoBehaviour
         {
             if (levelBit == 2)
             {
-                if (f.actualDificultad == 1)//cambiar esto
-                    frasesDisponibles.Add(f);
+                if (f.actualDificultad == 1)
+                {
+                    if (f.paquet == GameManager.configurartion.paquete)
+                        frasesDisponibles.Add(f);
+                    else if (GameManager.configurartion.paquete == -1)
+                        frasesDisponibles.Add(f);
+
+                }
             }
             else
             {
-                if (f.actualDificultad >= 1)//cambiar esto
-                    frasesDisponibles.Add(f);
+                if (f.actualDificultad >= 1)
+                {
+                    if (f.paquet == GameManager.configurartion.paquete)
+                        frasesDisponibles.Add(f);
+                    else if (GameManager.configurartion.paquete == -1)
+                        frasesDisponibles.Add(f);
+                }
             }
         }
     }

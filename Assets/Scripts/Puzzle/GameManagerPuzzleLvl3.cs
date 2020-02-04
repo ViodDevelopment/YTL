@@ -100,7 +100,15 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     {
         foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-            frasesDisponibles.Add(f);
+            if(f.paquet == GameManager.configurartion.paquete)
+            {
+                if(f.image != "")
+                    frasesDisponibles.Add(f);
+            }else if(GameManager.configurartion.paquete == -1)
+            {
+                if (f.image != "")
+                    frasesDisponibles.Add(f);
+            }
         }
     }
 

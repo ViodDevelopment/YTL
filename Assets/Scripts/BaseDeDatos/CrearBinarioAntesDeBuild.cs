@@ -221,13 +221,13 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                             palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
                         }
                         if (palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Count == 0)
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(4);
+                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(0);
                     }
 
                     if (valor[4] != "")
                         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = int.Parse(valor[4]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 1;
+                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
 
                     if (valor[5] != "")
                         palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = int.Parse(valor[5]);
@@ -255,7 +255,7 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                         case "color":
                             palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 2;
                             break;
-                        case "animales":
+                        case "animales1":
                             palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 3;
                             break;
                         case "escuela":
@@ -263,7 +263,9 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                             break;
                     }
 
+
                 }
+
                 if (valor.Length == 0)
                     ended = true;
             }
@@ -357,7 +359,7 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                         case "color":
                             frasesPredeterminadas[frasesPredeterminadas.Count - 1].paquet = 2;
                             break;
-                        case "animales":
+                        case "animales1":
                             frasesPredeterminadas[frasesPredeterminadas.Count - 1].paquet = 3;
                             break;
                         case "escuela":
