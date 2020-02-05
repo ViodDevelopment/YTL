@@ -5,13 +5,13 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class PaquetePalabrasParejas : MonoBehaviour
+public class PaquetePalabrasParejas 
 {
-    public static PaquetePalabrasParejas instance;
+    private static PaquetePalabrasParejas instance;
 
     public List<PalabraBD> currentParejasPaquet = new List<PalabraBD>();
-    public List<PalabraBD> donePalabrasPaquet = new List<PalabraBD>();
-    public List<PalabraBD> nextPalabrasPaquet = new List<PalabraBD>();
+    private List<PalabraBD> donePalabrasPaquet = new List<PalabraBD>();
+    private List<PalabraBD> nextPalabrasPaquet = new List<PalabraBD>();
     public List<bool> pantallasHorizontal = new List<bool>();
     public int parejas = 0;
     public int dificultad = 0;
@@ -19,26 +19,22 @@ public class PaquetePalabrasParejas : MonoBehaviour
     public bool acabado = false;
     private string nameRute = "/PaqueteParejas.dat";
 
-    private void Start()
-    {
 
+    public static PaquetePalabrasParejas GetInstance()
+    {
         if (instance == null)
         {
-            instance = this;
+            instance = new PaquetePalabrasParejas();
+
+            if (File.Exists(Application.persistentDataPath + instance.nameRute))
+                instance.CargarBinario();
+            else
             {
-                if (File.Exists(Application.persistentDataPath + nameRute))
-                    CargarBinario();
-                else
-                {
-                    CrearNuevoPaquete();
-                    CrearBinario();
-                }
+                instance.CrearNuevoPaquete();
+                instance.CrearBinario();
             }
         }
-        else
-        {
-            DestroyImmediate(this);
-        }
+        return instance;
     }
 
 
@@ -82,41 +78,41 @@ public class PaquetePalabrasParejas : MonoBehaviour
             {
                 if (parejas == 2)
                 {
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         pantallasHorizontal.Add(true);
                     }
-                    for (int i = 0; i < 5; i++)
+                    for (int i = 0; i < 4; i++)
                     {
                         pantallasHorizontal.Add(false);
                     }
                 }
                 else if (parejas == 3)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(true);
                     }
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(false);
                     }
                 }
                 else if (parejas == 4)
                 {
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(true);
                     }
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(false);
                     }
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(true);
                     }
-                    for (int i = 0; i < 6; i++)
+                    for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(false);
                     }
@@ -210,6 +206,8 @@ public class PaquetePalabrasParejas : MonoBehaviour
         bf.Serialize(file, datos);
 
         file.Close();
+
+        Debug.Log("Guardado Paquete Parejas");
     }
 
     public void CargarBinario()
@@ -229,6 +227,8 @@ public class PaquetePalabrasParejas : MonoBehaviour
         acabado = datos.acabado;
 
         file.Close();
+
+        Debug.Log("cargado paquete parejas");
 
     }
 }
