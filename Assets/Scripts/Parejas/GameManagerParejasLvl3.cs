@@ -124,7 +124,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         InitPaabras();
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
         if (PaquetePalabrasParejas.GetInstance().acabado)
-            m_NumPairs = Random.Range(2, 5);
+            m_NumPairs = Random.Range(3, 5);
         else
             m_NumPairs = PaquetePalabrasParejas.GetInstance().parejas; Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
@@ -949,12 +949,15 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                 GameManager.SumPointToMinigame(0);
             if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
-            PaquetePalabrasParejas.GetInstance().pantallasHorizontal.RemoveAt(0);
-            if (PaquetePalabrasParejas.GetInstance().pantallasHorizontal.Count == 0)
+            if (!PaquetePalabrasParejas.GetInstance().acabado)
             {
-                PaquetePalabrasParejas.GetInstance().CrearNuevoPaquete();
+                PaquetePalabrasParejas.GetInstance().pantallasHorizontal.RemoveAt(0);
+                if (PaquetePalabrasParejas.GetInstance().pantallasHorizontal.Count == 0)
+                {
+                    PaquetePalabrasParejas.GetInstance().CrearNuevoPaquete();
+                }
+                PaquetePalabrasParejas.GetInstance().CrearBinario();
             }
-            PaquetePalabrasParejas.GetInstance().CrearBinario();
         }
         acabado = true;
     }
