@@ -172,6 +172,11 @@ public class SceneManagement : MonoBehaviour
         Application.OpenURL("http://yotambienleo.com/recomendaciones/");
     }
 
+    public void FullVersion()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.diversityapps.leer");
+    }
+
     public void Quit()
     {
         Application.Quit();

@@ -23,22 +23,22 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Minijuego_Burbujas.unity
     guid: e058be4d659e29f46b67a39926946291
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BitLevel2.unity
     guid: b5b68c202079cc047beb602454a521c0
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BitLevel3.unity
     guid: 5b9192efb9a5174438d7d8a0a44c513f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ParejasLevel2.unity
     guid: 924db89df7c43564b961751cf4eabd09
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ParejasLevel3.unity
     guid: 179a8aeb4ff1b06479ee478072f1d6f5
   - enabled: 0
     path: Assets/Scenes/Minijuego_Colores.unity
     guid: 9e10136e44d156e468e54c9b175a8359
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Permisos_Camera.unity
     guid: 5aebb4b6c7c9b7d499ea8f2c5e48ca53
   - enabled: 0
@@ -47,10 +47,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LoadingScene.unity
     guid: fa4e87af186ff2b4bb409f1a5f1ce8e4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PuzzleLvl2.unity
     guid: e9fad06fd4605f34fb916328b30af6c7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PuzzleLvl3.unity
     guid: 7791dc7f8142f0a4f96223fe83913f14
   m_configObjects: {}

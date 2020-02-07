@@ -73,12 +73,12 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,pera_01 pera_02 pera_03,pera,4 6,3,1,pera,pe-ra,1,pera,pe-ra,x
 #eb6424,perro_01 perro_02 perro_03,perro,4 6 9,3,2,perro,pe-rro,1,gos,gos,x animales1
 #eb6424,pie_01 pie_02 pie_03,pie,4 6,2,2,pie,pie,1,peu,peu,x
-#5bb030,pintar_01 pintar_02 pintar_03,pintar,6 9 12,3,2,pintar,pin-tar,2,pintar,pin-tar,x
+#5bb030,pintar_01 pintar_02 pintar_03,pintar,4 6 9,3,2,pintar,pin-tar,2,pintar,pin-tar,x
 #eb6424,piruleta_01 piruleta_02 piruleta_03,piruleta,,,3,piruleta,pi-ru-le-ta,3,piruleta,pi-ru-le-ta,x
 #eb6424,pizarra_01 pizarra_02 pizarra_03,pizarra,4 6,2,3,pizarra,pi-za-rra,3,pissarra,pis-sar-ra,x
 #eb6424,plato_01 plato_02 plato_03,plato,4,1,2,plato,pla-to,1,plat,plat,x
 #29a3da,rojo_01 rojo_02 rojo_03,rojo,,,2,rojo,ro-jo,3,vermell,ver-mell,x color
-#5bb030,saltar01 saltar02 saltar03,saltar,6 9 12,2,2,saltar,sal-tar,2,saltar,sal-tar,x
+#5bb030,saltar01 saltar02 saltar03,saltar,6 9,2,2,saltar,sal-tar,2,saltar,sal-tar,x
 #eb6424,silla_01 silla_02 silla_03,silla,4,2,2,silla,si-lla,3,cadira,ca-di-ra,x
 #eb6424,sofa_01 sofa_02 sofa_03,sofa,4 6,2,1,sofá,so-fá,2,sofà,so-fà,x
 #eb6424,sol_01 sol_02 sol_03,sol,4,2,1,sol,sol,1,sol,sol,x
@@ -88,7 +88,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,vaso_01 vaso_02 vaso_03,vaso,4,1,2,vaso,va-so ,1,got,got,x
 #29a3da,verde_01 verde_02 verde_03,verde,,,2,verde,ver-de,2,verd,verd,x color
 #eb6424,vestido_01 vestido_02 vestido_03,vestido,4 6 9,2,3,vestido,ves-ti-do,3,vestit,ves-tit,x
-#eb6424,zapato_01 zapato_02 zapato_03,zapato,4 6,3,3,zapato ,za-pa-to,3,sabata,sa-ba-ta,x
+#eb6424,zapato_01 zapato_02 zapato_03,zapato,4,3,3,zapato ,za-pa-to,3,sabata,sa-ba-ta,x
 #eb6424,cena_01 cena_02,cena,4 6 9,2,1,cena,ce-na,2,sopar,so-par,x
 #5bb030,comer_01 comer_02 comer_03,comer,4 6 9,2,2,comer,co-mer,2,menjar,men-jar,x
 #29a3da,comida_01 comida_02,comida,4 6 9,1,2,comida,co-mi-da,2,dinar,di-nar,x
@@ -99,7 +99,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,muneca_01 muneca_02 muneca_03,muneca,4 6 9,3,3,muñeca,mu-ñe-ca,1,nina,ni-na,x
 #eb6424,,papa,,,1,papá,pa-pá,1,papa,pa-pa,x
 #eb6424,parque_01 parque_02 parque_03,parque,4 6 9,3,2,parque,par-que,2,parc,parc,x
-#b6d060,triste_01 triste_02 triste_03,triste,1 2,1,3,triste,tris-te,2,trist,trist,x
+#b6d060,triste_01 triste_02 triste_03,triste,4 6,1,3,triste,tris-te,2,trist,trist,x
 #5bb030,,canta ,,,,canta ,,,canta ,,
 #5bb030,,baila ,,,,baila ,,,balla ,,
 #b6d060,contento_f_01 contento_f_02 contento_f_03,contento_f,4 6 9,2,,contenta,con-ten-ta,,contenta,con-ten-ta,x
