@@ -680,16 +680,16 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         switch (_silaba.Length)
         {
             case 1:
-                _imagen.rectTransform.localScale -= new Vector3(_imagen.rectTransform.localScale.x / 5, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 5f, 0, 0);
                 break;
             case 3:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 5, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4.5f, 0, 0);
                 break;
             case 4:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4f, 0, 0);
                 break;
             case 5:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 3, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 3f, 0, 0);
                 break;
 
         }

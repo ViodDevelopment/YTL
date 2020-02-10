@@ -24,6 +24,7 @@ public class PalabraBD
     public int paquet; //Paquete 0 = determinado, 1 = escuela, paquete 2 = color, paquete 3 = animales
     public List<string> silabasActuales = new List<string>();
     public string palabraActual;
+    public bool user = false;
 
     //eliminar en un futuro y cambiarlo por el original
     //

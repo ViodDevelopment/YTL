@@ -69,6 +69,11 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.LoadPassword();
                 }
 
+                if (!Directory.Exists(Path.GetDirectoryName(Application.persistentDataPath + "/UserWords/datosUsuario")))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(Application.persistentDataPath + "/UserWords/datosUsuario"));
+                }
+
                 if (File.Exists(nameRuteUser))
                 {
                     management.LoadDatesOfPlayer();
@@ -486,11 +491,13 @@ public class ManagamentFalseBD : MonoBehaviour
 
         DatesOfPlayer datos = new DatesOfPlayer();
 
-        datos.AddPalabras(palabrasUserGuardadas);
+        datos.ChangeDates(palabrasUserGuardadas);
 
         bf.Serialize(file, datos);
 
         file.Close();
+
+        GameManager.palabrasUserDisponibles = palabrasUserGuardadas;
     }
 
     public void LoadDatesOfPlayer()
