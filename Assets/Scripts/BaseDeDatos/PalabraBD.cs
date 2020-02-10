@@ -90,32 +90,83 @@ public class PalabraBD
 
     public Sprite GetSprite(string _name)
     {
-        return Resources.Load<Sprite>("images/Version1.0/Palabra/" + _name); //CAMBIAR RUTA DE IMAGEN CUANDO NO SEA LITE
+        if (!user)
+            return Resources.Load<Sprite>("images/Version1.0/Palabra/" + _name); //CAMBIAR RUTA DE IMAGEN CUANDO NO SEA LITE
+        else
+            return GetSpriteUserWord();
+
     }
 
     public Texture2D GetTexture2D(string _name)
     {
-        return Resources.Load<Texture2D>("images/Version1.0/Palabra/" + _name);
+        if (!user)
+            return Resources.Load<Texture2D>("images/Version1.0/Palabra/" + _name);
+        else
+            return GetTexture2DUserWord();
     }
 
     public AudioClip GetAudioClip(string _audio)
     {
-        string completeRute = "";
-        switch (SingletonLenguage.GetInstance().GetLenguage())
+        if (!user)
         {
-            case SingletonLenguage.Lenguage.CASTELLANO:
-                completeRute = "Audios/Castellano/Version1.0/Palabra/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
-                break;
-            case SingletonLenguage.Lenguage.CATALAN:
-                completeRute = "Audios/Catalan/Version1.0/Palabra/" + _audio + "_cat"; //LOMISMO
-                break;
-            case SingletonLenguage.Lenguage.INGLES:
-                break;
-            case SingletonLenguage.Lenguage.FRANCES:
-                break;
+            string completeRute = "";
+            switch (SingletonLenguage.GetInstance().GetLenguage())
+            {
+                case SingletonLenguage.Lenguage.CASTELLANO:
+                    completeRute = "Audios/Castellano/Version1.0/Palabra/" + _audio + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
+                    break;
+                case SingletonLenguage.Lenguage.CATALAN:
+                    completeRute = "Audios/Catalan/Version1.0/Palabra/" + _audio + "_cat"; //LOMISMO
+                    break;
+                case SingletonLenguage.Lenguage.INGLES:
+                    break;
+                case SingletonLenguage.Lenguage.FRANCES:
+                    break;
+            }
+
+            return Resources.Load<AudioClip>(completeRute);
+        }
+        else
+            return GetAudioClipUserWord();
+    }
+
+    public Sprite GetSpriteUserWord()
+    {
+        WWW www = new WWW("file://" + image1); //Cargando la imagen
+
+        while (!www.isDone)
+        {
+            Debug.Log("Cargando imagen");
+        }
+        Texture2D texture = www.texture; //una vez cargada 
+
+        Rect rect = new Rect(new Vector2(0, 0), new Vector2(texture.width, texture.height));
+        return Sprite.Create(texture, rect, Vector2.down);
+
+    }
+
+    public Texture2D GetTexture2DUserWord()
+    {
+        WWW www = new WWW("file://" + image1); //Cargando la imagen
+
+        while (!www.isDone)
+        {
+            Debug.Log("Cargando Texture");
+        }
+        return www.texture; //una vez cargada    
+    }
+
+        public AudioClip GetAudioClipUserWord()
+    {
+        WWW www = new WWW("file://" + audio);
+
+
+        while (!www.isDone)
+        {
+            Debug.Log("downloading");
         }
 
-        return Resources.Load<AudioClip>(completeRute);
+        return www.GetAudioClip();
     }
 
 }
