@@ -196,6 +196,20 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                 }
             }
         }
+
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        {
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            {
+                if (p.nameSpanish != "")
+                    listOfPalabras.Add(p);
+            }
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            {
+                if (p.nameCatalan != "")
+                    listOfPalabras.Add(p);
+            }
+        }
     }
 
 
