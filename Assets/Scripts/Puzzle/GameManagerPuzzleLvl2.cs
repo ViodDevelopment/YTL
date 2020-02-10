@@ -129,6 +129,19 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 }
             }
         }
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        {
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            {
+                if (p.nameSpanish != "")
+                    palabrasDisponibles.Add(p);
+            }
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            {
+                if (p.nameCatalan != "")
+                    palabrasDisponibles.Add(p);
+            }
+        }
     }
 
     private void Update()

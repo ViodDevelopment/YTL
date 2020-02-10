@@ -68,6 +68,7 @@ public class BitLvl2 : MonoBehaviour
                 }
             }
         }
+
     }
 
     void Start()
