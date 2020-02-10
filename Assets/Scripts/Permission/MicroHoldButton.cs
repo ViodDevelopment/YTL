@@ -19,10 +19,10 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public void AceptarPalabra()
     {
-        FileStream file = File.Create(Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
+        //FileStream file = File.Create(Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
 
-        ConvertAndWrite(file, m_Recording);
-        WriteHeader(file, m_Recording);
+        //ConvertAndWrite(file, m_Recording);
+        //WriteHeader(file, m_Recording);
     }
 
 

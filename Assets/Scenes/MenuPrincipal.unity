@@ -10412,6 +10412,7 @@ GameObject:
   - component: {fileID: 864750058}
   - component: {fileID: 864750056}
   - component: {fileID: 864750055}
+  - component: {fileID: 864750059}
   m_Layer: 5
   m_Name: GuardarPalabraBoton
   m_TagString: Untagged
@@ -10481,7 +10482,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 864750056}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 864750059}
+        m_MethodName: SaveWord
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &864750056
@@ -10538,6 +10550,23 @@ MonoBehaviour:
   bloqueSilabas: {fileID: 1238332939}
   audioClip: {fileID: 413337448}
   palabraSilabas: 
+--- !u!114 &864750059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 864750053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc60e72e326ef1438d87eb985e7c1f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  word: {fileID: 393198137}
+  img: {fileID: 540631410}
+  bloqueSilabas: []
+  bloqueSilaba: {fileID: 1238332939}
+  audioSource: {fileID: 413337448}
 --- !u!1 &867787639
 GameObject:
   m_ObjectHideFlags: 0
