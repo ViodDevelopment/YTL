@@ -11,7 +11,7 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     AudioSource m_AudioSource;
     private float startRecordingTime;
     private bool apretado = false;
-    private AudioClip sonidoDefault;
+    public AudioClip sonidoDefault;
 
     void Start()
     {
@@ -45,28 +45,32 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
 
 
-    public void OnPointerDown(PointerEventData eventData)
+    public IEnumerator OnPointerDown()
     {
-        if(!apretado)
+        if (!apretado)
         {
             apretado = true;
             m_AudioSource.clip = sonidoDefault;
             m_AudioSource.Play();
         }
-        if (!m_AudioSource.isPlaying)
-        {
-            print("START_RECORDING");
-            int minFreq;
-            int maxFreq;
-            int freq = 44100;
-            Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
 
-            if (maxFreq < 44100)
-                freq = maxFreq;
+        float l_timer = 0;
+        if (m_AudioSource.isPlaying)
+            l_timer = m_AudioSource.clip.length;
 
-            m_Recording = Microphone.Start("", false, 300, 44100);
-            startRecordingTime = Time.time;
-        }
+        yield return new WaitForSeconds(l_timer);
+        print("START_RECORDING");
+        int minFreq;
+        int maxFreq;
+        int freq = 44100;
+        Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
+
+        if (maxFreq < 44100)
+            freq = maxFreq;
+
+        m_Recording = Microphone.Start("", false, 300, 44100);
+        startRecordingTime = Time.time;
+
     }
 
     static void ConvertAndWrite(FileStream fileStream, AudioClip clip)
@@ -226,6 +230,13 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     }
 
+    void OnPointerDown(PointerEventData eventData)
+    {
+        StartCoroutine(OnPointerDown());
+    }
 
-
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    {
+        StartCoroutine(OnPointerDown());
+    }
 }
