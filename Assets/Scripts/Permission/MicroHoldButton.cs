@@ -10,7 +10,8 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     AudioClip m_Recording;
     AudioSource m_AudioSource;
     private float startRecordingTime;
-
+    private bool apretado = false;
+    private AudioClip sonidoDefault;
 
     void Start()
     {
@@ -39,27 +40,33 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         AceptarPalabra();//Quitar y pone cuando se acepte palabra
         m_AudioSource.clip = m_Recording;
-        m_AudioSource.Play();
-
+        apretado = false;
     }
 
 
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if(!apretado)
+        {
+            apretado = true;
+            m_AudioSource.clip = sonidoDefault;
+            m_AudioSource.Play();
+        }
+        if (!m_AudioSource.isPlaying)
+        {
+            print("START_RECORDING");
+            int minFreq;
+            int maxFreq;
+            int freq = 44100;
+            Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
 
-        print("START_RECORDING");
-        int minFreq;
-        int maxFreq;
-        int freq = 44100;
-        Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
+            if (maxFreq < 44100)
+                freq = maxFreq;
 
-        if (maxFreq < 44100)
-            freq = maxFreq;
-
-        m_Recording = Microphone.Start("", false, 300, 44100);
-        startRecordingTime = Time.time;
-
+            m_Recording = Microphone.Start("", false, 300, 44100);
+            startRecordingTime = Time.time;
+        }
     }
 
     static void ConvertAndWrite(FileStream fileStream, AudioClip clip)

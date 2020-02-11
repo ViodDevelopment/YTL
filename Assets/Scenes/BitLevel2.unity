@@ -220,6 +220,7 @@ MonoBehaviour:
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
+  PhotoFromCam: {fileID: 0}
 --- !u!114 &74808669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -237,6 +238,7 @@ MonoBehaviour:
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
   AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!114 &74808670
@@ -907,6 +909,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextBit
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617506764771967307, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617506764771967307, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617506766310047004, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617506766310047004, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7617506766310047004, guid: c97aaca75cec1de418a27440bfd0ea07,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -540
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c97aaca75cec1de418a27440bfd0ea07, type: 3}
