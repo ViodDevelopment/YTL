@@ -10,7 +10,8 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     AudioClip m_Recording;
     AudioSource m_AudioSource;
     private float startRecordingTime;
-
+    private bool apretado = false;
+    public AudioClip sonidoDefault;
 
     void Start()
     {
@@ -39,15 +40,25 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         AceptarPalabra();//Quitar y pone cuando se acepte palabra
         m_AudioSource.clip = m_Recording;
-        m_AudioSource.Play();
-
+        apretado = false;
     }
 
 
 
-    public void OnPointerDown(PointerEventData eventData)
+    public IEnumerator OnPointerDown()
     {
+        if (!apretado)
+        {
+            apretado = true;
+            m_AudioSource.clip = sonidoDefault;
+            m_AudioSource.Play();
+        }
 
+        float l_timer = 0;
+        if (m_AudioSource.isPlaying)
+            l_timer = m_AudioSource.clip.length;
+
+        yield return new WaitForSeconds(l_timer);
         print("START_RECORDING");
         int minFreq;
         int maxFreq;
@@ -219,6 +230,13 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     }
 
+    void OnPointerDown(PointerEventData eventData)
+    {
+        StartCoroutine(OnPointerDown());
+    }
 
-
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    {
+        StartCoroutine(OnPointerDown());
+    }
 }
