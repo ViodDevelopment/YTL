@@ -7009,7 +7009,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textos:
+  - {fileID: 1853707736}
+  - {fileID: 1876555114}
   - {fileID: 497401782}
+  - {fileID: 929317278}
+  - {fileID: 1298848599}
+  - {fileID: 559031323}
+  - {fileID: 855681266}
+  - {fileID: 2119885979}
+  - {fileID: 912547943}
+  - {fileID: 1443153185}
+  - {fileID: 1519628319}
+  - {fileID: 6541996}
+  - {fileID: 345602573}
+  - {fileID: 1298705175}
+  - {fileID: 966154390}
+  - {fileID: 2073801471}
+  - {fileID: 425550580}
+  - {fileID: 1393119068}
+  - {fileID: 1258025967}
+  - {fileID: 2105687331}
+  - {fileID: 1545400965}
+  - {fileID: 1132850818}
+  - {fileID: 1045195225}
+  - {fileID: 1482783666}
+  - {fileID: 1111796559}
+  - {fileID: 906450141}
+  - {fileID: 1630896973}
+  - {fileID: 1742282596}
+  - {fileID: 1248340922}
+  - {fileID: 993257462}
+  - {fileID: 937796113}
+  - {fileID: 308449600}
+  - {fileID: 990314160}
+  - {fileID: 1693451028}
+  - {fileID: 615432623}
 --- !u!1 &559031321
 GameObject:
   m_ObjectHideFlags: 0
@@ -12195,6 +12229,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990314158}
   m_CullTransparentMesh: 0
+--- !u!114 &993257462 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 372331788218047375, guid: 05d8b5095308b0b469975f888ba148db,
+    type: 3}
+  m_PrefabInstance: {fileID: 372331787321661681}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1001110913
 GameObject:
   m_ObjectHideFlags: 0
