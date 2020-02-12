@@ -33,14 +33,11 @@ public class Addword : MonoBehaviour
         }
 
         gameObject.GetComponent<Button>().interactable = false;
+        
     }
 
     private void Update()
     {
-
-      
-
-
         if (img != null && word.text != null && audioSource.clip != null )
         {
             gameObject.GetComponent<Button>().interactable = true;
@@ -55,16 +52,18 @@ public class Addword : MonoBehaviour
         {
             sumSilabas += inField.text + "-";
         }
+        try{
+            sumSilabas.Substring(0, sumSilabas.Length - 1);
+            Texture2D textd = ToTexture2D(img.mainTexture);
+            File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
 
-        sumSilabas.Substring(0, sumSilabas.Length-1);
+            FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
 
-        File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", ToTexture2D(img.mainTexture).EncodeToPNG());
-
-        FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
-
-        ConvertAndWrite(file, audioSource.clip);
-        WriteHeader(file, audioSource.clip);
-
+            ConvertAndWrite(file, audioSource.clip);
+            WriteHeader(file, audioSource.clip);
+        }
+        catch { Debug.LogError("InternalError"); }
+        palabraBD = new PalabraBD();
         palabraBD.imagePuzzle = 1;
         palabraBD.image1 =
         palabraBD.image2 =
@@ -101,12 +100,13 @@ public class Addword : MonoBehaviour
 
     public static Texture2D ToTexture2D( Texture texture)
     {
-        return Texture2D.CreateExternalTexture(
-            texture.width,
-            texture.height,
-            TextureFormat.RGB24,
-            false, false,
-            texture.GetNativeTexturePtr());
+        RenderTexture rendTexture = new RenderTexture(texture.width,texture.height,0,RenderTextureFormat.ARGB32) ;
+        Texture2D result = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, false);
+
+        Graphics.Blit(texture, rendTexture);
+        result.ReadPixels(new Rect(0, 0, rendTexture.width, rendTexture.height), 0, 0);
+        result.Apply();
+        return result;
 
     }
     static void ConvertAndWrite(FileStream fileStream, AudioClip clip)
