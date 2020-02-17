@@ -307,8 +307,6 @@ public class ManagamentFalseBD : MonoBehaviour
             management.SaveDatesFrase();
             management.LoadDatesFrase();
         }
-
-        PaquetePalabrasParejas.GetInstance();
     }
 
     public void SaveDates()

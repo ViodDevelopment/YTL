@@ -123,10 +123,10 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     {
         InitPaabras();
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
-        if (PaquetePalabrasParejas.GetInstance().acabado)
+        if (PaquetePalabrasParejas.GetInstance("3").acabado)
             m_NumPairs = Random.Range(3, 5);
         else
-            m_NumPairs = PaquetePalabrasParejas.GetInstance().parejas; Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
+            m_NumPairs = PaquetePalabrasParejas.GetInstance("3").parejas; Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
 
         if (l_NumReps % 2 == 0)
@@ -178,7 +178,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
     private void InitPaabras()
     {
-        foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance().currentParejasPaquet)
+        foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("3").currentParejasPaquet)
         {
 
             if (p.paquet == GameManager.configurartion.paquete)
@@ -303,7 +303,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         repetirPalabras = l_ThirdPair;
 
 
-        if (PaquetePalabrasParejas.GetInstance().acabado)
+        if (PaquetePalabrasParejas.GetInstance("3").acabado)
         {
             Random.InitState(Random.seed + Random.Range(-2, 2));
             if (Random.Range(0, 2) == 1)
@@ -319,8 +319,8 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         }
         else
         {
-            m_IsHorizontal = PaquetePalabrasParejas.GetInstance().pantallasHorizontal[0];
-            m_NumPairs = PaquetePalabrasParejas.GetInstance().parejas;
+            m_IsHorizontal = PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal[0];
+            m_NumPairs = PaquetePalabrasParejas.GetInstance("3").parejas;
         }
 
         m_FirstPair = true;
@@ -521,7 +521,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             repetirPalabras = l_ThirdPair;
 
 
-            if (PaquetePalabrasParejas.GetInstance().acabado)
+            if (PaquetePalabrasParejas.GetInstance("3").acabado)
             {
                 Random.InitState(Random.seed + Random.Range(-2, 2));
                 if (Random.Range(0, 2) == 1)
@@ -537,8 +537,8 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             }
             else
             {
-                m_IsHorizontal = PaquetePalabrasParejas.GetInstance().pantallasHorizontal[0];
-                m_NumPairs = PaquetePalabrasParejas.GetInstance().parejas;
+                m_IsHorizontal = PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal[0];
+                m_NumPairs = PaquetePalabrasParejas.GetInstance("3").parejas;
             }
 
             m_FirstPair = true;
@@ -963,14 +963,14 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                 GameManager.SumPointToMinigame(0);
             if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
-            if (!PaquetePalabrasParejas.GetInstance().acabado)
+            if (!PaquetePalabrasParejas.GetInstance("3").acabado)
             {
-                PaquetePalabrasParejas.GetInstance().pantallasHorizontal.RemoveAt(0);
-                if (PaquetePalabrasParejas.GetInstance().pantallasHorizontal.Count == 0)
+                PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal.RemoveAt(0);
+                if (PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal.Count == 0)
                 {
-                    PaquetePalabrasParejas.GetInstance().CrearNuevoPaquete();
+                    PaquetePalabrasParejas.GetInstance("3").CrearNuevoPaquete();
                 }
-                PaquetePalabrasParejas.GetInstance().CrearBinario();
+                PaquetePalabrasParejas.GetInstance("3").CrearBinario();
             }
         }
         acabado = true;

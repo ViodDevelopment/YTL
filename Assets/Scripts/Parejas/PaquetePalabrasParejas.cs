@@ -5,7 +5,7 @@ using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
-public class PaquetePalabrasParejas 
+public class PaquetePalabrasParejas
 {
     private static PaquetePalabrasParejas instance;
 
@@ -17,29 +17,85 @@ public class PaquetePalabrasParejas
     public int dificultad = 0;
     public int fase = 0;
     public bool acabado = false;
-    private string nameRute = "/PaqueteParejas.dat";
+    private string nameRute = "";
+    private string ruteOriginal = "PaqueteParejas.dat";
+    private string lastLvl = "0";
+    private SingletonLenguage.Lenguage lastLenguaje = SingletonLenguage.Lenguage.INGLES;
 
 
-    public static PaquetePalabrasParejas GetInstance()
+    public static PaquetePalabrasParejas GetInstance(string _lvl)
     {
         if (instance == null)
         {
             instance = new PaquetePalabrasParejas();
-
-            if (File.Exists(Application.persistentDataPath + instance.nameRute))
-                instance.CargarBinario();
-            else
+        }
+        if (_lvl != instance.lastLvl || instance.lastLenguaje != SingletonLenguage.GetInstance().GetLenguage())
+        {
+            if (instance.parejas != 0)
             {
-                instance.CrearNuevoPaquete();
                 instance.CrearBinario();
             }
+            instance.Reset();
+            instance.InitPaquet(_lvl);
         }
         return instance;
     }
 
+    private void Reset()
+    {
+        instance.parejas = 0;
+        instance.dificultad = 0;
+        instance.fase = 0;
+        instance.acabado = false;
+        currentParejasPaquet.Clear();
+        donePalabrasPaquet.Clear();
+        nextPalabrasPaquet.Clear();
+        pantallasHorizontal.Clear();
+}
 
+    public void InitPaquet(string _lvl)
+    {
+        instance.nameRute = "/" + SingletonLenguage.GetInstance().GetLenguage().ToString() + _lvl + instance.ruteOriginal;
+        if (File.Exists(Application.persistentDataPath + instance.nameRute))
+            instance.CargarBinario();
+        else
+        {
+            instance.CrearNuevoPaquete();
+            instance.CrearBinario();
+        }
+        instance.lastLvl = _lvl;
+        instance.lastLenguaje = SingletonLenguage.GetInstance().GetLenguage();
+
+        foreach (PalabraBD item in instance.nextPalabrasPaquet)
+        {
+            item.SeparateSilabas();
+            item.SetPalabraActual();
+        }
+
+        foreach (PalabraBD item in instance.currentParejasPaquet)
+        {
+            item.SeparateSilabas();
+            item.SetPalabraActual();
+        }
+
+        foreach (PalabraBD item in instance.donePalabrasPaquet)
+        {
+            item.SeparateSilabas();
+            item.SetPalabraActual();
+        }
+    }
 
     public void CrearNuevoPaquete()
+    {
+        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            instance.CrearNuevoPaqueteEsp();
+        else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            instance.CrearNuevoPaqueteCat();
+    }
+
+
+
+    public void CrearNuevoPaqueteEsp()
     {
         if (pantallasHorizontal.Count == 0)
         {
@@ -134,7 +190,156 @@ public class PaquetePalabrasParejas
                     {
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad || GameManager.palabrasDisponibles[i].dificultSpanish == dificultad)
+                            if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad)
+                            {
+                                if (i < (GameManager.palabrasDisponibles.Count - 1) / 3)
+                                {
+                                    currentParejasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                }
+                                else
+                                {
+                                    nextPalabrasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                }
+                            }
+
+                        }
+                    }
+                    else
+                    {
+                        if (fase == 2)
+                        {
+                            for (int i = (nextPalabrasPaquet.Count - 1) / 2; i >= 0; i--)
+                            {
+                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                                nextPalabrasPaquet.RemoveAt(i);
+                            }
+                        }
+                        else if (fase == 3)
+                        {
+                            for (int i = nextPalabrasPaquet.Count - 1; i >= 0; i--)
+                            {
+                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                            }
+                            nextPalabrasPaquet.Clear();
+                        }
+                        else if (fase == 4)
+                        {
+                            foreach (var item in donePalabrasPaquet)
+                            {
+                                currentParejasPaquet.Add(item);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                nextPalabrasPaquet.Clear();
+                foreach (var item in GameManager.palabrasDisponibles)
+                {
+                    currentParejasPaquet.Add(item);
+                }
+            }
+
+        }
+    }
+
+    public void CrearNuevoPaqueteCat()
+    {
+        if (pantallasHorizontal.Count == 0)
+        {
+            int l_firstFase = fase;
+            int l_firstDif = dificultad;
+            if (fase == 0)
+                fase = 1;
+            else if (fase <= 4 && parejas >= 3)
+            {
+                fase++;
+                parejas = 2;
+            }
+            else if (parejas == 2)
+                parejas++;
+
+            if (parejas == 0)
+                parejas = 2;
+
+            if (fase == 4)
+                parejas = 4;
+
+
+            if ((dificultad == 0 || fase == 5) && dificultad < 3)
+            {
+                dificultad++;
+                donePalabrasPaquet.Clear();
+                fase = 1;
+                parejas = 2;
+            }
+            else if ((dificultad == 0 || fase == 5) && dificultad == 3)
+            {
+                acabado = true;
+            }
+
+            if (!acabado)
+            {
+                if (parejas == 2)
+                {
+                    for (int i = 0; i < 4; i++)
+                    {
+                        pantallasHorizontal.Add(true);
+                    }
+                    for (int i = 0; i < 4; i++)
+                    {
+                        pantallasHorizontal.Add(false);
+                    }
+                }
+                else if (parejas == 3)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(true);
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(false);
+                    }
+                }
+                else if (parejas == 4)
+                {
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(true);
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(false);
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(true);
+                    }
+                    for (int i = 0; i < 5; i++)
+                    {
+                        pantallasHorizontal.Add(false);
+                    }
+                }
+
+                if (fase != l_firstFase)
+                {
+                    if (l_firstDif == dificultad)
+                    {
+                        foreach (var item in currentParejasPaquet)
+                        {
+                            donePalabrasPaquet.Add(item);
+                        }
+                    }
+                    currentParejasPaquet.Clear();
+
+
+                    if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
+                    {
+                        for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
+                        {
+                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad)
                             {
                                 if (i < (GameManager.palabrasDisponibles.Count - 1) / 3)
                                 {
