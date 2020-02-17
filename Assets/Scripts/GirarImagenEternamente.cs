@@ -6,12 +6,32 @@ using UnityEngine.UI;
 public class GirarImagenEternamente : MonoBehaviour
 {
     private bool activo = false;
+    public bool parar = false;
+    public bool acabado = false;
     public LoadingScene loadingScene;
+    public Quaternion initForward;
+    public float speed = 550;
     // Update is called once per frame
+
+    private void Start()
+    {
+        initForward = transform.rotation;
+    }
     void Update()
     {
-        if (activo)
-            gameObject.transform.RotateAround(gameObject.transform.position ,Vector3.forward, -500 * Time.deltaTime);
+        if (!acabado)
+        {
+            if (activo)
+                gameObject.transform.RotateAround(gameObject.transform.position, Vector3.forward, -speed * Time.deltaTime);
+            if (activo && parar)
+            {
+                if (Mathf.Abs(Quaternion.Angle(gameObject.transform.rotation, initForward)) < 5)
+                {
+                    gameObject.transform.rotation = Quaternion.Euler(Vector3.zero);
+                    acabado = true;
+                }
+            }
+        }
     }
 
     public void TurnActivo(bool _activo)
@@ -19,7 +39,9 @@ public class GirarImagenEternamente : MonoBehaviour
         if (!loadingScene.doing)
         {
             activo = _activo;
+            loadingScene.myimage = this;
             GameObject.Find("InicioPrep").GetComponent<Button>().interactable = false;
         }
     }
+
 }
