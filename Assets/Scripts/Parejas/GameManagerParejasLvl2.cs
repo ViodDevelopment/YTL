@@ -1549,8 +1549,13 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         palabra.image2 = toCopy.image2;
         palabra.image3 = toCopy.image3;
         palabra.audio = toCopy.audio;
+        palabra.imagePuzzle = toCopy.imagePuzzle;
+        palabra.piecesPuzzle = toCopy.piecesPuzzle;
         palabra.palabraActual = toCopy.palabraActual;
         palabra.color = toCopy.color;
+        palabra.user = toCopy.user;
+        palabra.nameSpanish = toCopy.nameSpanish;
+        palabra.nameCatalan = toCopy.nameCatalan;
     }
 
     public void PonerColorMarco(string _color, Image _marco)

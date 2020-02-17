@@ -3187,7 +3187,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &229721565
 GameObject:
   m_ObjectHideFlags: 0
@@ -4920,7 +4924,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -5475,7 +5479,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &439201819
 GameObject:
   m_ObjectHideFlags: 0
@@ -10213,7 +10221,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &855681264
 GameObject:
   m_ObjectHideFlags: 0
@@ -10448,7 +10460,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &864750053
 GameObject:
   m_ObjectHideFlags: 0
@@ -10617,6 +10633,7 @@ MonoBehaviour:
   bloqueSilabas: []
   bloqueSilaba: {fileID: 1238332939}
   audioSource: {fileID: 413337448}
+  crateWord: {fileID: 864750058}
 --- !u!1 &867787639
 GameObject:
   m_ObjectHideFlags: 0
@@ -11572,7 +11589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &953711819
 GameObject:
   m_ObjectHideFlags: 0
@@ -12549,7 +12570,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &1018388164
 GameObject:
   m_ObjectHideFlags: 0
@@ -14993,7 +15018,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &1238332939
 GameObject:
   m_ObjectHideFlags: 0
@@ -20431,6 +20460,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   doing: 0
+  myimage: {fileID: 0}
 --- !u!1 &1658938669
 GameObject:
   m_ObjectHideFlags: 0
@@ -23744,7 +23774,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &1912865076
 GameObject:
   m_ObjectHideFlags: 0
@@ -24555,7 +24589,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919bd867dc214244ea6273cd442015cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parar: 0
+  acabado: 0
   loadingScene: {fileID: 1657563401}
+  initForward: {x: 0, y: 0, z: 0, w: 0}
+  speed: 550
 --- !u!1 &1958762012
 GameObject:
   m_ObjectHideFlags: 0

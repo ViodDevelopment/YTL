@@ -285,7 +285,6 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
             {
                 string data = streamReader.ReadLine();
                 fila++;
-                Debug.Log(fila);
                 if (data == null || streamReader == null || fila > 999999)
                 {
                     ended = true;

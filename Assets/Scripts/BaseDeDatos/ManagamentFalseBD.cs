@@ -89,7 +89,7 @@ public class ManagamentFalseBD : MonoBehaviour
             Destroy(gameObject);
     }
 
-   
+
 
     private void InitPalabrasPredeterminadas()
     {
@@ -189,7 +189,7 @@ public class ManagamentFalseBD : MonoBehaviour
             }
 
         }
- 
+
 
         foreach (PalabraBD p in palabrasPredeterminadass)
         {
@@ -483,17 +483,21 @@ public class ManagamentFalseBD : MonoBehaviour
             else
                 palabrasUserGuardadas.Remove(_pal);
         }
-
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(nameRuteUser);
 
         DatesOfPlayer datos = new DatesOfPlayer();
 
-        datos.ChangeDates(palabrasUserGuardadas);
+        datos.palabrasUser = palabrasUserGuardadas;
 
         bf.Serialize(file, datos);
 
         file.Close();
+        foreach (PalabraBD item in palabrasUserGuardadas)
+        {
+            item.SeparateSilabas();
+            item.SetPalabraActual();
+        }
 
         GameManager.palabrasUserDisponibles = palabrasUserGuardadas;
     }
@@ -505,10 +509,17 @@ public class ManagamentFalseBD : MonoBehaviour
 
         DatesOfPlayer datos = (DatesOfPlayer)bf.Deserialize(file);
 
-        GameManager.palabrasUserDisponibles = datos.GetListOfPalabras();
+        palabrasUserGuardadas = datos.palabrasUser;
 
         file.Close();
 
+        foreach (PalabraBD item in palabrasUserGuardadas)
+        {
+            item.SeparateSilabas();
+            item.SetPalabraActual();
+        }
+
+        GameManager.palabrasUserDisponibles = palabrasUserGuardadas;
         GameManager.Instance.ChangeConfig();
     }
 
@@ -609,29 +620,7 @@ class DatesFrasesToSave
 [Serializable]
 class DatesOfPlayer
 {
-    private List<PalabraBD> palabrasUser = new List<PalabraBD>();
-
-    public void ChangeDates(List<PalabraBD> _palabras)
-    {
-        palabrasUser.Clear();
-        foreach (PalabraBD p in _palabras)
-        {
-            palabrasUser.Add(p);
-        }
-    }
-
-    public void AddPalabras(List<PalabraBD> _palabras)
-    {
-        foreach (PalabraBD p in _palabras)
-        {
-            palabrasUser.Add(p);
-        }
-    }
-
-    public List<PalabraBD> GetListOfPalabras()
-    {
-        return palabrasUser;
-    }
+    public List<PalabraBD> palabrasUser = new List<PalabraBD>();
 }
 
 

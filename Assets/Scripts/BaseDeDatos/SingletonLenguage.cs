@@ -36,6 +36,12 @@ public class SingletonLenguage
             {
                 f.SeparatePerPalabras();
             }
+
+            foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+            {
+                p.SetPalabraActual();
+                p.SeparateSilabas();
+            }
         }
     }
 

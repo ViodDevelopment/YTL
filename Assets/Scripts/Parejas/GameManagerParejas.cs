@@ -1284,6 +1284,9 @@ public class GameManagerParejas : MonoBehaviour
         palabra.piecesPuzzle = toCopy.piecesPuzzle;
         palabra.palabraActual = toCopy.palabraActual;
         palabra.color = toCopy.color;
+        palabra.user = toCopy.user;
+        palabra.nameSpanish = toCopy.nameSpanish;
+        palabra.nameCatalan = toCopy.nameCatalan;
     }
 
 

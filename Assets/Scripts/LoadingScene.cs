@@ -25,7 +25,6 @@ public class LoadingScene : MonoBehaviour
         yield return new WaitForSeconds(0.75f);
         myimage.parar = true;
         float l_time = 360 / myimage.speed;
-        print(l_time);
         yield return new WaitForSeconds(l_time);
         AsyncOperation async = SceneManager.LoadSceneAsync(numScene);
 

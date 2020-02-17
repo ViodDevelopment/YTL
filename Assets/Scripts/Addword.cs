@@ -18,6 +18,7 @@ public class Addword : MonoBehaviour
     public AudioSource audioSource;
 
     PalabraBD palabraBD;
+    public CreateWord crateWord;
 
     string imgLocation, audioLocation;
 
@@ -33,16 +34,9 @@ public class Addword : MonoBehaviour
         }
 
         gameObject.GetComponent<Button>().interactable = false;
-        
+
     }
 
-    private void Update()
-    {
-        if (img != null && word.text != null && audioSource.clip != null )
-        {
-            gameObject.GetComponent<Button>().interactable = true;
-        }
-    }
 
     public void SaveWord()
     {
@@ -50,37 +44,40 @@ public class Addword : MonoBehaviour
         sumSilabas = "";
         foreach (InputField inField in bloqueSilabas)
         {
-            sumSilabas += inField.text + "-";
+            if (inField.text != "")
+                sumSilabas += inField.text + "-";
         }
-        try{
-            sumSilabas.Substring(0, sumSilabas.Length - 1);
-            Texture2D textd = ToTexture2D(img.mainTexture);
-            File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
 
-            FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
 
-            ConvertAndWrite(file, audioSource.clip);
-            WriteHeader(file, audioSource.clip);
-        }
-        catch { Debug.LogError("InternalError"); }
+        sumSilabas.Substring(0, sumSilabas.Length - 1);
+        Texture2D textd = ToTexture2D(img.sprite.texture);
+        File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
+
+        FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
+
+        ConvertAndWrite(file, audioSource.clip);
+        WriteHeader(file, audioSource.clip);
+
+
         palabraBD = new PalabraBD();
         palabraBD.imagePuzzle = 1;
         palabraBD.image1 =
         palabraBD.image2 =
         palabraBD.image3 = imgLocation;
 
+
         palabraBD.piecesPuzzle.Add(4);
         palabraBD.id = -1;
         palabraBD.audio = audioLocation;
 
-        if(SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
         {
             palabraBD.nameSpanish = word.text;
             palabraBD.silabasSpanish = sumSilabas;
             palabraBD.nameCatalan = "";
             palabraBD.silabasCatalan = "";
         }
-        else if(SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+        else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
         {
             palabraBD.nameSpanish = "";
             palabraBD.silabasSpanish = "";
@@ -95,13 +92,33 @@ public class Addword : MonoBehaviour
 
         FindObjectOfType<ManagamentFalseBD>().SaveWordUser(palabraBD, true);
 
-
+        Limpiar();
     }
 
-    public static Texture2D ToTexture2D( Texture texture)
+    private void Limpiar()
     {
-        RenderTexture rendTexture = new RenderTexture(texture.width,texture.height,0,RenderTextureFormat.ARGB32) ;
-        Texture2D result = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, false);
+        img.sprite = null;
+        word.text = null;
+        audioSource.clip = null;
+        for (int i = 0; i < bloqueSilaba.transform.childCount; i++)
+        {
+            Transform silaba = bloqueSilaba.transform.GetChild(i);
+            if (silaba.name.Contains("LineaSilaba"))
+            {
+                silaba.gameObject.GetComponent<InputField>().text = null;
+            }
+        }
+    }
+
+    public static Texture2D ToTexture2D(Texture2D texture)
+    {
+        /*
+         * PRUEBA
+         * Rect rect = new Rect(new Vector2(texture.width / 2 - 256, texture.height / 2 - 256), new Vector2(512, 512));
+        Sprite l_Sprite = Sprite.Create(texture, rect, new Vector2(0, 0));
+        return l_Sprite.texture;*/
+        RenderTexture rendTexture = new RenderTexture(512, 512, 0, RenderTextureFormat.ARGB32);
+        Texture2D result = new Texture2D(512, 512, TextureFormat.RGBA32, false, false);
 
         Graphics.Blit(texture, rendTexture);
         result.ReadPixels(new Rect(0, 0, rendTexture.width, rendTexture.height), 0, 0);

@@ -35,9 +35,14 @@ public class CreateWord : MonoBehaviour
         palabraSilabas = null;
         foreach (InputField input in silabas)
             palabraSilabas += input.text;
-        if (img.mainTexture != null && word.text != null && audioClip.clip != null && word.text.ToLower() == palabraSilabas.ToLower())
+        if (img.sprite != null && word.text != "" && audioClip.clip != null && word.text.ToLower() == palabraSilabas.ToLower())
             thisButton.interactable = true;
         else thisButton.interactable = false;
+
+    }
+
+    public void Clear()
+    {
 
     }
 

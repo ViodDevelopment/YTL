@@ -93,7 +93,7 @@ public class PalabraBD
         if (!user)
             return Resources.Load<Sprite>("images/Version1.0/Palabra/" + _name); //CAMBIAR RUTA DE IMAGEN CUANDO NO SEA LITE
         else
-            return GetSpriteUserWord();
+            return GetSpriteUserWord(_name);
 
     }
 
@@ -102,7 +102,7 @@ public class PalabraBD
         if (!user)
             return Resources.Load<Texture2D>("images/Version1.0/Palabra/" + _name);
         else
-            return GetTexture2DUserWord();
+            return GetTexture2DUserWord(_name);
     }
 
     public AudioClip GetAudioClip(string _audio)
@@ -130,9 +130,9 @@ public class PalabraBD
             return GetAudioClipUserWord();
     }
 
-    public Sprite GetSpriteUserWord()
+    public Sprite GetSpriteUserWord(string _name)
     {
-        WWW www = new WWW("file://" + image1); //Cargando la imagen
+        WWW www = new WWW("file://" + _name); //Cargando la imagen
 
         while (!www.isDone)
         {
@@ -145,15 +145,16 @@ public class PalabraBD
 
     }
 
-    public Texture2D GetTexture2DUserWord()
+    public Texture2D GetTexture2DUserWord(string _name)
     {
-        WWW www = new WWW("file://" + image1); //Cargando la imagen
+        WWW www = new WWW("file://" + _name); //Cargando la imagen
 
         while (!www.isDone)
         {
             Debug.Log("Cargando Texture");
         }
-        return www.texture; //una vez cargada    
+        Texture2D texture = www.texture;
+        return texture; //una vez cargada    
     }
 
         public AudioClip GetAudioClipUserWord()

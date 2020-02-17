@@ -41,7 +41,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Permisos_Microfono.unity
     guid: fae29134acbdd3a42bd7226e50bcc5e1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/LoadingScene.unity
     guid: fa4e87af186ff2b4bb409f1a5f1ce8e4
   - enabled: 1

@@ -684,8 +684,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.imagePuzzle = toCopy.imagePuzzle;
         palabra.piecesPuzzle = toCopy.piecesPuzzle;
         palabra.palabraActual = toCopy.palabraActual;
-        palabra.silabasActuales = toCopy.silabasActuales;
         palabra.color = toCopy.color;
+        palabra.user = toCopy.user;
+        palabra.nameSpanish = toCopy.nameSpanish;
+        palabra.nameCatalan = toCopy.nameCatalan;
+        palabra.silabasCatalan = toCopy.silabasCatalan;
+        palabra.silabasSpanish = toCopy.silabasSpanish;
+        palabra.silabasActuales = toCopy.silabasActuales;
     }
 
     private void ConvertMarco(Image _imagen, string _silaba)
