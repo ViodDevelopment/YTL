@@ -30,7 +30,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #5bb030,,son,,,1,son,son,2,són,són,
 #eb6424, dientes_01 dientes_02 dientes_03,dientes,4,1,3,dientes,dien-tes,2,dents,dents,x
 #eb6424,agua_01 agua_02 agua_03,agua,4 6,2,2,agua,a-gua,2,aigua,ai-gua,x
-#29a3da,asustado_f_01 asustado_f_02,asustado_f_03,4 6 9,1,3,asustada,a-sus-ta-da,3,espantada,es-pan-ta-da,x
+#29a3da,asustado_f_01 asustado_f_02,asustado_f,4 6 9,1,3,asustada,a-sus-ta-da,3,espantada,es-pan-ta-da,x
 #29a3da,asustado_01 asustado_02 asustado_03,asustado,4 6,2,3,asustado,a-sus-ta-do,3,espantat,es-pan-tat,x
 #5bb030,bailar_01 bailar_02 bailar_03,bailar,4 6 9,3,2,bailar,bai-lar,2,ballar,ba-llar,x
 #eb6424,boca_01 boca_02 boca_03,boca,4 6 9,1,1,boca,bo-ca,1,boca,bo-ca,x
@@ -65,8 +65,8 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,nube_01 nube_02 nube_03,nube,4,3,1,nube,nu-be,3,núvol,nú-vol,x
 #eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 9,1,2,ojo,o-jo,1,ull,ull,x
 #eb6424,pajaro_01 pajaro_02 pajaro_03,pajaro,6 9 12 16,2,3,pájaro,pá-ja-ro,2,ocell,o-cell,x
-#eb6424,pan_01 pan_02 pan_03,pan,4,1,1,pan,pan,1,pa ,pa ,x
-#eb6424,pantalon_01 pantalon_02 pantalon_03,pantalón,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x
+#eb6424,pan_01 pan_02 pan_03,pan,4,1,1,pan,pan,1,pa,pa,x
+#eb6424,pantalon_01 pantalon_02 pantalon_03,pantalon,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x
 #eb6424,papel_01 papel_02 papel_03,papel,4 6,1,2,papel,pa-pel,3,paper,pa-per,x
 #eb6424,pelo_01 pelo_02 pelo_03,pelo,,,2,pelo,pe-lo,2,cabell,ca-bell,x
 #eb6424,pelota_01 pelota_02 pelota_03,pelota,4 6,2,3,pelota,pe-lo-ta,2,pilota,pi-lo-ta,x
@@ -78,11 +78,11 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,pizarra_01 pizarra_02 pizarra_03,pizarra,4 6,2,3,pizarra,pi-za-rra,3,pissarra,pis-sar-ra,x
 #eb6424,plato_01 plato_02 plato_03,plato,4,1,2,plato,pla-to,1,plat,plat,x
 #29a3da,rojo_01 rojo_02 rojo_03,rojo,,,2,rojo,ro-jo,3,vermell,ver-mell,x color
-#5bb030,saltar01 saltar02 saltar03,saltar,6 9 12,2,2,saltar,sal-tar,2,saltar,sal-tar,x
+#5bb030,saltar_01 saltar_02 saltar_03,saltar,6 9 12,2,2,saltar,sal-tar,2,saltar,sal-tar,x
 #eb6424,silla_01 silla_02 silla_03,silla,4,2,2,silla,si-lla,3,cadira,ca-di-ra,x
 #eb6424,sofa_01 sofa_02 sofa_03,sofa,4 6,2,1,sofá,so-fá,2,sofà,so-fà,x
 #eb6424,sol_01 sol_02 sol_03,sol,4,2,1,sol,sol,1,sol,sol,x
-#eb6424,sopa01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x
+#eb6424,sopa_01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x
 #eb6424,tele_01 tele_02 tele_03,tele,4 6,1,1,tele,te-le,1,tele,te-le,x
 #eb6424,tren_01 tren_02 tren_03,tren,6 9,1,1,tren,tren,2,tren,tren,x
 #eb6424,vaso_01 vaso_02 vaso_03,vaso,4,1,2,vaso,va-so ,1,got,got,x
