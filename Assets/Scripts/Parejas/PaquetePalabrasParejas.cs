@@ -198,7 +198,7 @@ public class PaquetePalabrasParejas
                                     palabras.Add(GameManager.palabrasDisponibles[i]);
                             }
                             else
-                            {   
+                            {
                                 if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
                                     palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
                             }
@@ -237,6 +237,7 @@ public class PaquetePalabrasParejas
 
 
                         }
+
                     }
                     else
                     {
@@ -260,12 +261,13 @@ public class PaquetePalabrasParejas
 
                             for (int i = 0; i < palabras.Count / 2; i++)
                             {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                                currentParejasPaquet.Add(palabras[i]);
                             }
                             for (int i = 0; i < palabrasanimales.Count / 2; i++)
                             {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                                currentParejasPaquet.Add(palabrasanimales[i]);
                             }
+
 
                             foreach (PalabraBD item in currentParejasPaquet)
                             {
@@ -429,6 +431,7 @@ public class PaquetePalabrasParejas
                         }
 
 
+
                         for (int i = 0; i < palabrasanimales.Count; i++)
                         {
 
@@ -464,13 +467,14 @@ public class PaquetePalabrasParejas
                                 }
                             }
 
+
                             for (int i = 0; i < palabras.Count / 2; i++)
                             {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                                currentParejasPaquet.Add(palabras[i]);
                             }
                             for (int i = 0; i < palabrasanimales.Count / 2; i++)
                             {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                                currentParejasPaquet.Add(palabrasanimales[i]);
                             }
 
                             foreach (PalabraBD item in currentParejasPaquet)

@@ -26,6 +26,10 @@ public class GameManagerGusanos : MonoBehaviour
             GameManager.m_CurrentToMinigame[count] = 0;
             m_Scener.InicioScene(true);
         }
+
+        if(Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.LeftControl))
+            m_Scener.InicioScene(true);
+
     }
 
 }

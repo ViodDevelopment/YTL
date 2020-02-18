@@ -63,5 +63,8 @@ public class MinijuegoBurbujas : MonoBehaviour
            m_Scener.InicioScene(true);
             //endgame
         }
+
+        if (Input.GetKey(KeyCode.Space) && Input.GetKey(KeyCode.LeftControl))
+            m_Scener.InicioScene(true);
     }
 }

@@ -211,13 +211,14 @@ public class GameManagerParejas : MonoBehaviour
                     listOfPalabras.Add(p);
             }
         }
-
     }
 
 
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && Input.GetKey(KeyCode.LeftControl))
+            completed = true;
 
         if (completed)
         {
@@ -263,7 +264,7 @@ public class GameManagerParejas : MonoBehaviour
         m_ImageZoom.SetActive(false);
 
 
-        planeImageWhenPair.gameObject.SetActive(false);
+            planeImageWhenPair.gameObject.SetActive(false);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
         if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
