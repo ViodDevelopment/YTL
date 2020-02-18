@@ -2224,7 +2224,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: Mama
+  m_Text: Palabras
 --- !u!222 &133538047
 CanvasRenderer:
   m_ObjectHideFlags: 0
