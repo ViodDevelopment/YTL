@@ -178,6 +178,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
     private void InitPaabras()
     {
+        listOfPalabras.Clear();
         foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("3").currentParejasPaquet)
         {
 
@@ -969,6 +970,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                 if (PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal.Count == 0)
                 {
                     PaquetePalabrasParejas.GetInstance("3").CrearNuevoPaquete();
+                    InitPaabras();
                 }
                 PaquetePalabrasParejas.GetInstance("3").CrearBinario();
             }

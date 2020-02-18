@@ -176,6 +176,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
     private void InitPaabras()
     {
+        listOfPalabras.Clear();
         foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("2").currentParejasPaquet)
         {
             if (p.paquet == GameManager.configurartion.paquete)
@@ -874,6 +875,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 if (PaquetePalabrasParejas.GetInstance("2").pantallasHorizontal.Count == 0)
                 {
                     PaquetePalabrasParejas.GetInstance("2").CrearNuevoPaquete();
+                    InitPaabras();
                 }
                 PaquetePalabrasParejas.GetInstance("2").CrearBinario();
             }
