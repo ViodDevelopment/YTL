@@ -31,19 +31,19 @@ public class SceneManagement : MonoBehaviour
             GameManager.fallosPuzzle = 0;
             GameManager.backFromActivity = true;
         }
-        SceneManager.LoadScene(GameManager.Instance.InicioIndex);
+        SceneManager.LoadScene(GameManager.GetInstance().InicioIndex);
     }
     public void PreparadosScene()
     {
-        SceneManager.LoadScene(GameManager.Instance.PreparadosIndex);
+        SceneManager.LoadScene(GameManager.GetInstance().PreparadosIndex);
     }
     public void ListosScene()
     {
-        SceneManager.LoadScene(GameManager.Instance.ListosIndex);
+        SceneManager.LoadScene(GameManager.GetInstance().ListosIndex);
     }
     public void YaScene()
     {
-        SceneManager.LoadScene(GameManager.Instance.YaIndex);
+        SceneManager.LoadScene(GameManager.GetInstance().YaIndex);
     }
     public void ConfScene()
     {

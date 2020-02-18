@@ -6,11 +6,14 @@ using UnityEngine.UI;
 public class CambioConf : MonoBehaviour
 {
     SingletonLenguage.Lenguage last;
+    int lastNum;
     public List<Text> textos = new List<Text>();
 
     private void Start()
     {
         last = SingletonLenguage.GetInstance().GetLenguage();
+        lastNum = GameManager.palabrasUserDisponibles.Count;
+        textos[35].text = GameManager.palabrasUserDisponibles.Count + " de 8";
         if (last == SingletonLenguage.Lenguage.CATALAN)
             DoCatalan();
         else if (last == SingletonLenguage.Lenguage.CASTELLANO)
@@ -26,7 +29,11 @@ public class CambioConf : MonoBehaviour
                 DoCatalan();
             else if (last == SingletonLenguage.Lenguage.CASTELLANO)
                 DoCastellano();
-
+        }
+        if (lastNum != GameManager.palabrasUserDisponibles.Count)
+        {
+            textos[35].text = GameManager.palabrasUserDisponibles.Count + " de 8";
+            lastNum = GameManager.palabrasUserDisponibles.Count;
         }
     }
 
@@ -67,9 +74,6 @@ public class CambioConf : MonoBehaviour
         textos[32].text = "Programació:";
         textos[33].text = "Amb el suport i assessorament pedagògic de:";
         textos[34].text = "Amb la col·laboració de:";
-
-
-
     }
 
     private void DoCastellano()
@@ -109,8 +113,5 @@ public class CambioConf : MonoBehaviour
         textos[32].text = "Programación:";
         textos[33].text = "Con el apoyo y asesoramiento pedagógico de:";
         textos[34].text = "Con la colaboración de:";
-
-
-
     }
 }

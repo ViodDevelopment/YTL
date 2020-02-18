@@ -41,7 +41,7 @@ public class PalabraFraseBit2 : MonoBehaviour
     {
         if (GameManager.configurartion.ayudaVisual)
             timer += Time.deltaTime;
-        if (GameManager.Instance.InputRecieved())
+        if (GameManager.GetInstance().InputRecieved())
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)

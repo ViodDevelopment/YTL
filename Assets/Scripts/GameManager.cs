@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int PreparadosIndex, ListosIndex, YaIndex, GusanosIndex = 4, BurbujasIndex = 5, ColorIndex = 6;
     [HideInInspector]
-    public int InicioIndex = 0, ParejasIndex = 2, BitIndex =1, PuzzleIndex = 3;
+    public int InicioIndex = 0, ParejasIndex = 2, BitIndex = 1, PuzzleIndex = 3;
     #endregion  
 
     #region ButtonUI
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
-       
+
 
     }
 
@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         backCam.Pause();
         InvokeRepeating("CamIsPlaying", 0f, 5f);
 
-      
+
     }
 
     void CamIsPlaying()
@@ -113,21 +113,20 @@ public class GameManager : MonoBehaviour
         Debug.Log("Camera trasera" + backCam.isPlaying);
     }
 
-   
-    public static GameManager Instance
+
+    public static GameManager GetInstance()
     {
-        get
+
+        if (instance == null)
         {
-            if (instance == null)
+            instance = new GameManager();
+            for (int i = 0; i < 3; i++)
             {
-                instance = new GameManager();
-                for (int i = 0; i < 3; i++)
-                {
-                    m_CurrentToMinigame.Add(0);
-                }
+                m_CurrentToMinigame.Add(0);
             }
-            return instance;
         }
+        return instance;
+
     }
 
     public static void SumPointToMinigame(int _numOfMinigame)
@@ -136,7 +135,7 @@ public class GameManager : MonoBehaviour
         ManagamentFalseBD.management.SaveBolasMinijuegos();
     }
 
-   
+
 
     public static void ResetPointToMinigame(int _numOfMinigame)
     {
@@ -151,7 +150,7 @@ public class GameManager : MonoBehaviour
 
     public bool InputRecieved()
     {
-        if (Input.GetMouseButton(0) || (Input.touchCount>0 && Input.GetTouch(0).phase == TouchPhase.Began))
+        if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             return true;
 
         return false;

@@ -471,7 +471,7 @@ public class ManagamentFalseBD : MonoBehaviour
 
         file.Close();
 
-        GameManager.Instance.ChangeConfig();
+        GameManager.GetInstance().ChangeConfig();
     }
 
     public void SaveWordUser(PalabraBD _pal, bool _add)
@@ -481,7 +481,13 @@ public class ManagamentFalseBD : MonoBehaviour
             if (_add)
                 palabrasUserGuardadas.Add(_pal);
             else
+            {
+                if (File.Exists(_pal.audio))
+                    File.Delete(_pal.audio);
+                if (File.Exists(_pal.image1))
+                    File.Delete(_pal.image1);
                 palabrasUserGuardadas.Remove(_pal);
+            }
         }
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(nameRuteUser);
@@ -520,7 +526,7 @@ public class ManagamentFalseBD : MonoBehaviour
         }
 
         GameManager.palabrasUserDisponibles = palabrasUserGuardadas;
-        GameManager.Instance.ChangeConfig();
+        GameManager.GetInstance().ChangeConfig();
     }
 
     private void ComprobarCarpetaUsuario(string fileName)

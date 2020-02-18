@@ -51,7 +51,7 @@ public class PaquetePalabrasParejas
         donePalabrasPaquet.Clear();
         nextPalabrasPaquet.Clear();
         pantallasHorizontal.Clear();
-}
+    }
 
     public void InitPaquet(string _lvl)
     {
@@ -188,19 +188,53 @@ public class PaquetePalabrasParejas
 
                     if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
                     {
+                        List<PalabraBD> palabras = new List<PalabraBD>();
+                        List<PalabraBD> palabrasanimales = new List<PalabraBD>();
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
-                            if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad)
+                            if (GameManager.palabrasDisponibles[i].paquet == GameManager.configurartion.paquete)
                             {
-                                if (i < (GameManager.palabrasDisponibles.Count - 1) / 3)
+                                if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
+                                    palabras.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else
+                            {   
+                                if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
+                                    palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                        }
+
+                        int numEnter = 0;
+                        for (int i = 0; i < palabras.Count; i++)
+                        {
+                            if (palabras[i].dificultSpanish == dificultad && palabras[i].image1 != "")
+                            {
+                                if (numEnter < palabras.Count / 3)
                                 {
-                                    currentParejasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                    numEnter++;
+                                    currentParejasPaquet.Add(palabras[i]);
                                 }
                                 else
                                 {
-                                    nextPalabrasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                    nextPalabrasPaquet.Add(palabras[i]);
                                 }
                             }
+
+                        }
+
+
+                        for (int i = 0; i < palabrasanimales.Count; i++)
+                        {
+
+                            if (i <= (palabrasanimales.Count) / 3)
+                            {
+                                currentParejasPaquet.Add(palabrasanimales[i]);
+                            }
+                            else
+                            {
+                                nextPalabrasPaquet.Add(palabrasanimales[i]);
+                            }
+
 
                         }
                     }
@@ -208,15 +242,40 @@ public class PaquetePalabrasParejas
                     {
                         if (fase == 2)
                         {
-                            for (int i = (nextPalabrasPaquet.Count - 1) / 2; i >= 0; i--)
+                            List<PalabraBD> palabras = new List<PalabraBD>();
+                            List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
+                            {
+                                if (nextPalabrasPaquet[i].paquet == GameManager.configurartion.paquete)
+                                {
+                                    if (nextPalabrasPaquet[i].dificultSpanish == dificultad && nextPalabrasPaquet[i].image1 != "")
+                                        palabras.Add(nextPalabrasPaquet[i]);
+                                }
+                                else
+                                {
+                                    if (nextPalabrasPaquet[i].image1 != "") //poner dificultad animales
+                                        palabrasanimales.Add(nextPalabrasPaquet[i]);
+                                }
+                            }
+
+                            for (int i = 0; i < palabras.Count / 2; i++)
                             {
                                 currentParejasPaquet.Add(nextPalabrasPaquet[i]);
-                                nextPalabrasPaquet.RemoveAt(i);
                             }
+                            for (int i = 0; i < palabrasanimales.Count / 2; i++)
+                            {
+                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                            }
+
+                            foreach (PalabraBD item in currentParejasPaquet)
+                            {
+                                nextPalabrasPaquet.Remove(item);
+                            }
+
                         }
                         else if (fase == 3)
                         {
-                            for (int i = nextPalabrasPaquet.Count - 1; i >= 0; i--)
+                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
                             {
                                 currentParejasPaquet.Add(nextPalabrasPaquet[i]);
                             }
@@ -322,7 +381,6 @@ public class PaquetePalabrasParejas
                         pantallasHorizontal.Add(false);
                     }
                 }
-
                 if (fase != l_firstFase)
                 {
                     if (l_firstDif == dificultad)
@@ -334,22 +392,55 @@ public class PaquetePalabrasParejas
                     }
                     currentParejasPaquet.Clear();
 
-
                     if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
                     {
+                        List<PalabraBD> palabras = new List<PalabraBD>();
+                        List<PalabraBD> palabrasanimales = new List<PalabraBD>();
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad)
+                            if (GameManager.palabrasDisponibles[i].paquet == GameManager.configurartion.paquete)
                             {
-                                if (i < (GameManager.palabrasDisponibles.Count - 1) / 3)
+                                if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
+                                    palabras.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else
+                            {
+                                if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
+                                    palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                        }
+
+                        int numEnter = 0;
+                        for (int i = 0; i < palabras.Count; i++)
+                        {
+                            if (palabras[i].dificultCatalan == dificultad && palabras[i].image1 != "")
+                            {
+                                if (numEnter < palabras.Count / 3)
                                 {
-                                    currentParejasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                    numEnter++;
+                                    currentParejasPaquet.Add(palabras[i]);
                                 }
                                 else
                                 {
-                                    nextPalabrasPaquet.Add(GameManager.palabrasDisponibles[i]);
+                                    nextPalabrasPaquet.Add(palabras[i]);
                                 }
                             }
+
+                        }
+
+
+                        for (int i = 0; i < palabrasanimales.Count; i++)
+                        {
+
+                            if (i <= (palabrasanimales.Count) / 3)
+                            {
+                                currentParejasPaquet.Add(palabrasanimales[i]);
+                            }
+                            else
+                            {
+                                nextPalabrasPaquet.Add(palabrasanimales[i]);
+                            }
+
 
                         }
                     }
@@ -357,15 +448,40 @@ public class PaquetePalabrasParejas
                     {
                         if (fase == 2)
                         {
-                            for (int i = (nextPalabrasPaquet.Count - 1) / 2; i >= 0; i--)
+                            List<PalabraBD> palabras = new List<PalabraBD>();
+                            List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
+                            {
+                                if (nextPalabrasPaquet[i].paquet == GameManager.configurartion.paquete)
+                                {
+                                    if (nextPalabrasPaquet[i].dificultCatalan == dificultad && nextPalabrasPaquet[i].image1 != "")
+                                        palabras.Add(nextPalabrasPaquet[i]);
+                                }
+                                else
+                                {
+                                    if (nextPalabrasPaquet[i].image1 != "") //poner dificultad animales
+                                        palabrasanimales.Add(nextPalabrasPaquet[i]);
+                                }
+                            }
+
+                            for (int i = 0; i < palabras.Count / 2; i++)
                             {
                                 currentParejasPaquet.Add(nextPalabrasPaquet[i]);
-                                nextPalabrasPaquet.RemoveAt(i);
                             }
+                            for (int i = 0; i < palabrasanimales.Count / 2; i++)
+                            {
+                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
+                            }
+
+                            foreach (PalabraBD item in currentParejasPaquet)
+                            {
+                                nextPalabrasPaquet.Remove(item);
+                            }
+
                         }
                         else if (fase == 3)
                         {
-                            for (int i = nextPalabrasPaquet.Count - 1; i >= 0; i--)
+                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
                             {
                                 currentParejasPaquet.Add(nextPalabrasPaquet[i]);
                             }
@@ -412,7 +528,6 @@ public class PaquetePalabrasParejas
 
         file.Close();
 
-        Debug.Log("Guardado Paquete Parejas");
     }
 
     public void CargarBinario()
@@ -433,7 +548,6 @@ public class PaquetePalabrasParejas
 
         file.Close();
 
-        Debug.Log("cargado paquete parejas");
 
     }
 }

@@ -29,13 +29,13 @@ public class ButtonControl : MonoBehaviour
         {
             if (i == l_Position)
             {
-                l_Buttons[i].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-                l_Buttons[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+                l_Buttons[i].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+                l_Buttons[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
             else
             {
-                l_Buttons[i].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-                l_Buttons[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
+                l_Buttons[i].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+                l_Buttons[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
             }
         }
     }

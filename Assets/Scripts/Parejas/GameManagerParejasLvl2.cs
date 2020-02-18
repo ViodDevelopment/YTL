@@ -106,7 +106,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
     public GameObject m_Point;
 
-    static int l_NumReps = GameManager.Instance.m_NeededToMinigame;
+    static int l_NumReps = GameManager.GetInstance().m_NeededToMinigame;
 
     GameObject[] m_Points = new GameObject[l_NumReps];
 
@@ -221,7 +221,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
             StartCoroutine(WaitSeconds(1.5f));
 
         }
-        else if (m_ImageZoom.activeSelf && GameManager.Instance.InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
+        else if (m_ImageZoom.activeSelf && GameManager.GetInstance().InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
         {
 
             m_ImageZoom.SetActive(false);
@@ -476,7 +476,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
         m_CurrentNumRep = 1;
 
-        if (GameManager.m_CurrentToMinigame[0] >= GameManager.Instance.m_NeededToMinigame)
+        if (GameManager.m_CurrentToMinigame[0] >= GameManager.GetInstance().m_NeededToMinigame)
         {
             GameManager.ResetPointToMinigame(0);
             m_Scener.NextGame();

@@ -234,7 +234,7 @@ public class BitLvl2 : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.InputRecieved() && m_0touch)
+        if (GameManager.GetInstance().InputRecieved() && m_0touch)
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)

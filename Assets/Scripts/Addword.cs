@@ -19,6 +19,7 @@ public class Addword : MonoBehaviour
 
     PalabraBD palabraBD;
     public CreateWord crateWord;
+    public RemoveWord removeWord;
 
     string imgLocation, audioLocation;
 
@@ -40,59 +41,61 @@ public class Addword : MonoBehaviour
 
     public void SaveWord()
     {
-
-        sumSilabas = "";
-        foreach (InputField inField in bloqueSilabas)
+        if (GameManager.palabrasUserDisponibles.Count < 8)
         {
-            if (inField.text != "")
-                sumSilabas += inField.text + "-";
+            sumSilabas = "";
+            foreach (InputField inField in bloqueSilabas)
+            {
+                if (inField.text != "")
+                    sumSilabas += inField.text + "-";
+            }
+
+
+            sumSilabas.Substring(0, sumSilabas.Length - 1);
+            Texture2D textd = ToTexture2D(img.sprite.texture);
+            File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
+
+            FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
+
+            ConvertAndWrite(file, audioSource.clip);
+            WriteHeader(file, audioSource.clip);
+
+
+            palabraBD = new PalabraBD();
+            palabraBD.imagePuzzle = 1;
+            palabraBD.image1 =
+            palabraBD.image2 =
+            palabraBD.image3 = imgLocation;
+
+
+            palabraBD.piecesPuzzle.Add(4);
+            palabraBD.id = -1;
+            palabraBD.audio = audioLocation;
+
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            {
+                palabraBD.nameSpanish = word.text;
+                palabraBD.silabasSpanish = sumSilabas;
+                palabraBD.nameCatalan = "";
+                palabraBD.silabasCatalan = "";
+            }
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            {
+                palabraBD.nameSpanish = "";
+                palabraBD.silabasSpanish = "";
+                palabraBD.nameCatalan = word.text;
+                palabraBD.silabasCatalan = sumSilabas;
+            }
+
+            palabraBD.user = true;
+            palabraBD.color = "#000000";
+            palabraBD.paquet = 0;
+            palabraBD.SeparateSilabas();
+
+            FindObjectOfType<ManagamentFalseBD>().SaveWordUser(palabraBD, true);
+
+            Limpiar();
         }
-
-
-        sumSilabas.Substring(0, sumSilabas.Length - 1);
-        Texture2D textd = ToTexture2D(img.sprite.texture);
-        File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
-
-        FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
-
-        ConvertAndWrite(file, audioSource.clip);
-        WriteHeader(file, audioSource.clip);
-
-
-        palabraBD = new PalabraBD();
-        palabraBD.imagePuzzle = 1;
-        palabraBD.image1 =
-        palabraBD.image2 =
-        palabraBD.image3 = imgLocation;
-
-
-        palabraBD.piecesPuzzle.Add(4);
-        palabraBD.id = -1;
-        palabraBD.audio = audioLocation;
-
-        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-        {
-            palabraBD.nameSpanish = word.text;
-            palabraBD.silabasSpanish = sumSilabas;
-            palabraBD.nameCatalan = "";
-            palabraBD.silabasCatalan = "";
-        }
-        else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
-        {
-            palabraBD.nameSpanish = "";
-            palabraBD.silabasSpanish = "";
-            palabraBD.nameCatalan = word.text;
-            palabraBD.silabasCatalan = sumSilabas;
-        }
-
-        palabraBD.user = true;
-        palabraBD.color = "#000000";
-        palabraBD.paquet = 0;
-        palabraBD.SeparateSilabas();
-
-        FindObjectOfType<ManagamentFalseBD>().SaveWordUser(palabraBD, true);
-
-        Limpiar();
     }
 
     private void Limpiar()

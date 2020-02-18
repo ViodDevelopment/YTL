@@ -43,13 +43,13 @@ public class StartConfiguración : MonoBehaviour
         {
             if (i != buttonActive)
             {
-                buttonsLenguaje[i].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-                buttonsLenguaje[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
+                buttonsLenguaje[i].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+                buttonsLenguaje[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
             }
             else
             {
-                buttonsLenguaje[i].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-                buttonsLenguaje[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+                buttonsLenguaje[i].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+                buttonsLenguaje[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
         }
 
@@ -72,13 +72,13 @@ public class StartConfiguración : MonoBehaviour
         {
             if (i != buttonActive)
             {
-                buttonsFont[i].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-                buttonsFont[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
+                buttonsFont[i].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+                buttonsFont[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
             }
             else
             {
-                buttonsFont[i].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-                buttonsFont[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+                buttonsFont[i].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+                buttonsFont[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
         }
 
@@ -106,60 +106,60 @@ public class StartConfiguración : MonoBehaviour
         {
             if (i != buttonActive)
             {
-                buttonsRepetitions[i].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-                buttonsRepetitions[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
+                buttonsRepetitions[i].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+                buttonsRepetitions[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
             }
             else
             {
-                buttonsRepetitions[i].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-                buttonsRepetitions[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+                buttonsRepetitions[i].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+                buttonsRepetitions[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
         }
 
 
         if (GameManager.configurartion.palabrasConArticulo)
         {
-            buttonsWordsArticle[0].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsWordsArticle[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsWordsArticle[1].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsWordsArticle[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsWordsArticle[0].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsWordsArticle[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsWordsArticle[1].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsWordsArticle[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
         else
         {
-            buttonsWordsArticle[1].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsWordsArticle[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsWordsArticle[0].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsWordsArticle[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsWordsArticle[1].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsWordsArticle[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsWordsArticle[0].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsWordsArticle[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
 
         if (!GameManager.configurartion.ayudaVisual)
         {
-            buttonsVisualHelp[0].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsVisualHelp[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsVisualHelp[1].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsVisualHelp[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsVisualHelp[0].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsVisualHelp[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsVisualHelp[1].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsVisualHelp[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
         else
         {
-            buttonsVisualHelp[1].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsVisualHelp[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsVisualHelp[0].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsVisualHelp[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsVisualHelp[1].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsVisualHelp[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsVisualHelp[0].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsVisualHelp[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
 
         if (!GameManager.configurartion.refuerzoPositivo)
         {
-            buttonsPositiveRefuerzo[0].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsPositiveRefuerzo[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsPositiveRefuerzo[1].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsPositiveRefuerzo[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsPositiveRefuerzo[0].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsPositiveRefuerzo[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsPositiveRefuerzo[1].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsPositiveRefuerzo[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
         else
         {
-            buttonsPositiveRefuerzo[1].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-            buttonsPositiveRefuerzo[1].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
-            buttonsPositiveRefuerzo[0].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-            buttonsPositiveRefuerzo[0].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+            buttonsPositiveRefuerzo[1].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+            buttonsPositiveRefuerzo[1].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
+            buttonsPositiveRefuerzo[0].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+            buttonsPositiveRefuerzo[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
         }
 
         buttonActive = 0;
@@ -180,13 +180,13 @@ public class StartConfiguración : MonoBehaviour
         {
             if (i != buttonActive)
             {
-                buttonsPaquet[i].GetComponent<Image>().sprite = GameManager.Instance.DesactivateButton;
-                buttonsPaquet[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_PurpleColor;
+                buttonsPaquet[i].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
+                buttonsPaquet[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
             }
             else
             {
-                buttonsPaquet[i].GetComponent<Image>().sprite = GameManager.Instance.ActiveButton;
-                buttonsPaquet[i].GetComponentInChildren<Text>().color = GameManager.Instance.m_WhiteColor;
+                buttonsPaquet[i].GetComponent<Image>().sprite = GameManager.GetInstance().ActiveButton;
+                buttonsPaquet[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
         }
 

@@ -1,9 +1,9 @@
 ,,,,,,,,,,,
 Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dificultad CASTELLANO,Cartellano,Sílabas CASTELANO,Nivel dificultad CATALAN,Catalan,Sílabas CATALAN,PAQUET
-#eb6424, lobo_01 lobo_02 lobo_03,lobo,4 6,2,,lobo,lo-bo,,llop,llop,animales1
+#eb6424,lobo_01 lobo_02 lobo_03,lobo,4 6,2,,lobo,lo-bo,,llop,llop,animales1
 #eb6424,caballo_01 caballo_02 caballo_03,caballo,4 6 9,1,,caballo,ca-ba-llo,,cavall,ca-vall,animales1
 #eb6424,cerdo_01 cerdo_02 cerdo_03,cerdo,4 6,1,,cerdo,cer-do,,porc,porc,animales1
-#eb6424,delfin_01 delfin_02 delfin_03,delfín,4 6,1,,delfín,del-fín,,dofí,do-fí,animales1
+#eb6424,delfin_01 delfin_02 delfin_03,delfin,4 6,1,,delfín,del-fín,,dofí,do-fí,animales1
 #eb6424,elefante_01 elefante_02 elefante_03,elefante,4 6 9 12,1,,elefante,e-le-fan-te,,elefant,e-le-fant,animales1
 #eb6424,gallina_01 gallina_02 gallina_03,gallina,4,3,,gallina,ga-lli-na,,gallina,ga-lli-na,animales1
 #eb6424,gallo_01 gallo_02 gallo_03,gallo,4 6,1,,gallo,ga-llo,,gall,gall,animales1
@@ -28,8 +28,8 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #29a3da,,redondo_f,,,2,redonda,re-don-da,2,rodona,ro-do-na,
 #29a3da,,rojo_fpl,,,2,rojas,ro-jas,3,vermelles,ver-me-lles,
 #5bb030,,son,,,1,son,son,2,són,són,
-#eb6424, dientes_01 dientes_02 dientes_03,dientes,4,1,3,dientes,dien-tes,2,dents,dents,x
 #eb6424,agua_01 agua_02 agua_03,agua,4 6,2,2,agua,a-gua,2,aigua,ai-gua,x
+#eb6424,dientes_01 dientes_02 dientes_03,dientes,4,1,3,dientes,dien-tes,2,dents,dents,x
 #29a3da,asustado_f_01 asustado_f_02,asustado_f,4 6 9,1,3,asustada,a-sus-ta-da,3,espantada,es-pan-ta-da,x
 #29a3da,asustado_01 asustado_02 asustado_03,asustado,4 6,2,3,asustado,a-sus-ta-do,3,espantat,es-pan-tat,x
 #5bb030,bailar_01 bailar_02 bailar_03,bailar,4 6 9,3,2,bailar,bai-lar,2,ballar,ba-llar,x
@@ -100,21 +100,21 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,,papa,,,1,papá,pa-pá,1,papa,pa-pa,x
 #eb6424,parque_01 parque_02 parque_03,parque,4 6 9,3,2,parque,par-que,2,parc,parc,x
 #b6d060,triste_01 triste_02 triste_03,triste,1 2,1,3,triste,tris-te,2,trist,trist,x
-#5bb030,,canta ,,,,canta ,,,canta ,,
-#5bb030,,baila ,,,,baila ,,,balla ,,
-#b6d060,contento_f_01 contento_f_02 contento_f_03,contento_f,4 6 9,2,,contenta,con-ten-ta,,contenta,con-ten-ta,x
+#5bb030,,canta,,,,canta,,,canta,,
+#5bb030,,baila,,,,baila,,,balla,,
+#b6d060,contento_f_01 contento_f_02 contento_f_03,contento_f,4 6 9,2,3,contenta,con-ten-ta,3,contenta,con-ten-ta,x
 #5bb030,,corre,,,,corre,,,corre,,
 #a393c1,,de,,,,de,,,de,,
 #f3ac06,,el,,,,el,,,el,,
-#b6d060,enfadado_f_01 enfadado_f_02 enfadado_f_03,enfadado_f,4 6 9,3,,enfadada,en-fa-da-da,,enfadada,en-fa-da-da,x
+#b6d060,enfadado_f_01 enfadado_f_02 enfadado_f_03,enfadado_f,4 6 9,3,3,enfadada,en-fa-da-da,3,enfadada,en-fa-da-da,x
 #5bb030,,esta,,,,está,,,està,,
 #f3ac06,,la,,,,la,,,la,,
 #f3ac06,,las,,,,las,,,les,,
 #5bb030,,lleva,,,,lleva,,,porta,,
 #f3ac06,,los,,,,los,,,els,,
 #29a3da,,negra,,,,negra,,,negra,,
-#5bb030,,pinta ,,,,pinta ,,,pinta ,,
-#5bb030,,salta,,,,salta,,,salta ,,
+#5bb030,,pinta ,,,,pinta ,,,pinta,,
+#5bb030,,salta,,,,salta,,,salta,,
 #ed9a2f,,se,,,,se,,,es,,
 #5bb030,,tiene,,,,tiene,,,té,,
 #f3ac06,,un,,,,un,,,un,,

@@ -55,7 +55,7 @@ public class PhoneCamera : MonoBehaviour
 
     void TakePhoto()
     {
-        gm = GameManager.Instance;
+        gm = GameManager.GetInstance();
 
         gm.PhotoFromCam = background.texture;
 

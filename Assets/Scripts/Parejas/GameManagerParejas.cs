@@ -106,7 +106,7 @@ public class GameManagerParejas : MonoBehaviour
 
     public GameObject m_Point;
 
-    static int l_NumReps = GameManager.Instance.m_NeededToMinigame;
+    static int l_NumReps = GameManager.GetInstance().m_NeededToMinigame;
 
     GameObject[] m_Points = new GameObject[l_NumReps];
 
@@ -179,6 +179,7 @@ public class GameManagerParejas : MonoBehaviour
 
     private void InitPaabras()
     {
+        listOfPalabras.Clear();
         foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("1").currentParejasPaquet)
         {
             if (p.paquet == GameManager.configurartion.paquete)
@@ -210,6 +211,7 @@ public class GameManagerParejas : MonoBehaviour
                     listOfPalabras.Add(p);
             }
         }
+
     }
 
 
@@ -224,7 +226,7 @@ public class GameManagerParejas : MonoBehaviour
             StartCoroutine(WaitSeconds(1.5f));
 
         }
-        else if (m_ImageZoom.activeSelf && GameManager.Instance.InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
+        else if (m_ImageZoom.activeSelf && GameManager.GetInstance().InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
         {
 
             m_ImageZoom.SetActive(false);
@@ -476,7 +478,7 @@ public class GameManagerParejas : MonoBehaviour
 
         m_CurrentNumRep = 1;
 
-        if (GameManager.m_CurrentToMinigame[0] >= GameManager.Instance.m_NeededToMinigame)
+        if (GameManager.m_CurrentToMinigame[0] >= GameManager.GetInstance().m_NeededToMinigame)
         {
             GameManager.ResetPointToMinigame(0);
             m_Scener.NextGame();
@@ -873,6 +875,7 @@ public class GameManagerParejas : MonoBehaviour
                 if (PaquetePalabrasParejas.GetInstance("1").pantallasHorizontal.Count == 0)
                 {
                     PaquetePalabrasParejas.GetInstance("1").CrearNuevoPaquete();
+                    InitPaabras();
                 }
                 PaquetePalabrasParejas.GetInstance("1").CrearBinario();
             }

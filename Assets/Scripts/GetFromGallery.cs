@@ -15,7 +15,7 @@ public class GetFromGallery : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gm = GameManager.Instance;
+        gm = GameManager.GetInstance();
         img = placeHolder.GetComponent<Image>();
 
         photoAvaliable = true;

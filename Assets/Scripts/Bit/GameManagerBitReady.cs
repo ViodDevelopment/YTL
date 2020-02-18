@@ -18,7 +18,7 @@ public class GameManagerBitReady : MonoBehaviour
     public Transform m_SpawnPar;
     Transform m_CurrentSpawn;
     public GameObject m_Point;
-    static int l_NumReps = GameManager.Instance.m_NeededToMinigame;
+    static int l_NumReps = GameManager.GetInstance().m_NeededToMinigame;
     GameObject[] m_Points = new GameObject[l_NumReps];
 
     public GameObject m_Siguiente;
@@ -65,7 +65,7 @@ public class GameManagerBitReady : MonoBehaviour
     {
         GameManager.m_CurrentToMinigame[1]++;
 
-        if (GameManager.m_CurrentToMinigame[1] >= GameManager.Instance.m_NeededToMinigame)
+        if (GameManager.m_CurrentToMinigame[1] >= GameManager.GetInstance().m_NeededToMinigame)
             m_Scener.NextGame();
 
         else
