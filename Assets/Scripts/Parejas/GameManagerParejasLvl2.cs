@@ -312,7 +312,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 m_IsHorizontal = false;
             }
             Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
-            m_NumPairs = Random.Range(2, 5);
+            m_NumPairs = Random.Range(3, 5);
         }
         else
         {
@@ -530,7 +530,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     m_IsHorizontal = false;
                 }
                 Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
-                m_NumPairs = Random.Range(2, 5);
+                m_NumPairs = Random.Range(3, 5);
             }
             else
             {
