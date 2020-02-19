@@ -99,7 +99,7 @@ public class SceneManagement : MonoBehaviour
     }
     public void MinijuegoColorScene()
     {
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(13);
     }
 
     public void CameraScene()
@@ -202,7 +202,7 @@ public class SceneManagement : MonoBehaviour
 
         }
         GameManager.currentMiniGame++;
-        if (GameManager.currentMiniGame >= 2)
+        if (GameManager.currentMiniGame >= 3)
             GameManager.currentMiniGame = 0;
         ManagamentFalseBD.management.SaveBolasMinijuegos();
     }
