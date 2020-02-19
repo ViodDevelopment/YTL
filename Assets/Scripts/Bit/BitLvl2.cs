@@ -151,6 +151,7 @@ public class BitLvl2 : MonoBehaviour
         Text texto;
         Image imagen;
         PalabraFraseBit2 palabraBit;
+        int coun = 0;
         foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
@@ -195,7 +196,22 @@ public class BitLvl2 : MonoBehaviour
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
             imagen = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(1).GetComponent<Image>();
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
-            texto.text = p.palabraActual;
+            if (coun > 0)
+                texto.text = p.palabraActual;
+            else
+            {
+                string mayus = p.palabraActual.ToUpper();
+                string tex = "";
+
+                for (int i = 0; i < p.palabraActual.Length; i++)
+                {
+                    if (i == 0)
+                        tex += mayus[i];
+                    else
+                        tex += p.palabraActual[i];
+                }
+                texto.text = tex;
+            }
             SearchFont(texto);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
@@ -220,6 +236,7 @@ public class BitLvl2 : MonoBehaviour
             palabraBit = null;
             imagen = null;
             scale = 0;
+            coun++;
         }
 
     }
@@ -292,19 +309,15 @@ public class BitLvl2 : MonoBehaviour
         switch (SingletonLenguage.GetInstance().GetFont())
         {
             case SingletonLenguage.OurFont.IMPRENTA:
-                _text.text = _text.text.ToLower();
                 _text.font = ourFonts[0];
                 break;
             case SingletonLenguage.OurFont.MANUSCRITA:
-                _text.text = _text.text.ToLower();
                 _text.font = ourFonts[1];
                 break;
             case SingletonLenguage.OurFont.MAYUSCULA:
-                _text.text = _text.text.ToUpper();
                 _text.font = ourFonts[2];
                 break;
             default:
-                _text.text = _text.text.ToLower();
                 _text.font = ourFonts[0];
                 break;
         }

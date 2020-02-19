@@ -490,6 +490,21 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             GameObject l_Word = Instantiate(palabraPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = frasesDisponibles[numRandom].palabras[i].palabraActual;
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
+            if(i == 0)
+            {
+                string mayus = frasesDisponibles[numRandom].palabras[i].palabraActual.ToUpper();
+                string tex = "";
+
+                for (int j = 0; j < frasesDisponibles[numRandom].palabras[i].palabraActual.Length; j++)
+                {
+                    if (j == 0)
+                        tex += mayus[j];
+                    else
+                        tex += frasesDisponibles[numRandom].palabras[i].palabraActual[j];
+                }
+                l_Word.GetComponentInChildren<Text>().text = tex;
+            }
+            
             l_Word.name = fraseActual.palabras[i].palabraActual;
             l_Word.GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl3>().canMove = false;
@@ -641,6 +656,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         position = new Vector3(position.x - anchototal / 2, position.y, position.z);
         Text texto;
         Image imagen;
+        int coun = 0;
         foreach (PalabraBD p in fraseActual.palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
@@ -683,6 +699,20 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             texto.text = p.palabraActual;
             rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<ConvertFont>().Convert();
+            if(coun == 0)
+            {
+                string mayus = p.palabraActual.ToUpper();
+                string tex = "";
+
+                for (int i = 0; i < p.palabraActual.Length; i++)
+                {
+                    if (i == 0)
+                        tex += mayus[i];
+                    else
+                        tex += p.palabraActual[i];
+                }
+                texto.text = tex;
+            }
             imagen.gameObject.transform.localScale = new Vector3(0.25f,0.6f,0.6f);
             fondo.gameObject.transform.localScale = new Vector3(0.25f, 0.6f, 0.6f);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
@@ -708,6 +738,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             texto = null;
             imagen = null;
             scale = 0;
+            coun++;
         }
 
     }
