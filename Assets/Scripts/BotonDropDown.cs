@@ -19,7 +19,11 @@ public class BotonDropDown : MonoBehaviour
     public void SetPalabra(PalabraBD _palabra)
     {
         palabraBD = _palabra;
-        myText.text = palabraBD.palabraActual;
+        if(_palabra.nameSpanish != "")
+            myText.text = palabraBD.nameSpanish;
+        else if(_palabra.nameCatalan != "")
+            myText.text = palabraBD.nameCatalan;
+
     }
-    
+
 }
