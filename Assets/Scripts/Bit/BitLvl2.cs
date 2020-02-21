@@ -215,17 +215,20 @@ public class BitLvl2 : MonoBehaviour
             SearchFont(texto);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.08f, imagen.rectTransform.sizeDelta.y);
+                imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                 fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
             }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
+                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.135f, imagen.rectTransform.sizeDelta.y);
+                imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                 fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
             }
             else
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 0.85f, imagen.rectTransform.sizeDelta.y);
+                imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                 fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
             }
 
