@@ -198,7 +198,7 @@ public class BitLvl2 : MonoBehaviour
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             if (coun > 0)
                 texto.text = p.palabraActual;
-            else
+            else if(SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = p.palabraActual.ToUpper();
                 string tex = "";
@@ -211,7 +211,9 @@ public class BitLvl2 : MonoBehaviour
                         tex += p.palabraActual[i];
                 }
                 texto.text = tex;
-            }
+            }else
+                texto.text = p.palabraActual;
+
             SearchFont(texto);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
@@ -318,6 +320,7 @@ public class BitLvl2 : MonoBehaviour
                 _text.font = ourFonts[1];
                 break;
             case SingletonLenguage.OurFont.MAYUSCULA:
+                _text.text = _text.text.ToUpper();
                 _text.font = ourFonts[2];
                 break;
             default:

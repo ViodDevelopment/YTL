@@ -490,7 +490,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             GameObject l_Word = Instantiate(palabraPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = frasesDisponibles[numRandom].palabras[i].palabraActual;
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
-            if(i == 0)
+            if(i == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = frasesDisponibles[numRandom].palabras[i].palabraActual.ToUpper();
                 string tex = "";
@@ -699,7 +699,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             texto.text = p.palabraActual;
             rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<ConvertFont>().Convert();
-            if(coun == 0)
+            if(coun == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = p.palabraActual.ToUpper();
                 string tex = "";
