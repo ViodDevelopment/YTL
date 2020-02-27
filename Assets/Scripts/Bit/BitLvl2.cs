@@ -100,10 +100,32 @@ public class BitLvl2 : MonoBehaviour
 
         m_Animation = GetComponent<Animation>();
 
-        
+
         m_Image.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image);
         otherImage.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image2);
         //crear imagenes de los rectangulos
+        if (frasesDisponibles[l_Number].palabras.Count == 2)
+        {
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.1f, 0, 0);
+        }
+        else if (frasesDisponibles[l_Number].palabras.Count == 3)
+        {
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.3f, 0, 0);
+        }
+        else if (frasesDisponibles[l_Number].palabras.Count == 4)
+        {
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.45f, 0, 0);
+
+        }
+        else if (frasesDisponibles[l_Number].palabras.Count == 5)
+        {
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.65f, 0, 0);
+        }
+        else if (frasesDisponibles[l_Number].palabras.Count == 6)
+        {
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.75f, 0, 0);
+        }
+
         InstanciacionDeRectangulos();
     }
 
@@ -198,7 +220,7 @@ public class BitLvl2 : MonoBehaviour
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             if (coun > 0)
                 texto.text = p.palabraActual;
-            else if(SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
+            else if (SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = p.palabraActual.ToUpper();
                 string tex = "";
@@ -211,7 +233,8 @@ public class BitLvl2 : MonoBehaviour
                         tex += p.palabraActual[i];
                 }
                 texto.text = tex;
-            }else
+            }
+            else
                 texto.text = p.palabraActual;
 
             SearchFont(texto);
@@ -248,9 +271,9 @@ public class BitLvl2 : MonoBehaviour
 
     private void CambiarRecuadroDependiendoDePalabra(Image _imagen, string _color)
     {
-            Color color = new Color();
-            ColorUtility.TryParseHtmlString(_color, out color);
-            _imagen.color = color;
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(_color, out color);
+        _imagen.color = color;
     }
 
 

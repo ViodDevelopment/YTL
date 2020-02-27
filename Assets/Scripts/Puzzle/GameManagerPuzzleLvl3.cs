@@ -717,18 +717,18 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             fondo.gameObject.transform.localScale = new Vector3(0.25f, 0.6f, 0.6f);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.125f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.125f, 0, 0);
             }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.08f, 0, 0);
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.115f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.115f, 0, 0);
             }
             else
             {
-                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+                imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
             }
 
 
