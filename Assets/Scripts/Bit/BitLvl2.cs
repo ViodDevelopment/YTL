@@ -240,21 +240,46 @@ public class BitLvl2 : MonoBehaviour
             SearchFont(texto);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.08f, imagen.rectTransform.sizeDelta.y);
+                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.15f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.11f, 0, 0);
+
+                if (p.palabraActual.Length <= 2)
+                {
+                    imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
+                    imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
+
+                }
             }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.135f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                 fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
+
+                if (p.palabraActual.Length <= 2)
+                {
+                    imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
+                    imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
+
+                }
             }
             else
             {
-                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 0.85f, imagen.rectTransform.sizeDelta.y);
+                imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.075f, 0, 0);
+                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.09f, 0, 0);
+
+                if (p.palabraActual.Length <= 2)
+                {
+                    imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
+                    imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
+
+                }
+
             }
 
             CambiarRecuadroDependiendoDePalabra(imagen, p.color);
