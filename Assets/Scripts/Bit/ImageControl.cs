@@ -44,32 +44,42 @@ public class ImageControl : MonoBehaviour
 
     private void RecolectPalabrasBD()
     {
-        foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        if (PaqueteBit.GetInstance().acabado)
         {
-            if (p.paquet == GameManager.configurartion.paquete)
+            foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
-                if (p.image1 != "")
+                if (p.paquet == GameManager.configurartion.paquete)
                 {
-                    palabrasDisponibles.Add(p);
+                    if (p.image1 != "")
+                    {
+                        palabrasDisponibles.Add(p);
+                    }
+                }
+                else if (GameManager.configurartion.paquete == -1)
+                {
+                    if (p.image1 != "")
+                    {
+                        palabrasDisponibles.Add(p);
+                    }
                 }
             }
-            else if(GameManager.configurartion.paquete == -1)
+        }
+        else
+        {
+            foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
             {
-                if (p.image1 != "")
-                {
-                    palabrasDisponibles.Add(p);
-                }
+                palabrasDisponibles.Add(p);
             }
         }
 
         foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
-            if(SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
                 if (p.nameSpanish != "")
                     palabrasDisponibles.Add(p);
             }
-            else if(SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
                 if (p.nameCatalan != "")
                     palabrasDisponibles.Add(p);
@@ -85,7 +95,7 @@ public class ImageControl : MonoBehaviour
             l_Number = m_GMBit.numLastImage;
             m_GMBit.repetir = false;
         }
-        else
+        else if(PaqueteBit.GetInstance().acabado)
         {
             bool same = true;
             while (same)
@@ -243,6 +253,21 @@ public class ImageControl : MonoBehaviour
             }
             if (!m_GMBit.repeating)
                 m_GMBit.AddCountMiniGameBit();
+            if (!PaqueteBit.GetInstance().acabado)
+            {
+                if (PaqueteBit.GetInstance().currentBitPaquet.Count > l_Number)
+                {
+                    PaqueteBit.GetInstance().currentBitPaquet.RemoveAt(l_Number);
+
+                    if (PaqueteBit.GetInstance().currentBitPaquet.Count == 0)
+                    {
+                        PaqueteBit.GetInstance().CrearNuevoPaquete();
+                        RecolectPalabrasBD();
+                    }
+                    PaqueteBit.GetInstance().CrearBinario();
+
+                }
+            }
             acabado = true;
 
 

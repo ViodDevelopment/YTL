@@ -82,7 +82,7 @@ public class GameManagerBit : MonoBehaviour
         {
             m_Alea = Random.Range(0, ImageControl.m_Length);
         }
-        else
+        else if(PaqueteBit.GetInstance().acabado)
         {
             bool same = true;
             int count = 0;
@@ -128,7 +128,7 @@ public class GameManagerBit : MonoBehaviour
         {
             m_Alea = Random.Range(0, ImageControl.m_Length);
         }
-        else
+        else if(PaqueteBit.GetInstance().acabado)
         {
             bool same = true;
             int count = 0;
