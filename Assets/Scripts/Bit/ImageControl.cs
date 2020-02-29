@@ -39,7 +39,6 @@ public class ImageControl : MonoBehaviour
         RecolectPalabrasBD();
         m_Length = palabrasDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
-        GameManagerBit.m_Alea = Random.Range(0, m_Length);
     }
 
     private void RecolectPalabrasBD()
@@ -104,8 +103,7 @@ public class ImageControl : MonoBehaviour
 
                 if (random != m_GMBit.numLastImage)
                 {
-                    GameManagerBit.m_Alea = random;
-                    l_Number = GameManagerBit.m_Alea;
+                    l_Number = random;
                     same = false;
                     m_GMBit.numLastImage = l_Number;
                 }
@@ -113,6 +111,14 @@ public class ImageControl : MonoBehaviour
                     Random.InitState(Random.seed + 1);
             }
         }
+        else
+        {
+            int random = Random.Range(0, m_Length);
+            l_Number = random;
+            m_GMBit.numLastImage = l_Number;
+
+        }
+
         Color color = new Color();
         foreach (Image i in marcos)
         {
