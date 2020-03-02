@@ -25,6 +25,7 @@ public class GameManagerBit : MonoBehaviour
     public GameObject m_Repetir;
     public Image m_ActivitiesButton;
     public bool repetir = false;
+    public PalabraBD lastPalabra;
     public int numLastImage = 0;
     public bool repeating;
 
