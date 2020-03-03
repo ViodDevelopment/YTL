@@ -271,7 +271,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e5d1bc7d081d1d64eac3802ca192bd94, type: 3}
   - {fileID: 21300000, guid: b2e10fbb700788d4db47023b6b237add, type: 3}
   - {fileID: 21300000, guid: 0dfad1725b25eff4f84f31f52d9d9d92, type: 3}
-  - {fileID: 21300000, guid: da9377a9501760f4fbe7418ee87947de, type: 3}
+  - {fileID: 21300000, guid: 556f74b2b1c8f234eacb22df177928fe, type: 3}
   silaba: -5
   mainImage: {fileID: 8652956091669230081}
   text: {fileID: 8652956090537760681}
