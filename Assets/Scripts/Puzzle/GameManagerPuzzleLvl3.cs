@@ -516,7 +516,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 if(go.name == l_Word.name)
                 {
                     l_Word.gameObject.transform.localScale = go.transform.localScale;
-                    l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
+                    l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale - new Vector3(0.02f,0,0);
                     l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
                     if(l_Word.name.Length >= 5)
                         l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = marcoMasDe5;
@@ -717,7 +717,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 texto.text = tex;
             }
             imagen.gameObject.transform.localScale = new Vector3(0.25f, imagen.gameObject.transform.localScale.y, imagen.gameObject.transform.localScale.z);
-            fondo.gameObject.transform.localScale = new Vector3(0.25f, fondo.gameObject.transform.localScale.y, fondo.gameObject.transform.localScale.z);
+            fondo.gameObject.transform.localScale = new Vector3(0.23f, fondo.gameObject.transform.localScale.y, fondo.gameObject.transform.localScale.z);
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.065f, 0, 0);
