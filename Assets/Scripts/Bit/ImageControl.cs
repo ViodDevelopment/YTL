@@ -34,12 +34,13 @@ public class ImageControl : MonoBehaviour
     public int l_Number;
     private bool acabado = false;
     private bool AnimFinCaida = false;
+    private PalabraBD lastPalabra;
+    private PalabraBD currentPalabra;
     void Awake()
     {
         RecolectPalabrasBD();
         m_Length = palabrasDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
-        GameManagerBit.m_Alea = Random.Range(0, m_Length);
     }
 
     private void RecolectPalabrasBD()
@@ -94,8 +95,10 @@ public class ImageControl : MonoBehaviour
         {
             l_Number = m_GMBit.numLastImage;
             m_GMBit.repetir = false;
+            if (!PaqueteBit.GetInstance().acabado)
+                lastPalabra = m_GMBit.lastPalabra;
         }
-        else if(PaqueteBit.GetInstance().acabado)
+        else if (PaqueteBit.GetInstance().acabado)
         {
             bool same = true;
             while (same)
@@ -104,8 +107,7 @@ public class ImageControl : MonoBehaviour
 
                 if (random != m_GMBit.numLastImage)
                 {
-                    GameManagerBit.m_Alea = random;
-                    l_Number = GameManagerBit.m_Alea;
+                    l_Number = random;
                     same = false;
                     m_GMBit.numLastImage = l_Number;
                 }
@@ -113,10 +115,24 @@ public class ImageControl : MonoBehaviour
                     Random.InitState(Random.seed + 1);
             }
         }
+        else
+        {
+            int random = Random.Range(0, m_Length);
+            l_Number = random;
+            m_GMBit.numLastImage = l_Number;
+
+        }
+        currentPalabra = palabrasDisponibles[l_Number];
+        if (lastPalabra != null)
+            currentPalabra = lastPalabra;
+        m_GMBit.lastPalabra = currentPalabra;
+
+        print(palabrasDisponibles.Count);
+
         Color color = new Color();
         foreach (Image i in marcos)
         {
-            ColorUtility.TryParseHtmlString(palabrasDisponibles[l_Number].color, out color);
+            ColorUtility.TryParseHtmlString(currentPalabra.color, out color);
             i.color = color;
         }
 
@@ -128,13 +144,13 @@ public class ImageControl : MonoBehaviour
         switch (firstImage)
         {
             case 0:
-                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
+                m_Image.sprite = currentPalabra.GetSprite(currentPalabra.image1);
                 break;
             case 1:
-                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image2);
+                m_Image.sprite = currentPalabra.GetSprite(currentPalabra.image2);
                 break;
             case 2:
-                m_Image.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
+                m_Image.sprite = currentPalabra.GetSprite(currentPalabra.image3);
                 break;
         }
 
@@ -166,21 +182,21 @@ public class ImageControl : MonoBehaviour
         switch (otherImage)
         {
             case 0:
-                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image1);
+                m_ImageBehind.sprite = currentPalabra.GetSprite(currentPalabra.image1);
                 break;
             case 1:
-                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image2);
+                m_ImageBehind.sprite = currentPalabra.GetSprite(currentPalabra.image2);
                 break;
             case 2:
-                m_ImageBehind.sprite = palabrasDisponibles[l_Number].GetSprite(palabrasDisponibles[l_Number].image3);
+                m_ImageBehind.sprite = currentPalabra.GetSprite(currentPalabra.image3);
                 break;
         }
 
 
-        m_Text.text = palabrasDisponibles[l_Number].palabraActual;
+        m_Text.text = currentPalabra.palabraActual;
         SearchFont();
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
-        m_AS.clip = palabrasDisponibles[l_Number].GetAudioClip(palabrasDisponibles[l_Number].audio);
+        m_AS.clip = currentPalabra.GetAudioClip(currentPalabra.audio);
 
 
     }
@@ -252,20 +268,21 @@ public class ImageControl : MonoBehaviour
                 pinguino.GetComponent<Dumi>().AudioPositivo();
             }
             if (!m_GMBit.repeating)
-                m_GMBit.AddCountMiniGameBit();
-            if (!PaqueteBit.GetInstance().acabado)
             {
-                if (PaqueteBit.GetInstance().currentBitPaquet.Count > l_Number)
+                m_GMBit.AddCountMiniGameBit();
+                if (!PaqueteBit.GetInstance().acabado)
                 {
-                    PaqueteBit.GetInstance().currentBitPaquet.RemoveAt(l_Number);
-
-                    if (PaqueteBit.GetInstance().currentBitPaquet.Count == 0)
+                    if (PaqueteBit.GetInstance().currentBitPaquet.Count > l_Number)
                     {
-                        PaqueteBit.GetInstance().CrearNuevoPaquete();
-                        RecolectPalabrasBD();
-                    }
-                    PaqueteBit.GetInstance().CrearBinario();
+                        PaqueteBit.GetInstance().currentBitPaquet.Remove(currentPalabra);
 
+                        if (PaqueteBit.GetInstance().currentBitPaquet.Count == 0)
+                        {
+                            PaqueteBit.GetInstance().CrearNuevoPaquete();
+                        }
+                        PaqueteBit.GetInstance().CrearBinario();
+
+                    }
                 }
             }
             acabado = true;

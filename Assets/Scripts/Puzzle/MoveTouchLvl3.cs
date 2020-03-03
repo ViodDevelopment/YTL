@@ -74,6 +74,10 @@ public class MoveTouchLvl3 : MonoBehaviour
                 if (Input.touchCount > 0 && managerOnlyOne.go == null)
                 {
                     Touch touch = Input.GetTouch(0);
+                    maxTime = 0;
+                    gameObject.transform.localScale = startSize;
+                    currentTime = 0;
+
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     touchPosition.z = 0f;
 

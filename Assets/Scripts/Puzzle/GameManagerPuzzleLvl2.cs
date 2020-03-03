@@ -539,7 +539,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             Color color = new Color();
             ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
             l_Word.GetComponent<MoveTouchLvl2>().mainImage.color = color;
-            ConvertMarco(l_Word.GetComponent<MoveTouchLvl2>().mainImage, palabraActual.silabasActuales[i]);
+            ConvertMarco(l_Word.GetComponent<MoveTouchLvl2>().mainImage, l_Word.transform.GetChild(0).GetComponent<Image>(), palabraActual.silabasActuales[i]);
             if (i == 0 && palabraActual.silabasActuales.Count > 1)
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = -1;
             else if (i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
@@ -554,14 +554,14 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
             ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
-            l_UnseenWord.GetComponentInChildren<Image>().color = color;
+            l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().imagen.color = color;
             l_UnseenWord.transform.position += position;
             l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
             if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
                 l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.17f, 0, 0);
             else if (i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
                 l_UnseenWord.GetComponentInChildren<Text>().transform.position -= new Vector3(0.17f, 0, 0);
-            ConvertMarco(l_UnseenWord.GetComponentInChildren<Image>(), palabraActual.silabasActuales[i]);
+            ConvertMarco(l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().imagen, l_UnseenWord.transform.GetChild(0).GetComponent<Image>(), palabraActual.silabasActuales[i]);
 
             if (i == 0 && palabraActual.silabasActuales.Count > 1)
                 l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().SetMarco(-1);
@@ -693,21 +693,25 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.silabasActuales = toCopy.silabasActuales;
     }
 
-    private void ConvertMarco(Image _imagen, string _silaba)
+    private void ConvertMarco(Image _imagen, Image _fondo, string _silaba)
     {
         switch (_silaba.Length)
         {
             case 1:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 5f, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3((_imagen.rectTransform.localScale.x / 5f -0.07f), 0, 0);
+                _fondo.rectTransform.localScale += new Vector3((_fondo.rectTransform.localScale.x / 5f - 0.07f), 0, 0);
                 break;
             case 3:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4.5f, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3((_imagen.rectTransform.localScale.x / 4.5f - 0.06f), 0, 0);
+                _fondo.rectTransform.localScale += new Vector3((_fondo.rectTransform.localScale.x / 4.5f - 0.06f), 0, 0);
                 break;
             case 4:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 4f, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3((_imagen.rectTransform.localScale.x / 4f - 0.08f), 0, 0);
+                _fondo.rectTransform.localScale += new Vector3((_fondo.rectTransform.localScale.x / 4f - 0.08f), 0, 0);
                 break;
             case 5:
-                _imagen.rectTransform.localScale += new Vector3(_imagen.rectTransform.localScale.x / 3f, 0, 0);
+                _imagen.rectTransform.localScale += new Vector3((_imagen.rectTransform.localScale.x / 3f - 0.04f), 0, 0);
+                _fondo.rectTransform.localScale += new Vector3((_fondo.rectTransform.localScale.x / 3f - 0.04f), 0, 0);
                 break;
 
         }

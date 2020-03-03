@@ -21,10 +21,12 @@ public class MoveTouchLvl2 : MonoBehaviour
     private GameObject otherObject;
 
     public List<Sprite> sprites = new List<Sprite>();
+    public List<Sprite> spritesFondo = new List<Sprite>();
     public int silaba = -5; // -1 inicio, 0 medio, 1 final
     private bool done = false;
     public Image mainImage;
     public Text text;
+    public Image fondo;
 
 
     void Start()
@@ -45,17 +47,29 @@ public class MoveTouchLvl2 : MonoBehaviour
                     {
                         case -1:
                             mainImage.sprite = sprites[0];
-                            text.rectTransform.position += new Vector3(-0.13f, 0, 0);
+                            fondo.sprite = spritesFondo[0];
+                            fondo.rectTransform.anchoredPosition = new Vector3(4, 0, 0);
+
+                            text.transform.position += new Vector3(-0.13f, 0, 0);
                             break;
                         case 0:
                             mainImage.sprite = sprites[1];
+                            fondo.sprite = spritesFondo[1];
+                            fondo.rectTransform.sizeDelta = new Vector2(315, 287.5f);
+                            mainImage.rectTransform.sizeDelta = new Vector2(315, 319);
+                            fondo.rectTransform.anchoredPosition = new Vector3(0, 0, 0);
+
                             break;
                         case 1:
                             mainImage.sprite = sprites[2];
-                            text.rectTransform.position += new Vector3(0.13f, 0, 0);
+                            fondo.sprite = spritesFondo[2];
+                            fondo.rectTransform.anchoredPosition = new Vector3(-4, 0, 0);
+                            text.transform.position += new Vector3(0.13f, 0, 0);
                             break;
                         case 2:
                             mainImage.sprite = sprites[3];
+                            fondo.sprite = spritesFondo[3];
+                            fondo.rectTransform.sizeDelta = new Vector3(315, 308, 0);
                             break;
                     }
                     done = true;

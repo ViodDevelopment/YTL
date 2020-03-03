@@ -25,16 +25,15 @@ public class GameManagerBit : MonoBehaviour
     public GameObject m_Repetir;
     public Image m_ActivitiesButton;
     public bool repetir = false;
+    public PalabraBD lastPalabra;
     public int numLastImage = 0;
     public bool repeating;
 
-    public static int m_Alea = 0;
 
     private void Start()
     {
         //GameManager.Instance.m_CurrentToMinigame;
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
-        m_Alea = Random.Range(0, ImageControl.m_Length);
 
         if (l_NumReps % 2 == 0)
         {
@@ -78,24 +77,7 @@ public class GameManagerBit : MonoBehaviour
     public void NextBit()
     {
         repeating = false;
-        if (m_Alea == 0)
-        {
-            m_Alea = Random.Range(0, ImageControl.m_Length);
-        }
-        else if(PaqueteBit.GetInstance().acabado)
-        {
-            bool same = true;
-            int count = 0;
-            int rand = m_Alea;
-            while (same)
-            {
-                count += System.DateTime.Now.Second + 1;
-                Random.InitState(count);
-                m_Alea = Random.Range(0, ImageControl.m_Length);
-                if (rand != m_Alea)
-                    same = false;
-            }
-        }
+
 
         if (GameManager.m_CurrentToMinigame[1] >= 7)
         {
@@ -124,24 +106,6 @@ public class GameManagerBit : MonoBehaviour
 
     public void InicioBit()
     {
-        if (m_Alea == 0)
-        {
-            m_Alea = Random.Range(0, ImageControl.m_Length);
-        }
-        else if(PaqueteBit.GetInstance().acabado)
-        {
-            bool same = true;
-            int count = 0;
-            int rand = m_Alea;
-            while (same)
-            {
-                count++;
-                Random.InitState(count * System.DateTime.Now.Second);
-                m_Alea = Random.Range(0, ImageControl.m_Length);
-                if (rand != m_Alea)
-                    same = false;
-            }
-        }
         Destroy(m_CurrentBit);
         if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
             m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
