@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
 
     public static int loadingScene = -1;
 
-    public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle
+    public static List<int> m_CurrentToMinigame = new List<int>();//0 Parejas, 1 Bit, 2 Puzzle, 3 parejas2, 4 bit2, 5 puzzle2, 6 parejas3, 7 bit3, 8 puzzle3
     public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public static List<PalabraBD> palabrasUserDisponibles = new List<PalabraBD>();
     public static List<FraseBD> frasesDisponibles = new List<FraseBD>();
@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
             instance = this;
             if (m_CurrentToMinigame.Count == 0)
             {
-                for (int i = 0; i < 3; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     m_CurrentToMinigame.Add(0);
                 }
@@ -121,7 +121,7 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = new GameManager();
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 9; i++)
             {
                 m_CurrentToMinigame.Add(0);
             }

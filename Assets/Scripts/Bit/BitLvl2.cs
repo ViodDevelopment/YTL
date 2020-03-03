@@ -283,7 +283,7 @@ public class BitLvl2 : MonoBehaviour
 
             }
 
-            if (p.palabraActual.Length > 5)
+            if (p.palabraActual.Length >= 5)
                 imagen.sprite = marcoMasDe5;
 
             CambiarRecuadroDependiendoDePalabra(imagen, p.color);
