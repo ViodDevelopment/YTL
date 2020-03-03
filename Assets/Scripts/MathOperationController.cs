@@ -100,7 +100,7 @@ public class MathOperationController : MonoBehaviour
         {
             case SIGN.PLUS:
                 oper.a = Random.Range(5, 50);
-                oper.b = Random.Range(5, 50);
+                oper.b = Random.Range(1,10);
                 result = oper.a + oper.b;
                 signStr = "+";
                 break;
@@ -112,7 +112,7 @@ public class MathOperationController : MonoBehaviour
                 break;
             case SIGN.SUBSTRACT:
                 oper.a = Random.Range(30, 50);
-                oper.b = Random.Range(5, 29);
+                oper.b = Random.Range(1, 10);
                 result = oper.a - oper.b;
                 signStr = "-";
                 break;
