@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public static int fallosParejas = 0;
     public static bool backFromActivity = false;
     public static int lastLevelActivity = 0;
+    public static bool backFromConf = false;
     public int m_NeededToMinigame = 5;//Siempre añadir un +1 a lo que necesitan
     [HideInInspector]
     public int m_BitLevel = 1;

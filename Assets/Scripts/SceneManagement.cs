@@ -13,6 +13,10 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject MainMenuCanvas;
 
+    public GameObject BCKGMenu;
+
+    public GameObject buttonConf;
+
     public GameObject AccesToConf;
 
     public GameObject CameraCanvas;
@@ -23,6 +27,7 @@ public class SceneManagement : MonoBehaviour
 
     private int numOfGames = 0;
 
+
     public void InicioScene(bool _DesdeActividad)
     {
         if (_DesdeActividad)
@@ -31,7 +36,12 @@ public class SceneManagement : MonoBehaviour
             GameManager.fallosPuzzle = 0;
             GameManager.backFromActivity = true;
         }
+        else
+        {
+            GameManager.backFromConf = true;
+        }
         SceneManager.LoadScene(GameManager.GetInstance().InicioIndex);
+
     }
     public void PreparadosScene()
     {
@@ -236,9 +246,27 @@ public class SceneManagement : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
+                ConfCanvas.SetActive(false);
+                AñadirPalabraCanvas.SetActive(false);
+                MainMenuCanvas.SetActive(true);
+                BCKGMenu.SetActive(true);
+                buttonConf.SetActive(true);
                 GoBackFromActivity();
                 GameManager.backFromActivity = false;
                 GameManager.lastLevelActivity = 0;
+            }
+        }
+
+        if(GameManager.backFromConf)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                ConfCanvas.SetActive(false);
+                AñadirPalabraCanvas.SetActive(false);
+                MainMenuCanvas.SetActive(true);
+                BCKGMenu.SetActive(true);
+                buttonConf.SetActive(true);
+                GameManager.backFromConf = false;
             }
         }
     }

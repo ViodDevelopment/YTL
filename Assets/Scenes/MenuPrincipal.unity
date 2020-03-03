@@ -21621,6 +21621,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 289294784}
   EditarCanvas: {fileID: 1515625755}
   MainMenuCanvas: {fileID: 1586881057}
+  BCKGMenu: {fileID: 1658938669}
+  buttonConf: {fileID: 1161951823}
   AccesToConf: {fileID: 2099629308}
   CameraCanvas: {fileID: 659167279}
   "ConfiguracionPesta\xF1a": {fileID: 0}
