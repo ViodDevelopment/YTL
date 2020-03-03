@@ -44,7 +44,7 @@ public class MoveTouchLvl3 : MonoBehaviour
         {
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
             {
-
+                transform.parent.SetAsLastSibling();
                 if (Word)
                 {
                     if(canMove && GameManager.configurartion.ayudaVisual)
