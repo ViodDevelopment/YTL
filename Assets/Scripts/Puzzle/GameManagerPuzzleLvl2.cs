@@ -82,7 +82,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         }
         HowManyPieces(m_NumPieces);
 
-        for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
+        for (int i = 0; i <= GameManager.m_CurrentToMinigame[5]; i++)
         {
             if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
@@ -460,9 +460,9 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         m_CurrentNumRep = 1;
 
-        if (GameManager.m_CurrentToMinigame[2] >= 3)
+        if (GameManager.m_CurrentToMinigame[5] >= 3)
         {
-            GameManager.ResetPointToMinigame(2);
+            GameManager.ResetPointToMinigame(5);
             m_Canvas.SetActive(false);
             m_Scener.NextGame();
         }
@@ -471,7 +471,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             m_ImagesSpawn.SetActive(true);
             m_CollidersSpawns.SetActive(true);
 
-            for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
+            for (int i = 0; i <= GameManager.m_CurrentToMinigame[5]; i++)
             {
                 if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
@@ -596,11 +596,11 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         }
         if (!repeating)
         {
-            if (GameManager.m_CurrentToMinigame[2] < 3)
+            if (GameManager.m_CurrentToMinigame[5] < 3)
             {
-                GameManager.SumPointToMinigame(2);
+                GameManager.SumPointToMinigame(5);
             }
-            for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
+            for (int i = 0; i <= GameManager.m_CurrentToMinigame[5]; i++)
             {
                 if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
@@ -630,7 +630,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         m_CollidersSpawns.SetActive(true);
         m_ImageAnim.gameObject.SetActive(false);
         m_Completed = false;
-        for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
+        for (int i = 0; i <= GameManager.m_CurrentToMinigame[5]; i++)
         {
             if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;

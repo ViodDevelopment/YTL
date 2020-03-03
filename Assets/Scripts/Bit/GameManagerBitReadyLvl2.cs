@@ -30,9 +30,15 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
 
     public static int m_Alea = 0;
     public int levelBit = 2;
+    private int numMiniGame = 0;
 
     private void Start()
     {
+
+        if (levelBit == 2)
+            numMiniGame = 4;
+        else
+            numMiniGame = 7;
         //GameManager.Instance.m_CurrentToMinigame;
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         m_Alea = Random.Range(0, BitLvl2.m_Length);
@@ -54,7 +60,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
             m_Points[i].GetComponent<RectTransform>().anchoredPosition += new Vector2(m_Points[i].transform.position.x + (i * 75), 0);
         }
 
-        for (int i = 0; i <= GameManager.m_CurrentToMinigame[1]; i++)
+        for (int i = 0; i <= GameManager.m_CurrentToMinigame[numMiniGame]; i++)
         {
             if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
@@ -98,17 +104,17 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
             }
         }
 
-        if (GameManager.m_CurrentToMinigame[1] >= 7)
+        if (GameManager.m_CurrentToMinigame[numMiniGame] >= 7)
         {
             m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
-            GameManager.ResetPointToMinigame(1);
+            GameManager.ResetPointToMinigame(numMiniGame);
             m_Scener.NextGame();
         }
         else
         {
             m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
-            if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
-                m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+            if (GameManager.m_CurrentToMinigame[numMiniGame] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[numMiniGame] - 1)
+                m_Points[GameManager.m_CurrentToMinigame[numMiniGame] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             m_CurrentNumRep = 1;
             RepeatImage(false);
         }
@@ -116,11 +122,11 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
 
     public void AddCountMiniGameBit()
     {
-        if (m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
-            GameManager.SumPointToMinigame(1);
-        if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
+        if (m_Points.Length > GameManager.m_CurrentToMinigame[numMiniGame] - 1)
+            GameManager.SumPointToMinigame(numMiniGame);
+        if (GameManager.m_CurrentToMinigame[numMiniGame] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[numMiniGame] - 1)
         {
-            m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+            m_Points[GameManager.m_CurrentToMinigame[numMiniGame] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         }
     }
 
@@ -145,8 +151,8 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
             }
         }
         Destroy(m_CurrentBit);
-        if (GameManager.m_CurrentToMinigame[1] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[1] - 1)
-            m_Points[GameManager.m_CurrentToMinigame[1] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+        if (GameManager.m_CurrentToMinigame[numMiniGame] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[numMiniGame] - 1)
+            m_Points[GameManager.m_CurrentToMinigame[numMiniGame] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
         m_CurrentNumRep = 1;
         RepeatImage(false);
     }

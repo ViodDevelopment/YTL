@@ -158,7 +158,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
 
 
-        for (int i = 0; i <= GameManager.m_CurrentToMinigame[0]; i++)
+        for (int i = 0; i <= GameManager.m_CurrentToMinigame[3]; i++)
         {
             if (i > 0 && m_Points.Length > i - 1)
                 m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
@@ -262,8 +262,8 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         planeImageWhenPair.gameObject.SetActive(false);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
-        if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
-            m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+        if (GameManager.m_CurrentToMinigame[3] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[3] - 1)
+            m_Points[GameManager.m_CurrentToMinigame[3] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         m_CurrentNumRep = 1;
 
@@ -472,14 +472,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         planeImageWhenPair.gameObject.SetActive(false);
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
 
-        if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
-            m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+        if (GameManager.m_CurrentToMinigame[3] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[3] - 1)
+            m_Points[GameManager.m_CurrentToMinigame[3] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
 
         m_CurrentNumRep = 1;
 
-        if (GameManager.m_CurrentToMinigame[0] >= GameManager.GetInstance().m_NeededToMinigame)
+        if (GameManager.m_CurrentToMinigame[3] >= GameManager.GetInstance().m_NeededToMinigame)
         {
-            GameManager.ResetPointToMinigame(0);
+            GameManager.ResetPointToMinigame(3);
             m_Scener.NextGame();
         }
         else
@@ -865,10 +865,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         }
         if (!repeating)
         {
-            if (m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
-                GameManager.SumPointToMinigame(0);
-            if (GameManager.m_CurrentToMinigame[0] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[0] - 1)
-                m_Points[GameManager.m_CurrentToMinigame[0] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+            if (m_Points.Length > GameManager.m_CurrentToMinigame[3] - 1)
+                GameManager.SumPointToMinigame(3);
+            if (GameManager.m_CurrentToMinigame[3] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[3] - 1)
+                m_Points[GameManager.m_CurrentToMinigame[3] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             if (!PaquetePalabrasParejas.GetInstance("2").acabado)
             {
                 PaquetePalabrasParejas.GetInstance("2").pantallasHorizontal.RemoveAt(0);
