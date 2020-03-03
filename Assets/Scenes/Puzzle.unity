@@ -650,7 +650,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 500, y: -348}
+  m_AnchoredPosition: {x: 500, y: -363}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!1 &1063664157
@@ -1041,7 +1041,7 @@ MonoBehaviour:
   m_Canvas: {fileID: 1517291095}
   m_Word: {fileID: 8652956090916772119, guid: 0fa924cdc97b37044bdb6721d7ae4d72, type: 3}
   m_WordTransform: {fileID: 625873214}
-  m_UnseenWord: {fileID: 8479992698520049212, guid: a4e3d52e8fd247642a831703de864c84,
+  m_UnseenWord: {fileID: 8652956090916772119, guid: 2e6864fb5b0366940b5c4b10f1ed1539,
     type: 3}
   m_UnseenWordTransform: {fileID: 607037777}
   m_Puntuacion: 0
@@ -1196,6 +1196,7 @@ MonoBehaviour:
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
+  PhotoFromCam: {fileID: 0}
 --- !u!114 &1618241205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1212,7 +1213,10 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!114 &1618241206

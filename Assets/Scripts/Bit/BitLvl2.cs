@@ -339,7 +339,6 @@ public class BitLvl2 : MonoBehaviour
                 m_Animation.Play();
                 m_1touch = false;
 
-                print(m_AS.clip.length + m_Animation.clip.length);
 
                 StartCoroutine(WaitSeconds(m_AS.clip.length + m_Animation.clip.length + 0.2f));
 

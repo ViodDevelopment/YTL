@@ -58,12 +58,13 @@ public class GameManagerPuzzle : MonoBehaviour
     public int[] PuzzlePiecesPossibilities;
 
     private bool acabado = false;
+    private Vector3 startSizeText;
     public GameObject m_Saver;
 
     private void Start()
     {
         InitBaseOfDates();
-
+        startSizeText = m_TextAnim.transform.localScale;
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
         {
@@ -262,6 +263,8 @@ public class GameManagerPuzzle : MonoBehaviour
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
+        if (m_TextAnim.text.Length > 5)
+            m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
 
         Sprite l_SpriteImage;
         l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
@@ -421,6 +424,7 @@ public class GameManagerPuzzle : MonoBehaviour
         repeating = false;
         m_ImageAnim.gameObject.SetActive(false);
         m_Completed = false;
+        m_TextAnim.transform.localScale = startSizeText;
 
         foreach (GameObject item in m_Images)
         {
@@ -473,6 +477,7 @@ public class GameManagerPuzzle : MonoBehaviour
     public void RepeatPuzzle()
     {
         repeating = true;
+
         foreach (GameObject item in m_Images)
         {
             Destroy(item);
@@ -511,10 +516,17 @@ public class GameManagerPuzzle : MonoBehaviour
         GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
         l_Word.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
         l_Word.GetComponentInChildren<ConvertFont>().Convert();
-        // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
-        l_Word.name = "Word";
+        if (palabrasDisponibles[numRandom].palabraActual.Length > 5)
+            l_Word.GetComponentInChildren<Text>().transform.localScale -= l_Word.GetComponentInChildren<Text>().transform.localScale * 0.2f;
+
+            // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
+            l_Word.name = "Word";
         l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
+
+        if (palabrasDisponibles[numRandom].palabraActual.Length > 5)
+            l_UnseenWord.GetComponentInChildren<Text>().transform.localScale -= l_UnseenWord.GetComponentInChildren<Text>().transform.localScale * 0.2f;
+
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
         PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
@@ -558,6 +570,8 @@ public class GameManagerPuzzle : MonoBehaviour
         m_CollidersSpawns.SetActive(true);
         m_ImageAnim.gameObject.SetActive(false);
         m_Completed = false;
+        m_TextAnim.transform.localScale = startSizeText;
+
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[2]; i++)
         {
             if (i > 0 && m_Points.Length > i - 1)
