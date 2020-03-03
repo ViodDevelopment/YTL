@@ -1265,6 +1265,7 @@ MonoBehaviour:
   PuzzlePiecesPossibilities: 040000000600000009000000
   rectanglesInScene: []
   m_Saver: {fileID: 1791334520}
+  marcoMasDe5: {fileID: 21300000, guid: ef19baa5dd6808048913af90456c20c1, type: 3}
 --- !u!4 &1618241202
 Transform:
   m_ObjectHideFlags: 0
@@ -1423,6 +1424,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}

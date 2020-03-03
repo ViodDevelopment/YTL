@@ -61,6 +61,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
     private bool acabado = false;
     public GameObject m_Saver;
+    public Sprite marcoMasDe5;
 
     private void Start()
     {
@@ -517,6 +518,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                     l_Word.gameObject.transform.localScale = go.transform.localScale;
                     l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
                     l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
+                    l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = marcoMasDe5;
                     CambiarRecuadroDependiendoDePalabra(l_Word.gameObject.transform.GetChild(1).GetComponent<Image>(), fraseActual.palabras[i].color);
                 }
             }
@@ -730,6 +732,9 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 imagen.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.055f, 0, 0);
                 fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.055f, 0, 0);
             }
+
+            if (p.palabraActual.Length > 5)
+                imagen.sprite = marcoMasDe5;
 
             rectanglesInScene[rectanglesInScene.Count - 1].transform.localScale += Vector3.one * 70;
             CambiarRecuadroDependiendoDePalabra(imagen, p.color);

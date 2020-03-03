@@ -29,6 +29,7 @@ public class BitLvl2 : MonoBehaviour
     public int l_Number;
     public int currentWord = 0;
     private int levelBit = 2;
+    public Sprite marcoMasDe5;
 
     void Awake()
     {
@@ -281,6 +282,9 @@ public class BitLvl2 : MonoBehaviour
                 }
 
             }
+
+            if (p.palabraActual.Length > 5)
+                imagen.sprite = marcoMasDe5;
 
             CambiarRecuadroDependiendoDePalabra(imagen, p.color);
 
