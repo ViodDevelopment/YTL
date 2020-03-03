@@ -44,19 +44,21 @@ public class MoveTouchLvl3 : MonoBehaviour
         {
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
             {
-                transform.parent.SetAsLastSibling();
                 if (Word)
                 {
-                    if(canMove && GameManager.configurartion.ayudaVisual)
+                    transform.parent.SetAsLastSibling();
+                    if (canMove && GameManager.configurartion.ayudaVisual)
                     {
                         currentTime += Time.deltaTime;
                         if (maxTime == 0)
                         {
                             if (currentTime < 0.7f && currentTime > 0.2f)
-                                gameObject.transform.localScale += new Vector3(Time.deltaTime / 2, Time.deltaTime / 2 , Time.deltaTime / 2);
+                            {
+                                gameObject.transform.localScale += new Vector3(Time.deltaTime * 30, Time.deltaTime * 30, Time.deltaTime * 30);
+                            }
                             else if (currentTime < 1.2f && currentTime > 0.7f)
-                                gameObject.transform.localScale -= new Vector3(Time.deltaTime / 2, Time.deltaTime / 2, Time.deltaTime / 2);
-                            else if(currentTime > 1.2f)
+                                gameObject.transform.localScale -= new Vector3(Time.deltaTime * 30, Time.deltaTime * 30, Time.deltaTime * 30);
+                            else if (currentTime > 1.2f)
                             {
                                 gameObject.transform.localScale = startSize;
                                 maxTime = Random.Range(1.5f, 3f);
@@ -75,7 +77,6 @@ public class MoveTouchLvl3 : MonoBehaviour
                 {
                     Touch touch = Input.GetTouch(0);
                     maxTime = 0;
-                    gameObject.transform.localScale = startSize;
                     currentTime = 0;
 
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
@@ -90,6 +91,12 @@ public class MoveTouchLvl3 : MonoBehaviour
                             this.gameObject.transform.SetAsLastSibling();
                             m_ClickedPiecePosition = this.gameObject.transform.position;
                             managerOnlyOne.Catch(true, gameObject);
+                            if (Word)
+                            {
+                                currentTime = 0;
+                                maxTime = Random.Range(1.5f, 3f);
+                                gameObject.transform.localScale = startSize;
+                            }
                         }
                     }
 
@@ -138,7 +145,10 @@ public class MoveTouchLvl3 : MonoBehaviour
                     Touch touch = Input.GetTouch(0);
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
                     touchPosition.z = 0f;
-                    this.transform.position = touchPosition;
+                    if (!Word)
+                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    else
+                        this.transform.position = touchPosition;
                 }
             }
 

@@ -120,8 +120,8 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             PuzzleComplete();
         }
 
-        if (m_Canvas.activeSelf && (Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
-            PassPuzzle();
+        /*if (m_Canvas.activeSelf && (Input.touchCount > 0 || Input.GetMouseButtonDown(0)))
+            PassPuzzle();*/
 
         if (acabado)
         {
@@ -230,6 +230,8 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 Rect rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
                 l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
+                m_PiezasPuzzle[k].name = "imagen";
+
                 k++;
             }
         }
@@ -412,7 +414,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
         if (GameManager.m_CurrentToMinigame[8] >= 3)
         {
-            GameManager.ResetPointToMinigame(2);
+            GameManager.ResetPointToMinigame(8);
             m_Canvas.SetActive(false);
             m_Scener.NextGame();
         }
