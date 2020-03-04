@@ -105,26 +105,26 @@ public class BitLvl2 : MonoBehaviour
         m_Image.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image);
         otherImage.sprite = frasesDisponibles[l_Number].GetSprite(frasesDisponibles[l_Number].image2);
         //crear imagenes de los rectangulos
-        if (frasesDisponibles[l_Number].palabras.Count == 2)
+        if (frasesDisponibles[l_Number].palabras.Count <= 2)
         {
-            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.1f, 0, 0);
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0f, 0, 0);
         }
         else if (frasesDisponibles[l_Number].palabras.Count == 3)
         {
-            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.3f, 0, 0);
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.12f, 0, 0);
         }
         else if (frasesDisponibles[l_Number].palabras.Count == 4)
         {
-            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.45f, 0, 0);
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.25f, 0, 0);
 
         }
         else if (frasesDisponibles[l_Number].palabras.Count == 5)
         {
-            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.65f, 0, 0);
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.6f, 0, 0);
         }
-        else if (frasesDisponibles[l_Number].palabras.Count == 6)
+        else if (frasesDisponibles[l_Number].palabras.Count >= 6)
         {
-            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.75f, 0, 0);
+            m_GMBit.m_NewFrasePosition.position -= new Vector3(0.7f, 0, 0);
         }
 
         InstanciacionDeRectangulos();
@@ -243,13 +243,19 @@ public class BitLvl2 : MonoBehaviour
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.15f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.11f, 0, 0);
 
                 if (p.palabraActual.Length <= 2)
                 {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.11f, 0, 0);
+
                     imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
                     imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
+
+                }
+                else
+                {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
 
                 }
             }
@@ -257,28 +263,39 @@ public class BitLvl2 : MonoBehaviour
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.135f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.095f, 0, 0);
 
                 if (p.palabraActual.Length <= 2)
                 {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.11f, 0, 0);
                     imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
                     imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
 
                 }
+                else
+                {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
+
+                }
+
             }
             else
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
-                fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.09f, 0, 0);
 
                 if (p.palabraActual.Length <= 2)
                 {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.09f, 0, 0);
+
                     imagen.rectTransform.sizeDelta += new Vector2(p.palabraActual.Length * 0.4f, 0);
                     imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.025f, 0, 0);
 
+                }
+                else
+                {
+                    fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.087f, 0, 0);
                 }
 
             }
