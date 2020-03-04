@@ -58,9 +58,11 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private bool acabado = false;
     public GameObject m_Saver;
+    private int lvl = 2;
 
     private void Start()
     {
+        lvl = 2;
         InitBaseOfDates();
 
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
@@ -95,38 +97,50 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private void InitBaseOfDates()
     {
-        foreach (PalabraBD p in GameManager.palabrasDisponibles)
-        {
-            if (p.paquet == GameManager.configurartion.paquete)
-            {
+        palabrasDisponibles.Clear();
 
-                if (p.imagePuzzle != 0)
+        if (PaquetePuzzle.GetInstance(lvl).acabado)
+        {
+            foreach (PalabraBD p in GameManager.palabrasDisponibles)
+            {
+                if (p.paquet == GameManager.configurartion.paquete)
                 {
 
-                    for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                    if (p.imagePuzzle != 0)
                     {
-                        if (p.piecesPuzzle[i] >= 4)
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
                         {
-                            palabrasDisponibles.Add(p);
-                            break;
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (GameManager.configurartion.paquete == -1)
+                {
+                    if (p.imagePuzzle != 0)
+                    {
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                        {
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
                         }
                     }
                 }
             }
-            else if (GameManager.configurartion.paquete == -1)
+        }
+        else
+        {
+            foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
-                if (p.imagePuzzle != 0)
-                {
-
-                    for (int i = 0; i < p.piecesPuzzle.Count; i++)
-                    {
-                        if (p.piecesPuzzle[i] >= 4)
-                        {
-                            palabrasDisponibles.Add(p);
-                            break;
-                        }
-                    }
-                }
+                palabrasDisponibles.Add(p);
             }
         }
         foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
@@ -604,6 +618,19 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             {
                 if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
+            }
+            if (!PaquetePuzzle.GetInstance(lvl).acabado)
+            {
+                if (numRandom < PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count)
+                {
+                    PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Remove(palabrasDisponibles[numRandom]);
+                    if (PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count == 0)
+                    {
+                        PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
+                    }
+                    PaquetePuzzle.GetInstance(lvl).CrearBinario();
+                    InitBaseOfDates();
+                }
             }
         }
         acabado = true;

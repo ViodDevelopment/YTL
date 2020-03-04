@@ -74,7 +74,7 @@ public class BrushTool : MonoBehaviour
 
                 tex.Apply();
 
-                Debug.Log((int)(hit.textureCoord.x * tex.width) + " " + (int)(hit.textureCoord.y * tex.height));
+                //Debug.Log((int)(hit.textureCoord.x * tex.width) + " " + (int)(hit.textureCoord.y * tex.height));
             }
 
         }

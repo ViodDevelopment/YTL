@@ -127,7 +127,6 @@ public class ImageControl : MonoBehaviour
             currentPalabra = lastPalabra;
         m_GMBit.lastPalabra = currentPalabra;
 
-        print(palabrasDisponibles.Count);
 
         Color color = new Color();
         foreach (Image i in marcos)
