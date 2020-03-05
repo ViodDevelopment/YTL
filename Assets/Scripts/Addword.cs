@@ -88,7 +88,7 @@ public class Addword : MonoBehaviour
             }
 
             palabraBD.user = true;
-            palabraBD.color = "#000000";
+            palabraBD.color = "#eb6424";
             palabraBD.paquet = 0;
             palabraBD.SeparateSilabas();
 

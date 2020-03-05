@@ -1341,6 +1341,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}

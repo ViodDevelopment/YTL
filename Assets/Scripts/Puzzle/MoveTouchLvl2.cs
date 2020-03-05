@@ -51,6 +51,12 @@ public class MoveTouchLvl2 : MonoBehaviour
                             fondo.rectTransform.anchoredPosition = new Vector3(4, 0, 0);
 
                             text.transform.position += new Vector3(-0.13f, 0, 0);
+                            if (text.text.Length > 3)
+                            {
+                                mainImage.rectTransform.sizeDelta = new Vector2(fondo.rectTransform.sizeDelta.x * 1.2f, 319);
+                                fondo.rectTransform.sizeDelta = new Vector2(fondo.rectTransform.sizeDelta.x*1.2f, 319);
+                                text.transform.position += new Vector3(-0.010f, 0, 0);
+                            }
                             break;
                         case 0:
                             mainImage.sprite = sprites[1];
@@ -64,7 +70,11 @@ public class MoveTouchLvl2 : MonoBehaviour
                             mainImage.sprite = sprites[2];
                             fondo.sprite = spritesFondo[2];
                             fondo.rectTransform.anchoredPosition = new Vector3(-4, 0, 0);
-                            text.transform.position += new Vector3(0.13f, 0, 0);
+                            text.transform.position += new Vector3(-0.13f, 0, 0);
+                            if(text.text.Length > 3)
+                            {
+                                text.transform.position += new Vector3(-0.18f, 0, 0);
+                            }
                             break;
                         case 2:
                             mainImage.sprite = sprites[3];

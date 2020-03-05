@@ -38,6 +38,7 @@ public class ImageControl : MonoBehaviour
     private PalabraBD currentPalabra;
     void Awake()
     {
+       
         RecolectPalabrasBD();
         m_Length = palabrasDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
@@ -194,6 +195,31 @@ public class ImageControl : MonoBehaviour
 
         m_Text.text = currentPalabra.palabraActual;
         SearchFont();
+        if (m_Text.text.Length < 7)
+        {
+
+            m_Text.fontSize -= 2;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 2;
+        }
+        else if (m_Text.text.Length < 8)
+        {
+            m_Text.fontSize -= 20;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 10;
+        }
+        else if (m_Text.text.Length < 9)
+        {
+            m_Text.fontSize -= 30;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 15;
+        }
+        else
+        {
+            m_Text.fontSize -= 40;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 20;
+        }
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
         m_AS.clip = currentPalabra.GetAudioClip(currentPalabra.audio);
 
