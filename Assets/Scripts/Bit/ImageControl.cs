@@ -212,17 +212,33 @@ public class ImageControl : MonoBehaviour
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
-                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
             {
-                m_Animation.clip = m_Slide;
-                m_Animation.Play();
-                m_0touch = false;
-                m_1touch = true;
-                AnimFinCaida = true;
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                    if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
+                    {
+                        m_Animation.clip = m_Slide;
+                        m_Animation.Play();
+                        m_0touch = false;
+                        m_1touch = true;
+                        AnimFinCaida = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
+                {
+                    m_Animation.clip = m_Slide;
+                    m_Animation.Play();
+                    m_0touch = false;
+                    m_1touch = true;
+                    AnimFinCaida = true;
 
+                }
             }
 
         }
@@ -231,16 +247,32 @@ public class ImageControl : MonoBehaviour
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
-                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= 3f)
             {
-                m_Animation.clip = m_Spin;
-                m_Animation.Play();
-                m_1touch = false;
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                    if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= 3f)
+                    {
+                        m_Animation.clip = m_Spin;
+                        m_Animation.Play();
+                        m_1touch = false;
 
-                StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f));
+                        StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f));
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= 3f)
+                {
+                    m_Animation.clip = m_Spin;
+                    m_Animation.Play();
+                    m_1touch = false;
+
+                    StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f));
+                }
             }
 
         }

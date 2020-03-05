@@ -30,7 +30,7 @@ public class PalabraFraseBit2 : MonoBehaviour
                 }
 
             }
-            else if(!bit.m_AS.isPlaying)
+            else if (!bit.m_AS.isPlaying)
                 DoingCosas();
 
         }
@@ -41,77 +41,68 @@ public class PalabraFraseBit2 : MonoBehaviour
     {
         if (GameManager.configurartion.ayudaVisual)
             timer += Time.deltaTime;
+
+        if (GameManager.configurartion.ayudaVisual)
+        {
+            if (!doingAnimation && timer >= Random.Range(0.75f, 2))
+            {
+                doingAnimation = true;
+                timer = 0;
+            }
+            else if (doingAnimation && timer <= 1)
+            {
+                if (timer <= 0.5f)
+                {
+                    gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 35;
+                }
+                else
+                {
+                    gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 35;
+                }
+            }
+            else if (doingAnimation && timer > 1)
+            {
+                timer = 0;
+                doingAnimation = false;
+                gameObject.transform.localScale = scaleOriginal;
+            }
+        }
+
         if (GameManager.GetInstance().InputRecieved())
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
-                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= distance && Mathf.Abs(positionInput.y - gameObject.transform.position.y) <= 1.2f)
             {
-                audioSource.Play();
-                gameObject.transform.localScale = scaleOriginal;
-                timer = 0;
-                bit.currentWord++;
-                doingAnimation = false;
-            }else
-            {
-                if (GameManager.configurartion.ayudaVisual)
+                bool clicada = false;
+                for (int i = 0; i < Input.touchCount; i++)
                 {
-                    if (!doingAnimation && timer >= Random.Range(0.75f, 2))
+                    positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                    if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= distance && Mathf.Abs(positionInput.y - gameObject.transform.position.y) <= 1.2f)
                     {
-                        doingAnimation = true;
-                        timer = 0;
-                    }
-                    else if (doingAnimation && timer <= 1)
-                    {
-                        if (timer <= 0.5f)
-                        {
-                            gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                        }
-                        else
-                        {
-                            gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                        }
-                    }
-                    else if (doingAnimation && timer > 1)
-                    {
-                        timer = 0;
-                        doingAnimation = false;
+                        audioSource.Play();
                         gameObject.transform.localScale = scaleOriginal;
+                        timer = 0;
+                        bit.currentWord++;
+                        doingAnimation = false;
+                        clicada = true;
+                        break;
                     }
-                }
-            }
 
-        }
-        else
-        {
-            if (GameManager.configurartion.ayudaVisual)
+                }
+            }
+            else
             {
-                if (!doingAnimation && timer >= Random.Range(0.75f, 2))
+                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude <= distance && Mathf.Abs(positionInput.y - gameObject.transform.position.y) <= 1.2f)
                 {
-                    doingAnimation = true;
-                    timer = 0;
-                }
-                else if (doingAnimation && timer <= 1)
-                {
-                    if (timer <= 0.5f)
-                    {
-                        gameObject.transform.localScale += new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                    }
-                    else
-                    {
-                        gameObject.transform.localScale -= new Vector3(Time.deltaTime, Time.deltaTime, Time.deltaTime) * 20;
-                    }
-                }
-                else if (doingAnimation && timer > 1)
-                {
-                    timer = 0;
-                    doingAnimation = false;
+                    audioSource.Play();
                     gameObject.transform.localScale = scaleOriginal;
+                    timer = 0;
+                    bit.currentWord++;
+                    doingAnimation = false;
                 }
             }
         }
+        
     }
 }

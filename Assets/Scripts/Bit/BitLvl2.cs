@@ -329,22 +329,44 @@ public class BitLvl2 : MonoBehaviour
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
-                positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-            else
-                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
             {
-                /* m_Animation.clip = m_Slide;
-                 m_Animation.Play();*/
-                foreach (GameObject go in rectanglesInScene)
+                for (int i = 0; i < Input.touchCount; i++)
                 {
-                    go.SetActive(true);
-                }
-                m_AS.clip = frasesDisponibles[l_Number].GetAudioClip(frasesDisponibles[l_Number].sound);
-                m_AS.Play();
+                    positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                    if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
+                    {
+                        /* m_Animation.clip = m_Slide;
+                         m_Animation.Play();*/
+                        foreach (GameObject go in rectanglesInScene)
+                        {
+                            go.SetActive(true);
+                        }
+                        m_AS.clip = frasesDisponibles[l_Number].GetAudioClip(frasesDisponibles[l_Number].sound);
+                        m_AS.Play();
 
-                m_0touch = false;
-                m_1touch = true;
+                        m_0touch = false;
+                        m_1touch = true;
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                positionInput = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if ((new Vector2(positionInput.x, positionInput.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < 3f)
+                {
+                    /* m_Animation.clip = m_Slide;
+                     m_Animation.Play();*/
+                    foreach (GameObject go in rectanglesInScene)
+                    {
+                        go.SetActive(true);
+                    }
+                    m_AS.clip = frasesDisponibles[l_Number].GetAudioClip(frasesDisponibles[l_Number].sound);
+                    m_AS.Play();
+
+                    m_0touch = false;
+                    m_1touch = true;
+                }
             }
 
         }
