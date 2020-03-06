@@ -565,6 +565,14 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             m_Words.Add(l_Word);
 
+            switch (SingletonLenguage.GetInstance().GetFont())
+            {
+                case SingletonLenguage.OurFont.MAYUSCULA:
+                    l_Word.GetComponentInChildren<Text>().fontSize -= 50;
+                    break;
+              
+            }
+
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
             ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
@@ -599,6 +607,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             {
                 l_UnseenWord.transform.position += new Vector3(-0.25f, 0);
                
+            }
+            switch (SingletonLenguage.GetInstance().GetFont())
+            {
+                case SingletonLenguage.OurFont.MAYUSCULA:
+                    l_UnseenWord.GetComponentInChildren<Text>().fontSize -= 50;
+                    break;
+
             }
             //m_Words.Add(l_UnseenWord);
         }
