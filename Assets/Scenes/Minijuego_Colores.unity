@@ -1339,10 +1339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cebfce09a8c9848b5ca276ef392ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushRight: 30
-  brushLeft: 30
+  brushRight: 15
+  brushLeft: 15
   brushUp: 30
-  brushDown: 12
+  brushDown: 7
   arrayCube: {fileID: 966978717}
   cubes: []
   background: {fileID: 771775266}
@@ -1438,6 +1438,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
@@ -1949,6 +1951,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
