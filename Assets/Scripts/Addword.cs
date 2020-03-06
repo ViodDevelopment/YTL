@@ -11,6 +11,7 @@ public class Addword : MonoBehaviour
     public InputField word;
     public Image img;
     string sumSilabas;
+    Sprite temp;
 
     public List<InputField> bloqueSilabas;
     public GameObject bloqueSilaba;
@@ -38,6 +39,30 @@ public class Addword : MonoBehaviour
 
     }
 
+    Sprite MakeImgEven(Texture2D tex)
+    {
+        int maxSize, offset;
+
+        if (tex.width == tex.height)
+        {
+            return Sprite.Create(tex, new Rect(0.0f, 0.0f, tex.width, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        else if (tex.width < tex.height)
+        {
+            maxSize = tex.width;
+            offset = (tex.height - maxSize) / 2;
+            return Sprite.Create(tex, new Rect(0.0f, offset, tex.width, tex.width), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+        else
+        {
+            maxSize = tex.height;
+            offset = (tex.width - maxSize) / 2;
+            return Sprite.Create(tex, new Rect(offset, 0.0f, tex.height, tex.height), new Vector2(0.5f, 0.5f), 100.0f);
+        }
+
+
+    }
+
 
     public void SaveWord()
     {
@@ -52,7 +77,11 @@ public class Addword : MonoBehaviour
 
 
             sumSilabas.Substring(0, sumSilabas.Length - 1);
+
+           
             Texture2D textd = ToTexture2D(img.sprite.texture);
+            
+
             File.WriteAllBytes(imgLocation = Application.persistentDataPath + "/UserWords/Images/img" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".png", textd.EncodeToPNG());
 
             FileStream file = File.Create(audioLocation = Application.persistentDataPath + "/UserWords/Sounds/audio" + DateTime.Now.Year.ToString() + DateTime.Now.DayOfYear.ToString() + DateTime.Now.Hour.ToString() + DateTime.Now.Minute.ToString() + DateTime.Now.Second.ToString() + ".wav");
@@ -120,8 +149,8 @@ public class Addword : MonoBehaviour
          * Rect rect = new Rect(new Vector2(texture.width / 2 - 256, texture.height / 2 - 256), new Vector2(512, 512));
         Sprite l_Sprite = Sprite.Create(texture, rect, new Vector2(0, 0));
         return l_Sprite.texture;*/
-        RenderTexture rendTexture = new RenderTexture(512, 512, 0, RenderTextureFormat.ARGB32);
-        Texture2D result = new Texture2D(512, 512, TextureFormat.RGBA32, false, false);
+        RenderTexture rendTexture = new RenderTexture(texture.width, texture.height, 0, RenderTextureFormat.ARGB32);
+        Texture2D result = new Texture2D(texture.width, texture.height, TextureFormat.RGBA32, false, false);
 
         Graphics.Blit(texture, rendTexture);
         result.ReadPixels(new Rect(0, 0, rendTexture.width, rendTexture.height), 0, 0);
