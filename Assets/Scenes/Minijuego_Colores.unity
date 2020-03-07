@@ -810,17 +810,17 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: 8bbbe86d515c8c649b959d53ac2447d3,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1846.82
+      value: 1901.0785
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8bbbe86d515c8c649b959d53ac2447d3,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1000.001
+      value: 1029.3805
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8bbbe86d515c8c649b959d53ac2447d3,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1032.652
+      value: 1062.9907
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 8bbbe86d515c8c649b959d53ac2447d3,
         type: 3}
@@ -1149,7 +1149,7 @@ RectTransform:
   m_GameObject: {fileID: 771775264}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 50, y: 50, z: 50}
+  m_LocalScale: {x: 51.468975, y: 51.468975, z: 51.468975}
   m_Children: []
   m_Father: {fileID: 283918569}
   m_RootOrder: 0
@@ -1339,10 +1339,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06cebfce09a8c9848b5ca276ef392ce6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  brushRight: 50
-  brushLeft: 50
+  brushRight: 15
+  brushLeft: 15
   brushUp: 30
-  brushDown: 20
+  brushDown: 7
   arrayCube: {fileID: 966978717}
   cubes: []
   background: {fileID: 771775266}
@@ -1438,6 +1438,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
@@ -1723,6 +1725,8 @@ MonoBehaviour:
   objToRescale:
   - {fileID: 778248679}
   path: {fileID: 408559287}
+  repositionFactor: 0
+  quatrotercios: 0
 --- !u!1 &966978717
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1752,7 @@ Transform:
   m_GameObject: {fileID: 966978717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.8616441, y: 0.3328162, z: 100.9}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0293795, y: 1.0293795, z: 1.0293795}
   m_Children:
   - {fileID: 820149487}
   - {fileID: 339971630}
@@ -1947,6 +1951,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}

@@ -565,11 +565,20 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             m_Words.Add(l_Word);
 
+            switch (SingletonLenguage.GetInstance().GetFont())
+            {
+                case SingletonLenguage.OurFont.MAYUSCULA:
+                    l_Word.GetComponentInChildren<Text>().fontSize -= 50;
+                    break;
+              
+            }
+
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
             ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
             l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().imagen.color = color;
             l_UnseenWord.transform.position += position;
+           
             l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
             if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
                 l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.17f, 0, 0);
@@ -592,6 +601,20 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
             l_UnseenWord.name = palabrasDisponibles[numRandom].silabasActuales[i];
+            if(i != palabraActual.silabasActuales.Count - 1 )
+            l_UnseenWord.transform.position += new Vector3(-0.04f, 0);
+            if (palabrasDisponibles[numRandom].silabasActuales[i].Length > 3)
+            {
+                l_UnseenWord.transform.position += new Vector3(-0.25f, 0);
+               
+            }
+            switch (SingletonLenguage.GetInstance().GetFont())
+            {
+                case SingletonLenguage.OurFont.MAYUSCULA:
+                    l_UnseenWord.GetComponentInChildren<Text>().fontSize -= 50;
+                    break;
+
+            }
             //m_Words.Add(l_UnseenWord);
         }
 
