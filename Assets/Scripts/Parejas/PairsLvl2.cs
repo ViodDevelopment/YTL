@@ -37,7 +37,7 @@ public class PairsLvl2 : MonoBehaviour
     {
         m_GameManagerParejas = GameObject.FindGameObjectWithTag("GMParejas").GetComponent<GameManagerParejasLvl2>();
         audioSource = m_GameManagerParejas.GetComponent<AudioSource>();
-        myImage = gameObject.GetComponent<Image>();        
+        myImage = gameObject.GetComponent<Image>();
         rectTransform = GetComponent<RectTransform>();
         lastPosition = gameObject.transform.position;
         lastSize = rectTransform.localScale;
@@ -108,28 +108,34 @@ public class PairsLvl2 : MonoBehaviour
             {
                 if (Input.touchCount > 0 && managerOnlyOne.go == null && !m_GameManagerParejas.m_Animation.isPlaying)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-
-                    RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
-                    if (l_RaycastHit)
+                    for (int i = 0; i < Input.touchCount; i++)
                     {
-                        if (l_RaycastHit.collider.gameObject == this.gameObject)
-                        {
-                            currentTimerAnim = 0;
-                            animIsplaying = false;
-                            rectTransform.localScale = lastSize;
+                        Touch touch = Input.GetTouch(i);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
 
-                            m_PieceClicked = true;
-                            this.gameObject.transform.parent.transform.parent.transform.SetAsLastSibling();
-                            managerOnlyOne.Catch(true, gameObject);
+                        RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                        if (l_RaycastHit)
+                        {
+                            if (l_RaycastHit.collider.gameObject == this.gameObject)
+                            {
+                                currentTimerAnim = 0;
+                                animIsplaying = false;
+                                rectTransform.localScale = lastSize;
+
+                                m_PieceClicked = true;
+                                //this.gameObject.transform.parent.transform.parent.transform.SetAsLastSibling();
+                                Transform grandpa = this.gameObject.transform.parent;
+                                grandpa.SetAsLastSibling();
+
+                                managerOnlyOne.Catch(true, gameObject);
+                                break;
+                            }
                         }
                     }
 
                 }
-
-                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null && !m_GameManagerParejas.m_Animation.isPlaying)
+                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null && !m_GameManagerParejas.m_Animation.isPlaying && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
@@ -155,19 +161,53 @@ public class PairsLvl2 : MonoBehaviour
 
             if (m_PieceClicked)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
                     this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
                 }
 
-                else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
-                {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-                    this.transform.position = touchPosition;
+                else {
+                    if (Input.touchCount > 0)
+                    {
+                        int position = 0;
+                        float min = 999;
+                        bool tiene = false;
+                        for (int i = 0; i < Input.touchCount; i++)
+                        {
+                            Touch touch = Input.GetTouch(i);
+                            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            touchPosition.z = 0f;
+
+                            RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                            if (l_RaycastHit)
+                            {
+                                if (l_RaycastHit.collider.gameObject == this.gameObject)
+                                {
+                                    tiene = true;
+                                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
+                                    break;
+                                }
+                            }
+                            else
+                            {
+                                if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                                {
+                                    min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                                    position = i;
+                                }
+                            }
+                        }
+                        if (min <= 3f && !tiene)
+                        {
+                            Touch touch = Input.GetTouch(position);
+                            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            touchPosition.z = 0f;
+
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
+                        }
+                    }
                 }
             }
 
@@ -208,7 +248,7 @@ public class PairsLvl2 : MonoBehaviour
 
             }
 
-            if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
+            if (m_PieceClicked && Input.GetMouseButtonUp(0) && timer == 0 && Input.touchCount == 0)
             {
                 timer = 0.02f;
                 lastFallos = GameManager.fallosParejas;
@@ -239,7 +279,7 @@ public class PairsLvl2 : MonoBehaviour
                     else
                         m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
 
-                    if(SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                    if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                         colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.3f;
 
                     colision.gameObject.SetActive(false);
@@ -257,10 +297,93 @@ public class PairsLvl2 : MonoBehaviour
                     timer = 0;
                 }
 
+                else if (Input.touchCount > 0 && timer == 0 && m_PieceClicked)
+                {
+                    float min = 999;
+                    int position = 0;
+                    bool tocando = false;
+                    for (int i = 0; i < Input.touchCount; i++)
+                    {
+                        Touch touch = Input.GetTouch(i);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                        {
+                            if (touch.phase != TouchPhase.Ended)
+                            {
+                                min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                                position = i;
+                            }
+                        }
+                    }
+
+                    if (min <= 3f)
+                    {
+                        tocando = true;
+                        Touch touch = Input.GetTouch(position);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
+
+                    }
+                    if (!tocando)
+                    {
+                        timer = 0.02f;
+                        lastFallos = GameManager.fallosParejas;
+                        if (dentro)
+                        {
+                            this.transform.position = colision.gameObject.transform.position;
+                            m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
+                            m_GameManagerParejas.m_TextZoomed.text = nombre;
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
+
+
+                            foreach (Image i in m_GameManagerParejas.marcos)
+                            {
+                                m_GameManagerParejas.PonerColorMarco(color, i);
+                            }
+
+                            m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                            if (!audioSource.isPlaying)
+                            {
+                                audioSource.clip = audioClip;
+                                audioSource.Play();
+                            }
+                            m_GameManagerParejas.PairDone();
+
+                            if (lastPair)
+                                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(true);
+                            else
+                                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
+
+                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.3f;
+
+                            colision.gameObject.SetActive(false);
+                            gameObject.SetActive(false);
+                            gameObject.transform.position = lastPosition;
+                            rectTransform.localScale = lastSize;
+                            currentTimerAnim = 0;
+                            firstTime = true;
+                            animIsplaying = false;
+                            m_PieceClicked = false;
+                            managerOnlyOne.Catch(false, null);
+                            colision = null;
+                            otherObject = null;
+                            dentro = false;
+                            timer = 0;
+                        }
+                    }
+                }
             }
         }
-
     }
+
+
+
 
     private void OnTriggerEnter2D(Collider2D _collision)
     {
