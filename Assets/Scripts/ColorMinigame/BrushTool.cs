@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BrushTool : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class BrushTool : MonoBehaviour
     public int brushRight, brushLeft, brushUp, brushDown;
     public GameObject arrayCube;
     public List<GameObject> cubes;
-    public SpriteRenderer background;
+    public Image background;
     public Sprite endSprite;
     public float countdown;
     public SceneManagement mScener;

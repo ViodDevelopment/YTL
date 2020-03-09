@@ -2560,6 +2560,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6be349a8dfd9a4e8652382ff46910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstTimeSpawn: 3
   m_MinTimeSpawn: 5
   m_MaxTimeSpawn: 10
   m_Worm: {fileID: 9114956398008328407, guid: 87e14e4824a8c5e4d8d4bbbd81cef681, type: 3}
@@ -6840,6 +6841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6be349a8dfd9a4e8652382ff46910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstTimeSpawn: 3
   m_MinTimeSpawn: 5
   m_MaxTimeSpawn: 10
   m_Worm: {fileID: 9114956398008328407, guid: 87e14e4824a8c5e4d8d4bbbd81cef681, type: 3}
@@ -6966,6 +6968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6be349a8dfd9a4e8652382ff46910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstTimeSpawn: 3
   m_MinTimeSpawn: 5
   m_MaxTimeSpawn: 10
   m_Worm: {fileID: 9114956398008328407, guid: 87e14e4824a8c5e4d8d4bbbd81cef681, type: 3}
@@ -8281,6 +8284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef6be349a8dfd9a4e8652382ff46910d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_FirstTimeSpawn: 3
   m_MinTimeSpawn: 5
   m_MaxTimeSpawn: 10
   m_Worm: {fileID: 9114956398008328407, guid: 87e14e4824a8c5e4d8d4bbbd81cef681, type: 3}
@@ -8658,7 +8662,10 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!4 &1268949511

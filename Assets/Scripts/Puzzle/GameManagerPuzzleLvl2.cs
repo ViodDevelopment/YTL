@@ -542,9 +542,18 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         }
         for (int i = 0; i < palabraActual.silabasActuales.Count; i++)
         {
-            int randomNumToPos = posiciones[Random.Range(0, posiciones.Count)];
-            posiciones.Remove(randomNumToPos);
-            GameObject l_Word = Instantiate(silabaPrefab, m_WordTransform[randomNumToPos]);
+            GameObject l_Word;
+            if (palabraActual.silabasActuales.Count > 1)
+            {
+                int randomNumToPos = posiciones[Random.Range(0, posiciones.Count)];
+                posiciones.Remove(randomNumToPos);
+                 l_Word = Instantiate(silabaPrefab, m_WordTransform[randomNumToPos]);
+            }
+            else
+            {
+                 l_Word = Instantiate(silabaPrefab, m_WordTransform[1]);
+
+            }
             l_Word.GetComponentInChildren<Text>().text = palabraActual.silabasActuales[i];
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
             l_Word.name = palabraActual.silabasActuales[i] + i;

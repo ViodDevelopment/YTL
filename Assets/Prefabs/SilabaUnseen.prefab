@@ -284,7 +284,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d2e664bedbb88649a91584b88bdf6ad, type: 3}
   - {fileID: 21300000, guid: 961f891125d6d3d45b06e4c05b050d17, type: 3}
   - {fileID: 21300000, guid: 47748dc2910f70647843365774d117a4, type: 3}
-  - {fileID: 21300000, guid: 9bb5cd6dbff4f114cb3ec7d50047ca01, type: 3}
+  - {fileID: 21300000, guid: db8c9308a79f79341baea7dba0acfbbe, type: 3}
+  - {fileID: 21300000, guid: db8c9308a79f79341baea7dba0acfbbe, type: 3}
   imagen: {fileID: 8479992699052000887}
   texto: {fileID: 8479992698385173794}
   fondo: {fileID: 939719890193765196}

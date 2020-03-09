@@ -40,7 +40,13 @@ public class SilabaUnseedColocarMarco : MonoBehaviour
             case 2:
                 imagen.sprite = marcos[3];
                 fondo.sprite = spritesFondo[3];
-                fondo.rectTransform.sizeDelta = new Vector3(315, 308, 0);
+                fondo.rectTransform.sizeDelta = new Vector3(imagen.rectTransform.sizeDelta.x * 1.1f, imagen.rectTransform.sizeDelta.y, 0);
+                imagen.rectTransform.sizeDelta = new Vector3(imagen.rectTransform.sizeDelta.x*1.2f, imagen.rectTransform.sizeDelta.y, 0);
+                break;
+            case 3: //Monnosilabo
+                imagen.sprite = marcos[4];
+                fondo.sprite = spritesFondo[3];
+                fondo.rectTransform.localScale = new Vector3(0.65f, 0.7f, 0);
                 break;
         }
     }

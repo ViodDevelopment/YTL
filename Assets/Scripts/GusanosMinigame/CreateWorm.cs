@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CreateWorm : MonoBehaviour
 {
+    public float m_FirstTimeSpawn;
     public float m_MinTimeSpawn;
     public float m_MaxTimeSpawn;
     public GameObject m_Worm;
@@ -12,7 +13,7 @@ public class CreateWorm : MonoBehaviour
 
     private void Start()
     {
-        m_NextTime = Random.Range(0, m_MinTimeSpawn);
+        m_NextTime = Random.Range(0, m_FirstTimeSpawn);
     }
 
     void Update()

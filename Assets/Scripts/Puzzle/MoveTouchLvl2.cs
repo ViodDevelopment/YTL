@@ -79,7 +79,8 @@ public class MoveTouchLvl2 : MonoBehaviour
                         case 2:
                             mainImage.sprite = sprites[3];
                             fondo.sprite = spritesFondo[3];
-                            fondo.rectTransform.sizeDelta = new Vector3(315, 308, 0);
+                            fondo.rectTransform.sizeDelta = new Vector3(mainImage.rectTransform.sizeDelta.x * 1.10f, mainImage.rectTransform.sizeDelta.y, 0);
+                            mainImage.rectTransform.sizeDelta = new Vector3(mainImage.rectTransform.sizeDelta.x * 1.20f, mainImage.rectTransform.sizeDelta.y, 0);
                             break;
                     }
                     done = true;

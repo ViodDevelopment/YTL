@@ -266,12 +266,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 4d2e664bedbb88649a91584b88bdf6ad, type: 3}
   - {fileID: 21300000, guid: 961f891125d6d3d45b06e4c05b050d17, type: 3}
   - {fileID: 21300000, guid: 47748dc2910f70647843365774d117a4, type: 3}
-  - {fileID: 21300000, guid: 9bb5cd6dbff4f114cb3ec7d50047ca01, type: 3}
+  - {fileID: 21300000, guid: db8c9308a79f79341baea7dba0acfbbe, type: 3}
   spritesFondo:
   - {fileID: 21300000, guid: e5d1bc7d081d1d64eac3802ca192bd94, type: 3}
   - {fileID: 21300000, guid: b2e10fbb700788d4db47023b6b237add, type: 3}
   - {fileID: 21300000, guid: 0dfad1725b25eff4f84f31f52d9d9d92, type: 3}
   - {fileID: 21300000, guid: 556f74b2b1c8f234eacb22df177928fe, type: 3}
+  - {fileID: 21300000, guid: db8c9308a79f79341baea7dba0acfbbe, type: 3}
   silaba: -5
   mainImage: {fileID: 8652956091669230081}
   text: {fileID: 8652956090537760681}
