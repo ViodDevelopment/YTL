@@ -47,16 +47,16 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public IEnumerator OnPointerDown()
     {
+        float l_timer = 0;
         if (!apretado)
         {
             apretado = true;
             m_AudioSource.clip = sonidoDefault;
             m_AudioSource.Play();
+            l_timer = m_AudioSource.clip.length + m_AudioSource.clip.length / 2f;
         }
 
-        float l_timer = 0;
-        if (m_AudioSource.isPlaying)
-            l_timer = m_AudioSource.clip.length + m_AudioSource.clip.length / 6f;
+
 
         yield return new WaitForSeconds(l_timer);
         print("START_RECORDING");

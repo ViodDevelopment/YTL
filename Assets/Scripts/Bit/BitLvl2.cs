@@ -60,7 +60,7 @@ public class BitLvl2 : MonoBehaviour
             }
             else
             {
-                if (f.actualDificultad >= 1)
+                if (f.actualDificultad > 1)
                 {
                     if (f.paquet == GameManager.configurartion.paquete)
                         frasesDisponibles.Add(f);
