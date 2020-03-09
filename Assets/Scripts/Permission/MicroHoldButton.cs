@@ -53,7 +53,7 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
             apretado = true;
             m_AudioSource.clip = sonidoDefault;
             m_AudioSource.Play();
-            l_timer = m_AudioSource.clip.length + m_AudioSource.clip.length / 2f;
+            l_timer = m_AudioSource.clip.length + 0.4f;
         }
 
 
