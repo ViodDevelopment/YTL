@@ -529,17 +529,17 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         GameObject l_Word = Instantiate(m_Word, m_WordTransform.transform);
         GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
-        l_Word.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
+        l_Word.GetComponentInChildren<Text>().text = palabraActual.palabraActual;
         l_Word.GetComponentInChildren<ConvertFont>().Convert();
-        if (palabrasDisponibles[numRandom].palabraActual.Length > 5)
+        if (palabraActual.palabraActual.Length > 5)
             l_Word.GetComponentInChildren<Text>().transform.localScale -= l_Word.GetComponentInChildren<Text>().transform.localScale * 0.2f;
 
             // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
             l_Word.name = "Word";
-        l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].palabraActual;
+        l_UnseenWord.GetComponentInChildren<Text>().text = palabraActual.palabraActual;
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
 
-        if (palabrasDisponibles[numRandom].palabraActual.Length > 5)
+        if (palabraActual.palabraActual.Length > 5)
             l_UnseenWord.GetComponentInChildren<Text>().transform.localScale -= l_UnseenWord.GetComponentInChildren<Text>().transform.localScale * 0.2f;
 
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);

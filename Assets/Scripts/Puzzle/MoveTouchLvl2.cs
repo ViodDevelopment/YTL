@@ -88,27 +88,7 @@ public class MoveTouchLvl2 : MonoBehaviour
             if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
             {
 
-                if (Input.touchCount > 0 && managerOnlyOne.go == null)
-                {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-
-                    RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
-                    if (l_RaycastHit)
-                    {
-                        if (l_RaycastHit.collider.gameObject == this.gameObject)
-                        {
-                            m_PieceClicked = true;
-                            this.gameObject.transform.SetAsLastSibling();
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
-                            managerOnlyOne.Catch(true, gameObject);
-                        }
-                    }
-
-                }
-
-                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null)
+                if (Input.GetMouseButtonDown(0) && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
@@ -125,27 +105,93 @@ public class MoveTouchLvl2 : MonoBehaviour
                             managerOnlyOne.Catch(true, gameObject);
                         }
                     }
+                }
+                else {
+                    if (Input.touchCount > 0)
+                    {
+                        for (int i = 0; i < Input.touchCount; i++)
+                        {
+                            Touch touch = Input.GetTouch(i);
+                            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            touchPosition.z = 0f;
+
+                            RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                            if (l_RaycastHit)
+                            {
+                                if (l_RaycastHit.collider.gameObject == this.gameObject)
+                                {
+                                    m_PieceClicked = true;
+                                    this.gameObject.transform.SetAsLastSibling();
+                                    m_ClickedPiecePosition = this.gameObject.transform.position;
+                                    managerOnlyOne.Catch(true, gameObject);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
                 }
             }
 
-            if (m_PieceClicked && timer == 0)
+            if (m_PieceClicked)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
+
                     if (!Word)
                         this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
                     else
                         this.transform.position = touchPosition;
                 }
 
-                else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+                else if (Input.touchCount > 0)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-                    this.transform.position = touchPosition;
+                    int position = 0;
+                    float min = 999;
+                    bool tiene = false;
+
+                    for (int i = 0; i < Input.touchCount; i++)
+                    {
+                        Touch touch = Input.GetTouch(i);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                        if (l_RaycastHit)
+                        {
+                            if (l_RaycastHit.collider.gameObject == this.gameObject)
+                            {
+                                tiene = true;
+
+                                if (!Word)
+                                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                else
+                                    this.transform.position = touchPosition;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                            {
+                                min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                                position = i;
+                            }
+                        }
+                    }
+                    if (min <= 3f && !tiene)
+                    {
+                        Touch touch = Input.GetTouch(position);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        if (!Word)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition;
+                    }
                 }
             }
 
@@ -179,7 +225,7 @@ public class MoveTouchLvl2 : MonoBehaviour
 
             }
 
-            if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
+            if (m_PieceClicked && Input.GetMouseButtonUp(0) && timer == 0 && Input.touchCount == 0)
             {
                 timer = 0.01f;
 
@@ -197,6 +243,61 @@ public class MoveTouchLvl2 : MonoBehaviour
                     dentro = false;
                     colision = null;
                     otherObject = null;
+                }
+
+            }
+            else if (Input.touchCount > 0 && timer == 0 && m_PieceClicked)
+            {
+                float min = 999;
+                int position = 0;
+                bool tocando = false;
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Touch touch = Input.GetTouch(i);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
+
+                    if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                    {
+                        if (touch.phase != TouchPhase.Ended)
+                        {
+                            min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                            position = i;
+                        }
+                    }
+                }
+                if (min <= 3f)
+                {
+                    tocando = true;
+                    Touch touch = Input.GetTouch(position);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
+
+                    if (!Word)
+                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    else
+                        this.transform.position = touchPosition;
+                }
+
+                if (!tocando)
+                {
+                    timer = 0.01f;
+
+                    if (dentro)
+                    {
+                        this.transform.position = colision.gameObject.transform.position;
+                        m_PieceLocked = true;
+                        this.transform.SetParent(gameManagerPuzzle2.m_Saver.transform);
+                        gameManagerPuzzle2.m_Puntuacion++;
+                        if (Word)
+                        {
+                            Destroy(colision.gameObject);
+                            gameManagerPuzzle2.currentSilaba++;
+                        }
+                        dentro = false;
+                        colision = null;
+                        otherObject = null;
+                    }
                 }
 
             }

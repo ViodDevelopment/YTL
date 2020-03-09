@@ -37,26 +37,8 @@ public class Burbuja : MonoBehaviour
             if (transform.localScale.magnitude < l_StopGrowing)
                 transform.localScale += Vector3.one * Time.deltaTime * m_GrowSpeed;
 
-            if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-            {
-                Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
-                if (l_Hit.collider != null)
-                {
-                    if (l_Hit.collider.tag == "Burbuja")
-                    {
-                        Debug.Log("TAPPED");
-                        //Vector3 actualPos = gameObject.transform.position;
-                        GameObject l_Ball = Instantiate(m_BubblePS, l_Hit.collider.transform.position, m_BubblePS.transform.rotation);
-                        //l_Ball.transform.position = actualPos;
-                        m_AS.Play();
-                        GetComponent<SpriteRenderer>().enabled = false;
-                        Destroy(l_Hit.collider.gameObject, 1f);
-                    }
-                }
-            }
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && Input.touchCount == 0)
             {
                 Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
@@ -74,6 +56,31 @@ public class Burbuja : MonoBehaviour
                         l_Hit.collider.tag = "Untagged";
                         l_Hit.collider.gameObject.GetComponent<CircleCollider2D>().enabled = false;
                         Destroy(l_Hit.collider.gameObject, 1f);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+
+                    if ((Input.GetTouch(i).phase == TouchPhase.Began))
+                    {
+                        Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                        RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
+                        if (l_Hit.collider != null)
+                        {
+                            if (l_Hit.collider.tag == "Burbuja")
+                            {
+                                Debug.Log("TAPPED");
+                                //Vector3 actualPos = gameObject.transform.position;
+                                GameObject l_Ball = Instantiate(m_BubblePS, l_Hit.collider.transform.position, m_BubblePS.transform.rotation);
+                                //l_Ball.transform.position = actualPos;
+                                m_AS.Play();
+                                GetComponent<SpriteRenderer>().enabled = false;
+                                Destroy(l_Hit.collider.gameObject, 1f);
+                            }
+                        }
                     }
                 }
             }

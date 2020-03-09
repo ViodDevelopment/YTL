@@ -84,23 +84,7 @@ public class Gusano : MonoBehaviour
 
             m_TimePassed += Time.deltaTime;
 
-            if ((Input.touchCount > 0) && (Input.GetTouch(0).phase == TouchPhase.Began))
-            {
-                Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
-                if (l_Hit.collider != null)
-                {
-                    if (l_Hit.collider.tag == "Gusano")
-                    {
-                        Debug.Log("TAPPED");
-                        //mariposa
-                        Instantiate(m_Mariposa, l_Hit.collider.gameObject.transform.position, Quaternion.identity);
-                        Destroy(l_Hit.collider.gameObject);
-                    }
-                }
-            }
-
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && Input.touchCount == 0)
             {
                 Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
@@ -115,6 +99,30 @@ public class Gusano : MonoBehaviour
                     }
                 }
             }
+            else
+            {
+
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+
+                    if ((Input.GetTouch(i).phase == TouchPhase.Began))
+                    {
+                        Vector3 l_Ray = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
+                        RaycastHit2D l_Hit = Physics2D.Raycast(l_Ray, Vector2.zero);
+                        if (l_Hit.collider != null)
+                        {
+                            if (l_Hit.collider.tag == "Gusano")
+                            {
+                                Debug.Log("TAPPED");
+                                //mariposa
+                                Instantiate(m_Mariposa, l_Hit.collider.gameObject.transform.position, Quaternion.identity);
+                                Destroy(l_Hit.collider.gameObject);
+                            }
+                        }
+                    }
+                }
+            }
+           
         }
     }
 }

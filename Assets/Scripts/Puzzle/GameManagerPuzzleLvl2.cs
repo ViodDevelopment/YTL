@@ -193,7 +193,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     public void PuzzleComplete()
     {
 
-        if (m_Puntuacion >= m_NumPieces && m_Puntuacion <= m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count - 1))
+        if (m_Puntuacion >= m_NumPieces && m_Puntuacion <= m_NumPieces + (palabraActual.silabasActuales.Count - 1))
         {
             if (currentSilaba < m_Words.Count)
                 m_Words[currentSilaba].GetComponent<MoveTouchLvl2>().canMove = true;
@@ -206,7 +206,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             }
         }
-        else if (m_Puntuacion == m_NumPieces + (palabrasDisponibles[numRandom].silabasActuales.Count) && !m_Completed)
+        else if (m_Puntuacion == m_NumPieces + (palabraActual.silabasActuales.Count) && !m_Completed)
         {
             m_Completed = true;
 
@@ -220,7 +220,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         AudioSource l_AS = GetComponent<AudioSource>();
-        l_AS.clip = palabrasDisponibles[numRandom].GetAudioClip(palabrasDisponibles[numRandom].audio);
+        l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
         l_AS.Play();
 
         currentSilaba = 0;
@@ -547,11 +547,11 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             GameObject l_Word = Instantiate(silabaPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = palabraActual.silabasActuales[i];
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
-            l_Word.name = palabraActual.silabasActuales[i];
+            l_Word.name = palabraActual.silabasActuales[i] + i;
             l_Word.GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl2>().canMove = false;
             Color color = new Color();
-            ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
+            ColorUtility.TryParseHtmlString(palabraActual.color, out color);
             l_Word.GetComponent<MoveTouchLvl2>().mainImage.color = color;
             ConvertMarco(l_Word.GetComponent<MoveTouchLvl2>().mainImage, l_Word.transform.GetChild(0).GetComponent<Image>(), palabraActual.silabasActuales[i]);
             if (i == 0 && palabraActual.silabasActuales.Count > 1)
@@ -575,14 +575,14 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             Vector3 position = SearchPosition(m_UnseenWordTransform, i);
             GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
-            ColorUtility.TryParseHtmlString(palabrasDisponibles[numRandom].color, out color);
+            ColorUtility.TryParseHtmlString(palabraActual.color, out color);
             l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().imagen.color = color;
             l_UnseenWord.transform.position += position;
            
-            l_UnseenWord.GetComponentInChildren<Text>().text = palabrasDisponibles[numRandom].silabasActuales[i];
-            if (i == 0 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+            l_UnseenWord.GetComponentInChildren<Text>().text = palabraActual.silabasActuales[i];
+            if (i == 0 && palabraActual.silabasActuales.Count > 1)
                 l_UnseenWord.GetComponentInChildren<Text>().transform.position += new Vector3(0.17f, 0, 0);
-            else if (i == palabrasDisponibles[numRandom].silabasActuales.Count - 1 && palabrasDisponibles[numRandom].silabasActuales.Count > 1)
+            else if (i == palabraActual.silabasActuales.Count - 1 && palabraActual.silabasActuales.Count > 1)
                 l_UnseenWord.GetComponentInChildren<Text>().transform.position -= new Vector3(0.17f, 0, 0);
             ConvertMarco(l_UnseenWord.GetComponent<SilabaUnseedColocarMarco>().imagen, l_UnseenWord.transform.GetChild(0).GetComponent<Image>(), palabraActual.silabasActuales[i]);
 
@@ -600,10 +600,10 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 l_Word.GetComponent<MoveTouchLvl2>().silaba = 0;*/
 
             l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
-            l_UnseenWord.name = palabrasDisponibles[numRandom].silabasActuales[i];
+            l_UnseenWord.name = palabraActual.silabasActuales[i] + i;
             if(i != palabraActual.silabasActuales.Count - 1 )
             l_UnseenWord.transform.position += new Vector3(-0.04f, 0);
-            if (palabrasDisponibles[numRandom].silabasActuales[i].Length > 3)
+            if (palabraActual.silabasActuales[i].Length > 3)
             {
                 l_UnseenWord.transform.position += new Vector3(-0.25f, 0);
                
@@ -655,6 +655,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     InitBaseOfDates();
                 }
             }
+            print(PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count + " " + PaquetePuzzle.GetInstance(lvl).dificultad + " " + PaquetePuzzle.GetInstance(lvl).fase);
         }
         acabado = true;
     }
@@ -663,7 +664,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         Vector3 pos = Vector3.zero;
         float distancePerSilaba = 1.75f;
-        float distanceMax = (palabrasDisponibles[numRandom].silabasActuales.Count - 1) * distancePerSilaba;
+        float distanceMax = (palabraActual.silabasActuales.Count - 1) * distancePerSilaba;
         if (palabraActual.silabasActuales.Count > 1)
         {
             float distanceInit = -distanceMax / 2;

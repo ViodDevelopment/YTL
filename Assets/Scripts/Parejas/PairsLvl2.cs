@@ -134,8 +134,10 @@ public class PairsLvl2 : MonoBehaviour
                         }
                     }
 
+
                 }
-                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null && !m_GameManagerParejas.m_Animation.isPlaying && Input.touchCount == 0)
+
+                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null && !m_GameManagerParejas.m_Animation.isPlaying)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
@@ -167,8 +169,8 @@ public class PairsLvl2 : MonoBehaviour
                     touchPosition.z = 0f;
                     this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
                 }
-
-                else {
+                else
+                {
                     if (Input.touchCount > 0)
                     {
                         int position = 0;
@@ -257,16 +259,14 @@ public class PairsLvl2 : MonoBehaviour
                     this.transform.position = colision.gameObject.transform.position;
                     m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
                     m_GameManagerParejas.m_TextZoomed.text = nombre;
-                    if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
-
 
                     foreach (Image i in m_GameManagerParejas.marcos)
                     {
                         m_GameManagerParejas.PonerColorMarco(color, i);
                     }
 
-                    m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                    if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                        m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f; m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
                     if (!audioSource.isPlaying)
                     {
                         audioSource.clip = audioClip;
@@ -279,8 +279,6 @@ public class PairsLvl2 : MonoBehaviour
                     else
                         m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
 
-                    if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                        colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.3f;
 
                     colision.gameObject.SetActive(false);
                     gameObject.SetActive(false);
@@ -297,90 +295,87 @@ public class PairsLvl2 : MonoBehaviour
                     timer = 0;
                 }
 
-                else if (Input.touchCount > 0 && timer == 0 && m_PieceClicked)
+            }
+            else if (Input.touchCount > 0 && timer == 0 && m_PieceClicked)
+            {
+                float min = 999;
+                int position = 0;
+                bool tocando = false;
+                for (int i = 0; i < Input.touchCount; i++)
                 {
-                    float min = 999;
-                    int position = 0;
-                    bool tocando = false;
-                    for (int i = 0; i < Input.touchCount; i++)
-                    {
-                        Touch touch = Input.GetTouch(i);
-                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                        touchPosition.z = 0f;
+                    Touch touch = Input.GetTouch(i);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
 
-                        if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                    if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                    {
+                        if (touch.phase != TouchPhase.Ended)
                         {
-                            if (touch.phase != TouchPhase.Ended)
-                            {
-                                min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
-                                position = i;
-                            }
+                            min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                            position = i;
                         }
                     }
+                }
+                if (min <= 3f)
+                {
+                    tocando = true;
+                    Touch touch = Input.GetTouch(position);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
 
-                    if (min <= 3f)
+                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
+
+                }
+
+                if (!tocando)
+                {
+                    timer = 0.02f;
+                    lastFallos = GameManager.fallosParejas;
+                    if (dentro)
                     {
-                        tocando = true;
-                        Touch touch = Input.GetTouch(position);
-                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                        touchPosition.z = 0f;
+                        this.transform.position = colision.gameObject.transform.position;
+                        m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
+                        m_GameManagerParejas.m_TextZoomed.text = nombre;
 
-                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 200, myImage.rectTransform.rect.height / 200);
-
-                    }
-                    if (!tocando)
-                    {
-                        timer = 0.02f;
-                        lastFallos = GameManager.fallosParejas;
-                        if (dentro)
+                        foreach (Image i in m_GameManagerParejas.marcos)
                         {
-                            this.transform.position = colision.gameObject.transform.position;
-                            m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
-                            m_GameManagerParejas.m_TextZoomed.text = nombre;
-                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                                m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
-
-
-                            foreach (Image i in m_GameManagerParejas.marcos)
-                            {
-                                m_GameManagerParejas.PonerColorMarco(color, i);
-                            }
-
-                            m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
-                            if (!audioSource.isPlaying)
-                            {
-                                audioSource.clip = audioClip;
-                                audioSource.Play();
-                            }
-                            m_GameManagerParejas.PairDone();
-
-                            if (lastPair)
-                                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(true);
-                            else
-                                m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
-
-                            if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                                colision.gameObject.GetComponentInChildren<Text>().gameObject.transform.localScale /= 1.3f;
-
-                            colision.gameObject.SetActive(false);
-                            gameObject.SetActive(false);
-                            gameObject.transform.position = lastPosition;
-                            rectTransform.localScale = lastSize;
-                            currentTimerAnim = 0;
-                            firstTime = true;
-                            animIsplaying = false;
-                            m_PieceClicked = false;
-                            managerOnlyOne.Catch(false, null);
-                            colision = null;
-                            otherObject = null;
-                            dentro = false;
-                            timer = 0;
+                            m_GameManagerParejas.PonerColorMarco(color, i);
                         }
+
+                        if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                            m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.4f; m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
+                        if (!audioSource.isPlaying)
+                        {
+                            audioSource.clip = audioClip;
+                            audioSource.Play();
+                        }
+                        m_GameManagerParejas.PairDone();
+
+                        if (lastPair)
+                            m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(true);
+                        else
+                            m_GameManagerParejas.planeImageWhenPair.gameObject.SetActive(false);
+
+
+                        colision.gameObject.SetActive(false);
+                        gameObject.SetActive(false);
+                        gameObject.transform.position = lastPosition;
+                        rectTransform.localScale = lastSize;
+                        currentTimerAnim = 0;
+                        firstTime = true;
+                        animIsplaying = false;
+                        m_PieceClicked = false;
+                        managerOnlyOne.Catch(false, null);
+                        colision = null;
+                        otherObject = null;
+                        dentro = false;
+                        timer = 0;
                     }
                 }
             }
         }
     }
+
 
 
 
