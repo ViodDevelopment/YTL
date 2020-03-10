@@ -192,6 +192,13 @@ public class ImageControl : MonoBehaviour
                 break;
         }
 
+        if(currentPalabra.user)
+        {
+            Rect newrect = new Rect(new Vector2(m_Image.sprite.texture.width / 2 - 920 / 2, m_Image.sprite.texture.height / 2 - 920 / 2), new Vector2(920, 920));
+            m_Image.sprite = Sprite.Create(m_Image.sprite.texture, newrect, Vector2.zero);
+            m_ImageBehind.sprite = Sprite.Create(m_ImageBehind.sprite.texture, newrect, Vector2.zero);
+        }
+
 
         m_Text.text = currentPalabra.palabraActual;
         SearchFont();

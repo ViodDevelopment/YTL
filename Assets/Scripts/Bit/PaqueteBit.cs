@@ -92,7 +92,7 @@ public class PaqueteBit
                 dificultad++;
                 fase = 1;
             }
-            else if (dificultad == 3)
+            else if (dificultad == 3 && fase >= 4)
             {
                 acabado = true;
             }
