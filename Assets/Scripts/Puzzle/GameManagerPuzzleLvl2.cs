@@ -143,7 +143,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 palabrasDisponibles.Add(p);
             }
         }
-        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        //ACTIVAR CUANDO LAS PIEZAS DEL PUZZLE VAYAN BIEN CON LAS IMAGENES
+        /*foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
@@ -155,7 +156,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 if (p.nameCatalan != "")
                     palabrasDisponibles.Add(p);
             }
-        }
+        }*/
     }
 
     private void Update()

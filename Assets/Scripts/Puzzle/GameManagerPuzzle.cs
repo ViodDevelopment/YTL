@@ -145,8 +145,8 @@ public class GameManagerPuzzle : MonoBehaviour
 
             }
         }
-
-        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        //ACTIVAR CUANDO VAYAN LAS PIEZAS DEL PUZZLE CON LAS PALABRAS DEL USUARIO
+        /*foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
@@ -158,7 +158,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 if (p.nameCatalan != "")
                     palabrasDisponibles.Add(p);
             }
-        }
+        }*/
     }
 
     private void Update()
@@ -274,7 +274,14 @@ public class GameManagerPuzzle : MonoBehaviour
         }
 
 
-        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+        /*if (palabraActual.user)
+        {
+            Rect newrect = new Rect(new Vector2(palabraActual.GetTexture2D(palabraActual.image1).width / 2 - Screen.height / 2, palabraActual.GetTexture2D(palabraActual.image1).height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+            m_ImagePuzzle = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero).texture;
+        }
+        else*/
+            m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
@@ -282,8 +289,16 @@ public class GameManagerPuzzle : MonoBehaviour
             m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
 
         Sprite l_SpriteImage;
-        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.sprite = palabraActual.GetSprite(palabraActual.image1);
+
+        if (palabraActual.user)
+        {
+            Rect newrect = new Rect(new Vector2(palabraActual.GetTexture2D(palabraActual.image1).width / 2 - Screen.height / 2, palabraActual.GetTexture2D(palabraActual.image1).height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+            l_SpriteImage = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero);
+        }
+        else
+            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+
+        m_ImageAnim.sprite = l_SpriteImage;
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -292,7 +307,14 @@ public class GameManagerPuzzle : MonoBehaviour
             for (int j = 0; j < m_NumPiecesX; j++)
             {
                 Sprite l_Sprite;
-                Rect rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+                Rect rect;
+                if (palabraActual.user)
+                {
+                    rect = new Rect(new Vector2(j * l_Width + (m_ImagePuzzle.width / 2 - Screen.height / 2), i * l_Height + (m_ImagePuzzle.height / 2 - Screen.height / 2)), new Vector2(l_Width, l_Height));
+                }
+                else
+                 rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+
                 l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
@@ -368,8 +390,15 @@ public class GameManagerPuzzle : MonoBehaviour
 
         Sprite l_SpriteImage;
         Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
+
+        if (palabraActual.user)
+        {
+            Rect newrect = new Rect(new Vector2(palabraActual.GetTexture2D(palabraActual.image1).width / 2 - Screen.height / 2, palabraActual.GetTexture2D(palabraActual.image1).height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+            l_SpriteImage = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero);
+        }
+        else
+            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1); m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
+
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
@@ -378,7 +407,13 @@ public class GameManagerPuzzle : MonoBehaviour
             for (int j = 0; j < m_NumPiecesX; j++)
             {
                 Sprite l_Sprite;
-                Rect rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+                Rect rect;
+                if (palabraActual.user)
+                {
+                    rect = new Rect(new Vector2(j * l_Width + (m_ImagePuzzle.width / 2 - Screen.height / 2), i * l_Height + (m_ImagePuzzle.height / 2 - Screen.height / 2)), new Vector2(l_Width, l_Height));
+                }
+                else
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
                 l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
@@ -534,8 +569,8 @@ public class GameManagerPuzzle : MonoBehaviour
         if (palabraActual.palabraActual.Length > 5)
             l_Word.GetComponentInChildren<Text>().transform.localScale -= l_Word.GetComponentInChildren<Text>().transform.localScale * 0.2f;
 
-            // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
-            l_Word.name = "Word";
+        // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
+        l_Word.name = "Word";
         l_UnseenWord.GetComponentInChildren<Text>().text = palabraActual.palabraActual;
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
 
