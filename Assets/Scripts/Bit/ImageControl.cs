@@ -91,6 +91,7 @@ public class ImageControl : MonoBehaviour
 
     void Start()
     {
+        Random.InitState(Random.seed + 1);
 
         if (m_GMBit.repetir)
         {
@@ -102,7 +103,7 @@ public class ImageControl : MonoBehaviour
         else if (PaqueteBit.GetInstance().acabado)
         {
             bool same = true;
-            while (same)
+            while (same && m_Length > 1)
             {
                 int random = Random.Range(0, m_Length);
 
@@ -123,7 +124,7 @@ public class ImageControl : MonoBehaviour
             m_GMBit.numLastImage = l_Number;
 
         }
-        currentPalabra = palabrasDisponibles[palabrasDisponibles.Count - 1];
+        currentPalabra = palabrasDisponibles[l_Number];
         if (lastPalabra != null)
             currentPalabra = lastPalabra;
         m_GMBit.lastPalabra = currentPalabra;

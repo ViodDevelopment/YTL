@@ -1002,7 +1002,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 case 2:
                     if (_firstTime)
                     {
-                        horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         horizontal2Arriba[_currentPair].name = numJ.ToString();
 
@@ -1027,7 +1034,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
                     else
                     {
-                        horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         horizontal2Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1054,7 +1068,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 case 3:
                     if (_firstTime)
                     {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         horizontal3Arriba[_currentPair].name = numJ.ToString();
 
@@ -1079,7 +1100,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
                     else
                     {
-                        horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         horizontal3Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1107,7 +1135,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         horizontal4Arriba[_currentPair].name = numJ.ToString();
 
@@ -1131,7 +1166,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         horizontal4Arriba[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1164,7 +1206,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        vertical2Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         vertical2Left[_currentPair].name = numJ.ToString();
 
@@ -1188,7 +1237,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical2Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         vertical2Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1215,7 +1271,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         vertical3Left[_currentPair].name = numJ.ToString();
 
@@ -1239,7 +1302,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         vertical3Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1266,7 +1336,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     if (_firstTime)
                     {
 
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
 
                         vertical4Left[_currentPair].name = numJ.ToString();
 
@@ -1290,7 +1367,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
 
                         vertical4Left[_currentPair].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
 
@@ -1328,7 +1412,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 case 2:
                     if (_firstTime)
                     {
-                        horizontal2Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal2Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal2Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         horizontal2Abajo[numJ].name = numJ.ToString();
                         horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1341,7 +1434,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        horizontal2Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal2Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal2Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         horizontal2Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1356,7 +1457,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 case 3:
                     if (_firstTime)
                     {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         horizontal3Abajo[numJ].name = numJ.ToString();
                         horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1369,7 +1479,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal3Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         horizontal3Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1384,7 +1502,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 case 4:
                     if (_firstTime)
                     {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         horizontal4Abajo[numJ].name = numJ.ToString();
                         horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1397,7 +1524,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            horizontal4Abajo[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         horizontal4Abajo[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1420,7 +1555,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
                     if (_firstTime)
                     {
-                        vertical2Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical2Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical2Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         vertical2Right[numJ].name = numJ.ToString();
                         vertical2Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1433,7 +1577,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical2Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical2Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical2Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         vertical2Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical2Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1449,7 +1601,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
                     if (_firstTime)
                     {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical3Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical3Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         vertical3Right[numJ].name = numJ.ToString();
                         vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1462,7 +1623,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical3Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical3Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1478,7 +1647,16 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
                     if (_firstTime)
                     {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
+                        if (l_Pairs[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical4Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical4Right[numJ].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
+
                         vertical4Right[numJ].name = numJ.ToString();
                         vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -1491,7 +1669,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                     }
                     else
                     {
-                        vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                        if (l_SecondPair[l_RandomPair].user)
+                        {
+                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
+                            vertical4Right[numJ].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                        }
+                        else
+                            vertical4Right[numJ].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
+
                         vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
