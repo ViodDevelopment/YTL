@@ -123,7 +123,7 @@ public class ImageControl : MonoBehaviour
             m_GMBit.numLastImage = l_Number;
 
         }
-        currentPalabra = palabrasDisponibles[l_Number];
+        currentPalabra = palabrasDisponibles[palabrasDisponibles.Count - 1];
         if (lastPalabra != null)
             currentPalabra = lastPalabra;
         m_GMBit.lastPalabra = currentPalabra;
@@ -194,7 +194,7 @@ public class ImageControl : MonoBehaviour
 
         if(currentPalabra.user)
         {
-            Rect newrect = new Rect(new Vector2(m_Image.sprite.texture.width / 2 - 920 / 2, m_Image.sprite.texture.height / 2 - 920 / 2), new Vector2(920, 920));
+            Rect newrect = new Rect(new Vector2(m_Image.sprite.texture.width / 2 - Screen.height / 2, m_Image.sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
             m_Image.sprite = Sprite.Create(m_Image.sprite.texture, newrect, Vector2.zero);
             m_ImageBehind.sprite = Sprite.Create(m_ImageBehind.sprite.texture, newrect, Vector2.zero);
         }
