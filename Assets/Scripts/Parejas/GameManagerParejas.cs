@@ -202,12 +202,12 @@ public class GameManagerParejas : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
-                if (p.nameSpanish != "")
+                if (p.nameSpanish != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
                     listOfPalabras.Add(p);
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
-                if (p.nameCatalan != "")
+                if (p.nameCatalan != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
                     listOfPalabras.Add(p);
             }
         }
