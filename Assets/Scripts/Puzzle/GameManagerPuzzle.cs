@@ -141,8 +141,18 @@ public class GameManagerPuzzle : MonoBehaviour
         {
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
-                palabrasDisponibles.Add(p);
+                if (p.paquet == GameManager.configurartion.paquete)
+                {
 
+                    palabrasDisponibles.Add(p);
+
+                }
+                else if (GameManager.configurartion.paquete == -1)
+                {
+
+                    palabrasDisponibles.Add(p);
+
+                }
             }
         }
         //ACTIVAR CUANDO VAYAN LAS PIEZAS DEL PUZZLE CON LAS PALABRAS DEL USUARIO
@@ -280,7 +290,7 @@ public class GameManagerPuzzle : MonoBehaviour
             m_ImagePuzzle = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero).texture;
         }
         else*/
-            m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
 
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
@@ -313,7 +323,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     rect = new Rect(new Vector2(j * l_Width + (m_ImagePuzzle.width / 2 - Screen.height / 2), i * l_Height + (m_ImagePuzzle.height / 2 - Screen.height / 2)), new Vector2(l_Width, l_Height));
                 }
                 else
-                 rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
 
                 l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;

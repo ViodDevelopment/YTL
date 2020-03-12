@@ -241,12 +241,12 @@ public class PaqueteBit
             if (!acabado)
                 fase++;
 
-            if ((dificultad == 0) && dificultad < 3 && (fase == 1 || fase == 4))
+            if (dificultad < 3 && (fase == 1 || fase == 4))
             {
                 dificultad++;
                 fase = 1;
             }
-            else if (dificultad == 3)
+            else if (dificultad == 3 && fase >= 4)
             {
                 acabado = true;
             }
