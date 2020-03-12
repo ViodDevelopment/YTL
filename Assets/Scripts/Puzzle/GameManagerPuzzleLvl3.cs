@@ -101,15 +101,15 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     {
         foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-            if(f.paquet == GameManager.configurartion.paquete)
-            {
+           /* if(f.paquet == GameManager.configurartion.paquete)
+            {*/
                 if(f.image != "")
                     frasesDisponibles.Add(f);
-            }else if(GameManager.configurartion.paquete == -1)
+            /*}else if(GameManager.configurartion.paquete == -1)
             {
                 if (f.image != "")
                     frasesDisponibles.Add(f);
-            }
+            }*/
         }
     }
 
@@ -254,6 +254,11 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
 
+                if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl3>().thispiece = true;
+                }
+
                 while (l_Numbers.Contains(l_Number))
                 {
                     l_Number = Random.Range(0, m_NumPieces);
@@ -343,6 +348,11 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 m_Images.Add(local);
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
+
+                if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl3>().thispiece = true;
+                }
 
                 while (l_Numbers.Contains(l_Number))
                 {

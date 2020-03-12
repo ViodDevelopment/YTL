@@ -211,6 +211,7 @@ public class GameManagerParejas : MonoBehaviour
                     listOfPalabras.Add(p);
             }
         }
+
     }
 
 

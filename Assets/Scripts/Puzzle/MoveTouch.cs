@@ -23,6 +23,10 @@ public class MoveTouch : MonoBehaviour
     public Image fondoImage;
     public Text text;
 
+    private float currentTime = 0;
+    private float maxTime = 0;
+    public bool thispiece = false;
+    private Vector3 startPos = Vector3.zero;
 
     void Start()
     {
@@ -33,7 +37,12 @@ public class MoveTouch : MonoBehaviour
     {
         if (managerOnlyOne != null)
         {
-            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
+            if(startPos.x == 0 && startPos.y == 0)
+            {
+                startPos = gameObject.transform.position;
+                m_ClickedPiecePosition = startPos;
+            }
+            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)) && managerOnlyOne.go == null)
             {
 
                 if (Word)
@@ -41,6 +50,33 @@ public class MoveTouch : MonoBehaviour
                     marco.color = marco.color + new Color(0, 0, 0, 255);
                     fondoImage.color = fondoImage.color + new Color(0, 0, 0, 255);
                     text.color = text.color + new Color(0, 0, 0, 255);
+                }
+                else if(thispiece)
+                {
+                    if(GameManager.configurartion.ayudaVisual)
+                    {
+                        currentTime += Time.deltaTime;
+                        if (maxTime == 0)
+                        {
+                            if (currentTime < 0.7f && currentTime > 0.2f)
+                            {
+                                gameObject.transform.position += new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            }
+                            else if (currentTime < 1.2f && currentTime > 0.7f)
+                                gameObject.transform.position -= new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            else if (currentTime > 1.2f)
+                            {
+                                gameObject.transform.position = startPos;
+                                maxTime = Random.Range(1.5f, 3f);
+                                currentTime = 0;
+                            }
+                        }
+                        else if (currentTime >= maxTime)
+                        {
+                            maxTime = 0;
+                            currentTime = 0;
+                        }
+                    }
                 }
 
 
@@ -56,9 +92,10 @@ public class MoveTouch : MonoBehaviour
                         {
                             m_PieceClicked = true;
                             this.gameObject.transform.SetAsLastSibling();
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
                             managerOnlyOne.Catch(true, gameObject);
+                            currentTime = 0;
+                            maxTime = Random.Range(1.5f, 3f);
+
                         }
                     }
                 }
@@ -80,8 +117,9 @@ public class MoveTouch : MonoBehaviour
                                 {
                                     m_PieceClicked = true;
                                     this.gameObject.transform.SetAsLastSibling();
-                                    m_ClickedPiecePosition = this.gameObject.transform.position;
                                     managerOnlyOne.Catch(true, gameObject);
+                                    currentTime = 0;
+                                    maxTime = Random.Range(1.5f, 3f);
                                     break;
                                 }
                             }

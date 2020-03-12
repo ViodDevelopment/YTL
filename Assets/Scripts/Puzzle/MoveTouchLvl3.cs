@@ -26,6 +26,8 @@ public class MoveTouchLvl3 : MonoBehaviour
     private float currentTime = 0;
     private float maxTime = 0;
     private Vector3 startSize = Vector3.zero;
+    public bool thispiece = false;
+    private Vector3 startPos = Vector3.zero;
 
 
     void Start()
@@ -40,9 +42,16 @@ public class MoveTouchLvl3 : MonoBehaviour
         {
             startSize = gameObject.transform.localScale;
         }
+
+        if (startPos.x == 0 && startPos.y == 0)
+        {
+            startPos = gameObject.transform.position;
+            m_ClickedPiecePosition = startPos;
+        }
+
         if (managerOnlyOne != null)
         {
-            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
+            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)) && managerOnlyOne.go == null)
             {
                 if (Word)
                 {
@@ -72,6 +81,33 @@ public class MoveTouchLvl3 : MonoBehaviour
                         }
                     }
                 }
+                else if (thispiece)
+                {
+                    if (GameManager.configurartion.ayudaVisual)
+                    {
+                        currentTime += Time.deltaTime;
+                        if (maxTime == 0)
+                        {
+                            if (currentTime < 0.7f && currentTime > 0.2f)
+                            {
+                                gameObject.transform.position += new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            }
+                            else if (currentTime < 1.2f && currentTime > 0.7f)
+                                gameObject.transform.position -= new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            else if (currentTime > 1.2f)
+                            {
+                                gameObject.transform.position = startPos;
+                                maxTime = Random.Range(1.5f, 3f);
+                                currentTime = 0;
+                            }
+                        }
+                        else if (currentTime >= maxTime)
+                        {
+                            maxTime = 0;
+                            currentTime = 0;
+                        }
+                    }
+                }
 
 
                 if (Input.GetMouseButtonDown(0) && Input.touchCount == 0)
@@ -86,15 +122,14 @@ public class MoveTouchLvl3 : MonoBehaviour
                         {
                             m_PieceClicked = true;
                             this.gameObject.transform.SetAsLastSibling();
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
                             managerOnlyOne.Catch(true, gameObject);
+                            currentTime = 0;
+                            maxTime = Random.Range(1.5f, 3f);
                             if (Word)
                             {
-                                currentTime = 0;
-                                maxTime = Random.Range(1.5f, 3f);
                                 gameObject.transform.localScale = startSize;
                             }
+                            
                         }
                     }
                 }
@@ -114,12 +149,11 @@ public class MoveTouchLvl3 : MonoBehaviour
                             {
                                 m_PieceClicked = true;
                                 this.gameObject.transform.SetAsLastSibling();
-                                m_ClickedPiecePosition = this.gameObject.transform.position;
+                                currentTime = 0;
+                                maxTime = Random.Range(1.5f, 3f);
                                 managerOnlyOne.Catch(true, gameObject);
                                 if (Word)
                                 {
-                                    currentTime = 0;
-                                    maxTime = Random.Range(1.5f, 3f);
                                     gameObject.transform.localScale = startSize;
                                 }
                                 break;
