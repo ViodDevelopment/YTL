@@ -670,7 +670,15 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 if (numRandom < PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count)
                 {
                     PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Remove(palabrasDisponibles[numRandom]);
-                    if (PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count == 0)
+                    int num = 0;
+                    foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
+                    {
+                        if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                        {
+                            num++;
+                        }
+                    }
+                    if (num == 0)
                     {
                         PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
                     }

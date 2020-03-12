@@ -400,7 +400,7 @@ public class PaquetePalabrasParejas
                         List<PalabraBD> palabrasanimales = new List<PalabraBD>();
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
-                            if (GameManager.palabrasDisponibles[i].paquet == GameManager.configurartion.paquete)
+                            if (GameManager.palabrasDisponibles[i].paquet == 0)
                             {
                                 if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
                                     palabras.Add(GameManager.palabrasDisponibles[i]);
@@ -455,9 +455,9 @@ public class PaquetePalabrasParejas
                             List<PalabraBD> palabrasanimales = new List<PalabraBD>();
                             for (int i = 0; i < nextPalabrasPaquet.Count; i++)
                             {
-                                if (nextPalabrasPaquet[i].paquet == GameManager.configurartion.paquete)
+                                if (nextPalabrasPaquet[i].paquet == 0)
                                 {
-                                    if (nextPalabrasPaquet[i].dificultCatalan == dificultad && nextPalabrasPaquet[i].image1 != "")
+                                    if (nextPalabrasPaquet[i].image1 != "")
                                         palabras.Add(nextPalabrasPaquet[i]);
                                 }
                                 else
