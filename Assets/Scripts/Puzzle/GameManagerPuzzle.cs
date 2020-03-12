@@ -636,7 +636,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 {
                     PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Remove(palabrasDisponibles[numRandom]);
                     int num = 0;
-                    foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
+                    foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
                     {
                         if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
                         {
