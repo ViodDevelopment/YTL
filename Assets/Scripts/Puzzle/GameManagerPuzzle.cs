@@ -654,7 +654,7 @@ public class GameManagerPuzzle : MonoBehaviour
                             }
                         }
                     }
-                    print(num);
+
                     if (num == 0)
                     {
                         PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
