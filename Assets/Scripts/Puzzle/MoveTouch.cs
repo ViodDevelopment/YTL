@@ -23,6 +23,10 @@ public class MoveTouch : MonoBehaviour
     public Image fondoImage;
     public Text text;
 
+    private float currentTime = 0;
+    private float maxTime = 0;
+    public bool thispiece = false;
+    private Vector3 startPos = Vector3.zero;
 
     void Start()
     {
@@ -33,7 +37,12 @@ public class MoveTouch : MonoBehaviour
     {
         if (managerOnlyOne != null)
         {
-            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)))
+            if (startPos.x == 0 && startPos.y == 0)
+            {
+                startPos = gameObject.transform.position;
+                m_ClickedPiecePosition = startPos;
+            }
+            if (!m_PieceLocked && !m_PieceClicked && ((!Word) || (Word && canMove)) && managerOnlyOne.go == null)
             {
 
                 if (Word)
@@ -42,28 +51,36 @@ public class MoveTouch : MonoBehaviour
                     fondoImage.color = fondoImage.color + new Color(0, 0, 0, 255);
                     text.color = text.color + new Color(0, 0, 0, 255);
                 }
-
-                if (Input.touchCount > 0 && managerOnlyOne.go == null)
+                else if (thispiece)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-
-                    RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
-                    if (l_RaycastHit)
+                    if (GameManager.configurartion.ayudaVisual)
                     {
-                        if (l_RaycastHit.collider.gameObject == this.gameObject)
+                        currentTime += Time.deltaTime;
+                        if (maxTime == 0)
                         {
-                            m_PieceClicked = true;
-                            this.gameObject.transform.SetAsLastSibling();
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
-                            managerOnlyOne.Catch(true, gameObject);
+                            if (currentTime < 0.7f && currentTime > 0.2f)
+                            {
+                                gameObject.transform.position += new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            }
+                            else if (currentTime < 1.2f && currentTime > 0.7f)
+                                gameObject.transform.position -= new Vector3(Time.deltaTime * 1.5f, 0, 0);
+                            else if (currentTime > 1.2f)
+                            {
+                                gameObject.transform.position = startPos;
+                                maxTime = Random.Range(1.5f, 3f);
+                                currentTime = 0;
+                            }
+                        }
+                        else if (currentTime >= maxTime)
+                        {
+                            maxTime = 0;
+                            currentTime = 0;
                         }
                     }
-
                 }
 
-                if (Input.GetMouseButtonDown(0) && managerOnlyOne.go == null)
+
+                if (Input.GetMouseButtonDown(0) && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
@@ -75,32 +92,102 @@ public class MoveTouch : MonoBehaviour
                         {
                             m_PieceClicked = true;
                             this.gameObject.transform.SetAsLastSibling();
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
-                            m_ClickedPiecePosition = this.gameObject.transform.position;
                             managerOnlyOne.Catch(true, gameObject);
+                            currentTime = 0;
+                            maxTime = Random.Range(1.5f, 3f);
+
                         }
                     }
                 }
+                else
+                {
+
+                    if (Input.touchCount > 0)
+                    {
+                        for (int i = 0; i < Input.touchCount; i++)
+                        {
+                            Touch touch = Input.GetTouch(i);
+                            Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                            touchPosition.z = 0f;
+
+                            RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                            if (l_RaycastHit)
+                            {
+                                if (l_RaycastHit.collider.gameObject == this.gameObject)
+                                {
+                                    m_PieceClicked = true;
+                                    this.gameObject.transform.SetAsLastSibling();
+                                    managerOnlyOne.Catch(true, gameObject);
+                                    currentTime = 0;
+                                    maxTime = Random.Range(1.5f, 3f);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+
             }
 
-            if (m_PieceClicked && timer == 0)
+            if (m_PieceClicked)
             {
-                if (Input.GetMouseButton(0))
+                if (Input.GetMouseButton(0) && Input.touchCount == 0)
                 {
                     Vector3 touchPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     touchPosition.z = 0f;
+
                     if (!Word)
                         this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
                     else
                         this.transform.position = touchPosition;
                 }
 
-                else if ((Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved))
+                else if (Input.touchCount > 0)
                 {
-                    Touch touch = Input.GetTouch(0);
-                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
-                    touchPosition.z = 0f;
-                    this.transform.position = touchPosition;
+                    int position = 0;
+                    float min = 999;
+                    bool tiene = false;
+
+                    for (int i = 0; i < Input.touchCount; i++)
+                    {
+                        Touch touch = Input.GetTouch(i);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        RaycastHit2D l_RaycastHit = Physics2D.Raycast(touchPosition, Camera.main.transform.forward);
+                        if (l_RaycastHit)
+                        {
+                            if (l_RaycastHit.collider.gameObject == this.gameObject)
+                            {
+                                tiene = true;
+
+                                if (!Word)
+                                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                else
+                                    this.transform.position = touchPosition;
+                                break;
+                            }
+                        }
+                        else
+                        {
+                            if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                            {
+                                min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                                position = i;
+                            }
+                        }
+                    }
+                    if (min <= 3f && !tiene)
+                    {
+                        Touch touch = Input.GetTouch(position);
+                        Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                        touchPosition.z = 0f;
+
+                        if (!Word)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition;
+                    }
                 }
             }
 
@@ -134,7 +221,7 @@ public class MoveTouch : MonoBehaviour
 
             }
 
-            if (m_PieceClicked && (Input.GetMouseButtonUp(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Ended)) && timer == 0)
+            if (m_PieceClicked && Input.GetMouseButtonUp(0) && timer == 0 && Input.touchCount == 0)
             {
                 timer = 0.01f;
 
@@ -151,9 +238,58 @@ public class MoveTouch : MonoBehaviour
                 }
 
             }
+            else if (Input.touchCount > 0 && timer == 0 && m_PieceClicked)
+            {
+                float min = 999;
+                int position = 0;
+                bool tocando = false;
+                for (int i = 0; i < Input.touchCount; i++)
+                {
+                    Touch touch = Input.GetTouch(i);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
 
+                    if ((new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude < min)
+                    {
+                        if (touch.phase != TouchPhase.Ended)
+                        {
+                            min = (new Vector2(touchPosition.x, touchPosition.y) - new Vector2(gameObject.transform.position.x, gameObject.transform.position.y)).magnitude;
+                            position = i;
+                        }
+                    }
+                }
+                if (min <= 3f)
+                {
+                    tocando = true;
+                    Touch touch = Input.GetTouch(position);
+                    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+                    touchPosition.z = 0f;
+
+                    if (!Word)
+                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    else
+                        this.transform.position = touchPosition;
+                }
+
+                if (!tocando)
+                {
+                    timer = 0.01f;
+
+                    if (dentro)
+                    {
+                        this.transform.position = colision.gameObject.transform.position;
+                        m_PieceLocked = true;
+                        this.transform.SetParent(GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Saver.transform);
+                        if (SceneManager.GetActiveScene().name == "Puzzle")
+                            GameObject.FindGameObjectWithTag("GameManagerPuzzle").GetComponent<GameManagerPuzzle>().m_Puntuacion++;
+                        dentro = false;
+                        colision = null;
+                        otherObject = null;
+                    }
+                }
+
+            }
         }
-
     }
 
     IEnumerator WaitToFrame()

@@ -218,7 +218,7 @@ public class GameManagerPuzzle : MonoBehaviour
         CopyWords(palabrasDisponibles[numRandom], ref palabraActual);
 
         Random.InitState(Random.seed + Random.Range(-5, 5));
-        m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
+        m_NumPieces = 4;
         HowManyPieces(m_NumPieces);
         RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
         RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
@@ -285,6 +285,11 @@ public class GameManagerPuzzle : MonoBehaviour
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 Random.InitState(Random.seed + Random.Range(-5, 5));
                 l_Number = Random.Range(0, m_NumPieces);
+
+                if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().thispiece = true;
+                }
 
                 while (l_Numbers.Contains(l_Number))
                 {
@@ -371,6 +376,12 @@ public class GameManagerPuzzle : MonoBehaviour
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
 
+                if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().thispiece = true;
+                }
+
+
                 while (l_Numbers.Contains(l_Number))
                 {
                     l_Number = Random.Range(0, m_NumPieces);
@@ -449,7 +460,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
 
-            HowManyPieces(PuzzlePiecesPossibilities[Random.Range(0, 2)]);
+            HowManyPieces(4);
             ImagesCollsInstantiation();
 
         }

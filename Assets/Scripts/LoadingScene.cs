@@ -8,17 +8,24 @@ public class LoadingScene : MonoBehaviour
 {
     private bool started = false;
     public bool doing = false;
+    public GirarImagenEternamente myimage;
     private int numScene = 0;
     private void Update()
     {
-        if(started)
-            StartCoroutine(LoadNewScene());
+        if (myimage != null)
+        {
+            if (started)
+                StartCoroutine(LoadNewScene());
+        }
     }
 
     IEnumerator LoadNewScene()
     {
         started = false;
         yield return new WaitForSeconds(0.75f);
+        myimage.parar = true;
+        float l_time = 360 / myimage.speed;
+        yield return new WaitForSeconds(l_time);
         AsyncOperation async = SceneManager.LoadSceneAsync(numScene);
 
         while (!async.isDone)
