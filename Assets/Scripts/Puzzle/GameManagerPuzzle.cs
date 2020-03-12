@@ -235,7 +235,7 @@ public class GameManagerPuzzle : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
-        if (m_ImagePuzzle == null)
+        if (m_ImagePuzzle == null || !PaquetePuzzle.GetInstance(lvl).acabado)
         {
             Random.InitState(Random.seed + Random.Range(-5, 5));
             numRandom = Random.Range(0, palabrasDisponibles.Count);
@@ -350,7 +350,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 Random.InitState(Random.seed + Random.Range(-5, 5));
                 l_Number = Random.Range(0, m_NumPieces);
 
-                if(i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
+                if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
                 {
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().thispiece = true;
                 }
@@ -640,9 +640,21 @@ public class GameManagerPuzzle : MonoBehaviour
                     {
                         if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
                         {
-                            num++;
+                            if (p.imagePuzzle != 0)
+                            {
+
+                                for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                                {
+                                    if (p.piecesPuzzle[i] >= 4)
+                                    {
+                                        num++;
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     }
+                    print(num);
                     if (num == 0)
                     {
                         PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();

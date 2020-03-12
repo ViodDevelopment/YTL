@@ -261,7 +261,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
-        if (m_ImagePuzzle == null)
+        if (m_ImagePuzzle == null || !PaquetePuzzle.GetInstance(lvl).acabado)
         {
             numRandom = Random.Range(0, palabrasDisponibles.Count);
 
@@ -681,13 +681,26 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 {
                     PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Remove(palabrasDisponibles[numRandom]);
                     int num = 0;
+
                     foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
                     {
                         if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
                         {
-                            num++;
+                            if (p.imagePuzzle != 0)
+                            {
+
+                                for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                                {
+                                    if (p.piecesPuzzle[i] >= 4)
+                                    {
+                                        num++;
+                                        break;
+                                    }
+                                }
+                            }
                         }
                     }
+
                     if (num == 0)
                     {
                         PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
