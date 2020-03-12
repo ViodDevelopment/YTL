@@ -70,7 +70,20 @@ public class ImageControl : MonoBehaviour
         {
             foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
             {
-                palabrasDisponibles.Add(p);
+                if (p.paquet == GameManager.configurartion.paquete)
+                {
+                    if (p.image1 != "")
+                    {
+                        palabrasDisponibles.Add(p);
+                    }
+                }
+                else if (GameManager.configurartion.paquete == -1)
+                {
+                    if (p.image1 != "")
+                    {
+                        palabrasDisponibles.Add(p);
+                    }
+                }
             }
         }
 
@@ -78,12 +91,12 @@ public class ImageControl : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
-                if (p.nameSpanish != "")
+                if (p.nameSpanish != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
                     palabrasDisponibles.Add(p);
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
-                if (p.nameCatalan != "")
+                if (p.nameCatalan != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
                     palabrasDisponibles.Add(p);
             }
         }
