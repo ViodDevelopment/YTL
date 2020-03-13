@@ -156,11 +156,11 @@ RectTransform:
   m_Father: {fileID: 457152838}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 418}
-  m_SizeDelta: {x: 1920, y: 15}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -114.5}
+  m_SizeDelta: {x: 1920, y: 1080}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &44538885
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -243,6 +243,25 @@ MonoBehaviour:
   m_Repetir: {fileID: 1839976529}
   m_ActivitiesButton: {fileID: 1521314293}
   repetir: 0
+  lastPalabra:
+    id: 0
+    color: 
+    image1: 
+    image2: 
+    image3: 
+    audio: 
+    piecesPuzzle: 
+    imagePuzzle: 0
+    dificultSpanish: 0
+    nameSpanish: 
+    silabasSpanish: 
+    dificultCatalan: 0
+    nameCatalan: 
+    silabasCatalan: 
+    paquet: 0
+    silabasActuales: []
+    palabraActual: 
+    user: 0
   numLastImage: 0
   repeating: 0
 --- !u!4 &74808667
@@ -307,6 +326,8 @@ MonoBehaviour:
   "A\xF1adirPalabraCanvas": {fileID: 0}
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
+  BCKGMenu: {fileID: 0}
+  buttonConf: {fileID: 0}
   AccesToConf: {fileID: 0}
   CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
@@ -344,11 +365,11 @@ RectTransform:
   m_Father: {fileID: 44538884}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 540, y: -540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 540, y: 114.5}
   m_SizeDelta: {x: 98, y: 98}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167701510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1093,11 +1114,11 @@ RectTransform:
   m_Father: {fileID: 44538884}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -540, y: -540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -540, y: 114.5}
   m_SizeDelta: {x: 98, y: 98}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839976531
 MonoBehaviour:
   m_ObjectHideFlags: 0
