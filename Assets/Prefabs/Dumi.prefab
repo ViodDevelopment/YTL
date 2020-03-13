@@ -210,7 +210,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiosPositivosEsp:
-  - {fileID: 8300000, guid: 925c516a705f85b459fd1c52b59c1378, type: 3}
   - {fileID: 8300000, guid: 094db808787af5048b90d7960fb37c9f, type: 3}
   - {fileID: 8300000, guid: aa6baad5995429f46a95eebb75841a3f, type: 3}
   - {fileID: 8300000, guid: 1d42dc5b54c2bff49821c8a1782a9854, type: 3}
@@ -220,7 +219,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: a59054e19e3b1514b911c0eb3a28f9ca, type: 3}
   - {fileID: 8300000, guid: 818b44f3caace5445a934288d26efa26, type: 3}
   audiosPositivosCat:
-  - {fileID: 8300000, guid: 477be00845ecbbf4a990fde45d670f57, type: 3}
   - {fileID: 8300000, guid: 39846271cd34f484ba2a3c0f38e089fa, type: 3}
   - {fileID: 8300000, guid: efa2d6c0df8b6b140a0bcfb0462ffa1c, type: 3}
   - {fileID: 8300000, guid: ccf4a37e9ceb31049a613cc8aa3bd79f, type: 3}

@@ -114,7 +114,6 @@ public class ImageControl : MonoBehaviour
                 break;
         }
 
-        print(palabrasDisponibles[l_Number].paquet + "   GM " + GameManager.configurartion.paquete);
 
         Random.InitState(Random.seed + Random.Range(-5, 5));
         int otherImage = Random.Range(0, 3);
