@@ -59,7 +59,7 @@ public class Burbuja : MonoBehaviour
                     }
                 }
             }
-            else
+            else if(Input.touchCount > 0)
             {
                 for (int i = 0; i < Input.touchCount; i++)
                 {
@@ -72,13 +72,16 @@ public class Burbuja : MonoBehaviour
                         {
                             if (l_Hit.collider.tag == "Burbuja")
                             {
-                                Debug.Log("TAPPED");
-                                //Vector3 actualPos = gameObject.transform.position;
                                 GameObject l_Ball = Instantiate(m_BubblePS, l_Hit.collider.transform.position, m_BubblePS.transform.rotation);
+                                l_Ball.transform.localScale = l_Hit.collider.gameObject.transform.localScale;
                                 //l_Ball.transform.position = actualPos;
                                 m_AS.Play();
-                                GetComponent<SpriteRenderer>().enabled = false;
+                                l_Hit.collider.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                                l_Hit.collider.gameObject.GetComponent<Burbuja>().explotada = true;
+                                l_Hit.collider.tag = "Untagged";
+                                l_Hit.collider.gameObject.GetComponent<CircleCollider2D>().enabled = false;
                                 Destroy(l_Hit.collider.gameObject, 1f);
+                                break;
                             }
                         }
                     }
