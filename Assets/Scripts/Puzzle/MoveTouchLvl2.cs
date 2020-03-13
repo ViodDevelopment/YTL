@@ -99,7 +99,7 @@ public class MoveTouchLvl2 : MonoBehaviour
             }
             else if (thispiece)
             {
-                if (GameManager.configurartion.ayudaVisual)
+                if (GameManager.configurartion.ayudaVisual && !m_PieceLocked && !m_PieceClicked)
                 {
                     currentTime += Time.deltaTime;
                     if (maxTime == 0)
