@@ -1196,6 +1196,7 @@ MonoBehaviour:
   Word: 
   m_NeededToMinigame: 5
   m_BitLevel: 1
+  PhotoFromCam: {fileID: 0}
 --- !u!114 &1618241205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1213,6 +1214,7 @@ MonoBehaviour:
   EditarCanvas: {fileID: 0}
   MainMenuCanvas: {fileID: 0}
   AccesToConf: {fileID: 0}
+  CameraCanvas: {fileID: 0}
   "ConfiguracionPesta\xF1a": {fileID: 0}
   AllCanvas: []
 --- !u!114 &1618241206
@@ -1819,11 +1821,11 @@ RectTransform:
   m_Father: {fileID: 7617506765788963380}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -540, y: -540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -540, y: 163.5}
   m_SizeDelta: {x: 98, y: 98}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7617506765502951011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1989,7 +1991,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -114.5}
-  m_SizeDelta: {x: 1920, y: 15}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &7617506765788963381
 MonoBehaviour:
@@ -2061,11 +2063,11 @@ RectTransform:
   m_Father: {fileID: 7617506765788963380}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 540, y: -540}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 540, y: 163.5}
   m_SizeDelta: {x: 98, y: 98}
-  m_Pivot: {x: 0.5, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7617506765967790646
 MonoBehaviour:
   m_ObjectHideFlags: 0
