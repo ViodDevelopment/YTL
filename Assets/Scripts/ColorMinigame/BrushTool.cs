@@ -72,7 +72,7 @@ public class BrushTool : MonoBehaviour
                         }
                     }
                 }
-                if (hit.collider.gameObject == gameObject && Vector2.Distance(hit.point, cubes[0].transform.position)<distance &&((cubes.Count>54 && hit.point.x<cubes[0].transform.position.x)||(cubes.Count > 45 && hit.point.y > cubes[0].transform.position.y)||(cubes.Count > 23 && hit.point.x > cubes[0].transform.position.x)||(cubes.Count >= 17 && hit.point.y > cubes[0].transform.position.y)||((cubes.Count <16 && hit.point.x < cubes[0].transform.position.x))))
+                if (hit.collider.gameObject == gameObject && Vector2.Distance(hit.point, cubes[0].transform.position)<distance &&((cubes.Count>52 && hit.point.x<cubes[0].transform.position.x)||(cubes.Count > 45 && hit.point.y > cubes[0].transform.position.y)||(cubes.Count > 23 && hit.point.x > cubes[0].transform.position.x)||(cubes.Count >= 17 && hit.point.y > cubes[0].transform.position.y)||((cubes.Count <16 && hit.point.x < cubes[0].transform.position.x))))
                 {
                     for (int i = -brushLeft; i < brushRight; i++)
                         for (int j = -brushDown; j < brushUp; j++)
