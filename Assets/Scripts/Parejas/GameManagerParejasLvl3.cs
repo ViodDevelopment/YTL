@@ -999,9 +999,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1026,9 +1024,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             horizontal2Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
@@ -1054,9 +1050,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1081,9 +1075,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             horizontal3Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
@@ -1111,9 +1103,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1137,9 +1127,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             horizontal4Arriba[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
@@ -1172,9 +1160,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical2Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             vertical2Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1198,9 +1184,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical2Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical2Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             vertical2Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
@@ -1227,9 +1211,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical3Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             vertical3Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1253,9 +1235,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical3Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical3Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             vertical3Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
@@ -1282,9 +1262,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
 
                         if (l_Pairs[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical4Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1));
                         }
                         else
                             vertical4Left[_currentPair].GetComponent<Image>().sprite = l_Pairs[l_RandomPair].GetSprite(l_Pairs[l_RandomPair].image1);
@@ -1308,9 +1286,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                     {
                         if (l_SecondPair[l_RandomPair].user)
                         {
-                            Sprite l_sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
-                            Rect newrect = new Rect(new Vector2(l_sprite.texture.width / 2 - Screen.height / 2, l_sprite.texture.height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-                            vertical4Left[_currentPair].GetComponent<Image>().sprite = Sprite.Create(l_sprite.texture, newrect, Vector2.zero);
+                            vertical4Left[_currentPair].GetComponent<Image>().sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1));
                         }
                         else
                             vertical4Left[_currentPair].GetComponent<Image>().sprite = l_SecondPair[l_RandomPair].GetSprite(l_SecondPair[l_RandomPair].image1);
