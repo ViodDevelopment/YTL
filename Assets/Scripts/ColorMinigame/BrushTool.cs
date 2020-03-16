@@ -13,9 +13,13 @@ public class BrushTool : MonoBehaviour
     public Sprite endSprite;
     public float countdown;
     public SceneManagement mScener;
+    public float maxCD;
+    float currentCD;
+    bool collidingGood=false;
     // Start is called before the first frame update
     void Start()
     {
+        currentCD = maxCD;
 
         tex = gameObject.GetComponent<Renderer>().material.mainTexture as Texture2D;
         RaycastHit hit;
@@ -41,6 +45,7 @@ public class BrushTool : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        currentCD += Time.deltaTime;
         countdown -= Time.deltaTime;
         if (countdown <= 0) EndGame();
         if(Input.GetMouseButton(0))
@@ -49,18 +54,23 @@ public class BrushTool : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if(Physics.Raycast(ray, out hit))
             {
+
                 for (int k = 0; k < cubes.Count; k++)
                 {
-                    if (k == 0 && hit.collider.gameObject == cubes[k])
+                    collidingGood = false;
+                    if (k == 0 && hit.collider.gameObject == cubes[k]  && currentCD>=maxCD)
                     {
-                        hit.collider.gameObject.SetActive(false);
+                        collidingGood = true;
+                        currentCD = 0;
+                        
                         cubes.RemoveAt(0);
-                        if(cubes.Count == 0)
+                        hit.collider.gameObject.SetActive(false);
+                        if (cubes.Count == 0)
                         {
                             EndGame();
+                       
                         }
                     }
-                      
                 }
                 if (hit.collider.gameObject == gameObject)
                 {
