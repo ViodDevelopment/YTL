@@ -632,7 +632,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         Vector3 position = m_UnseenWordTransform.position;
         float anchototal = 0;
         float scale = 0;
-        float distance = 5.7f;
+        float distance = 5.2f;
         int count = 0;
 
         foreach (PalabraBD p in fraseActual.palabras)
@@ -640,7 +640,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
                 scale = p.palabraActual.Length * 0.095f;
-                anchototal += scale * distance + 1.25f;
+                anchototal += scale * distance + 1.22f;
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.095f * distance / 2;
@@ -649,7 +649,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 scale = p.palabraActual.Length * 0.08f;
-                anchototal += scale * distance + 1.25f;
+                anchototal += scale * distance + 1.23f;
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.08f * distance / 2;
@@ -658,7 +658,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             else
             {
                 scale = p.palabraActual.Length * 0.075f;
-                anchototal += scale * distance + 1f;
+                anchototal += scale * distance + 1.27f;
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.075f * distance / 2;
