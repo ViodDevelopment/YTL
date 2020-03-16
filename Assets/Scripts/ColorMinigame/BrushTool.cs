@@ -15,7 +15,7 @@ public class BrushTool : MonoBehaviour
     public SceneManagement mScener;
     public float maxCD;
     float currentCD;
-    bool collidingGood=false;
+    public float distance;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +47,7 @@ public class BrushTool : MonoBehaviour
     {
         currentCD += Time.deltaTime;
         countdown -= Time.deltaTime;
-        if (countdown <= 0) EndGame();
+        if (countdown <= 0) changeScene();
         if(Input.GetMouseButton(0))
         {
             RaycastHit hit;
@@ -57,10 +57,10 @@ public class BrushTool : MonoBehaviour
 
                 for (int k = 0; k < cubes.Count; k++)
                 {
-                    collidingGood = false;
+                    
                     if (k == 0 && hit.collider.gameObject == cubes[k]  && currentCD>=maxCD)
                     {
-                        collidingGood = true;
+                       
                         currentCD = 0;
                         
                         cubes.RemoveAt(0);
@@ -72,7 +72,7 @@ public class BrushTool : MonoBehaviour
                         }
                     }
                 }
-                if (hit.collider.gameObject == gameObject)
+                if (hit.collider.gameObject == gameObject && Vector2.Distance(hit.point, cubes[0].transform.position)<distance &&((cubes.Count>50 && hit.point.x<cubes[0].transform.position.x)||(cubes.Count > 41 && hit.point.y > cubes[0].transform.position.y)||(cubes.Count > 22 && hit.point.x > cubes[0].transform.position.x)||(cubes.Count >= 17 && hit.point.y > cubes[0].transform.position.y)||((cubes.Count <17 && hit.point.x < cubes[0].transform.position.x))))
                 {
                     for (int i = -brushLeft; i < brushRight; i++)
                         for (int j = -brushDown; j < brushUp; j++)
