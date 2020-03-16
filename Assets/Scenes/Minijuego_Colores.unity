@@ -3074,8 +3074,8 @@ MonoBehaviour:
   endSprite: {fileID: 21300000, guid: a6da33f257a1d494a91a850054683815, type: 3}
   countdown: 30
   mScener: {fileID: 778248685}
-  maxCD: 0.25
-  distance: 0.45
+  maxCD: 0.05
+  distance: 1.75
 --- !u!64 &778248681
 MeshCollider:
   m_ObjectHideFlags: 0
