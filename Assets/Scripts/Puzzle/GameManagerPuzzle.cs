@@ -60,11 +60,11 @@ public class GameManagerPuzzle : MonoBehaviour
     private bool acabado = false;
     private Vector3 startSizeText;
     public GameObject m_Saver;
-    private int lvl;
+    private string lvl = "1";
 
     private void Start()
     {
-        lvl = 1;
+        lvl = "1";
         InitBaseOfDates();
         startSizeText = m_TextAnim.transform.localScale;
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
@@ -93,7 +93,6 @@ public class GameManagerPuzzle : MonoBehaviour
         repeating = false;
         m_Completed = false;
         InicioPuzzle();
-
     }
 
     private void InitBaseOfDates()

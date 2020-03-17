@@ -58,12 +58,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private bool acabado = false;
     public GameObject m_Saver;
-    private int lvl = 2;
+    private string lvl = "2";
 
     private void Start()
     {
-        lvl = 2;
+        lvl = "2";
         InitBaseOfDates();
+
 
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
@@ -93,6 +94,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         m_Completed = false;
         currentSilaba = 0;
         InicioPuzzle();
+
     }
 
     private void InitBaseOfDates()

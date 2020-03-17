@@ -50,7 +50,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PuzzleLvl3.unity
     guid: 7791dc7f8142f0a4f96223fe83913f14
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Minijuego_Colores.unity
     guid: 9e10136e44d156e468e54c9b175a8359
+  - enabled: 1
+    path: Assets/Scenes/Minijuego_ColoresPruebas.unity
+    guid: e51ae105f64acbb448192d60e4111689
   m_configObjects: {}

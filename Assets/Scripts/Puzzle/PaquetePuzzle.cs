@@ -14,14 +14,14 @@ public class PaquetePuzzle
 
     public int dificultad = 0;
     public int fase = 0;
-    private int lastLvl = 0;
+    private string lastLvl = "0";
     public bool acabado = false;
     private string nameRute = "";
     private string ruteOriginal = "PaquetePuzzle.dat";
     private SingletonLenguage.Lenguage lastLenguaje = SingletonLenguage.Lenguage.INGLES;
 
 
-    public static PaquetePuzzle GetInstance(int _lvl)
+    public static PaquetePuzzle GetInstance(string _lvl)
     {
         if (instance == null)
         {
@@ -42,11 +42,13 @@ public class PaquetePuzzle
     private void Reset()
     {
         instance.dificultad = 0;
+        instance.fase = 0;
         instance.acabado = false;
-        currentPuzzlePaquet.Clear();
+        instance.currentPuzzlePaquet.Clear();
+        instance.nextPuzzlePaquets.Clear();
     }
 
-    public void InitPaquet(int _lvl)
+    public void InitPaquet(string _lvl)
     {
         instance.nameRute = "/" + SingletonLenguage.GetInstance().GetLenguage().ToString() + _lvl + instance.ruteOriginal;
         if (File.Exists(Application.persistentDataPath + instance.nameRute))
