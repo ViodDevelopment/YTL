@@ -284,13 +284,12 @@ public class GameManagerPuzzle : MonoBehaviour
         }
 
 
-        /*if (palabraActual.user)
+        if (palabraActual.user)
         {
-            Rect newrect = new Rect(new Vector2(palabraActual.GetTexture2D(palabraActual.image1).width / 2 - Screen.height / 2, palabraActual.GetTexture2D(palabraActual.image1).height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-            m_ImagePuzzle = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1)).texture;
         }
-        else*/
-        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+        else
+            m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
 
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
@@ -302,8 +301,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            Rect newrect = new Rect(new Vector2(palabraActual.GetTexture2D(palabraActual.image1).width / 2 - Screen.height / 2, palabraActual.GetTexture2D(palabraActual.image1).height / 2 - Screen.height / 2), new Vector2(Screen.height, Screen.height));
-            l_SpriteImage = Sprite.Create(palabraActual.GetTexture2D(palabraActual.image1), newrect, Vector2.zero);
+            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
         }
         else
             l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
@@ -320,7 +318,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 Rect rect;
                 if (palabraActual.user)
                 {
-                    rect = new Rect(new Vector2(j * l_Width + (m_ImagePuzzle.width / 2 - Screen.height / 2), i * l_Height + (m_ImagePuzzle.height / 2 - Screen.height / 2)), new Vector2(l_Width, l_Height));
+                    rect = new Rect(new Vector2(j * l_Width + (m_ImagePuzzle.width / 2 - m_ImagePuzzle.width / 4), i * l_Height), new Vector2(l_Width, l_Height));
                 }
                 else
                     rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
