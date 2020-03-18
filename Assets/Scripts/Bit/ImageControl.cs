@@ -134,6 +134,21 @@ public class ImageControl : MonoBehaviour
         {
             int random = Random.Range(0, m_Length);
             l_Number = random;
+            if(l_Number >= PaqueteBit.GetInstance().currentBitPaquet.Count)
+            {
+                if(m_GMBit.user)
+                {
+                    l_Number = Random.Range(0, PaqueteBit.GetInstance().currentBitPaquet.Count);
+                    m_GMBit.user = false;
+                }
+                {
+                    m_GMBit.user = true;
+                }
+            }
+            else
+            {
+                m_GMBit.user = false;
+            }
             m_GMBit.numLastImage = l_Number;
 
         }

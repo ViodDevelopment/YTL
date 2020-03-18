@@ -41,6 +41,7 @@ public class PaqueteBit
     private void Reset()
     {
         instance.dificultad = 0;
+        instance.fase = 0;
         instance.acabado = false;
         currentBitPaquet.Clear();
         nextBitPaquet.Clear();
