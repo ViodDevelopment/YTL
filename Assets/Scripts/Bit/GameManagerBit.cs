@@ -28,7 +28,7 @@ public class GameManagerBit : MonoBehaviour
     public PalabraBD lastPalabra;
     public int numLastImage = 0;
     public bool repeating;
-    public bool user = false;
+    public static bool user = false;
 
     private void Start()
     {

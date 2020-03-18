@@ -101,10 +101,10 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     {
         foreach (FraseBD f in GameManager.frasesDisponibles)
         {
-           /* if(f.paquet == GameManager.configurartion.paquete)
-            {*/
-                if(f.image != "")
-                    frasesDisponibles.Add(f);
+            /* if(f.paquet == GameManager.configurartion.paquete)
+             {*/
+            if (f.image != "")
+                frasesDisponibles.Add(f);
             /*}else if(GameManager.configurartion.paquete == -1)
             {
                 if (f.image != "")
@@ -168,9 +168,9 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             m_ImagesSpawn.SetActive(false);
             m_CollidersSpawns.SetActive(false);
 
-            for(int i = 0; i < m_NumPieces; i++)
+            for (int i = 0; i < m_NumPieces; i++)
             {
-               DestroyImmediate(m_Saver.transform.GetChild(0).gameObject);
+                DestroyImmediate(m_Saver.transform.GetChild(0).gameObject);
             }
 
             StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length * 0.5f));
@@ -406,7 +406,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Destroy(item);
         }
 
-        foreach(GameObject item in rectanglesInScene)
+        foreach (GameObject item in rectanglesInScene)
         {
             Destroy(item);
         }
@@ -464,7 +464,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             Destroy(item);
         }
 
-        foreach(GameObject item in rectanglesInScene)
+        foreach (GameObject item in rectanglesInScene)
         {
             Destroy(item);
         }
@@ -503,7 +503,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             GameObject l_Word = Instantiate(palabraPrefab, m_WordTransform[randomNumToPos]);
             l_Word.GetComponentInChildren<Text>().text = frasesDisponibles[numRandom].palabras[i].palabraActual;
             l_Word.GetComponentInChildren<ConvertFont>().Convert();
-            if(i == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
+            if (i == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = frasesDisponibles[numRandom].palabras[i].palabraActual.ToUpper();
                 string tex = "";
@@ -517,20 +517,20 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
                 }
                 l_Word.GetComponentInChildren<Text>().text = tex;
             }
-            
+
             l_Word.name = fraseActual.palabras[i].palabraActual + i;
             l_Word.GetComponent<MoveTouchLvl3>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
             l_Word.GetComponent<MoveTouchLvl3>().canMove = false;
             l_Word.SetActive(false);
-            
-            foreach(GameObject go in rectanglesInScene)
+
+            foreach (GameObject go in rectanglesInScene)
             {
-                if(go.name == l_Word.name)
+                if (go.name == l_Word.name)
                 {
                     l_Word.gameObject.transform.localScale = go.transform.localScale;
-                    l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale - new Vector3(0.02f,0,0);
+                    l_Word.gameObject.transform.GetChild(0).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale - new Vector3(0.02f, 0, 0);
                     l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().gameObject.transform.localScale = go.GetComponentInChildren<Image>().gameObject.transform.localScale;
-                    if(l_Word.name.Length - 1 >= 5)
+                    if (l_Word.name.Length - 1 >= 5)
                         l_Word.gameObject.transform.GetChild(1).GetComponent<Image>().sprite = marcoMasDe5;
                     CambiarRecuadroDependiendoDePalabra(l_Word.gameObject.transform.GetChild(1).GetComponent<Image>(), fraseActual.palabras[i].color);
                 }
@@ -634,22 +634,35 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         float scale = 0;
         float distance = 5.2f;
         int count = 0;
-
+        bool escalamenor = false;
+        float Height = Camera.main.scaledPixelHeight;
+        float Width = Camera.main.pixelWidth;
+        if (Mathf.Round(Width / Height * 100) < Mathf.Round(1.5f * 100))
+        {
+            escalamenor = true;
+            distance = 4;
+        }
         foreach (PalabraBD p in fraseActual.palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
                 scale = p.palabraActual.Length * 0.095f;
-                anchototal += scale * distance + 1.22f;
+
+                if (!escalamenor)
+                    anchototal += scale * distance + 1.17f;
+                else
+                    anchototal += scale * distance + 0.7f;
+
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.095f * distance / 2;
+
                 }
             }
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 scale = p.palabraActual.Length * 0.08f;
-                anchototal += scale * distance + 1.23f;
+                anchototal += scale * distance + 1.22f;
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.08f * distance / 2;
@@ -658,7 +671,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             else
             {
                 scale = p.palabraActual.Length * 0.075f;
-                anchototal += scale * distance + 1.27f;
+                anchototal += scale * distance + 1.22f;
                 if (fraseActual.palabras[0] != p)
                 {
                     anchototal += fraseActual.palabras[count - 1].palabraActual.Length * 0.075f * distance / 2;
@@ -707,14 +720,14 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             rectanglesInScene.Add(Instantiate(m_UnseenWord, position, m_UnseenWord.transform.rotation));
 
             rectanglesInScene[rectanglesInScene.Count - 1].transform.parent = m_UnseenWordTransform.transform;
-            rectanglesInScene[rectanglesInScene.Count - 1].transform.localScale = new Vector3(0.5f,0.5f,0.5f);
+            rectanglesInScene[rectanglesInScene.Count - 1].transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
             rectanglesInScene[rectanglesInScene.Count - 1].name = fraseActual.palabras[i].palabraActual + i;
             texto = rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<Text>();
             imagen = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(1).GetComponent<Image>();
             Image fondo = rectanglesInScene[rectanglesInScene.Count - 1].transform.GetChild(0).GetComponent<Image>();
             texto.text = fraseActual.palabras[i].palabraActual;
             rectanglesInScene[rectanglesInScene.Count - 1].GetComponentInChildren<ConvertFont>().Convert();
-            if(coun == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
+            if (coun == 0 && SingletonLenguage.GetInstance().GetFont() != SingletonLenguage.OurFont.MAYUSCULA)
             {
                 string mayus = fraseActual.palabras[i].palabraActual.ToUpper();
                 string tex = "";
@@ -763,9 +776,9 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
     private void CambiarRecuadroDependiendoDePalabra(Image _imagen, string _color)
     {
-            Color color = new Color();
-            ColorUtility.TryParseHtmlString(_color, out color);
-            _imagen.color = color;
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(_color, out color);
+        _imagen.color = color;
     }
 
     private void CopyFrase(FraseBD _toCopy, FraseBD _frase)
