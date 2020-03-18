@@ -21,6 +21,8 @@ public class LineRendererMov : MonoBehaviour
     float currentCD;
     public float distance;
     public Transform positionIni;
+    public GameObject activatePFinal;
+    public GameObject activatePStart;
 
     void Start()
     {
@@ -63,9 +65,14 @@ public class LineRendererMov : MonoBehaviour
 
                         currentCD = 0;
                         lineRenderer.positionCount += 1;
-                        //Vector3 position = Camera.main.ViewportToWorldPoint(Input.mousePosition);
-                        //position.z = 0;
-                        lineRenderer.SetPosition(lineRenderer.positionCount - 1, hit.collider.transform.position);
+                        Vector3 position = hit.collider.transform.position;
+                        position.z = 0;
+                       
+                        lineRenderer.SetPosition(lineRenderer.positionCount - 1,position);
+                        if(cubes.Count>1)
+                        activatePStart.transform.position = cubes[1].transform.position;
+                        else
+                            activatePStart.transform.position = cubes[0].transform.position;
                         cubes.RemoveAt(0);
                         hit.collider.gameObject.SetActive(false);
                         if (cubes.Count == 0)
@@ -88,7 +95,8 @@ public class LineRendererMov : MonoBehaviour
 
         void EndGame()
         {
-            background.sprite = endSprite;
+            activatePFinal.SetActive(true);
+            activatePStart.SetActive(false);
             StartCoroutine(changeScene());
         }
 
