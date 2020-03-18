@@ -26,6 +26,7 @@ public class ImageControl : MonoBehaviour
     private List<AudioClip> m_AudioPoolCatalan = new List<AudioClip>();
 
     public static int m_Length;
+    private int lenghtPaquet = 0;
     public Image m_Image;
     public Image m_ImageBehind;
     public Text m_Text;
@@ -87,6 +88,8 @@ public class ImageControl : MonoBehaviour
             }
         }
 
+        lenghtPaquet = palabrasDisponibles.Count;
+
         foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
@@ -134,20 +137,20 @@ public class ImageControl : MonoBehaviour
         {
             int random = Random.Range(0, m_Length);
             l_Number = random;
-            if(l_Number >= PaqueteBit.GetInstance().currentBitPaquet.Count)
+            if(l_Number >= lenghtPaquet)
             {
-                if(m_GMBit.user)
+                if(GameManagerBit.user)
                 {
-                    l_Number = Random.Range(0, PaqueteBit.GetInstance().currentBitPaquet.Count);
-                    m_GMBit.user = false;
-                }
+                    l_Number = Random.Range(0, lenghtPaquet);
+                    GameManagerBit.user = false;
+                }else
                 {
-                    m_GMBit.user = true;
+                    GameManagerBit.user = true;
                 }
             }
             else
             {
-                m_GMBit.user = false;
+                GameManagerBit.user = false;
             }
             m_GMBit.numLastImage = l_Number;
 
