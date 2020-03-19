@@ -13,11 +13,9 @@ public class ConvertFont : MonoBehaviour
         switch (SingletonLenguage.GetInstance().GetFont())
         {
             case SingletonLenguage.OurFont.IMPRENTA:
-                myText.text = myText.text.ToLower();
                 myText.font =  ourFonts[0];
                 break;
             case SingletonLenguage.OurFont.MANUSCRITA:
-                myText.text = myText.text.ToLower();
                 myText.font = ourFonts[1];
                 break;
             case SingletonLenguage.OurFont.MAYUSCULA:

@@ -426,11 +426,9 @@ public class ImageControl : MonoBehaviour
         switch (SingletonLenguage.GetInstance().GetFont())
         {
             case SingletonLenguage.OurFont.IMPRENTA:
-                m_Text.text = m_Text.text.ToLower();
                 m_Text.font = ourFonts[0];
                 break;
             case SingletonLenguage.OurFont.MANUSCRITA:
-                m_Text.text = m_Text.text.ToLower();
                 m_Text.font = ourFonts[1];
                 break;
             case SingletonLenguage.OurFont.MAYUSCULA:
@@ -438,7 +436,6 @@ public class ImageControl : MonoBehaviour
                 m_Text.font = ourFonts[2];
                 break;
             default:
-                m_Text.text = m_Text.text.ToLower();
                 m_Text.font = ourFonts[0];
                 break;
         }
