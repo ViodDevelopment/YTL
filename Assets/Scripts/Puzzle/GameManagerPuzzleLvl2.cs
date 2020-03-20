@@ -159,7 +159,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             }
         }
         //ACTIVAR CUANDO LAS PIEZAS DEL PUZZLE VAYAN BIEN CON LAS IMAGENES
-        /*foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
@@ -171,7 +171,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 if (p.nameCatalan != "")
                     palabrasDisponibles.Add(p);
             }
-        }*/
+        }
     }
 
     private void Update()
@@ -297,7 +297,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
 
 
-        m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+        if (palabraActual.user)
+        {
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1)).texture;
+        }
+        else
+            m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+
         WordInstantiation();
         Color color = new Color();
         ColorUtility.TryParseHtmlString(palabraActual.color, out color);
@@ -306,19 +312,37 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.sprite = palabraActual.GetSprite(palabraActual.image1);
+
+        if (palabraActual.user)
+        {
+            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
+        }
+        else
+            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+
+        m_ImageAnim.sprite = l_SpriteImage;
         m_ImageAnim.transform.GetChild(0).GetComponent<Image>().color = color;
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
+        bool ancho;
+        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
         for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
             {
                 Sprite l_Sprite;
-                Rect rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
-                l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
+                Rect rect;
+
+                if (palabraActual.user)
+                {
+                    if (ancho)
+                        rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    else
+                        rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                }
+                else
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height)); l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
             }
@@ -342,6 +366,18 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
 
+                float multiplier = 1;
+                if (palabraActual.user)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().user = true;
+                    if (ancho)
+                        multiplier = l_tamanoPiezas / l_Width;
+                    else
+                        multiplier = l_tamanoPiezas / l_Height;
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().multiplier = multiplier;
+
+                }
+
                 if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
                 {
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().thispiece = true;
@@ -361,6 +397,14 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 local.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX + 10 * j, sizeY + 10 * i);
                 local.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local.GetComponent<BoxCollider2D>().size = new Vector2(l_Width, l_Height);
+
+                if (palabraActual.user)
+                {
+                    local.transform.localScale /= multiplier;
+                    local.GetComponent<BoxCollider2D>().size *= multiplier;
+                    local.GetComponent<BoxCollider2D>().offset *= multiplier;
+
+                }
                 #endregion
 
                 #region ColliderInstantiation
@@ -372,6 +416,14 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 local2.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX, sizeY);
                 local2.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local2.GetComponent<BoxCollider2D>().size = new Vector2(l_Width / 8, l_Height / 8);
+
+                if (palabraActual.user)
+                {
+                    local2.transform.localScale /= multiplier;
+                    local2.GetComponent<BoxCollider2D>().size *= multiplier;
+                    local2.GetComponent<BoxCollider2D>().offset *= multiplier;
+
+                }
                 #endregion
 
                 l_CurrentPiece++;
@@ -394,22 +446,52 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
+        if (palabraActual.user)
+        {
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1)).texture;
+        }
+        else
+            m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
+
         WordInstantiation();
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString(palabraActual.color, out color);
+        m_TextAnim.transform.parent.GetChild(1).GetComponent<Image>().color = color;
+        m_TextAnim.text = palabraActual.palabraActual;
+        m_TextAnim.GetComponent<ConvertFont>().Convert();
 
         Sprite l_SpriteImage;
-        Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
-        l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
-        m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
+
+        if (palabraActual.user)
+        {
+            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
+        }
+        else
+            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+
+        m_ImageAnim.sprite = l_SpriteImage;
+        m_ImageAnim.transform.GetChild(0).GetComponent<Image>().color = color;
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
+        bool ancho;
+        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
         for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
             {
                 Sprite l_Sprite;
-                Rect rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
-                l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
+                Rect rect;
+
+                if (palabraActual.user)
+                {
+                    if (ancho)
+                        rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    else
+                        rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                }
+                else
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height)); l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
             }
@@ -433,6 +515,18 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
                 l_Number = Random.Range(0, m_NumPieces);
 
+                float multiplier = 1;
+                if (palabraActual.user)
+                {
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().user = true;
+                    if (ancho)
+                        multiplier = l_tamanoPiezas / l_Width;
+                    else
+                        multiplier = l_tamanoPiezas / l_Height;
+                    m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().multiplier = multiplier;
+
+                }
+
                 if (i == m_NumPiecesY - 1 && j == m_NumPiecesX - 1)
                 {
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouchLvl2>().thispiece = true;
@@ -452,16 +546,33 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                 local.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX + 10 * j, sizeY + 10 * i);
                 local.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local.GetComponent<BoxCollider2D>().size = new Vector2(l_Width, l_Height);
+
+                if (palabraActual.user)
+                {
+                    local.transform.localScale /= multiplier;
+                    local.GetComponent<BoxCollider2D>().size *= multiplier;
+                    local.GetComponent<BoxCollider2D>().offset *= multiplier;
+
+                }
                 #endregion
 
                 #region ColliderInstantiation
                 GameObject local2 = Instantiate(m_ColliderTemplate, m_CollidersSpawns.transform);
                 m_Colliders.Add(local2);
                 local2.name = l_CurrentPiece.ToString();
+                local2.transform.parent.GetChild(0).GetComponent<Image>().color = color;
                 local2.GetComponent<RectTransform>().sizeDelta = new Vector2(l_Colliders.sizeDelta.x / m_NumPiecesX, l_Colliders.sizeDelta.y / m_NumPiecesY);
                 local2.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX, sizeY);
                 local2.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local2.GetComponent<BoxCollider2D>().size = new Vector2(l_Width / 8, l_Height / 8);
+
+                if (palabraActual.user)
+                {
+                    local2.transform.localScale /= multiplier;
+                    local2.GetComponent<BoxCollider2D>().size *= multiplier;
+                    local2.GetComponent<BoxCollider2D>().offset *= multiplier;
+
+                }
                 #endregion
 
                 l_CurrentPiece++;

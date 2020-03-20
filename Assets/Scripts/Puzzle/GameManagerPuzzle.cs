@@ -211,7 +211,7 @@ public class GameManagerPuzzle : MonoBehaviour
         else if (m_Puntuacion == m_NumPieces + 1 && !m_Completed)
         {
             AudioSource l_AS = GetComponent<AudioSource>();
-            l_AS.clip = palabrasDisponibles[numRandom].GetAudioClip(palabrasDisponibles[numRandom].audio);
+            l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
             l_AS.Play();
 
             m_Completed = true;
@@ -441,23 +441,27 @@ public class GameManagerPuzzle : MonoBehaviour
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
 
         WordInstantiation();
+        m_TextAnim.text = palabraActual.palabraActual;
+        m_TextAnim.GetComponent<ConvertFont>().Convert();
+        if (m_TextAnim.text.Length > 5)
+            m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
 
         Sprite l_SpriteImage;
-        Rect rectImage = new Rect(new Vector2(0, 0), l_Colliders.sizeDelta);
 
         if (palabraActual.user)
         {
             l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
         }
         else
-            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1); m_ImageAnim.GetComponent<Image>().sprite = palabraActual.GetSprite(palabraActual.image1);
+            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
 
+        m_ImageAnim.sprite = l_SpriteImage;
         m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
         bool ancho;
         float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
-        for (int i = m_NumPiecesY - 1; i <= 0; i++)
+        for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
             {
@@ -472,6 +476,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 }
                 else
                     rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+
                 l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
@@ -494,17 +499,17 @@ public class GameManagerPuzzle : MonoBehaviour
                 GameObject local = Instantiate(m_ImageTemplate, m_ImagesSpawn.transform);
                 m_Images.Add(local);
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
+                Random.InitState(Random.seed + Random.Range(-5, 5));
                 l_Number = Random.Range(0, m_NumPieces);
 
                 float multiplier = 1;
                 if (palabraActual.user)
                 {
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().user = true;
-                    if(ancho)
+                    if (ancho)
                         multiplier = l_tamanoPiezas / l_Width;
                     else
                         multiplier = l_tamanoPiezas / l_Height;
-
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().multiplier = multiplier;
 
                 }
@@ -528,7 +533,6 @@ public class GameManagerPuzzle : MonoBehaviour
                 local.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX + 10 * j, sizeY + 10 * i);
                 local.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local.GetComponent<BoxCollider2D>().size = new Vector2(l_Width, l_Height);
-
                 if (palabraActual.user)
                 {
                     local.transform.localScale /= multiplier;
@@ -542,11 +546,12 @@ public class GameManagerPuzzle : MonoBehaviour
                 GameObject local2 = Instantiate(m_ColliderTemplate, m_CollidersSpawns.transform);
                 m_Colliders.Add(local2);
                 local2.name = l_CurrentPiece.ToString();
+
+
                 local2.GetComponent<RectTransform>().sizeDelta = new Vector2(l_Colliders.sizeDelta.x / m_NumPiecesX, l_Colliders.sizeDelta.y / m_NumPiecesY);
                 local2.GetComponent<RectTransform>().anchoredPosition = new Vector2(sizeX, sizeY);
                 local2.GetComponent<BoxCollider2D>().offset = new Vector2(l_Width / 2, -l_Height / 2);
                 local2.GetComponent<BoxCollider2D>().size = new Vector2(l_Width / 8, l_Height / 8);
-
                 if (palabraActual.user)
                 {
                     local2.transform.localScale /= multiplier;

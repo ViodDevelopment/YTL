@@ -32,7 +32,8 @@ public class MoveTouchLvl2 : MonoBehaviour
     private float maxTime = 0;
     public bool thispiece = false;
     private Vector3 startPos = Vector3.zero;
-
+    public float multiplier = 1;
+    public bool user = false;
 
     void Start()
     {
@@ -183,7 +184,12 @@ public class MoveTouchLvl2 : MonoBehaviour
                     touchPosition.z = 0f;
 
                     if (!Word)
-                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    {
+                        if (!user)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+                    }
                     else
                         this.transform.position = touchPosition;
                 }
@@ -208,7 +214,12 @@ public class MoveTouchLvl2 : MonoBehaviour
                                 tiene = true;
 
                                 if (!Word)
-                                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                {
+                                    if (!user)
+                                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                    else
+                                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+                                }
                                 else
                                     this.transform.position = touchPosition;
                                 break;
@@ -230,7 +241,12 @@ public class MoveTouchLvl2 : MonoBehaviour
                         touchPosition.z = 0f;
 
                         if (!Word)
-                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        {
+                            if (!user)
+                                this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                            else
+                                this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+                        }
                         else
                             this.transform.position = touchPosition;
                     }
@@ -316,7 +332,12 @@ public class MoveTouchLvl2 : MonoBehaviour
                     touchPosition.z = 0f;
 
                     if (!Word)
-                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    {
+                        if (!user)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+                    }
                     else
                         this.transform.position = touchPosition;
                 }
