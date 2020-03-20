@@ -14,6 +14,8 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     void Start()
     {
+        int minFreq;
+        int maxFreq;
         Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
         m_AudioSource = GetComponent<AudioSource>();
     }

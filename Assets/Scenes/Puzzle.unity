@@ -1800,6 +1800,7 @@ GameObject:
   - component: {fileID: 7617506765502951012}
   - component: {fileID: 7617506765502951011}
   - component: {fileID: 7617506765502951013}
+  - component: {fileID: 7617506765502951014}
   m_Layer: 5
   m_Name: Repetir
   m_TagString: Untagged
@@ -1952,6 +1953,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7617506765502951014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617506765502951009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7d056c8aa519d4490a058e00e52547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7617506765788963379
 GameObject:
   m_ObjectHideFlags: 0
@@ -2042,6 +2055,7 @@ GameObject:
   - component: {fileID: 7617506765967790647}
   - component: {fileID: 7617506765967790646}
   - component: {fileID: 7617506765967790648}
+  - component: {fileID: 7617506765967790649}
   m_Layer: 5
   m_Name: Siguiente
   m_TagString: Untagged
@@ -2194,6 +2208,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &7617506765967790649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7617506765967790644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb7d056c8aa519d4490a058e00e52547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7617506766286380492
 GameObject:
   m_ObjectHideFlags: 0
