@@ -27,7 +27,8 @@ public class MoveTouch : MonoBehaviour
     private float maxTime = 0;
     public bool thispiece = false;
     private Vector3 startPos = Vector3.zero;
-
+    public bool user = false;
+    public float multiplier = 1;
     void Start()
     {
         myImage = gameObject.GetComponent<Image>();
@@ -37,7 +38,7 @@ public class MoveTouch : MonoBehaviour
     {
         if (managerOnlyOne != null)
         {
-            if(startPos.x == 0 && startPos.y == 0)
+            if (startPos.x == 0 && startPos.y == 0)
             {
                 startPos = gameObject.transform.position;
                 m_ClickedPiecePosition = startPos;
@@ -51,9 +52,9 @@ public class MoveTouch : MonoBehaviour
                     fondoImage.color = fondoImage.color + new Color(0, 0, 0, 255);
                     text.color = text.color + new Color(0, 0, 0, 255);
                 }
-                else if(thispiece)
+                else if (thispiece)
                 {
-                    if(GameManager.configurartion.ayudaVisual)
+                    if (GameManager.configurartion.ayudaVisual)
                     {
                         currentTime += Time.deltaTime;
                         if (maxTime == 0)
@@ -137,7 +138,13 @@ public class MoveTouch : MonoBehaviour
                     touchPosition.z = 0f;
 
                     if (!Word)
-                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    {
+                        if (!user)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+
+                    }
                     else
                         this.transform.position = touchPosition;
                 }
@@ -162,7 +169,13 @@ public class MoveTouch : MonoBehaviour
                                 tiene = true;
 
                                 if (!Word)
-                                    this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                {
+                                    if (!user)
+                                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                                    else
+                                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+
+                                }
                                 else
                                     this.transform.position = touchPosition;
                                 break;
@@ -184,7 +197,13 @@ public class MoveTouch : MonoBehaviour
                         touchPosition.z = 0f;
 
                         if (!Word)
-                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        {
+                            if (!user)
+                                this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                            else
+                                this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+
+                        }
                         else
                             this.transform.position = touchPosition;
                     }
@@ -266,7 +285,13 @@ public class MoveTouch : MonoBehaviour
                     touchPosition.z = 0f;
 
                     if (!Word)
-                        this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                    {
+                        if (!user)
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256, -myImage.rectTransform.rect.height / 256);
+                        else
+                            this.transform.position = touchPosition - new Vector3(myImage.rectTransform.rect.width / 256 / multiplier, -myImage.rectTransform.rect.height / 256 / multiplier);
+
+                    }
                     else
                         this.transform.position = touchPosition;
                 }
