@@ -69,10 +69,10 @@ public class LineRendererMov : MonoBehaviour
                         position.z = 0;
                        
                         lineRenderer.SetPosition(lineRenderer.positionCount - 1,position);
-                        if(cubes.Count>1)
+                       /* if(cubes.Count>1)
                         activatePStart.transform.position = cubes[1].transform.position;
                         else
-                            activatePStart.transform.position = cubes[0].transform.position;
+                            activatePStart.transform.position = cubes[0].transform.position;*/
                         cubes.RemoveAt(0);
                         hit.collider.gameObject.SetActive(false);
                         if (cubes.Count == 0)
