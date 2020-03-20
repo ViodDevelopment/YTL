@@ -3220,7 +3220,7 @@ MonoBehaviour:
   cubes: []
   background: {fileID: 771775266}
   endSprite: {fileID: 21300000, guid: a6da33f257a1d494a91a850054683815, type: 3}
-  countdown: 60
+  countdown: 30
   mScener: {fileID: 778248685}
   maxCD: 0
   distance: 10000
