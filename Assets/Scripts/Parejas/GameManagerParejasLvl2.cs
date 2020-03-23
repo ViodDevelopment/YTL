@@ -926,11 +926,17 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
     private void RevertFont()
     {
-
+        print("horizontal  " + m_IsHorizontal + "  numpairs " + m_NumPairs);
         if (m_IsHorizontal)
         {
             switch (m_NumPairs)
             {
+                case 2:
+                    for (int i = 0; i < horizontal2Abajo.Count; i++)
+                    {
+                        horizontal2Abajo[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                    }
+                    break;
                 case 3:
                     for (int i = 0; i < horizontal3Abajo.Count; i++)
                     {
@@ -951,17 +957,25 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         {
             switch (m_NumPairs)
             {
-                case 3:
-                    for (int i = 0; i < horizontal3Abajo.Count; i++)
+
+                case 2:
+                    for (int i = 0; i < vertical2Right.Count; i++)
                     {
-                        vertical3Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                        print("entra");
+                        vertical2Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
+                    }
+                    break;
+                case 3:
+                    for (int i = 0; i < vertical3Right.Count; i++)
+                    {
+                        vertical3Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
                     }
                     break;
 
                 case 4:
-                    for (int i = 0; i < horizontal4Abajo.Count; i++)
+                    for (int i = 0; i < vertical4Right.Count; i++)
                     {
-                        vertical4Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+                        vertical4Right[i].GetComponentInChildren<Text>().transform.localScale = new Vector3(0.15f, 0.15f, 0.15f);
                     }
                     break;
 
@@ -1530,7 +1544,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical2Right[numJ].name = numJ.ToString();
                         vertical2Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical2Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical2Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical2Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical2Right[numJ].SetActive(true);
                         PonerColorMarco(l_Pairs[l_RandomPair].color, vertical2Right[numJ].transform.GetChild(0).GetComponent<Image>());
@@ -1549,7 +1563,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical2Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical2Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical2Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical2Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical2Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical2Right[numJ].SetActive(true);
                         PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical2Right[numJ].transform.GetChild(0).GetComponent<Image>());
@@ -1572,7 +1586,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical3Right[numJ].name = numJ.ToString();
                         vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical3Right[numJ].SetActive(true);
                         PonerColorMarco(l_Pairs[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
@@ -1591,7 +1605,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical3Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical3Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical3Right[numJ].SetActive(true);
                         PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical3Right[numJ].transform.GetChild(0).GetComponent<Image>());
@@ -1614,7 +1628,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical4Right[numJ].name = numJ.ToString();
                         vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical4Right[numJ].SetActive(true);
                         PonerColorMarco(l_Pairs[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
@@ -1633,7 +1647,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         vertical4Right[numJ].name = l_ThirdPair.IndexOf(l_SecondPair[l_RandomPair]).ToString();
                         vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].palabraActual;
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
-                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.5f;
+                            vertical4Right[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
                         vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
                         vertical4Right[numJ].SetActive(true);
                         PonerColorMarco(l_SecondPair[l_RandomPair].color, vertical4Right[numJ].transform.GetChild(0).GetComponent<Image>());
