@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class BitLvl2 : MonoBehaviour
 {
+    float m_AscpectRatio;
+
     public GameObject dumi;
     bool m_0touch = true;
     bool m_1touch = false;
@@ -33,6 +35,7 @@ public class BitLvl2 : MonoBehaviour
 
     void Awake()
     {
+        m_AscpectRatio = Camera.main.aspect;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBitReadyLvl2>();
         levelBit = m_GMBit.levelBit;
         RecolectFrasesBD();
@@ -136,13 +139,37 @@ public class BitLvl2 : MonoBehaviour
         float anchototal = 0;
         float scale = 0;
         float distance = 5.7f;
+
+        
+            
+        
+
         int count = 0;
         foreach (PalabraBD p in frasesDisponibles[l_Number].palabras)
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                scale = p.palabraActual.Length * 0.073f;
-                anchototal += scale * distance + 1.25f;
+                if (m_AscpectRatio < 1.5f)
+                {
+                    distance *= 0.75f;
+                    scale = p.palabraActual.Length * 0.02f;
+                }
+                else
+                    scale = p.palabraActual.Length * 0.073f;
+
+                if (m_AscpectRatio < 1.4f)
+                {
+                    if (frasesDisponibles[l_Number].palabras.Count >= 6)
+                    {
+                        scale*=0.95f;
+                        anchototal += scale * distance + 1.62f;
+                    }
+                    else
+                        anchototal += scale * distance + 1.6f;
+                }
+                else
+                    anchototal += scale * distance + 1.25f;
+
                 if (frasesDisponibles[l_Number].palabras[0] != p)
                 {
                     anchototal += frasesDisponibles[l_Number].palabras[count - 1].palabraActual.Length * 0.095f * distance / 2;
@@ -158,14 +185,36 @@ public class BitLvl2 : MonoBehaviour
                 }
             }
             else
-            {
+            {       
                 scale = p.palabraActual.Length * 0.075f;
-                anchototal += scale * distance + 1f;
+               
+                if (m_AscpectRatio < 1.5f&& frasesDisponibles[l_Number].palabras.Count >= 5)
+                {
+                       scale *= 0.8f;
+                    
+
+                    if (frasesDisponibles[l_Number].palabras.Count >= 6)
+                    {
+                        distance *= 0.98f;
+                        anchototal += scale * distance + 0.8f;
+                    }
+                    else anchototal += scale * distance + 1.2f;
+
+
+
+
+                }
+                else
+                { 
+                    anchototal += scale * distance + 1.4f;
+                }
                 if (frasesDisponibles[l_Number].palabras[0] != p)
                 {
                     anchototal += frasesDisponibles[l_Number].palabras[count - 1].palabraActual.Length * 0.075f * distance / 2;
                 }
             }
+
+            
 
             count++;
         }
@@ -179,8 +228,15 @@ public class BitLvl2 : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                scale = p.palabraActual.Length * 0.073f;
-                if (rectanglesInScene.Count > 0)
+               
+                    scale = p.palabraActual.Length * 0.073f;
+                if (m_AscpectRatio < 1.5f)
+                {
+                    scale*=0.6f;
+                }
+              
+
+               if (rectanglesInScene.Count > 0)
                 {
                     position = new Vector3(position.x + 1 + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.095f * distance / 2, position.y, position.z);
                 }
@@ -200,6 +256,12 @@ public class BitLvl2 : MonoBehaviour
             else
             {
                 scale = p.palabraActual.Length * 0.075f;
+                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
+                {
+                    scale *= 0.8f;
+                    if (frasesDisponibles[l_Number].palabras.Count >= 6)
+                        scale *= 0.6f;
+                }
                 if (rectanglesInScene.Count > 0)
                 {
                     position = new Vector3(position.x + 1f + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.075f * distance / 2, position.y, position.z);
@@ -211,6 +273,7 @@ public class BitLvl2 : MonoBehaviour
 
             palabraBit = rectanglesInScene[rectanglesInScene.Count - 1].GetComponent<PalabraFraseBit2>();
             palabraBit.distance = scale * distance / 1.9f;
+            palabraBit.distance *= 0.75f;
             palabraBit.numImage = rectanglesInScene.Count - 1;
             palabraBit.bit = this;
             palabraBit.audioSource.clip = p.GetAudioClip(p.audio);
@@ -239,11 +302,13 @@ public class BitLvl2 : MonoBehaviour
                 texto.text = p.palabraActual;
 
             SearchFont(texto);
+
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.15f, imagen.rectTransform.sizeDelta.y);
                 imagen.transform.localScale = new Vector2(imagen.transform.localScale.y, imagen.transform.localScale.y);
 
+                
                 if (p.palabraActual.Length <= 2)
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.11f, 0, 0);
@@ -256,9 +321,18 @@ public class BitLvl2 : MonoBehaviour
                 else
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
+                }
 
+                if (m_AscpectRatio < 1.5f)
+                {
+                    imagen.rectTransform.sizeDelta *= 0.80f;
+                    fondo.rectTransform.sizeDelta *= 0.80f;
+                    imagen.transform.localScale *= 0.80f;
+                    fondo.gameObject.transform.localScale *= 0.80f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.7f);
                 }
             }
+
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1.135f, imagen.rectTransform.sizeDelta.y);
@@ -275,10 +349,11 @@ public class BitLvl2 : MonoBehaviour
                 else
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
-
                 }
+               
 
             }
+
             else
             {
                 imagen.rectTransform.sizeDelta = new Vector2(p.palabraActual.Length * 1f, imagen.rectTransform.sizeDelta.y);
@@ -297,8 +372,27 @@ public class BitLvl2 : MonoBehaviour
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.087f, 0, 0);
                 }
+                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
+                {
+                    imagen.rectTransform.sizeDelta *= 0.95f;
+                    fondo.rectTransform.sizeDelta *= 0.95f;
+                    imagen.transform.localScale *= 0.95f;
+                    fondo.gameObject.transform.localScale *= 0.95f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.8f);
+                    if (frasesDisponibles[l_Number].palabras.Count >= 6)
+                    {
+                        imagen.rectTransform.sizeDelta *= 0.95f;
+                        fondo.rectTransform.sizeDelta *= 0.95f;
+                        imagen.transform.localScale *= 0.95f;
+                        fondo.gameObject.transform.localScale *= 0.95f;
+                        texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.8f);
+                    }
+                }
 
             }
+
+            
+
 
             if (p.palabraActual.Length >= 5)
                 imagen.sprite = marcoMasDe5;
@@ -312,7 +406,7 @@ public class BitLvl2 : MonoBehaviour
             scale = 0;
             coun++;
         }
-
+      
     }
 
     private void CambiarRecuadroDependiendoDePalabra(Image _imagen, string _color)

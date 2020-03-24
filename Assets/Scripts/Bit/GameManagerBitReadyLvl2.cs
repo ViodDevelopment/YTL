@@ -12,6 +12,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
     public Transform m_NewFrasePosition;
     public Sprite m_CompletedPoint;
     public Sprite m_IncompletedPoint;
+
     [HideInInspector]
     public GameObject m_CurrentBit;
 
@@ -34,7 +35,6 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
 
     private void Start()
     {
-
         if (levelBit == 2)
             numMiniGame = 4;
         else
