@@ -151,20 +151,21 @@ public class BitLvl2 : MonoBehaviour
             {
                 if (m_AscpectRatio < 1.5f)
                 {
-                    distance *= 0.75f;
+                    distance *= 0.95f;
                     scale = p.palabraActual.Length * 0.02f;
                     if (frasesDisponibles[l_Number].palabras.Count >= 5)
                     {
+                        distance *= 0.95f;
                         scale *= 0.95f;
                         anchototal += scale * distance + 1.62f;
                     }
                     else
-                        anchototal += scale * distance + 1.6f;
+                        anchototal += scale * distance + 2.5f;
                 }
                 else
                 {
                     scale = p.palabraActual.Length * 0.073f;
-                    anchototal += scale * distance + 1.25f;
+                    anchototal += scale * distance + 1.5f;
                 }
  
 
@@ -245,12 +246,14 @@ public class BitLvl2 : MonoBehaviour
                     scale = p.palabraActual.Length * 0.073f;
                 if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count <= 5)
                 {
-                    
+                    anchototal += scale * distance + 2f;
                     scale *=1.1f;
                 }
-              
 
-               if (rectanglesInScene.Count > 0)
+           
+
+
+                if (rectanglesInScene.Count > 0)
                 {
                     position = new Vector3(position.x + 1 + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.095f * distance / 2, position.y, position.z);
                 }
