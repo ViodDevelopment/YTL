@@ -141,7 +141,7 @@ public class BitLvl2 : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                scale = p.palabraActual.Length * 0.095f;
+                scale = p.palabraActual.Length * 0.073f;
                 anchototal += scale * distance + 1.25f;
                 if (frasesDisponibles[l_Number].palabras[0] != p)
                 {
@@ -179,7 +179,7 @@ public class BitLvl2 : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                scale = p.palabraActual.Length * 0.095f;
+                scale = p.palabraActual.Length * 0.073f;
                 if (rectanglesInScene.Count > 0)
                 {
                     position = new Vector3(position.x + 1 + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.095f * distance / 2, position.y, position.z);
