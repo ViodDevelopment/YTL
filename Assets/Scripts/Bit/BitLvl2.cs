@@ -149,7 +149,7 @@ public class BitLvl2 : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MAYUSCULA)
             {
-                if (m_AscpectRatio < 1.5f)
+                if (m_AscpectRatio <= 1.5f)
                 {
                     distance *= 0.95f;
                     scale = p.palabraActual.Length * 0.02f;
@@ -177,7 +177,7 @@ public class BitLvl2 : MonoBehaviour
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 scale = p.palabraActual.Length * 0.08f;
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
                 {
                     scale *= 0.6f;
 
@@ -202,7 +202,7 @@ public class BitLvl2 : MonoBehaviour
             {       
                 scale = p.palabraActual.Length * 0.075f;
                
-                if (m_AscpectRatio < 1.5f&& frasesDisponibles[l_Number].palabras.Count >= 5)
+                if (m_AscpectRatio <= 1.5f&& frasesDisponibles[l_Number].palabras.Count >= 5)
                 {
                        scale *= 0.8f;
                     
@@ -244,7 +244,7 @@ public class BitLvl2 : MonoBehaviour
             {
                
                     scale = p.palabraActual.Length * 0.073f;
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count <= 5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count <= 5)
                 {
                     anchototal += scale * distance + 2f;
                     scale *=1.1f;
@@ -263,7 +263,7 @@ public class BitLvl2 : MonoBehaviour
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
             {
                 scale = p.palabraActual.Length * 0.08f;
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
                 {
                     scale *= 0.6f;
 
@@ -289,7 +289,7 @@ public class BitLvl2 : MonoBehaviour
             else
             {
                 scale = p.palabraActual.Length * 0.075f;
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
                 {
                     scale *= 0.8f;
                     if (frasesDisponibles[l_Number].palabras.Count >= 6)
@@ -356,7 +356,7 @@ public class BitLvl2 : MonoBehaviour
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
                 }
 
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
                 {
                     imagen.rectTransform.sizeDelta *= 0.80f;
                     fondo.rectTransform.sizeDelta *= 0.80f;
@@ -383,7 +383,7 @@ public class BitLvl2 : MonoBehaviour
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
                 }
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
                 {
                     imagen.rectTransform.sizeDelta *= 0.850f;
                     fondo.rectTransform.sizeDelta *= 0.85f;
@@ -420,7 +420,7 @@ public class BitLvl2 : MonoBehaviour
                 {
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.087f, 0, 0);
                 }
-                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
+                if (m_AscpectRatio <= 1.5f && frasesDisponibles[l_Number].palabras.Count >= 5)
                 {
                     imagen.rectTransform.sizeDelta *= 0.95f;
                     fondo.rectTransform.sizeDelta *= 0.95f;
