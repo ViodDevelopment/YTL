@@ -356,7 +356,7 @@ public class BitLvl2 : MonoBehaviour
                     fondo.gameObject.transform.localScale += new Vector3(p.palabraActual.Length * 0.1f, 0, 0);
                 }
 
-                if (m_AscpectRatio < 1.5f)
+                if (m_AscpectRatio < 1.5f && frasesDisponibles[l_Number].palabras.Count>=5)
                 {
                     imagen.rectTransform.sizeDelta *= 0.80f;
                     fondo.rectTransform.sizeDelta *= 0.80f;
