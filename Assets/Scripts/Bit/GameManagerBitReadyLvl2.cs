@@ -33,8 +33,11 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
     public int levelBit = 2;
     private int numMiniGame = 0;
 
+    public Vector3 startposFrase;
+
     private void Start()
     {
+        startposFrase = m_NewFrasePosition.position;
         if (levelBit == 2)
             numMiniGame = 4;
         else
@@ -78,6 +81,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
             repetir = _repetir;
             repeating = true;
         }
+        m_NewFrasePosition.position = startposFrase;
         m_CurrentBit = Instantiate(m_NewBit, m_NewBitPosition);
         m_CurrentNumRep++;
     }
@@ -85,6 +89,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
     public void NextBit()
     {
         repeating = false;
+        m_NewFrasePosition.position = startposFrase;
         if (m_Alea == 0)
         {
             m_Alea = Random.Range(0, BitLvl2.m_Length);
