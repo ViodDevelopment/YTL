@@ -372,6 +372,15 @@ public class BitLvl2 : MonoBehaviour
                     fondo.gameObject.transform.localScale *= 0.95f;
                     texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.85f);
                 }
+                if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                {
+                     imagen.rectTransform.sizeDelta *= 0.92f;
+                    fondo.rectTransform.sizeDelta *= 0.92f;
+                    imagen.transform.localScale *= 0.92f;
+                    fondo.gameObject.transform.localScale *= 0.92f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.9f);
+                }
+
             }
 
             else if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
@@ -406,6 +415,14 @@ public class BitLvl2 : MonoBehaviour
                         fondo.gameObject.transform.localScale *= 0.95f;
                         texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.95f);
                     }
+                }
+                if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                {
+                    imagen.rectTransform.sizeDelta *= 0.92f;
+                    fondo.rectTransform.sizeDelta *= 0.92f;
+                    imagen.transform.localScale *= 0.92f;
+                    fondo.gameObject.transform.localScale *= 0.92f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.9f);
                 }
 
             }
@@ -443,6 +460,14 @@ public class BitLvl2 : MonoBehaviour
                         fondo.gameObject.transform.localScale *= 0.95f;
                         texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.8f);
                     }
+                }
+                if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                {
+                    imagen.rectTransform.sizeDelta *= 0.92f;
+                    fondo.rectTransform.sizeDelta *= 0.92f;
+                    imagen.transform.localScale *= 0.92f;
+                    fondo.gameObject.transform.localScale *= 0.92f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.9f);
                 }
 
             }
