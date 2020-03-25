@@ -26,7 +26,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
     public GameObject m_Siguiente;
     public GameObject m_Repetir;
     public bool repetir = false;
-    public int numLastImage = 0;
+    public int numLastImage = -1;
     public bool repeating;
 
     public static int m_Alea = 0;
