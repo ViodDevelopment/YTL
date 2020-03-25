@@ -196,7 +196,14 @@ public class BitLvl2 : MonoBehaviour
                 }
                 else
                 {
-                    anchototal += scale * distance + 1.4f;
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                    {
+                        distance *= .95f;
+                        anchototal += scale * distance + 0.7f;
+
+                    }
+                    else
+                        anchototal += scale * distance + 1.4f;
                 }
 
                 if (levelBit == 2)
@@ -232,7 +239,15 @@ public class BitLvl2 : MonoBehaviour
                 }
                 else
                 {
-                    anchototal += scale * distance + 1.4f;
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                    {
+                        distance *= .95f;
+                        anchototal += scale * distance + 0.75f;
+
+                    }
+                    else
+                        anchototal += scale * distance + 1.4f;
+                   
                 }
 
                 if (levelBit == 2)
@@ -298,7 +313,16 @@ public class BitLvl2 : MonoBehaviour
                         anchototal += scale * distance + 1.25f;
                 }
                 else
-                    anchototal += scale * distance + 1.4f;
+                {
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                    {
+                        distance *= .95f;
+                        anchototal += scale * distance + 0.5f;
+
+                    }
+                    else
+                        anchototal += scale * distance + 1.4f;
+                }
 
                 if (levelBit == 2)
                 {
@@ -321,6 +345,15 @@ public class BitLvl2 : MonoBehaviour
                     if (frasesDisponibles[l_Number].palabras.Count >= 6)
                         scale *= 0.6f;
                 }
+              
+                if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
+                {
+                        distance *= .95f;
+                        anchototal += scale * distance + 0.5f;
+
+                }
+        
+                
                 if (rectanglesInScene.Count > 0)
                 {
                     position = new Vector3(position.x + 1f + scale * distance / 2 + frasesDisponibles[l_Number].palabras[rectanglesInScene.Count - 1].palabraActual.Length * 0.075f * distance / 2, position.y, position.z);
@@ -444,11 +477,11 @@ public class BitLvl2 : MonoBehaviour
                 }
                 if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN && l_Number == 4)
                 {
-                    imagen.rectTransform.sizeDelta *= 0.92f;
-                    fondo.rectTransform.sizeDelta *= 0.92f;
-                    imagen.transform.localScale *= 0.92f;
-                    fondo.gameObject.transform.localScale *= 0.92f;
-                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.9f);
+                    imagen.rectTransform.sizeDelta *= 0.85f;
+                    fondo.rectTransform.sizeDelta *= 0.85f;
+                    imagen.transform.localScale *= 0.85f;
+                    fondo.gameObject.transform.localScale *= 0.85f;
+                    texto.fontSize = Mathf.RoundToInt(texto.fontSize * 0.8f);
                 }
 
             }
