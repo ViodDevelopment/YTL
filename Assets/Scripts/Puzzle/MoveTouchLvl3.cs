@@ -270,7 +270,9 @@ public class MoveTouchLvl3 : MonoBehaviour
                     if (Word)
                     {
                         Destroy(colision.gameObject);
+                        gameManagerPuzzle2.SoundWord();
                         gameManagerPuzzle2.currentPalabra++;
+                     
                     }
                     dentro = false;
                     colision = null;
@@ -329,6 +331,7 @@ public class MoveTouchLvl3 : MonoBehaviour
                             {
                                 Destroy(colision.gameObject);
                                 gameManagerPuzzle2.currentPalabra++;
+                               // gameManagerPuzzle2.SoundWord();
                             }
                             dentro = false;
                             colision = null;

@@ -12,8 +12,8 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: diversityapps
-  productName: Yo Tambien Leo
+  companyName: diversity-apps
+  productName: YoTambienLeo
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -119,7 +119,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.311
+  bundleVersion: 1.4
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -162,7 +162,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.diversityapps.leer
     Standalone: com.Company.ProductName
-    iPhone: com.diveristy-apps.YoTambienLeo
+    iPhone: com.diversity-apps.YoTambienLeo
   buildNumber: {}
   AndroidBundleVersionCode: 13
   AndroidMinSdkVersion: 16
@@ -254,7 +254,7 @@ PlayerSettings:
   clonedFromGUID: 5f34be1353de5cf4398729fda238591b
   templatePackageId: com.unity.template.2d@2.3.2
   templateDefaultScene: Assets/Scenes/SampleScene.unity
-  AndroidTargetArchitectures: 3
+  AndroidTargetArchitectures: 5
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
   AndroidKeystoreName: C:/Users/serto/Desktop/user.keystore
@@ -265,7 +265,7 @@ PlayerSettings:
   AndroidEnableTango: 0
   androidEnableBanner: 1
   androidUseLowAccuracyLocation: 0
-  androidUseCustomKeystore: 1
+  androidUseCustomKeystore: 0
   m_AndroidBanners:
   - width: 320
     height: 180
@@ -408,7 +408,9 @@ PlayerSettings:
   enableInternalProfiler: 0
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
-  cameraUsageDescription: Required for augmented reality support.
+  cameraUsageDescription: Camera is needed in order to use real photos (taken by the
+    parent or teacher through the configuration menu) of objects as references for
+    words.
   locationUsageDescription: 
   microphoneUsageDescription: 
   switchNetLibKey: 
@@ -631,7 +633,7 @@ PlayerSettings:
     1: 
   platformArchitecture: {}
   scriptingBackend:
-    Android: 1
+    Android: 0
     Standalone: 1
   il2cppCompilerConfiguration: {}
   managedStrippingLevel: {}

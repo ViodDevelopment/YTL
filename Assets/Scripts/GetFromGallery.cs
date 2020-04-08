@@ -19,7 +19,9 @@ public class GetFromGallery : MonoBehaviour
         img = placeHolder.GetComponent<Image>();
 
         photoAvaliable = true;
-       
+        NativeGallery.CheckPermission();
+
+
     }
 
     // Update is called once per frame

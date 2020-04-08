@@ -139,6 +139,12 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
     }
 
+    public void SoundWord()
+    {
+        AudioSource l_AS = GetComponent<AudioSource>();
+        l_AS.clip = frasesDisponibles[numRandom].palabras[currentPalabra].GetAudioClip(frasesDisponibles[numRandom].palabras[currentPalabra].audio);
+        l_AS.Play();
+    }
     public void PuzzleComplete()
     {
 
@@ -157,10 +163,10 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         }
         else if (m_Puntuacion == m_NumPieces + (frasesDisponibles[numRandom].palabras.Count) && !m_Completed)
         {
+           
             AudioSource l_AS = GetComponent<AudioSource>();
-            l_AS.clip = frasesDisponibles[numRandom].GetAudioClip(frasesDisponibles[numRandom].sound);
-            l_AS.Play();
-
+            Debug.Log(l_AS.clip.length);
+            StartCoroutine(WaitSecondsAudio(l_AS.clip.length));
             m_Completed = true;
             currentPalabra = 0;
             m_ImageAnim.gameObject.SetActive(true);
@@ -172,8 +178,6 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             {
                 DestroyImmediate(m_Saver.transform.GetChild(0).gameObject);
             }
-
-            StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length * 0.5f));
 
         }
     }
@@ -563,6 +567,20 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             }
         }
         acabado = true;
+    }
+
+    IEnumerator WaitSecondsAudio(float seconds)
+    {
+        Debug.Log("entro a la corutina");
+        yield return new WaitForSeconds(seconds);
+        AudioSource l_AS = GetComponent<AudioSource>();
+
+        l_AS.clip = frasesDisponibles[numRandom].GetAudioClip(frasesDisponibles[numRandom].sound);
+        l_AS.Play();
+
+        
+        StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length * 0.5f));
+
     }
 
     private Vector3 SearchPosition(Transform _trans, float _position)
