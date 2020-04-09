@@ -12,14 +12,20 @@ public class GetFromGallery : MonoBehaviour
 
     public bool photoAvaliable;
 
+
     // Start is called before the first frame update
     void Start()
     {
         gm = GameManager.GetInstance();
         img = placeHolder.GetComponent<Image>();
 
+        NativeGallery.GetImageProperties("");
         photoAvaliable = true;
-        NativeGallery.CheckPermission();
+        if(NativeGallery.CheckPermission()!=NativeGallery.Permission.Granted)
+        {
+            NativeGallery.RequestPermission();
+          
+        }
 
 
     }
@@ -107,6 +113,6 @@ public class GetFromGallery : MonoBehaviour
     {
         photoAvaliable = var;
     }
-
+   
 
 }

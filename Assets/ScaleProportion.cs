@@ -10,6 +10,8 @@ public class ScaleProportion : MonoBehaviour
     public List<GameObject> Objetos = new List<GameObject>();
     void Start()
     {
+        
+
         Height = Camera.main.scaledPixelHeight;
         Width = Camera.main.pixelWidth;
         if (Mathf.Round(Width / Height * 100) < Mathf.Round(1.5f * 100))
@@ -31,9 +33,5 @@ public class ScaleProportion : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+   
 }
