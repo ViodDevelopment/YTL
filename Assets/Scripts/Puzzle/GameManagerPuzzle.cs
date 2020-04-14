@@ -238,7 +238,7 @@ public class GameManagerPuzzle : MonoBehaviour
         {
             Random.InitState(Random.seed + Random.Range(-5, 5));
             numRandom = Random.Range(0, palabrasDisponibles.Count);
-
+            numRandom = palabrasDisponibles.Count - 1;
         }
         else
         {
@@ -296,21 +296,21 @@ public class GameManagerPuzzle : MonoBehaviour
         if (m_TextAnim.text.Length > 5)
             m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
 
-        Sprite l_SpriteImage;
+        Sprite l_sprite;
 
         if (palabraActual.user)
         {
-            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
         }
         else
-            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+            l_sprite = palabraActual.GetSprite(palabraActual.image1);
 
-        m_ImageAnim.sprite = l_SpriteImage;
-        m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
+        m_ImageAnim.sprite = l_sprite;
+        m_CollidersSpawns.GetComponent<Image>().sprite = l_sprite;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
         bool ancho;
-        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
+        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_sprite, out ancho);
         for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
@@ -319,10 +319,21 @@ public class GameManagerPuzzle : MonoBehaviour
                 Rect rect;
                 if (palabraActual.user)
                 {
-                    if(ancho)
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2)
+                    {
+                        if (ancho)
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+
+                    }
                     else
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    {
+                        if (ancho)
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    }
                 }
                 else
                     rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
@@ -360,6 +371,7 @@ public class GameManagerPuzzle : MonoBehaviour
                         multiplier = l_tamanoPiezas / l_Width;
                     else
                         multiplier = l_tamanoPiezas / l_Height;
+
                     m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().multiplier = multiplier;
 
                 }
