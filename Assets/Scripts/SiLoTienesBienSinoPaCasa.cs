@@ -2,7 +2,7 @@
 
 public static class SiLoTienesBienSinoPaCasa
 {
-    public static Sprite GetSpriteFromUser(Sprite _sprite)
+    public static Sprite GetSpriteFromUser(Sprite _sprite, bool puzzle = false)
     {
         try
         {
@@ -20,15 +20,27 @@ public static class SiLoTienesBienSinoPaCasa
             if (l_sprite.texture.width > l_sprite.texture.height)
             {
                 if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2f)
-                    newrect = new Rect(new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height) / 2f, (float)l_sprite.texture.height / ((float)l_sprite.texture.width / (float)l_sprite.texture.height) / 2), new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height), (float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height)));
-                else 
+                {
+                    if (!puzzle)
+                        newrect = new Rect(new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height) / 2f, (float)l_sprite.texture.height / ((float)l_sprite.texture.width / (float)l_sprite.texture.height) / 2), new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height), (float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height)));
+                    else
+                        newrect = new Rect(new Vector2(l_sprite.texture.width / 8, 0), new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height), (float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height)));
+
+                }
+                else
                     newrect = new Rect(new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height) / 2f, 0), new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height), (float)l_sprite.texture.width / ((float)l_sprite.texture.width / (float)l_sprite.texture.height)));
-            
+
             }
             else
             {
                 if ((float)l_sprite.texture.height / (float)l_sprite.texture.width < 2)
-                    newrect = new Rect(new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.height / (float)l_sprite.texture.width) / 2f, (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width) / 2), new Vector2((float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width), (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width)));
+                {
+                    if (!puzzle)
+                        newrect = new Rect(new Vector2((float)l_sprite.texture.width / ((float)l_sprite.texture.height / (float)l_sprite.texture.width) / 2f, (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width) / 2), new Vector2((float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width), (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width)));
+                    else
+                        newrect = new Rect(new Vector2(0,l_sprite.texture.height / 8), new Vector2((float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width), (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width)));
+
+                }
                 else
                     newrect = new Rect(new Vector2(0, (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width) / 2f), new Vector2((float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width), (float)l_sprite.texture.height / ((float)l_sprite.texture.height / (float)l_sprite.texture.width)));
             }
