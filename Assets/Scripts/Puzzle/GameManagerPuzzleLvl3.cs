@@ -145,6 +145,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         l_AS.clip = frasesDisponibles[numRandom].palabras[currentPalabra].GetAudioClip(frasesDisponibles[numRandom].palabras[currentPalabra].audio);
         l_AS.Play();
     }
+
     public void PuzzleComplete()
     {
 
@@ -165,8 +166,11 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         {
            
             AudioSource l_AS = GetComponent<AudioSource>();
-            Debug.Log(l_AS.clip.length);
+           
             StartCoroutine(WaitSecondsAudio(l_AS.clip.length));
+            //AudioSource l_AS = GetComponent<AudioSource>();
+
+          
             m_Completed = true;
             currentPalabra = 0;
             m_ImageAnim.gameObject.SetActive(true);
@@ -178,6 +182,8 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             {
                 DestroyImmediate(m_Saver.transform.GetChild(0).gameObject);
             }
+
+           // StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length * 0.5f));
 
         }
     }
