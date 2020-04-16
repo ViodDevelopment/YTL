@@ -299,7 +299,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1)).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -311,38 +311,53 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
-        Sprite l_SpriteImage;
+        Sprite l_sprite;
 
         if (palabraActual.user)
         {
-            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
         }
         else
-            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+            l_sprite = palabraActual.GetSprite(palabraActual.image1);
 
-        m_ImageAnim.sprite = l_SpriteImage;
+        m_ImageAnim.sprite = l_sprite;
         m_ImageAnim.transform.GetChild(0).GetComponent<Image>().color = color;
-        m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
+        m_CollidersSpawns.GetComponent<Image>().sprite = l_sprite;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
         bool ancho;
-        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
+        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_sprite, out ancho);
         for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
             {
                 Sprite l_Sprite;
                 Rect rect;
-
                 if (palabraActual.user)
                 {
-                    if (ancho)
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2)
+                    {
+                        if (ancho)
+                        {
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_sprite.texture.width / 8, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+
+                        }
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_sprite.texture.height / 8), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+
+                    }
                     else
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    {
+                        if (ancho)
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    }
                 }
                 else
-                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height)); l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+
+                l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
             }
@@ -448,7 +463,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1)).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -460,22 +475,22 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         m_TextAnim.text = palabraActual.palabraActual;
         m_TextAnim.GetComponent<ConvertFont>().Convert();
 
-        Sprite l_SpriteImage;
+        Sprite l_sprite;
 
         if (palabraActual.user)
         {
-            l_SpriteImage = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1));
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
-            l_SpriteImage = palabraActual.GetSprite(palabraActual.image1);
+            l_sprite = palabraActual.GetSprite(palabraActual.image1);
 
-        m_ImageAnim.sprite = l_SpriteImage;
+        m_ImageAnim.sprite = l_sprite;
         m_ImageAnim.transform.GetChild(0).GetComponent<Image>().color = color;
-        m_CollidersSpawns.GetComponent<Image>().sprite = l_SpriteImage;
+        m_CollidersSpawns.GetComponent<Image>().sprite = l_sprite;
 
         Sprite[] m_PiezasPuzzle = new Sprite[m_NumPieces];
         bool ancho;
-        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_SpriteImage, out ancho);
+        float l_tamanoPiezas = SiLoTienesBienSinoPaCasa.GetSizePuzzle(l_sprite, out ancho);
         for (int i = m_NumPiecesY - 1; i >= 0; i--)
         {
             for (int j = 0; j < m_NumPiecesX; j++)
@@ -485,13 +500,29 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
                 if (palabraActual.user)
                 {
-                    if (ancho)
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2)
+                    {
+                        if (ancho)
+                        {
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_sprite.texture.width / 8, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+
+                        }
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_sprite.texture.height / 8), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+
+                    }
                     else
-                        rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    {
+                        if (ancho)
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                        else
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                    }
                 }
                 else
-                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height)); l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
+                    rect = new Rect(new Vector2(j * l_Width, i * l_Height), new Vector2(l_Width, l_Height));
+
+                l_Sprite = Sprite.Create(m_ImagePuzzle, rect, new Vector2(0, 0));
                 m_PiezasPuzzle[k] = l_Sprite;
                 k++;
             }

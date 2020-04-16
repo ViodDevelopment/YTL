@@ -488,11 +488,11 @@ public class GameManagerPuzzle : MonoBehaviour
                     {
                         if (ancho)
                         {
-                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas + l_sprite.texture.width / 8, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
 
                         }
                         else
-                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
+                            rect = new Rect(new Vector2(j * l_tamanoPiezas, i * l_tamanoPiezas + l_sprite.texture.height / 8), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
 
                     }
                     else
