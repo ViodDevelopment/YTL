@@ -554,6 +554,55 @@ public class PaquetePalabrasParejas
 
 
     }
+
+    public void QuitarPalabras(string _nameSpanish)
+    {
+        List<int> paraEliminar = new List<int>();//current
+        for (int i = 0; i < currentParejasPaquet.Count; i++)
+        {
+            if (currentParejasPaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            currentParejasPaquet.RemoveAt(i);
+        }
+        paraEliminar.Clear();
+        //next
+        for (int i = 0; i < nextPalabrasPaquet.Count; i++)
+        {
+            if (nextPalabrasPaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            nextPalabrasPaquet.RemoveAt(i);
+        }
+        paraEliminar.Clear();
+        //done
+        for (int i = 0; i < donePalabrasPaquet.Count; i++)
+        {
+            if (donePalabrasPaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            donePalabrasPaquet.RemoveAt(i);
+        }
+        paraEliminar.Clear();
+    }
 }
 
 [Serializable]

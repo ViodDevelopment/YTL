@@ -134,6 +134,12 @@ public class ManagamentFalseBD : MonoBehaviour
             management.LoadDates();
         }
 
+        if (File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+        {
+            QuitarPalabrasQueYaNoExisten();
+            File.Delete(Application.streamingAssetsPath + "/Update.dat");
+        }
+
         StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
     }
 
@@ -560,6 +566,134 @@ public class ManagamentFalseBD : MonoBehaviour
 
     }
 
+    private void QuitarPalabrasQueYaNoExisten()
+    {
+        SingletonLenguage.Lenguage leng = GameManager.configurartion.currentLenguaje;
+        GameManager.configurartion.currentLenguaje = SingletonLenguage.Lenguage.CASTELLANO;
+        ActualizarPaqueteBit();
+        ActualizarPaqeuteParejas("1");
+        ActualizarPaqeuteParejas("2");
+        ActualizarPaqeuteParejas("3");
+        ActualizarPaquetePuzzle("1");
+        ActualizarPaquetePuzzle("2");
+        GameManager.configurartion.currentLenguaje = SingletonLenguage.Lenguage.CATALAN;
+        ActualizarPaqueteBit();
+        ActualizarPaqeuteParejas("1");
+        ActualizarPaqeuteParejas("2");
+        ActualizarPaqeuteParejas("3");
+        ActualizarPaquetePuzzle("1");
+        ActualizarPaquetePuzzle("2");
+        GameManager.configurartion.currentLenguaje = leng;
+    }
+
+    private void ActualizarPaqueteBit()
+    {
+        List<int> paraEliminar = new List<int>();//current
+        for (int i = 0; i < PaqueteBit.GetInstance().currentBitPaquet.Count; i++)
+        {
+            if (PaqueteBit.GetInstance().currentBitPaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            PaqueteBit.GetInstance().currentBitPaquet.RemoveAt(i);
+        }
+        paraEliminar.Clear();
+        //next
+        for (int i = 0; i < PaqueteBit.GetInstance().nextBitPaquet.Count; i++)
+        {
+            if (PaqueteBit.GetInstance().nextBitPaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            PaqueteBit.GetInstance().nextBitPaquet.RemoveAt(i);
+        }
+        int num = 0;
+        foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
+        {
+            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            {
+                num++;
+            }
+        }
+        if (num == 0)
+        {
+            PaqueteBit.GetInstance().CrearNuevoPaquete();
+        }
+        PaqueteBit.GetInstance().CrearBinario();
+        paraEliminar.Clear();
+    }
+
+    private void ActualizarPaqeuteParejas(string _lvl)
+    {
+        PaquetePalabrasParejas.GetInstance(_lvl).QuitarPalabras("culo");
+        int num = 0;
+        foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance(_lvl).currentParejasPaquet)
+        {
+            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            {
+                num++;
+            }
+        }
+        if (num == 0)
+        {
+            PaquetePalabrasParejas.GetInstance(_lvl).CrearNuevoPaquete();
+        }
+        PaquetePalabrasParejas.GetInstance(_lvl).CrearBinario();
+    }
+
+    private void ActualizarPaquetePuzzle(string _lvl)
+    {
+        List<int> paraEliminar = new List<int>();//current
+        for (int i = 0; i < PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet.Count; i++)
+        {
+            if (PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet.RemoveAt(i);
+        }
+        paraEliminar.Clear();
+        //next
+        for (int i = 0; i < PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets.Count; i++)
+        {
+            if (PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets[i].nameSpanish == "culo")
+            {
+                paraEliminar.Add(i);
+            }
+        }
+        paraEliminar.Reverse();
+        for (int i = 0; i < paraEliminar.Count; i++)
+        {
+            PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets.RemoveAt(i);
+        }
+        int num = 0;
+        foreach (PalabraBD p in PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet)
+        {
+            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            {
+                num++;
+            }
+        }
+        if (num == 0)
+        {
+            PaquetePuzzle.GetInstance(_lvl).CrearNuevoPaquete();
+        }
+        PaquetePuzzle.GetInstance(_lvl).CrearBinario();
+        paraEliminar.Clear();
+
+    }
 
 
 
@@ -593,6 +727,7 @@ public class DatesToSave
     {
         return palabrasPredeterminadas;
     }
+
 }
 
 [Serializable]

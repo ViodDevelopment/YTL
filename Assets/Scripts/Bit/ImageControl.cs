@@ -47,6 +47,24 @@ public class ImageControl : MonoBehaviour
 
     private void RecolectPalabrasBD()
     {
+        if(!PaqueteBit.GetInstance().acabado)
+        {
+            int num = 0;
+            foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
+            {
+                if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                {
+                    num++;
+                }
+            }
+            if (num == 0)
+            {
+                PaqueteBit.GetInstance().CrearNuevoPaquete();
+                if (PaqueteBit.GetInstance().currentBitPaquet.Count == 0)
+                    PaqueteBit.GetInstance().acabado = true;
+                PaqueteBit.GetInstance().CrearBinario();
+            }
+        }
         if (PaqueteBit.GetInstance().acabado)
         {
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
