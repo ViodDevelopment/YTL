@@ -12,7 +12,6 @@ public class Configurartion
     public bool palabrasConArticulo = false;
     public bool ayudaVisual = true;
     public bool refuerzoPositivo = true;
-    public bool registrado = false;
     public int difficult = 1;
     public int paquete = 0;
 }
