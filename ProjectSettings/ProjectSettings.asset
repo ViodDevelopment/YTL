@@ -412,7 +412,7 @@ PlayerSettings:
     parent or teacher through the configuration menu) of objects as references for
     words.
   locationUsageDescription: 
-  microphoneUsageDescription: 
+  microphoneUsageDescription: Microphone is used to store the user words
   switchNetLibKey: 
   switchSocketMemoryPoolSize: 6144
   switchSocketAllocatorPoolSize: 128
