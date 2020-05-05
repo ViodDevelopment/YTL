@@ -467,6 +467,7 @@ public class ManagamentFalseBD : MonoBehaviour
         file.Close();
 
         GameManager.Instance.ChangeConfig();
+
     }
 
     public void SaveWordUser(PalabraBD _pal, bool _add)

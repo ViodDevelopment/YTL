@@ -54,6 +54,14 @@ public class GameManager : MonoBehaviour
     //[HideInInspector]
     public Texture PhotoFromCam;
 
+    #region Registro
+    public Button m_Enviar;
+    string m_UserName = " ";
+    string m_UserMail= " ";
+     bool m_AcceptedPolitics;
+
+    #endregion
+
     void Awake()
     {
         if (instance == null)
@@ -162,5 +170,42 @@ public class GameManager : MonoBehaviour
         SingletonLenguage.GetInstance().SetFont(configurartion.currentFont);
     }
 
+    public void SaveUserName(InputField name)
+    {
+      m_UserName= name.text;
+        CheckOK();
+    }
+
+    public void SaveUserMail(InputField mail)
+    {
+        m_UserMail = mail.text;
+        CheckOK();
+    }
+
+    public void AcceptPolitics()
+    {
+        m_AcceptedPolitics = !m_AcceptedPolitics;
+        CheckOK();
+    }
+
+    public void CheckOK()
+    {
+        if (m_UserName != "" && m_UserMail.Contains("@") && m_AcceptedPolitics)
+            m_Enviar.interactable = true;
+        else if(m_Enviar.IsInteractable())
+            m_Enviar.interactable = false;
+    }
+
+    public void ReadPolitics()
+    {
+        Application.OpenURL("http://yotambienleo.com/politica-de-privacidad/");
+    }
+    public void SendMail()
+    {
+        // Nombre es la variable m_UserName
+        // El Correo es la variable m_UserMail
+        configurartion.registrado = true;
+        ManagamentFalseBD.management.SaveConfig();
+    }
 
 }

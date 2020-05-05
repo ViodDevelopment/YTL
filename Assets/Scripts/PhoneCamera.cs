@@ -3,6 +3,12 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using UnityEditor;
+using System.IO;
+#if UNITY_EDITOR
+using UnityEditor.Callbacks;
+using UnityEditor.iOS.Xcode;
+#endif
 
 public class PhoneCamera : MonoBehaviour
 {
@@ -18,6 +24,7 @@ public class PhoneCamera : MonoBehaviour
     public Button buttonMakePhoto, buttonCancel;
 
     GameManager gm;
+    static string DescriptionMicrophone = "Microphone is used to register the user words";
 
     private void Awake()
     {
@@ -110,4 +117,24 @@ public class PhoneCamera : MonoBehaviour
 
         camAvaliable = true;
     }
+
+#if UNITY_EDITOR
+    [PostProcessBuildAttribute(1)]
+    public static void ChangeXcodePlist(BuildTarget buildTarget, string pathToBuiltProject)
+    {
+        if (buildTarget != BuildTarget.iOS)
+            return;
+        // Get plist
+        string plistPath = pathToBuiltProject + "/Info.plist";
+        PlistDocument plist = new PlistDocument();
+        plist.ReadFromString(File.ReadAllText(plistPath));
+        // Get root
+        PlistElementDict rootDict = plist.root;
+        // Change value of NSMicrophoneUsageDescription in Xcode plist
+        var buildKey = "NSMicrophoneUsageDescription";
+        rootDict.SetString(buildKey, DescriptionMicrophone);
+        // Write to file
+        File.WriteAllText(plistPath, plist.WriteToString());
+    }
+#endif
 }
