@@ -47,6 +47,7 @@ public class ImageControl : MonoBehaviour
 
     private void RecolectPalabrasBD()
     {
+        palabrasDisponibles.Clear();
         if(!PaqueteBit.GetInstance().acabado)
         {
             int num = 0;

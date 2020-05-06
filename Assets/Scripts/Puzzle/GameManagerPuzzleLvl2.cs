@@ -100,6 +100,24 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     private void InitBaseOfDates()
     {
         palabrasDisponibles.Clear();
+        if (!PaquetePuzzle.GetInstance(lvl).acabado)
+        {
+            int num = 0;
+            foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
+            {
+                if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                {
+                    num++;
+                }
+            }
+            if (num == 0)
+            {
+                PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
+                if (PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count == 0)
+                    PaquetePuzzle.GetInstance(lvl).acabado = true;
+                PaquetePuzzle.GetInstance(lvl).CrearBinario();
+            }
+        }
 
         if (PaquetePuzzle.GetInstance(lvl).acabado)
         {
