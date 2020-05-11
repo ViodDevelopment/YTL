@@ -3,6 +3,7 @@ using System.IO;
 using UnityEngine;
 using System;
 using UnityEngine.EventSystems;
+using System.Runtime.InteropServices;
 
 
 public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
@@ -13,12 +14,28 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private bool apretado = false;
     public AudioClip sonidoDefault;
 
+    #if UNITY_IPHONE
+    [DllImport("__Internal")]
+    private static extern void _forceToSpeaker();
+    #endif
+
+    public static void ForceToSpeaker()
+    {
+        #if UNITY_IPHONE
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            _forceToSpeaker();
+        }
+        #endif
+    }
+
     void Start()
     {
         int minFreq;
         int maxFreq;
         Microphone.GetDeviceCaps("", out minFreq, out maxFreq);
         m_AudioSource = GetComponent<AudioSource>();
+
     }
 
     public void AceptarPalabra()
@@ -71,6 +88,7 @@ public class MicroHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         if (maxFreq < 44100)
             freq = maxFreq;
 
+        ForceToSpeaker();
         m_Recording = Microphone.Start("", false, 300, 44100);
         startRecordingTime = Time.time;
 
