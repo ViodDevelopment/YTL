@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using System.Data;
 using System.IO;
 using Mono.Data.Sqlite;
+using System.Net.Mail;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 public class GameManager : MonoBehaviour
 {
@@ -202,8 +206,22 @@ public class GameManager : MonoBehaviour
     }
     public void SendMail()
     {
-        // Nombre es la variable m_UserName
-        // El Correo es la variable m_UserMail
+        MailMessage mail = new MailMessage();
+        mail.From = new MailAddress("pekeno1811@gmail.com");
+        mail.To.Add("pekeno1811@gmail.com");
+        mail.Subject = "Test Smtp Mail";
+        mail.Body = "Name: " + m_UserName + " Correo: " + m_UserMail;
+        // you can use others too.
+        SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+        smtpServer.Port = 587;
+        smtpServer.Credentials = new System.Net.NetworkCredential("pekeno1811@gmail.com", "sergikovic63") as ICredentialsByHost;
+        smtpServer.EnableSsl = true;
+
+        ServicePointManager.ServerCertificateValidationCallback =
+        delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        { return true; };
+        smtpServer.Send(mail);
+
         configurartion.registrado = true;
         ManagamentFalseBD.management.SaveConfig();
     }
