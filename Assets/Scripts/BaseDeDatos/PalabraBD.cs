@@ -25,6 +25,12 @@ public class PalabraBD
     public List<string> silabasActuales = new List<string>();
     public string palabraActual;
     public bool user = false;
+    public List<string> articulosSpanish = new List<string>();
+    public List<string> articulosCatalan = new List<string>();
+    public List<string> audiosArticulosSpanish = new List<string>();
+    public List<string> audiosArticulosCatalan = new List<string>();
+    public string actualArticulo;
+    public string actualAudioArticulo;
 
     //eliminar en un futuro y cambiarlo por el original
     //
@@ -86,6 +92,8 @@ public class PalabraBD
             case SingletonLenguage.Lenguage.FRANCES:
                 break;
         }
+
+        SetActualArticulo();
     }
 
     public Sprite GetSprite(string _name)
@@ -157,7 +165,7 @@ public class PalabraBD
         return texture; //una vez cargada    
     }
 
-        public AudioClip GetAudioClipUserWord()
+    public AudioClip GetAudioClipUserWord()
     {
         WWW www = new WWW("file://" + audio);
 
@@ -168,6 +176,76 @@ public class PalabraBD
         }
 
         return www.GetAudioClip();
+    }
+
+    private void SetActualArticulo()
+    {
+        if(GameManager.configuration.palabrasConArticulo)
+        {
+            switch (SingletonLenguage.GetInstance().GetLenguage())
+            {
+                case SingletonLenguage.Lenguage.CASTELLANO:
+                    if (articulosSpanish != null)//no enrta si los usuarios tienen palabras ya creadas, tienen que crearlas de nuevo
+                    {
+                        if (GameManager.configuration.determinados && articulosSpanish.Count > 0)
+                        {
+                            actualArticulo = articulosSpanish[0];
+                            if (audiosArticulosSpanish.Count > 0)
+                                actualAudioArticulo = audiosArticulosSpanish[0];
+                        }
+                        else if (!GameManager.configuration.determinados && articulosSpanish.Count > 1)
+                        {
+                            actualArticulo = articulosSpanish[1];
+                            if (audiosArticulosSpanish.Count > 1)
+                                actualAudioArticulo = audiosArticulosSpanish[1];
+                        }
+                    }
+                   
+
+                    break;
+                case SingletonLenguage.Lenguage.CATALAN:
+                    if (articulosCatalan != null)
+                    {
+                        if (GameManager.configuration.determinados && articulosCatalan.Count > 0)
+                        {
+                            actualArticulo = articulosCatalan[0];
+                            if (audiosArticulosCatalan.Count > 0)
+                                actualAudioArticulo = audiosArticulosCatalan[0];
+                        }
+                        else if (!GameManager.configuration.determinados && articulosCatalan.Count > 1)
+                        {
+                            actualArticulo = articulosCatalan[1];
+                            if (audiosArticulosCatalan.Count > 1)
+                                actualAudioArticulo = audiosArticulosCatalan[1];
+                        }
+                    }
+                    break;
+                case SingletonLenguage.Lenguage.INGLES:
+                    break;
+                case SingletonLenguage.Lenguage.FRANCES:
+                    break;
+            }
+        }
+    }
+
+    public AudioClip GetAudioArticulo()
+    {
+        string completeRute = "";
+        switch (SingletonLenguage.GetInstance().GetLenguage())
+        {
+            case SingletonLenguage.Lenguage.CASTELLANO:
+                completeRute = "Audios/Castellano/Version1.0/Art/" + actualAudioArticulo + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
+                break;
+            case SingletonLenguage.Lenguage.CATALAN:
+                completeRute = "Audios/Catalan/Version1.0/Art/" + actualAudioArticulo + "_cat"; //LOMISMO
+                break;
+            case SingletonLenguage.Lenguage.INGLES:
+                break;
+            case SingletonLenguage.Lenguage.FRANCES:
+                break;
+        }
+
+        return Resources.Load<AudioClip>(completeRute);
     }
 
 }

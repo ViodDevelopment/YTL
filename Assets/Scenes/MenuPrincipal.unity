@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 0.24313726}
+  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1620,6 +1620,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   button: {fileID: 75025598}
   dropdown: {fileID: 93088721}
 --- !u!1 &118101324
@@ -2845,6 +2851,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190296986}
+  m_CullTransparentMesh: 0
+--- !u!1 &196395409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196395410}
+  - component: {fileID: 196395412}
+  - component: {fileID: 196395411}
+  m_Layer: 0
+  m_Name: ConText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &196395410
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196395409}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.12111618, y: 0.12111618, z: 0.12111618}
+  m_Children: []
+  m_Father: {fileID: 1674082750}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 160, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &196395411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196395409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.5686275, g: 0.1137255, b: 0.57254905, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: f4aca38a2112d8c4c839cc9c336e7ecb, type: 3}
+    m_FontSize: 155
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 2
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
+    m_LineSpacing: 1
+  m_Text: "ART\xCDCULO INDET."
+--- !u!222 &196395412
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 196395409}
   m_CullTransparentMesh: 0
 --- !u!1 &196590518
 GameObject:
@@ -5153,7 +5238,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 0.2784314}
+  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -5883,6 +5968,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 442922406}
   myText: {fileID: 640211036}
 --- !u!1 &446913305
@@ -6529,6 +6620,7 @@ RectTransform:
   - {fileID: 1298848598}
   - {fileID: 1575610816}
   - {fileID: 1298716429}
+  - {fileID: 1674082750}
   m_Father: {fileID: 1332242851}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6940,6 +7032,7 @@ MonoBehaviour:
   buttonsWordsArticle:
   - {fileID: 1575610815}
   - {fileID: 1298716428}
+  - {fileID: 1674082749}
   buttonsVisualHelp:
   - {fileID: 2080538282}
   - {fileID: 1729570003}
@@ -7320,6 +7413,7 @@ MonoBehaviour:
   - {fileID: 1693451028}
   - {fileID: 615432623}
   - {fileID: 1323190910}
+  - {fileID: 196395411}
 --- !u!1 &559031321
 GameObject:
   m_ObjectHideFlags: 0
@@ -13004,6 +13098,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1028053932}
   myText: {fileID: 62811309}
 --- !u!114 &1028053932
@@ -14480,6 +14580,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1151673563}
   myText: {fileID: 177247547}
 --- !u!1 &1152044564
@@ -14982,6 +15088,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1202720647}
   myText: {fileID: 1279479117}
 --- !u!114 &1202720647
@@ -16134,7 +16246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 0.2784314}
+  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -16177,7 +16289,7 @@ GameObject:
   - component: {fileID: 1298716430}
   - component: {fileID: 1298716433}
   m_Layer: 0
-  m_Name: ConBoton
+  m_Name: ConBotonDeteminados
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16241,7 +16353,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1298716431}
   m_OnClick:
     m_PersistentCalls:
@@ -16257,6 +16369,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 1
+      - m_Target: {fileID: 1298716433}
+        m_MethodName: Determinante
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1298716431
@@ -16312,6 +16435,7 @@ MonoBehaviour:
   m_Buttons:
   - {fileID: 1575610815}
   - {fileID: 1298716428}
+  - {fileID: 1674082749}
 --- !u!1 &1298848597
 GameObject:
   m_ObjectHideFlags: 0
@@ -16807,6 +16931,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1332022851}
   myText: {fileID: 1935713922}
 --- !u!1 &1332242850
@@ -18669,7 +18799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 0.3372549}
+  m_Color: {r: 0.5686275, g: 0.1137255, b: 0.57254905, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -18689,7 +18819,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "CON ART\xCDCULO"
+  m_Text: "ART\xCDCULO DET."
 --- !u!222 &1443153186
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19915,6 +20045,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1529150906}
   myText: {fileID: 848273676}
 --- !u!114 &1529150906
@@ -20358,7 +20494,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 1575610818}
   m_OnClick:
     m_PersistentCalls:
@@ -20429,6 +20565,7 @@ MonoBehaviour:
   m_Buttons:
   - {fileID: 1575610815}
   - {fileID: 1298716428}
+  - {fileID: 1674082749}
 --- !u!1 &1580640873
 GameObject:
   m_ObjectHideFlags: 0
@@ -21160,6 +21297,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1623201146}
   myText: {fileID: 662754780}
 --- !u!114 &1623201145
@@ -21628,6 +21771,12 @@ MonoBehaviour:
     silabasActuales: []
     palabraActual: 
     user: 0
+    articulosSpanish: []
+    articulosCatalan: []
+    audiosArticulosSpanish: []
+    audiosArticulosCatalan: []
+    actualArticulo: 
+    actualAudioArticulo: 
   myButton: {fileID: 1656377304}
   myText: {fileID: 834248796}
 --- !u!114 &1656377304
@@ -21948,6 +22097,167 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 28}
   m_Pivot: {x: 0.5, y: 1}
+--- !u!1 &1674082749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1674082750}
+  - component: {fileID: 1674082754}
+  - component: {fileID: 1674082753}
+  - component: {fileID: 1674082752}
+  - component: {fileID: 1674082751}
+  m_Layer: 0
+  m_Name: ConBotonIndeterminados
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1674082750
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674082749}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 196395410}
+  m_Father: {fileID: 495613544}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 342, y: -53}
+  m_SizeDelta: {x: 155, y: 51}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1674082751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674082749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aa630fd896a5fc478639d4b6110edc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Position: 2
+  m_Buttons:
+  - {fileID: 1575610815}
+  - {fileID: 1298716428}
+  - {fileID: 1674082749}
+--- !u!114 &1674082752
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674082749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1674082753}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1674082751}
+        m_MethodName: Articulo
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 1
+      - m_Target: {fileID: 1674082751}
+        m_MethodName: Determinante
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1674082753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674082749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: c3ff7011581390546b702936aaef1d65, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1674082754
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1674082749}
+  m_CullTransparentMesh: 0
 --- !u!1 &1683133887
 GameObject:
   m_ObjectHideFlags: 0
@@ -25533,6 +25843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94e633915774a9e4fac75157b987997d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  actualizacion: 0
 --- !u!4 &1922815472
 Transform:
   m_ObjectHideFlags: 0
@@ -27271,7 +27582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 0.2784314}
+  m_Color: {r: 0.49803925, g: 0.10588236, b: 0.58431375, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

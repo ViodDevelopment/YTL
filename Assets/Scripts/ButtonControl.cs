@@ -42,38 +42,45 @@ public class ButtonControl : MonoBehaviour
 
     public void Ayuda(bool l_Ayuda)
     {
-        GameManager.configurartion.ayudaVisual = l_Ayuda;
+        GameManager.configuration.ayudaVisual = l_Ayuda;
         bd.SaveConfig();
     }
 
     public void Animacion(bool l_Animacion)
     {
-        GameManager.configurartion.refuerzoPositivo = l_Animacion;
+        GameManager.configuration.refuerzoPositivo = l_Animacion;
         bd.SaveConfig();
     }
 
     public void Articulo(bool l_Articulo)
     {
-        GameManager.configurartion.palabrasConArticulo = l_Articulo;
+        GameManager.configuration.palabrasConArticulo = l_Articulo;
+        bd.SaveConfig();
+    }
+
+    public void Determinante(bool _det = true)
+    {
+        GameManager.configuration.determinados = _det;
+        SingletonLenguage.GetInstance().InitalizePalabras();
         bd.SaveConfig();
     }
 
     public void Repeticiones(int l_Repeticiones)
     {
-        GameManager.configurartion.repetitionsOfExercise = l_Repeticiones;
+        GameManager.configuration.repetitionsOfExercise = l_Repeticiones;
         bd.SaveConfig();
     }
 
     public void Pack(int l_Packs)
     {
-        GameManager.configurartion.paquete = l_Packs;
+        GameManager.configuration.paquete = l_Packs;
         bd.SaveConfig();
-        print(GameManager.configurartion.paquete);
+        print(GameManager.configuration.paquete);
     }
 
     public void Dificultad(int Dificultad)
     {
-        GameManager.configurartion.difficult = Dificultad;
+        GameManager.configuration.difficult = Dificultad;
         bd.SaveConfig();
     }
 
@@ -99,7 +106,7 @@ public class ButtonControl : MonoBehaviour
                 SingletonLenguage.GetInstance().SetFont(SingletonLenguage.OurFont.MANUSCRITA);
                 break;
         }
-        GameManager.configurartion.currentFont = SingletonLenguage.GetInstance().GetFont();
+        GameManager.configuration.currentFont = SingletonLenguage.GetInstance().GetFont();
         bd.SaveConfig();
 
     }
@@ -115,7 +122,7 @@ public class ButtonControl : MonoBehaviour
                 SingletonLenguage.GetInstance().SetLenguage(SingletonLenguage.Lenguage.CATALAN);
                 break;
         }
-        GameManager.configurartion.currentLenguaje = SingletonLenguage.GetInstance().GetLenguage();
+        GameManager.configuration.currentLenguaje = SingletonLenguage.GetInstance().GetLenguage();
         
         bd.SaveConfig();
     }

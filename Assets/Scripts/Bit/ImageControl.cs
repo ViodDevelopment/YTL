@@ -53,7 +53,7 @@ public class ImageControl : MonoBehaviour
             int num = 0;
             foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
             {
-                if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
                 {
                     num++;
                 }
@@ -70,14 +70,14 @@ public class ImageControl : MonoBehaviour
         {
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
-                if (p.paquet == GameManager.configurartion.paquete)
+                if (p.paquet == GameManager.configuration.paquete)
                 {
                     if (p.image1 != "")
                     {
                         palabrasDisponibles.Add(p);
                     }
                 }
-                else if (GameManager.configurartion.paquete == -1)
+                else if (GameManager.configuration.paquete == -1)
                 {
                     if (p.image1 != "")
                     {
@@ -90,14 +90,14 @@ public class ImageControl : MonoBehaviour
         {
             foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
             {
-                if (p.paquet == GameManager.configurartion.paquete)
+                if (p.paquet == GameManager.configuration.paquete)
                 {
                     if (p.image1 != "")
                     {
                         palabrasDisponibles.Add(p);
                     }
                 }
-                else if (GameManager.configurartion.paquete == -1)
+                else if (GameManager.configuration.paquete == -1)
                 {
                     if (p.image1 != "")
                     {
@@ -113,12 +113,12 @@ public class ImageControl : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
-                if (p.nameSpanish != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
+                if (p.nameSpanish != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
                     palabrasDisponibles.Add(p);
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
-                if (p.nameCatalan != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
+                if (p.nameCatalan != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
                     palabrasDisponibles.Add(p);
             }
         }
@@ -361,7 +361,7 @@ public class ImageControl : MonoBehaviour
         }
         else if (acabado)
         {
-            if (!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configuration.refuerzoPositivo)
             {
                 m_GMBit.ActivateButtons();
                 acabado = false;
@@ -376,7 +376,7 @@ public class ImageControl : MonoBehaviour
         IEnumerator WaitSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            if (GameManager.configurartion.refuerzoPositivo)
+            if (GameManager.configuration.refuerzoPositivo)
             {
                 GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
                 pinguino.GetComponent<Dumi>().AudioPositivo();
@@ -392,7 +392,7 @@ public class ImageControl : MonoBehaviour
                         int num = 0;
                         foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
                         {
-                            if(p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                            if(p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
                             {
                                 num++;
                             }

@@ -125,7 +125,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
 
         if (acabado)
         {
-            if (!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configuration.refuerzoPositivo)
             {
                 ActivateButtons();
                 acabado = false;
@@ -493,7 +493,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     public void ActivateButtons()
     {
         m_Siguiente.SetActive(true);
-        if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
+        if (m_CurrentNumRep < GameManager.configuration.repetitionsOfExercise)
             m_Repetir.SetActive(true);
     }
 
@@ -552,7 +552,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameManager.configurartion.refuerzoPositivo)
+        if (GameManager.configuration.refuerzoPositivo)
         {
             if (GameObject.Find("Dumi(Clone)") == null)
             {

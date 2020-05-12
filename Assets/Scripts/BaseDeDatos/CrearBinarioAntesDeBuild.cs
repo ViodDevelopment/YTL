@@ -8,11 +8,21 @@ using System.IO;
 
 public class CrearBinarioAntesDeBuild : MonoBehaviour
 {
-    private List<PalabraBD> palabrasPredeterminadass = new List<PalabraBD>();
+    private List<PalabraBD> palabrasPredeterminadas = new List<PalabraBD>();
     private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
+    public bool actualizacion = false;
     // Start is called before the first frame update
     void Start()
     {
+        if (actualizacion)
+        {
+            if (!File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+            {
+                FileStream file = File.Create(Application.streamingAssetsPath + "/Update.dat");
+                file.Close();
+            }
+        }
+            
         ReadCSV();
         ReadCSVFrases();
         //ReadCSVLite();
@@ -38,98 +48,135 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
 
                 if (valor[0] != null && fila >= 0 && valor[0] != "")
                 {
-                    palabrasPredeterminadass.Add(new PalabraBD());
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = palabrasPredeterminadass.Count - 1;
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = valor[0];
+                    palabrasPredeterminadas.Add(new PalabraBD());
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].id = fila;
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].color = valor[0];
                     if (valor[1] != null || valor[1].Length > 0)
                     {
                         var imagenes = valor[1].Split(' ');
 
                         if (imagenes != null)
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = imagenes[0];
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = imagenes[0];
                             if (imagenes.Length > 1)
                             {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = imagenes[1];
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = imagenes[1];
                                 if (imagenes.Length > 2)
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = imagenes[2];
+                                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = imagenes[2];
                                 else
                                 {
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
+                                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
                                 }
                             }
                             else
                             {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
                             }
                         }
                         else
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = "";
                         }
 
                     }
                     else
                     {
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = "";
                     }
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = valor[2];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audio = valor[2];
 
                     if (valor[3] != "" || valor[3].Length > 0)
                     {
                         var pieces = valor[3].Split(' ');
                         for (int i = 0; i < pieces.Length; i++)
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
                         }
-                        if (palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Count == 0)
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(4);
+                        if (palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Count == 0)
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Add(4);
                     }
 
                     if (valor[4] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = int.Parse(valor[4]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].imagePuzzle = int.Parse(valor[4]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 1;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].imagePuzzle = 1;
 
                     if (valor[5] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = int.Parse(valor[5]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultSpanish = int.Parse(valor[5]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultSpanish = 1;
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = valor[6];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = valor[7];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].nameSpanish = valor[6];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].silabasSpanish = valor[7];
 
                     if (valor[8] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = int.Parse(valor[8]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultCatalan = int.Parse(valor[8]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultCatalan = 1;
 
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = valor[9];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = valor[10];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].nameCatalan = valor[9];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].silabasCatalan = valor[10];
                     switch (valor[11])
                     {
                         case "palabra_frase":
                         case "":
                         case "x":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 0;
                             break;
                         case "color":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 2;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 2;
                             break;
                         case "animales":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 3;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 3;
                             break;
                         case "escuela":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 1;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 1;
                             break;
                     }
+
+                    if(valor[12] != null ||valor[12] == "")
+                    {
+                        var articuloCast = valor[12].Split(' ');
+                        foreach (var item in articuloCast)
+                        {
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulosSpanish.Add(item);
+                        }
+                    }
+
+                    if (valor[13] != null || valor[13] == "")
+                    {
+                        var audioArtCast = valor[13].Split(' ');
+                        foreach (var item in audioArtCast)
+                        {
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audiosArticulosSpanish.Add(item);
+                        }
+                    }
+
+                    if (valor[14] != null || valor[14] == "")
+                    {
+                        var articuloCat = valor[14].Split(' ');
+                        foreach (var item in articuloCat)
+                        {
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulosCatalan.Add(item);
+                        }
+                    }
+
+                    if (valor[15] != null || valor[15] == "")
+                    {
+                        var audioArtCat = valor[15].Split(' ');
+                        foreach (var item in audioArtCat)
+                        {
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audiosArticulosCatalan.Add(item);
+                        }
+                    }
+
 
                 }
                 if (valor.Length == 0)
@@ -171,96 +218,96 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                 var valor = data.Split(',');
                 if (valor[2] != null && fila > 2 && valor[2] != "")
                 {
-                    palabrasPredeterminadass.Add(new PalabraBD());
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].id = palabrasPredeterminadass.Count - 1;
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].color = valor[0];
+                    palabrasPredeterminadas.Add(new PalabraBD());
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].id = palabrasPredeterminadas.Count - 1;
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].color = valor[0];
                     if (valor[1] != null || valor[1].Length > 0)
                     {
                         var imagenes = valor[1].Split(' ');
 
                         if (imagenes != null)
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = imagenes[0];
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = imagenes[0];
                             if (imagenes.Length > 1)
                             {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = imagenes[1];
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = imagenes[1];
                                 if (imagenes.Length > 2)
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = imagenes[2];
+                                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = imagenes[2];
                                 else
                                 {
-                                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
+                                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
                                 }
                             }
                             else
                             {
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
-                                palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1;
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1;
                             }
                         }
                         else
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = "";
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = "";
                         }
 
                     }
                     else
                     {
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image1 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image2 = "";
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].image3 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image1 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image2 = "";
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].image3 = "";
                     }
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].audio = valor[2];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audio = valor[2];
 
                     if (valor[3] != "" || valor[3].Length > 0)
                     {
                         var pieces = valor[3].Split(' ');
                         for (int i = 0; i < pieces.Length; i++)
                         {
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Add(int.Parse(pieces[i]));
                         }
-                        if (palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Count == 0)
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].piecesPuzzle.Add(0);
+                        if (palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Count == 0)
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].piecesPuzzle.Add(0);
                     }
 
                     if (valor[4] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = int.Parse(valor[4]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].imagePuzzle = int.Parse(valor[4]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].imagePuzzle = 0;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].imagePuzzle = 0;
 
                     if (valor[5] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = int.Parse(valor[5]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultSpanish = int.Parse(valor[5]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultSpanish = 1;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultSpanish = 1;
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameSpanish = valor[6];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasSpanish = valor[7];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].nameSpanish = valor[6];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].silabasSpanish = valor[7];
 
                     if (valor[8] != "")
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = int.Parse(valor[8]);
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultCatalan = int.Parse(valor[8]);
                     else
-                        palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].dificultCatalan = 1;
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].dificultCatalan = 1;
 
 
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].nameCatalan = valor[9];
-                    palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].silabasCatalan = valor[10];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].nameCatalan = valor[9];
+                    palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].silabasCatalan = valor[10];
                     switch (valor[11])
                     {
                         case "palabra_frase":
                         case "":
                         case "x":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 0;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 0;
                             break;
                         case "color":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 2;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 2;
                             break;
                         case "animales1":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 3;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 3;
                             break;
                         case "escuela":
-                            palabrasPredeterminadass[palabrasPredeterminadass.Count - 1].paquet = 1;
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 1;
                             break;
                     }
 
@@ -387,7 +434,7 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
             FileStream file = File.Create(Application.streamingAssetsPath + "/PalabrasBinario.dat");
 
             DatesToSave datos = new DatesToSave();
-            datos.ChangeDates(palabrasPredeterminadass);
+            datos.ChangeDates(palabrasPredeterminadas);
 
             bf.Serialize(file, datos);
 

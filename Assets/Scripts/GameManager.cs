@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
 
     #region Configuracion
     [HideInInspector]
-    public static Configurartion configurartion;
+    public static Configuration configuration;
     #endregion
 
     #region ScenesIndex
@@ -159,8 +159,8 @@ public class GameManager : MonoBehaviour
 
     public void ChangeConfig()
     {
-        SingletonLenguage.GetInstance().SetLenguage(configurartion.currentLenguaje);
-        SingletonLenguage.GetInstance().SetFont(configurartion.currentFont);
+        SingletonLenguage.GetInstance().SetLenguage(configuration.currentLenguaje);
+        SingletonLenguage.GetInstance().SetFont(configuration.currentFont);
     }
 
 

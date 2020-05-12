@@ -26,22 +26,27 @@ public class SingletonLenguage
         if (_leng != currentLenguage)
         {
             currentLenguage = _leng;
-            foreach (PalabraBD p in GameManager.palabrasDisponibles)
-            {
-                p.SetPalabraActual();
-                p.SeparateSilabas();
-            }
+            InitalizePalabras();
+        }
+    }
 
-            foreach (FraseBD f in GameManager.frasesDisponibles)
-            {
-                f.SeparatePerPalabras();
-            }
+    public void InitalizePalabras()
+    {
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        {
+            p.SetPalabraActual();
+            p.SeparateSilabas();
+        }
 
-            foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
-            {
-                p.SetPalabraActual();
-                p.SeparateSilabas();
-            }
+        foreach (FraseBD f in GameManager.frasesDisponibles)
+        {
+            f.SeparatePerPalabras();
+        }
+
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        {
+            p.SetPalabraActual();
+            p.SeparateSilabas();
         }
     }
 

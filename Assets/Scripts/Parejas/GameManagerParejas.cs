@@ -182,14 +182,14 @@ public class GameManagerParejas : MonoBehaviour
         listOfPalabras.Clear();
         foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("1").currentParejasPaquet)
         {
-            if (p.paquet == GameManager.configurartion.paquete)
+            if (p.paquet == GameManager.configuration.paquete)
             {
                 if (p.image1 != "")
                 {
                     listOfPalabras.Add(p);
                 }
             }
-            else if (GameManager.configurartion.paquete == -1)
+            else if (GameManager.configuration.paquete == -1)
             {
                 if (p.image1 != "")
                 {
@@ -202,12 +202,12 @@ public class GameManagerParejas : MonoBehaviour
         {
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
-                if (p.nameSpanish != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
+                if (p.nameSpanish != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
                     listOfPalabras.Add(p);
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
-                if (p.nameCatalan != "" && (GameManager.configurartion.paquete == 0 || GameManager.configurartion.paquete == -1))
+                if (p.nameCatalan != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
                     listOfPalabras.Add(p);
             }
         }
@@ -241,7 +241,7 @@ public class GameManagerParejas : MonoBehaviour
 
         if (acabado)
         {
-            if (!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configuration.refuerzoPositivo)
             {
                 ActivateButtons();
                 acabado = false;
@@ -846,7 +846,7 @@ public class GameManagerParejas : MonoBehaviour
 
         m_Siguiente.SetActive(true);
 
-        if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
+        if (m_CurrentNumRep < GameManager.configuration.repetitionsOfExercise)
         {
             m_Repetir.SetActive(true);
         }
@@ -857,7 +857,7 @@ public class GameManagerParejas : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameManager.configurartion.refuerzoPositivo)
+        if (GameManager.configuration.refuerzoPositivo)
         {
             if (GameObject.Find("Dumi(Clone)") == null)
             {

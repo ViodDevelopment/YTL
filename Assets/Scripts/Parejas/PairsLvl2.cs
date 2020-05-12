@@ -60,7 +60,7 @@ public class PairsLvl2 : MonoBehaviour
         {
 
             #region animación
-            if (GameManager.configurartion.ayudaVisual)
+            if (GameManager.configuration.ayudaVisual)
             {
                 if (numImage == 0 && firstTime)
                 {
@@ -216,7 +216,7 @@ public class PairsLvl2 : MonoBehaviour
             if (timer > 0)
             {
                 timer -= Time.deltaTime;
-                if (GameManager.configurartion.refuerzoPositivo)
+                if (GameManager.configuration.refuerzoPositivo)
                 {
                     if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {

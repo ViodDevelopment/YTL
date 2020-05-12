@@ -103,7 +103,7 @@ public class GameManagerPuzzle : MonoBehaviour
             int num = 0;
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
-                if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
                 {
                     num++;
                 }
@@ -120,7 +120,7 @@ public class GameManagerPuzzle : MonoBehaviour
         {
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
-                if (p.paquet == GameManager.configurartion.paquete)
+                if (p.paquet == GameManager.configuration.paquete)
                 {
 
                     if (p.imagePuzzle != 0)
@@ -136,7 +136,7 @@ public class GameManagerPuzzle : MonoBehaviour
                         }
                     }
                 }
-                else if (GameManager.configurartion.paquete == -1)
+                else if (GameManager.configuration.paquete == -1)
                 {
                     if (p.imagePuzzle != 0)
                     {
@@ -157,13 +157,13 @@ public class GameManagerPuzzle : MonoBehaviour
         {
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
-                if (p.paquet == GameManager.configurartion.paquete)
+                if (p.paquet == GameManager.configuration.paquete)
                 {
 
                     palabrasDisponibles.Add(p);
 
                 }
-                else if (GameManager.configurartion.paquete == -1)
+                else if (GameManager.configuration.paquete == -1)
                 {
 
                     palabrasDisponibles.Add(p);
@@ -199,7 +199,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (acabado)
         {
-            if (!GameManager.configurartion.refuerzoPositivo)
+            if (!GameManager.configuration.refuerzoPositivo)
             {
                 ActivateButtons();
                 acabado = false;
@@ -699,7 +699,7 @@ public class GameManagerPuzzle : MonoBehaviour
     {
         m_ActivitiesButton.color = new Color(255, 255, 255, 1);
         m_Siguiente.SetActive(true);
-        if (m_CurrentNumRep < GameManager.configurartion.repetitionsOfExercise)
+        if (m_CurrentNumRep < GameManager.configuration.repetitionsOfExercise)
             m_Repetir.SetActive(true);
     }
 
@@ -734,7 +734,7 @@ public class GameManagerPuzzle : MonoBehaviour
     IEnumerator WaitSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        if (GameManager.configurartion.refuerzoPositivo)
+        if (GameManager.configuration.refuerzoPositivo)
         {
             if (GameObject.Find("Dumi(Clone)") == null)
             {
@@ -761,7 +761,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     int num = 0;
                     foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
                     {
-                        if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+                        if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
                         {
                             if (p.imagePuzzle != 0)
                             {

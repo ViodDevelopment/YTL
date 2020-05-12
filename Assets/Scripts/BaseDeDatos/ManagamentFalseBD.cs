@@ -40,8 +40,8 @@ public class ManagamentFalseBD : MonoBehaviour
                 }
                 else if (!File.Exists(nameConfiguration))
                 {
-                    if (GameManager.configurartion == null)
-                        GameManager.configurartion = new Configurartion();
+                    if (GameManager.configuration == null)
+                        GameManager.configuration = new Configuration();
 
                     management.SaveConfig();
                     management.LoadConfig();
@@ -134,10 +134,12 @@ public class ManagamentFalseBD : MonoBehaviour
             management.LoadDates();
         }
 
-        if (File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+        if (GameManager.configuration.actualizacion)
         {
             QuitarPalabrasQueYaNoExisten();
-            File.Delete(Application.streamingAssetsPath + "/Update.dat");
+            Debug.LogWarning("cambiar esto cuando esté todo hecho");
+            GameManager.configuration.actualizacion = false;
+            SaveConfig();
         }
 
         StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
@@ -175,7 +177,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
         //Copy the data to the persistentDataPath where the database API can freely access the file
         File.WriteAllBytes(dbDestination, result);
-        Debug.Log("Copied palabras predeterminadas file");
         if (File.Exists(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat")))
         {
             List<PalabraBD> palabras = new List<PalabraBD>();
@@ -237,7 +238,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
         //Copy the data to the persistentDataPath where the database API can freely access the file
         File.WriteAllBytes(dbDestination, result);
-        Debug.Log("Copied frases predeterminadas file");
         if (File.Exists(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat")))
         {
             List<FraseBD> frases = new List<FraseBD>();
@@ -317,7 +317,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
     public void SaveDates()
     {
-        print("guarda");
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(nameRute);
 
@@ -331,7 +330,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
     public void LoadDates()
     {
-        print("carga");
         List<PalabraBD> palabras = new List<PalabraBD>();
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(nameRute, FileMode.Open);
@@ -459,7 +457,7 @@ public class ManagamentFalseBD : MonoBehaviour
 
         PlayerConfiguration datos = new PlayerConfiguration();
 
-        datos.config = GameManager.configurartion;
+        datos.config = GameManager.configuration;
 
         bf.Serialize(file, datos);
 
@@ -473,7 +471,7 @@ public class ManagamentFalseBD : MonoBehaviour
 
         PlayerConfiguration datos = (PlayerConfiguration)bf.Deserialize(file);
 
-        GameManager.configurartion = datos.config;
+        GameManager.configuration = datos.config;
 
         file.Close();
 
@@ -568,22 +566,22 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void QuitarPalabrasQueYaNoExisten()
     {
-        SingletonLenguage.Lenguage leng = GameManager.configurartion.currentLenguaje;
-        GameManager.configurartion.currentLenguaje = SingletonLenguage.Lenguage.CASTELLANO;
+        SingletonLenguage.Lenguage leng = GameManager.configuration.currentLenguaje;
+        GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CASTELLANO;
         ActualizarPaqueteBit();
         ActualizarPaqeuteParejas("1");
         ActualizarPaqeuteParejas("2");
         ActualizarPaqeuteParejas("3");
         ActualizarPaquetePuzzle("1");
         ActualizarPaquetePuzzle("2");
-        GameManager.configurartion.currentLenguaje = SingletonLenguage.Lenguage.CATALAN;
+        GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CATALAN;
         ActualizarPaqueteBit();
         ActualizarPaqeuteParejas("1");
         ActualizarPaqeuteParejas("2");
         ActualizarPaqeuteParejas("3");
         ActualizarPaquetePuzzle("1");
         ActualizarPaquetePuzzle("2");
-        GameManager.configurartion.currentLenguaje = leng;
+        GameManager.configuration.currentLenguaje = leng;
     }
 
     private void ActualizarPaqueteBit()
@@ -618,7 +616,7 @@ public class ManagamentFalseBD : MonoBehaviour
         int num = 0;
         foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
         {
-            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
             {
                 num++;
             }
@@ -637,7 +635,7 @@ public class ManagamentFalseBD : MonoBehaviour
         int num = 0;
         foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance(_lvl).currentParejasPaquet)
         {
-            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
             {
                 num++;
             }
@@ -681,7 +679,7 @@ public class ManagamentFalseBD : MonoBehaviour
         int num = 0;
         foreach (PalabraBD p in PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet)
         {
-            if (p.paquet == GameManager.configurartion.paquete || GameManager.configurartion.paquete == -1)
+            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
             {
                 num++;
             }
@@ -803,5 +801,5 @@ class PointsOfMinigames
 [Serializable]
 class PlayerConfiguration
 {
-    public Configurartion config;
+    public Configuration config;
 }

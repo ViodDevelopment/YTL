@@ -56,7 +56,7 @@ public class MoveTouchLvl3 : MonoBehaviour
                 if (Word)
                 {
                     transform.parent.SetAsLastSibling();
-                    if (canMove && GameManager.configurartion.ayudaVisual)
+                    if (canMove && GameManager.configuration.ayudaVisual)
                     {
                         currentTime += Time.deltaTime;
                         if (maxTime == 0)
@@ -83,7 +83,7 @@ public class MoveTouchLvl3 : MonoBehaviour
                 }
                 else if (thispiece)
                 {
-                    if (GameManager.configurartion.ayudaVisual)
+                    if (GameManager.configuration.ayudaVisual)
                     {
                         currentTime += Time.deltaTime;
                         if (maxTime == 0)
@@ -231,7 +231,7 @@ public class MoveTouchLvl3 : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                if (GameManager.configurartion.refuerzoPositivo)
+                if (GameManager.configuration.refuerzoPositivo)
                 {
                     if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {

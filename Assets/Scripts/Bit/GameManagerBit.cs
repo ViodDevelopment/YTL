@@ -117,7 +117,7 @@ public class GameManagerBit : MonoBehaviour
     {
         m_ActivitiesButton.color = new Color(255, 255, 255, 1);
         m_Siguiente.SetActive(true);
-        if (m_CurrentNumRep <= GameManager.configurartion.repetitionsOfExercise)
+        if (m_CurrentNumRep <= GameManager.configuration.repetitionsOfExercise)
             m_Repetir.SetActive(true);
     }
 

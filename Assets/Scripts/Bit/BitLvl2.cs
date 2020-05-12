@@ -621,7 +621,7 @@ public class BitLvl2 : MonoBehaviour
         IEnumerator WaitSeconds(float seconds)
         {
             yield return new WaitForSeconds(seconds);
-            if (GameManager.configurartion.refuerzoPositivo)
+            if (GameManager.configuration.refuerzoPositivo)
             {
                 GameObject pinguino = Instantiate(dumi, dumi.transform.position, dumi.transform.rotation);
                 pinguino.GetComponent<Dumi>().AudioPositivo();

@@ -48,7 +48,7 @@ public class CambioConf : MonoBehaviour
         textos[6].text = "Reforç positiu:";
         textos[7].text = "Paquet de vocabulari:";
         textos[8].text = "Sense article";
-        textos[9].text = "Amb article";
+        textos[9].text = "Article det.";
         textos[10].text = "Activat";
         textos[11].text = "Desactivat";
         textos[12].text = "Activat";
@@ -74,6 +74,9 @@ public class CambioConf : MonoBehaviour
         textos[32].text = "Programació:";
         textos[33].text = "Amb el suport i assessorament pedagògic de:";
         textos[34].text = "Amb la col·laboració de:";
+
+        textos[36].text = "Article indet.";
+
     }
 
     private void DoCastellano()
@@ -87,7 +90,7 @@ public class CambioConf : MonoBehaviour
         textos[6].text = "Refuerzo positivo:";
         textos[7].text = "Paquete de vocabulario:";
         textos[8].text = "Sin artículo";
-        textos[9].text = "Con artículo";
+        textos[9].text = "Artículo det.";
         textos[10].text = "Activado";
         textos[11].text = "Desactivado";
         textos[12].text = "Activado";
@@ -113,5 +116,7 @@ public class CambioConf : MonoBehaviour
         textos[32].text = "Programación:";
         textos[33].text = "Con el apoyo y asesoramiento pedagógico de:";
         textos[34].text = "Con la colaboración de:";
+
+        textos[36].text = "Artículo indet.";
     }
 }

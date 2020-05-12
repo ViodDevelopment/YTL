@@ -1,127 +1,127 @@
-,,,,,,,,,,,
-Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dificultad CASTELLANO,Cartellano,Sílabas CASTELANO,Nivel dificultad CATALAN,Catalan,Sílabas CATALAN,PAQUET
-#eb6424,lobo_01 lobo_02 lobo_03,lobo,4 6,2,,lobo,lo-bo,,llop,llop,animales1
-#eb6424,caballo_01 caballo_02 caballo_03,caballo,4 6 9,1,,caballo,ca-ba-llo,,cavall,ca-vall,animales1
-#eb6424,cerdo_01 cerdo_02 cerdo_03,cerdo,4 6,1,,cerdo,cer-do,,porc,porc,animales1
-#eb6424,delfin_01 delfin_02 delfin_03,delfin,4 6,1,,delfín,del-fín,,dofí,do-fí,animales1
-#eb6424,elefante_01 elefante_02 elefante_03,elefante,4 6 9 12,1,,elefante,e-le-fan-te,,elefant,e-le-fant,animales1
-#eb6424,gallina_01 gallina_02 gallina_03,gallina,4,3,,gallina,ga-lli-na,,gallina,ga-lli-na,animales1
-#eb6424,gallo_01 gallo_02 gallo_03,gallo,4 6,1,,gallo,ga-llo,,gall,gall,animales1
-#eb6424,hormiga_01 hormiga_02 hormiga_03,hormiga,4,3,,hormiga,hor-mi-ga,,formiga,for-mi-ga,animales1
-#eb6424,leon_01 leon_02 leon_03,leon,6 9 12,1,,león,le-ón,,lleó,lle-ó,animales1
-#eb6424,mariposa_01 mariposa_02 mariposa_03,mariposa,4 6,1,,mariposa,ma-ri-po-sa,,papallona,pa-pa-llo-na,animales1
-#eb6424,mosca_01 mosca_02 mosca_03,mosca,6 9 12,1,,mosca,mos-ca,,mosca,mos-ca,animales1
-#eb6424,oso_01 oso_02 oso_03,oso,4 6 9,1,,oso,o-so,,ós,ós,animales1
-#eb6424,oveja_01 oveja_02 oveja_03,oveja,4 6 9,1,,oveja,o-ve-ja,,ovella,o-ve-lla,animales1
-#eb6424,pez_01 pez_02 pez_03,pez,4 6,3,,pez,pez,,peix,peix,animales1
-#eb6424,rana_01 rana_02 rana_03,rana,6 9,3,,rana,ra-na,,granota,gra-no-ta,animales1
-#eb6424,vaca_01 vaca_02 vaca_03,vaca,4 6 9 12,1,,vaca,va-ca,,vaca,va-ca,animales1
-#29a3da,azul_01 azul_02 azul_03,azul,,,2,azul,a-zul,2,blau,blau,x color
-#29a3da,amarillo_01 amarillo_02 amarillo_03,amarillo,,,3,amarillo,a-ma-ri-llo,2,groc,groc,x color
-#eb6424,,color,,,2,color,co-lor,2,color,co-lor,
-#5bb030,,come,,,1,come,co-me,3,menja,men-ja,
-#a393c1,,con,,,1,con,con,2,amb,amb,
-#5bb030,,es,,,2,es,es,2,és,és,
-#5bb030,,juega,,,2,juega,jue-ga,3,juga,ju-ga,
-#5bb030,,lava,,,1,lava,la-va,2,renta,ren-ta,
-#eb6424,,platos,,,2,platos,pla-tos,2,plats,plats,
-#29a3da,,redondo_f,,,2,redonda,re-don-da,2,rodona,ro-do-na,
-#29a3da,,rojo_fpl,,,2,rojas,ro-jas,3,vermelles,ver-me-lles,
-#5bb030,,son,,,1,son,son,2,són,són,
-#eb6424,agua_01 agua_02 agua_03,agua,4 6,2,2,agua,a-gua,2,aigua,ai-gua,x
-#eb6424,dientes_01 dientes_02 dientes_03,dientes,4,1,3,dientes,dien-tes,2,dents,dents,x
-#29a3da,asustado_f_01 asustado_f_02,asustado_f,4 6 9,1,3,asustada,a-sus-ta-da,3,espantada,es-pan-ta-da,x
-#29a3da,asustado_01 asustado_02 asustado_03,asustado,4 6,2,3,asustado,a-sus-ta-do,3,espantat,es-pan-tat,x
-#5bb030,bailar_01 bailar_02 bailar_03,bailar,4 6 9,3,3,bailar,bai-lar,2,ballar,ba-llar,x
-#eb6424,boca_01 boca_02 boca_03,boca,4 6 9,1,1,boca,bo-ca,1,boca,bo-ca,x
-#eb6424,cabeza_01 cabeza_02 cabeza_03,cabeza,4,2,3,cabeza,ca-be-za,2,cap,cap,x
-#eb6424,cama_01 cama_02 cama_03,cama,4,3,1,cama,ca-ma,2,llit,llit,x
-#eb6424,camiseta_01 camiseta_02 camiseta_03,camiseta,4,1,3,camiseta,ca-mi-se-ta,3,samarreta,sa-mar-reta,x
-#5bb030,cantar_01 cantar_02 cantar_03,cantar,4 6 9,2,2,cantar,can-tar,2,cantar,can-tar,x
-#eb6424,casa_01 casa_02 casa_03,casa,4,2,1,casa,ca-sa,1,casa,ca-sa,x
-#eb6424,coche_01 coche_02 coche_03,coche,4,2,2,coche,co-che,3,cotxe,cot-xe,x
-#5bb030,correr_01 correr_02 correr_03,correr,4 6 9,2,3,correr,co-rrer,3,córrer,cór-rer,x
-#eb6424,dedo_01 dedo_02 dedo_03,dedo,,,1,dedo,de-do,1,dit,dit,x
-#eb6424,escuela_01 escuela_02 escuela_03,escuela,9 12 16,1,3,escuela,es-cue-la,3,escola,es-co-la,x
-#eb6424,fresas_01 fresas_02 fresas_03,fresas,6 9 12,1,3,fresas,fre-sas,3,maduixes,ma-dui-xes,x
-#eb6424,gafas_01 gafas_02 gafas_03,gafas,4,1,3,gafas,ga-fas,3,ulleres,u-lle-res,x
-#eb6424,gato_01 gato_02 gato_03,gato,4 6,2,1,gato,ga-to,1,gat,gat,x animales1
-#eb6424,goma_01 goma_02 goma_03,goma,4,1,1,goma,go-ma,1,goma,go-ma,x
-#eb6424,huevo_01 huevo_02 huevo_03,huevo,4 6,1,2,huevo,hue-vo,2,ou,ou,x
-#5bb030,jugar_01 jugar_02 jugar_03,jugar,9 12,2,3,jugar,ju-gar,2,jugar,ju-gar,x
-#eb6424,lapiz_01 lapiz_02 lapiz_03,lapiz,,,2,lápiz,lá-piz,3,llapis,lla-pis,x
-#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x
-#eb6424,limon_01 limon_02 limon_03,limon,4 6,2,2,limón,li-món,3,llimona,lli-mo-na,x
-#eb6424,luna_01 luna_02 luna_03,luna,4,3,1,luna,lu-na,2,lluna,llu-na,x
-#eb6424,mano_01 mano_02 mano_03,mano,4,3,1,mano,ma-no,1,mà,mà,x
-#eb6424,mesa_01 mesa_02 mesa_03,mesa,4,2,1,mesa,me-sa,2,taula,tau-la,x
-#eb6424,moto_01 moto_02 moto_03,moto,4,1,1,moto,mo-to,1,moto,mo-to,x
-#eb6424,naranja_01 naranja_02 naranja_03,naranja,4 6,2,3,naranja,na-ran-ja,3,taronja,ta-ron-ja,x
-#eb6424,nariz_01 nariz_02 nariz_03,nariz,4,3,3,nariz,na-riz,2,nas,nas,x
-#29a3da,negro_01 negro_02 negro_03,negro,,,2,negro,ne-gro,3,negre,ne-gre,x
-#eb6424,nina_01 nina_02 nina_03,nina,6 9 12 16,1,2,niña,ni-ña,1,nena,ne-na,x
-#eb6424,nino_01 nino_02 nino_03,nino,6 9,2,2,niño,ni-ño,1,nen,nen,x
-#eb6424,nube_01 nube_02 nube_03,nube,4,3,1,nube,nu-be,3,núvol,nú-vol,x
-#eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 9,1,1,ojo,o-jo,2,ull,ull,x
-#eb6424,pajaro_01 pajaro_02 pajaro_03,pajaro,6 9 12 16,2,3,pájaro,pá-ja-ro,2,ocell,o-cell,x
-#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,x
-#eb6424,pantalon_01 pantalon_02 pantalon_03,pantalon,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x
-#eb6424,papel_01 papel_02 papel_03,papel,4 6,1,2,papel,pa-pel,3,paper,pa-per,x
-#eb6424,pelo_01 pelo_02 pelo_03,pelo,,,1,pelo,pe-lo,2,cabell,ca-bell,x
-#eb6424,pelota_01 pelota_02 pelota_03,pelota,4 6,2,3,pelota,pe-lo-ta,2,pilota,pi-lo-ta,x
-#eb6424,pera_01 pera_02 pera_03,pera,4 6,3,1,pera,pe-ra,1,pera,pe-ra,x
-#eb6424,perro_01 perro_02 perro_03,perro,4 6 9,3,2,perro,pe-rro,1,gos,gos,x animales1
-#eb6424,pie_01 pie_02 pie_03,pie,4 6,2,2,pie,pie,1,peu,peu,x
-#5bb030,pintar_01 pintar_02 pintar_03,pintar,6 9 12,3,2,pintar,pin-tar,2,pintar,pin-tar,x
-#eb6424,piruleta_01 piruleta_02 piruleta_03,piruleta,,,3,piruleta,pi-ru-le-ta,3,piruleta,pi-ru-le-ta,x
-#eb6424,pizarra_01 pizarra_02 pizarra_03,pizarra,4 6,2,3,pizarra,pi-za-rra,3,pissarra,pis-sar-ra,x
-#eb6424,plato_01 plato_02 plato_03,plato,4,1,2,plato,pla-to,2,plat,plat,x
-#29a3da,rojo_01 rojo_02 rojo_03,rojo,,,2,rojo,ro-jo,3,vermell,ver-mell,x color
-#5bb030,saltar_01 saltar_02 saltar_03,saltar,6 9 12,2,2,saltar,sal-tar,2,saltar,sal-tar,x
-#eb6424,silla_01 silla_02 silla_03,silla,4,2,2,silla,si-lla,3,cadira,ca-di-ra,x
-#eb6424,sofa_01 sofa_02 sofa_03,sofa,4 6,2,1,sofá,so-fá,1,sofà,so-fà,x
-#eb6424,sol_01 sol_02 sol_03,sol,4,2,2,sol,sol,1,sol,sol,x
-#eb6424,sopa_01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x
-#eb6424,tele_01 tele_02 tele_03,tele,4 6,1,1,tele,te-le,1,tele,te-le,x
-#eb6424,tren_01 tren_02 tren_03,tren,6 9,1,2,tren,tren,2,tren,tren,x
-#eb6424,vaso_01 vaso_02 vaso_03,vaso,4,1,1,vaso,va-so,2,got,got,x
-#29a3da,verde_01 verde_02 verde_03,verde,,,2,verde,ver-de,2,verd,verd,x color
-#eb6424,vestido_01 vestido_02 vestido_03,vestido,4 6 9,2,3,vestido,ves-ti-do,3,vestit,ves-tit,x
-#eb6424,zapato_01 zapato_02 zapato_03,zapato,4 6,3,3,zapato ,za-pa-to,3,sabata,sa-ba-ta,x
-#eb6424,cena_01 cena_02,cena,4 6 9,2,1,cena,ce-na,2,sopar,so-par,x
-#5bb030,comer_01 comer_02 comer_03,comer,4 6 9,2,2,comer,co-mer,2,menjar,men-jar,x
-#eb6424,comida_01 comida_02,comida,4 6 9,1,2,comida,co-mi-da,2,dinar,di-nar,x
-#29a3da,contento_01 contento_02 contento_03,contento,4 6 9,2,3,contento,con-ten-to,2,content,con-tent,x
-#29a3da,enfadado_01 enfadado_02 enfadado_03,enfadado,4 6 9,3,3,enfadado,en-fa-da-do,3,enfadat,en-fa-dat,x
-#eb6424,,mama,,,1,mamá,ma-má,1,mama,ma-ma,x
-#eb6424,manzana_01 manzana_02 manzana_03,manzana,4 6,1,3,manzana,man-za-na,1,poma,po-ma,x
-#eb6424,muneca_01 muneca_02 muneca_03,muneca,4 6 9,3,3,muñeca,mu-ñe-ca,1,nina,ni-na,x
-#eb6424,,papa,,,1,papá,pa-pá,1,papa,pa-pa,x
-#eb6424,parque_01 parque_02 parque_03,parque,4 6 9,3,2,parque,par-que,2,parc,parc,x
-#29a3da,triste_01 triste_02 triste_03,triste,1 2,1,3,triste,tris-te,2,trist,trist,x
-#5bb030,,canta,,,,canta,,,canta,,
-#5bb030,,baila,,,,baila,,,balla,,
-#29a3da,contento_f_01 contento_f_02 contento_f_03,contento_f,4 6 9,2,3,contenta,con-ten-ta,3,contenta,con-ten-ta,x
-#5bb030,,corre,,,,corre,,,corre,,
-#a393c1,,de,,,,de,,,de,,
-#f3ac06,,el,,,,el,,,el,,
-#29a3da,enfadado_f_01 enfadado_f_02 enfadado_f_03,enfadado_f,4 6 9,3,3,enfadada,en-fa-da-da,3,enfadada,en-fa-da-da,x
-#5bb030,,esta,,,,está,,,està,,
-#f3ac06,,la,,,,la,,,la,,
-#f3ac06,,las,,,,las,,,les,,
-#5bb030,,lleva,,,,lleva,,,porta,,
-#f3ac06,,los,,,,los,,,els,,
-#29a3da,,negra,,,,negra,,,negra,,
-#5bb030,,pinta ,,,,pinta ,,,pinta,,
-#5bb030,,salta,,,,salta,,,salta,,
-#ed9a2f,,se,,,,se,,,es,,
-#5bb030,,tiene,,,,tiene,,,té,,
-#f3ac06,,un,,,,un,,,un,,
-#f3ac06,,una,,,,una,,,una,,
-#f3ac06,,unas,,,,unas,,,unes,,
-#f3ac06,,unos,,,,unos,,,uns,,
-#29a3da,,verde_f,,,,verde,,,verda,,
-#eb6424,,zapatos_pl,,,,zapatos,,,sabates,,
-#29a3da,,verde_f,,,,verde,,,verda,,
-#29a3da,triste_f_01 triste_f_02,triste_f,4 6,2,3,triste,tris-te,3,trista,tris-ta,x
-#29a3da,,amarillo_f,,,,amarilla,,,groga,,
+,,,,,,,,,,,,,,,
+Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dificultad CASTELLANO,Cartellano,Sílabas CASTELANO,Nivel dificultad CATALAN,Catalan,Sílabas CATALAN,PAQUET,ART CAST ,AUD CAST,ART CAT,AUD CAT
+#eb6424,lobo_01 lobo_02 lobo_03,lobo,4 6,2,,lobo,lo-bo,,llop,llop,animales1,el un,el un,el un,el un
+#eb6424,caballo_01 caballo_02 caballo_03,caballo,4 6 9,1,,caballo,ca-ba-llo,,cavall,ca-vall,animales1,el un,el un,el un,el un
+#eb6424,cerdo_01 cerdo_02 cerdo_03,cerdo,4 6,1,,cerdo,cer-do,,porc,porc,animales1,el un,el un,el un,el un
+#eb6424,delfin_01 delfin_02 delfin_03,delfin,4 6,1,,delfín,del-fín,,dofí,do-fí,animales1,el un,el un,el un,el un
+#eb6424,elefante_01 elefante_02 elefante_03,elefante,4 6 9 12,1,,elefante,e-le-fan-te,,elefant,e-le-fant,animales1,el un,el un,l' un,lelefant un
+#eb6424,gallina_01 gallina_02 gallina_03,gallina,4,3,,gallina,ga-lli-na,,gallina,ga-lli-na,animales1,la una,la una,la una,la una
+#eb6424,gallo_01 gallo_02 gallo_03,gallo,4 6,1,,gallo,ga-llo,,gall,gall,animales1,el un,el un,el un,el un
+#eb6424,hormiga_01 hormiga_02 hormiga_03,hormiga,4,3,,hormiga,hor-mi-ga,,formiga,for-mi-ga,animales1,la una,la una,la una,la una
+#eb6424,leon_01 leon_02 leon_03,leon,6 9 12,1,,león,le-ón,,lleó,lle-ó,animales1,el un,el un,el un,el un
+#eb6424,mariposa_01 mariposa_02 mariposa_03,mariposa,4 6,1,,mariposa,ma-ri-po-sa,,papallona,pa-pa-llo-na,animales1,la una,la una,la una,la una
+#eb6424,mosca_01 mosca_02 mosca_03,mosca,6 9 12,1,,mosca,mos-ca,,mosca,mos-ca,animales1,la una,la una,la una,la una
+#eb6424,oso_01 oso_02 oso_03,oso,4 6 9,1,,oso,o-so,,ós,ós,animales1,el un,el un,l' un,losAnim un
+#eb6424,oveja_01 oveja_02 oveja_03,oveja,4 6 9,1,,oveja,o-ve-ja,,ovella,o-ve-lla,animales1,la una,la una,l' una,lovella una
+#eb6424,pez_01 pez_02 pez_03,pez,4 6,3,,pez,pez,,peix,peix,animales1,el un,el un,el un,el un
+#eb6424,rana_01 rana_02 rana_03,rana,6 9,3,,rana,ra-na,,granota,gra-no-ta,animales1,la una,la una,la una,la una
+#eb6424,vaca_01 vaca_02 vaca_03,vaca,4 6 9 12,1,,vaca,va-ca,,vaca,va-ca,animales1,la una,la una,la una,la una
+#29a3da,azul_01 azul_02 azul_03,azul,,,2,azul,a-zul,2,blau,blau,x color,,,,
+#29a3da,amarillo_01 amarillo_02 amarillo_03,amarillo,,,3,amarillo,a-ma-ri-llo,2,groc,groc,x color,,,,
+#eb6424,,color,,,2,color,co-lor,2,color,co-lor,,,,,
+#5bb030,,come,,,1,come,co-me,3,menja,men-ja,,,,,
+#a393c1,,con,,,1,con,con,2,amb,amb,,,,,
+#5bb030,,es,,,2,es,es,2,és,és,,,,,
+#5bb030,,juega,,,2,juega,jue-ga,3,juga,ju-ga,,,,,
+#5bb030,,lava,,,1,lava,la-va,2,renta,ren-ta,,,,,
+#eb6424,,platos,,,2,platos,pla-tos,2,plats,plats,,,,,
+#29a3da,,redondo_f,,,2,redonda,re-don-da,2,rodona,ro-do-na,,,,,
+#29a3da,,rojo_fpl,,,2,rojas,ro-jas,3,vermelles,ver-me-lles,,,,,
+#5bb030,,son,,,1,son,son,2,són,són,,,,,
+#eb6424,agua_01 agua_02 agua_03,agua,4 6,2,2,agua,a-gua,2,aigua,ai-gua,x,el,el,l',laigua
+#eb6424,dientes_01 dientes_02 dientes_03,dientes,4,1,3,dientes,dien-tes,2,dents,dents,x,los unos,los unos,les unes,les unes
+#29a3da,asustado_f_01 asustado_f_02,asustado_f,4 6 9,1,3,asustada,a-sus-ta-da,3,espantada,es-pan-ta-da,x,,,,
+#29a3da,asustado_01 asustado_02 asustado_03,asustado,4 6,2,3,asustado,a-sus-ta-do,3,espantat,es-pan-tat,x,,,,
+#5bb030,bailar_01 bailar_02 bailar_03,bailar,4 6 9,3,3,bailar,bai-lar,2,ballar,ba-llar,x,,,,
+#eb6424,boca_01 boca_02 boca_03,boca,4 6 9,1,1,boca,bo-ca,1,boca,bo-ca,x,la una,la una,la una,la una
+#eb6424,cabeza_01 cabeza_02 cabeza_03,cabeza,4,2,3,cabeza,ca-be-za,2,cap,cap,x,la una,la una,el un,el un
+#eb6424,cama_01 cama_02 cama_03,cama,4,3,1,cama,ca-ma,2,llit,llit,x,la una,la una,el un,el un
+#eb6424,camiseta_01 camiseta_02 camiseta_03,camiseta,4,1,3,camiseta,ca-mi-se-ta,3,samarreta,sa-mar-reta,x,la una,la una,la una,la una
+#5bb030,cantar_01 cantar_02 cantar_03,cantar,4 6 9,2,2,cantar,can-tar,2,cantar,can-tar,x,,,,
+#eb6424,casa_01 casa_02 casa_03,casa,4,2,1,casa,ca-sa,1,casa,ca-sa,x,la una,la una,la una,la una
+#eb6424,coche_01 coche_02 coche_03,coche,4,2,2,coche,co-che,3,cotxe,cot-xe,x,el un,el un,el un,el un
+#5bb030,correr_01 correr_02 correr_03,correr,4 6 9,2,3,correr,co-rrer,3,córrer,cór-rer,x,,,,
+#eb6424,dedo_01 dedo_02 dedo_03,dedo,,,1,dedo,de-do,1,dit,dit,x,el un,el un,el un,el un
+#eb6424,escuela_01 escuela_02 escuela_03,escuela,9 12 16,1,3,escuela,es-cue-la,3,escola,es-co-la,x,la una,la una,l' una,lescola una
+#eb6424,fresas_01 fresas_02 fresas_03,fresas,6 9 12,1,3,fresas,fre-sas,3,maduixes,ma-dui-xes,x,las unas,las unas,les unes,les unes
+#eb6424,gafas_01 gafas_02 gafas_03,gafas,4,1,3,gafas,ga-fas,3,ulleres,u-lle-res,x,las unas,las unas,les unes,les unes
+#eb6424,gato_01 gato_02 gato_03,gato,4 6,2,1,gato,ga-to,1,gat,gat,x animales1,el un,el un,el un,el un
+#eb6424,goma_01 goma_02 goma_03,goma,4,1,1,goma,go-ma,1,goma,go-ma,x,la una,la una,la una,la una
+#eb6424,huevo_01 huevo_02 huevo_03,huevo,4 6,1,2,huevo,hue-vo,2,ou,ou,x,el un,el un,l' un,lou un
+#5bb030,jugar_01 jugar_02 jugar_03,jugar,9 12,2,3,jugar,ju-gar,2,jugar,ju-gar,x,,,,
+#eb6424,lapiz_01 lapiz_02 lapiz_03,lapiz,,,2,lápiz,lá-piz,3,llapis,lla-pis,x,el un,el un,el un,el un
+#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x,la una,la una,la una,la una
+#eb6424,limon_01 limon_02 limon_03,limon,4 6,2,2,limón,li-món,3,llimona,lli-mo-na,x,el un,el un,la una,la una
+#eb6424,luna_01 luna_02 luna_03,luna,4,3,1,luna,lu-na,2,lluna,llu-na,x,la una,la una,la una,la una
+#eb6424,mano_01 mano_02 mano_03,mano,4,3,1,mano,ma-no,1,mà,mà,x,la una,la una,la una,la una
+#eb6424,mesa_01 mesa_02 mesa_03,mesa,4,2,1,mesa,me-sa,2,taula,tau-la,x,la una,la una,la una,la una
+#eb6424,moto_01 moto_02 moto_03,moto,4,1,1,moto,mo-to,1,moto,mo-to,x,la una,la una,la una,la una
+#eb6424,naranja_01 naranja_02 naranja_03,naranja,4 6,2,3,naranja,na-ran-ja,3,taronja,ta-ron-ja,x,la una,la una,la una,la una
+#eb6424,nariz_01 nariz_02 nariz_03,nariz,4,3,3,nariz,na-riz,2,nas,nas,x,la una,la una,el un,el un
+#29a3da,negro_01 negro_02 negro_03,negro,,,2,negro,ne-gro,3,negre,ne-gre,x,,,,
+#eb6424,nina_01 nina_02 nina_03,nina,6 9 12 16,1,2,niña,ni-ña,1,nena,ne-na,x,la una,la una,la una,la una
+#eb6424,nino_01 nino_02 nino_03,nino,6 9,2,2,niño,ni-ño,1,nen,nen,x,el un,el un,el un,el un
+#eb6424,nube_01 nube_02 nube_03,nube,4,3,1,nube,nu-be,3,núvol,nú-vol,x,la una,la una,el un,el un
+#eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 2009,1,1,ojo,o-jo,2,ull,ull,x,el un,el un,el un,el un
+#eb6424,pajaro_01 pajaro_02 pajaro_03,pajaro,6 9 12 16,2,3,pájaro,pá-ja-ro,2,ocell,o-cell,x,el un,el un,l' un,locell un
+#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,x,el un,el un,el un,el un
+#eb6424,pantalon_01 pantalon_02 pantalon_03,pantalon,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x,el un,el un,el un,el un
+#eb6424,papel_01 papel_02 papel_03,papel,4 6,1,2,papel,pa-pel,3,paper,pa-per,x,el un,el un,el un,el un
+#eb6424,pelo_01 pelo_02 pelo_03,pelo,,,1,pelo,pe-lo,2,cabell,ca-bell,x,el,el,el,el
+#eb6424,pelota_01 pelota_02 pelota_03,pelota,4 6,2,3,pelota,pe-lo-ta,2,pilota,pi-lo-ta,x,la una,la una,la una,la una
+#eb6424,pera_01 pera_02 pera_03,pera,4 6,3,1,pera,pe-ra,1,pera,pe-ra,x,la una,la una,la una,la una
+#eb6424,perro_01 perro_02 perro_03,perro,4 6 9,3,2,perro,pe-rro,1,gos,gos,x animales1,el un,el un,el un,el un
+#eb6424,pie_01 pie_02 pie_03,pie,4 6,2,2,pie,pie,1,peu,peu,x,el un,el un,el un,el un
+#5bb030,pintar_01 pintar_02 pintar_03,pintar,6 9 12,3,2,pintar,pin-tar,2,pintar,pin-tar,x,,,,
+#eb6424,piruleta_01 piruleta_02 piruleta_03,piruleta,,,3,piruleta,pi-ru-le-ta,3,piruleta,pi-ru-le-ta,x,la una,la una,la una,la una
+#eb6424,pizarra_01 pizarra_02 pizarra_03,pizarra,4 6,2,3,pizarra,pi-za-rra,3,pissarra,pis-sar-ra,x,la una,la una,la una,la una
+#eb6424,plato_01 plato_02 plato_03,plato,4,1,2,plato,pla-to,2,plat,plat,x,el un,el un,el un,el un
+#29a3da,rojo_01 rojo_02 rojo_03,rojo,,,2,rojo,ro-jo,3,vermell,ver-mell,x color,,,,
+#5bb030,saltar_01 saltar_02 saltar_03,saltar,6 9 12,2,2,saltar,sal-tar,2,saltar,sal-tar,x,,,,
+#eb6424,silla_01 silla_02 silla_03,silla,4,2,2,silla,si-lla,3,cadira,ca-di-ra,x,la una,la una,la una,la una
+#eb6424,sofa_01 sofa_02 sofa_03,sofa,4 6,2,1,sofá,so-fá,1,sofà,so-fà,x,el un,el un,el un,el un
+#eb6424,sol_01 sol_02 sol_03,sol,4,2,2,sol,sol,1,sol,sol,x,el un,el un,el un,el un
+#eb6424,sopa_01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x,la una,la una,la una,la una
+#eb6424,tele_01 tele_02 tele_03,tele,4 6,1,1,tele,te-le,1,tele,te-le,x,la una,la una,la una,la una
+#eb6424,tren_01 tren_02 tren_03,tren,6 9,1,2,tren,tren,2,tren,tren,x,el un,el un,el un,el un
+#eb6424,vaso_01 vaso_02 vaso_03,vaso,4,1,1,vaso,va-so,2,got,got,x,el un,el un,el un,el un
+#29a3da,verde_01 verde_02 verde_03,verde,,,2,verde,ver-de,2,verd,verd,x color,,,,
+#eb6424,vestido_01 vestido_02 vestido_03,vestido,4 6 9,2,3,vestido,ves-ti-do,3,vestit,ves-tit,x,el un,el un,el un,el un
+#eb6424,zapato_01 zapato_02 zapato_03,zapato,4 6,3,3,zapato,za-pa-to,3,sabata,sa-ba-ta,x,el un,el un,la una,la una
+#eb6424,cena_01 cena_02,cena,4 6 9,2,1,cena,ce-na,2,sopar,so-par,x,la una,la una,el un,el un
+#5bb030,comer_01 comer_02 comer_03,comer,4 6 9,2,2,comer,co-mer,2,menjar,men-jar,x,,,,
+#eb6424,comida_01 comida_02,comida,4 6 9,1,2,comida,co-mi-da,2,dinar,di-nar,x,la una,la una,el un,el un
+#29a3da,contento_01 contento_02 contento_03,contento,4 6 9,2,3,contento,con-ten-to,2,content,con-tent,x,,,,
+#29a3da,enfadado_01 enfadado_02 enfadado_03,enfadado,4 6 9,3,3,enfadado,en-fa-da-do,3,enfadat,en-fa-dat,x,,,,
+#eb6424,,mama,,,1,mamá,ma-má,1,mama,ma-ma,x,la una,la una,la una,la una
+#eb6424,manzana_01 manzana_02 manzana_03,manzana,4 6,1,3,manzana,man-za-na,1,poma,po-ma,x,la una,la una,la una,la una
+#eb6424,muneca_01 muneca_02 muneca_03,muneca,4 6 9,3,3,muñeca,mu-ñe-ca,1,nina,ni-na,x,la una,la una,la una,la una
+#eb6424,,papa,,,1,papá,pa-pá,1,papa,pa-pa,x,el un,el un,el un,el un
+#eb6424,parque_01 parque_02 parque_03,parque,4 6 9,3,2,parque,par-que,2,parc,parc,x,el un,el un,el un,el un
+#29a3da,triste_01 triste_02 triste_03,triste,1 2,1,3,triste,tris-te,2,trist,trist,x,,,,
+#5bb030,,canta,,,,canta,,,canta,,,,,,
+#5bb030,,baila,,,,baila,,,balla,,,,,,
+#29a3da,contento_f_01 contento_f_02 contento_f_03,contento_f,4 6 9,2,3,contenta,con-ten-ta,3,contenta,con-ten-ta,x,,,,
+#5bb030,,corre,,,,corre,,,corre,,,,,,
+#a393c1,,de,,,,de,,,de,,,,,,
+#f3ac06,,el,,,,el,,,el,,,,,,
+#29a3da,enfadado_f_01 enfadado_f_02 enfadado_f_03,enfadado_f,4 6 9,3,3,enfadada,en-fa-da-da,3,enfadada,en-fa-da-da,x,,,,
+#5bb030,,esta,,,,está,,,està,,,,,,
+#f3ac06,,la,,,,la,,,la,,,,,,
+#f3ac06,,las,,,,las,,,les,,,,,,
+#5bb030,,lleva,,,,lleva,,,porta,,,,,,
+#f3ac06,,los,,,,los,,,els,,,,,,
+#29a3da,,negra,,,,negra,,,negra,,,,,,
+#5bb030,,pinta,,,,pinta,,,pinta,,,,,,
+#5bb030,,salta,,,,salta,,,salta,,,,,,
+#ed9a2f,,se,,,,se,,,es,,,,,,
+#5bb030,,tiene,,,,tiene,,,té,,,,,,
+#f3ac06,,un,,,,un,,,un,,,,,,
+#f3ac06,,una,,,,una,,,una,,,,,,
+#f3ac06,,unas,,,,unas,,,unes,,,,,,
+#f3ac06,,unos,,,,unos,,,uns,,,,,,
+#29a3da,,verde_f,,,,verde,,,verda,,,,,,
+#eb6424,,zapatos_pl,,,,zapatos,,,sabates,,,,,,
+#29a3da,,verde_f,,,,verde,,,verda,,,,,,
+#29a3da,triste_f_01 triste_f_02,triste_f,4 6,2,3,triste,tris-te,3,trista,tris-ta,x,,,,
+#29a3da,,amarillo_f,,,,amarilla,,,groga,,,,,,

@@ -100,7 +100,7 @@ public class MoveTouchLvl2 : MonoBehaviour
             }
             else if (thispiece)
             {
-                if (GameManager.configurartion.ayudaVisual && !m_PieceLocked && !m_PieceClicked)
+                if (GameManager.configuration.ayudaVisual && !m_PieceLocked && !m_PieceClicked)
                 {
                     currentTime += Time.deltaTime;
                     if (maxTime == 0)
@@ -257,7 +257,7 @@ public class MoveTouchLvl2 : MonoBehaviour
             {
                 timer -= Time.deltaTime;
 
-                if (GameManager.configurartion.refuerzoPositivo)
+                if (GameManager.configuration.refuerzoPositivo)
                 {
                     if (otherObject != null && otherObject.name != this.gameObject.name && !dentro)
                     {

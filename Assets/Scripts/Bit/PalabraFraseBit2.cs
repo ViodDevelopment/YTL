@@ -39,10 +39,10 @@ public class PalabraFraseBit2 : MonoBehaviour
 
     private void DoingCosas()
     {
-        if (GameManager.configurartion.ayudaVisual)
+        if (GameManager.configuration.ayudaVisual)
             timer += Time.deltaTime;
 
-        if (GameManager.configurartion.ayudaVisual)
+        if (GameManager.configuration.ayudaVisual)
         {
             if (!doingAnimation && timer >= Random.Range(0.75f, 2))
             {
