@@ -207,7 +207,7 @@ public class GameManager : MonoBehaviour
     public void SendMail()
     {
         MailMessage mail = new MailMessage();
-        mail.From = new MailAddress("app@yotambienleo.com");
+        mail.From = new MailAddress("vioddevelopment@gmail.com");
         mail.To.Add("app@yotambienleo.com");
         mail.Subject = "Usuario y Correo";
 
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviour
         // you can use others too.
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
-        smtpServer.Credentials = new System.Net.NetworkCredential("app@yotambienleo.com", "y0tbl30@4pp") as ICredentialsByHost;
+        smtpServer.Credentials = new System.Net.NetworkCredential("vioddevelopment@gmail.com", "Viod@1557") as ICredentialsByHost;
         smtpServer.EnableSsl = true;
 
         ServicePointManager.ServerCertificateValidationCallback =
