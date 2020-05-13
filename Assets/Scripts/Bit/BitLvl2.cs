@@ -15,7 +15,6 @@ public class BitLvl2 : MonoBehaviour
     public AnimationClip m_Spin;
     public AnimationClip m_Slide;
     private List<FraseBD> frasesDisponibles = new List<FraseBD>();
-    private int firstImage = 0;
 
     public static int m_Length;
     public Image m_Image;

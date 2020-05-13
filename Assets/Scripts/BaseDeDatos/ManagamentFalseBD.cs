@@ -13,8 +13,6 @@ public class ManagamentFalseBD : MonoBehaviour
     [SerializeField] private List<PalabraBD> palabrasPredeterminadass = new List<PalabraBD>();
     private List<PalabraBD> palabrasUserGuardadas = new List<PalabraBD>();
     [SerializeField] private List<FraseBD> frasesPredeterminadas = new List<FraseBD>();
-    private List<FraseBD> frasesGuardadas = new List<FraseBD>();
-    private List<FraseBD> frasesUserGuardadas = new List<FraseBD>();
     private string nameRute, nameRuteFrase, nameRuteBolasMinijuegos, nameConfiguration, nameRutePassword, nameRuteUser, nameRuteUserFrase;
     private void Awake()
     {
@@ -47,6 +45,11 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.LoadConfig();
                 }
 
+                if (File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+                {
+                    File.Delete(Application.streamingAssetsPath + "/Update.dat");
+                    GameManager.actualizacion = true;
+                }
                 StartCoroutine(CopyPalabrasBinaryToPersistentPath("PalabrasBinario.dat"));
 
                 if (File.Exists(nameRuteBolasMinijuegos))
@@ -93,176 +96,154 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void InitPalabrasPredeterminadas()
     {
-        bool existente = true;
-        if (File.Exists(nameRute))
+
+        if (File.Exists(nameRute) && !GameManager.actualizacion)
         {
             management.LoadDates();
-            #region si no tiene los datos minimos se los creamos
-            List<bool> existe = new List<bool>();
-            if (palabrasPredeterminadass.Count == GameManager.palabrasDisponibles.Count)
-            {
-                foreach (PalabraBD p in palabrasPredeterminadass)
-                {
-                    existe.Add(false);
-                    foreach (PalabraBD w in GameManager.palabrasDisponibles)
-                    {
-                        if (p.palabraActual == w.palabraActual && p.color == w.color && p.image1 == w.image1)
-                        {
-                            existe[existe.Count - 1] = true;
-                            break;
-                        }
-                    }
-                }
-
-
-                foreach (bool b in existe)
-                {
-                    if (!b)
-                    {
-                        existente = false;
-                        break;
-                    }
-                }
-            }
-            else
-                existente = false;
-            #endregion
         }
-        if (!File.Exists(nameRute) || !existente)
+        if (!File.Exists(nameRute) || GameManager.actualizacion)
         {
             management.SaveDates();
             management.LoadDates();
         }
 
-        if (GameManager.configuration.actualizacion)
+        if (GameManager.actualizacion)
         {
             QuitarPalabrasQueYaNoExisten();
             Debug.LogWarning("cambiar esto cuando esté todo hecho");
-            GameManager.configuration.actualizacion = false;
-            SaveConfig();
+
+            GameManager.actualizacion = false;
         }
+
 
         StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
     }
 
     IEnumerator CopyPalabrasBinaryToPersistentPath(string fileName)
     {
-        //Where to copy the db to
-        string dbDestination = Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat");
-
-        //Check if the File do not exist then copy it
-
-        //Where the db file is at
-        string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
-
-        byte[] result;
-
-        //Read the File from streamingAssets. Use WWW for Android
-        if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
+        if (!File.Exists(nameRute) || GameManager.actualizacion)
         {
-            WWW www = new WWW(dbStreamingAsset);
-            yield return www;
-            result = www.bytes;
-        }
-        else
-        {
-            result = File.ReadAllBytes(dbStreamingAsset);
-        }
+            //Where to copy the db to
+            string dbDestination = Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat");
 
-        //Create Directory if it does not exist
-        if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
-        }
+            //Check if the File do not exist then copy it
 
-        //Copy the data to the persistentDataPath where the database API can freely access the file
-        File.WriteAllBytes(dbDestination, result);
-        if (File.Exists(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat")))
-        {
-            List<PalabraBD> palabras = new List<PalabraBD>();
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat"), FileMode.Open);
+            //Where the db file is at
+            string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
 
-            DatesToSave datos = (DatesToSave)bf.Deserialize(file);
-            palabras = datos.GetListOfPalabras();
+            byte[] result;
 
-            file.Close();
-
-
-            palabrasPredeterminadass.Clear();
-            foreach (PalabraBD p in palabras)
+            //Read the File from streamingAssets. Use WWW for Android
+            if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
             {
-                palabrasPredeterminadass.Add(p);
+                WWW www = new WWW(dbStreamingAsset);
+                yield return www;
+                result = www.bytes;
+            }
+            else
+            {
+                result = File.ReadAllBytes(dbStreamingAsset);
             }
 
-        }
+            //Create Directory if it does not exist
+            if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
+            }
+
+            //Copy the data to the persistentDataPath where the database API can freely access the file
+            File.WriteAllBytes(dbDestination, result);
+            if (File.Exists(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat")))
+            {
+                List<PalabraBD> palabras = new List<PalabraBD>();
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "palabrasPredeterminadas.dat"), FileMode.Open);
+
+                DatesToSave datos = (DatesToSave)bf.Deserialize(file);
+                palabras = datos.GetListOfPalabras();
+
+                file.Close();
 
 
-        foreach (PalabraBD p in palabrasPredeterminadass)
-        {
-            p.SeparateSilabas();
-            p.SetPalabraActual();
+                palabrasPredeterminadass.Clear();
+                foreach (PalabraBD p in palabras)
+                {
+                    palabrasPredeterminadass.Add(p);
+                }
+
+            }
+
+
+            foreach (PalabraBD p in palabrasPredeterminadass)
+            {
+                p.SeparateSilabas();
+                p.SetPalabraActual();
+            }
         }
         InitPalabrasPredeterminadas();
     }
 
     IEnumerator CopyFrasesBinaryToPersistentPath(string fileName)
     {
-        //Where to copy the db to
-        string dbDestination = Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat");
-
-        //Check if the File do not exist then copy it
-
-        //Where the db file is at
-        string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
-
-        byte[] result;
-
-        //Read the File from streamingAssets. Use WWW for Android
-        if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
+        if (!File.Exists(nameRuteFrase) || GameManager.actualizacion)
         {
-            WWW www = new WWW(dbStreamingAsset);
-            yield return www;
-            result = www.bytes;
-        }
-        else
-        {
-            result = File.ReadAllBytes(dbStreamingAsset);
-        }
+            //Where to copy the db to
+            string dbDestination = Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat");
 
-        //Create Directory if it does not exist
-        if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
-        {
-            Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
-        }
+            //Check if the File do not exist then copy it
 
-        //Copy the data to the persistentDataPath where the database API can freely access the file
-        File.WriteAllBytes(dbDestination, result);
-        if (File.Exists(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat")))
-        {
-            List<FraseBD> frases = new List<FraseBD>();
-            BinaryFormatter bf = new BinaryFormatter();
-            FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat"), FileMode.Open);
+            //Where the db file is at
+            string dbStreamingAsset = Path.Combine(Application.streamingAssetsPath, fileName);
 
-            DatesFrasesToSave datos = (DatesFrasesToSave)bf.Deserialize(file);
-            frases = datos.GetListOfFrases();
+            byte[] result;
 
-            file.Close();
-
-
-            frasesPredeterminadas.Clear();
-            foreach (FraseBD p in frases)
+            //Read the File from streamingAssets. Use WWW for Android
+            if (dbStreamingAsset.Contains("://") || dbStreamingAsset.Contains(":///"))
             {
-                frasesPredeterminadas.Add(p);
+                WWW www = new WWW(dbStreamingAsset);
+                yield return www;
+                result = www.bytes;
+            }
+            else
+            {
+                result = File.ReadAllBytes(dbStreamingAsset);
             }
 
-        }
+            //Create Directory if it does not exist
+            if (!Directory.Exists(Path.GetDirectoryName(dbDestination)))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(dbDestination));
+            }
+
+            //Copy the data to the persistentDataPath where the database API can freely access the file
+            File.WriteAllBytes(dbDestination, result);
+            if (File.Exists(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat")))
+            {
+                List<FraseBD> frases = new List<FraseBD>();
+                BinaryFormatter bf = new BinaryFormatter();
+                FileStream file = File.Open(Path.Combine(Application.persistentDataPath, "frasesPredeterminadas.dat"), FileMode.Open);
+
+                DatesFrasesToSave datos = (DatesFrasesToSave)bf.Deserialize(file);
+                frases = datos.GetListOfFrases();
+
+                file.Close();
 
 
-        foreach (FraseBD p in frasesPredeterminadas)
-        {
-            p.SeparatePerPalabras();
+                frasesPredeterminadas.Clear();
+                foreach (FraseBD p in frases)
+                {
+                    frasesPredeterminadas.Add(p);
+                }
+
+            }
+
+
+            foreach (FraseBD p in frasesPredeterminadas)
+            {
+                p.SeparatePerPalabras();
+            }
         }
+
         InitFrasesPredeterminadas();
     }
 
@@ -270,45 +251,14 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void InitFrasesPredeterminadas()
     {
-        bool existenteFrase = true;
 
-        if (File.Exists(nameRuteFrase))
+        if (File.Exists(nameRuteFrase) && !GameManager.actualizacion)
         {
             management.LoadDatesFrase();
 
-            if (frasesGuardadas.Count == frasesPredeterminadas.Count)
-            {
-                #region si no tiene los datos minimos se los creamos
-                List<bool> existeFrase = new List<bool>();
-                foreach (FraseBD p in frasesPredeterminadas)
-                {
-                    existeFrase.Add(false);
-                    foreach (FraseBD w in frasesGuardadas)
-                    {
-                        if (p.actualFrase == w.actualFrase && p.sound == w.sound && p.image == w.image && p.fraseCatalan == w.fraseCatalan)
-                        {
-                            existeFrase[existeFrase.Count - 1] = true;
-                            break;
-                        }
-                    }
-                }
 
-
-
-                foreach (bool b in existeFrase)
-                {
-                    if (!b)
-                    {
-                        existenteFrase = false;
-                        break;
-                    }
-                }
-                #endregion
-            }
-            else
-                existenteFrase = false;
         }
-        if (!File.Exists(nameRuteFrase) || !existenteFrase)
+        if (!File.Exists(nameRuteFrase) || GameManager.actualizacion)
         {
             management.SaveDatesFrase();
             management.LoadDatesFrase();
@@ -341,8 +291,12 @@ public class ManagamentFalseBD : MonoBehaviour
 
 
         GameManager.palabrasDisponibles.Clear();
+        palabrasPredeterminadass.Clear();
         foreach (PalabraBD p in palabras)
         {
+            p.SeparateSilabas();
+            p.SetPalabraActual();
+            palabrasPredeterminadass.Add(p);
             GameManager.palabrasDisponibles.Add(p);
         }
 
@@ -374,11 +328,10 @@ public class ManagamentFalseBD : MonoBehaviour
 
 
         GameManager.frasesDisponibles.Clear();
-        frasesGuardadas.Clear();
         foreach (FraseBD p in frases)
         {
+            p.SeparatePerPalabras();
             GameManager.frasesDisponibles.Add(p);
-            frasesGuardadas.Add(p);
         }
     }
 
@@ -566,22 +519,17 @@ public class ManagamentFalseBD : MonoBehaviour
 
     private void QuitarPalabrasQueYaNoExisten()
     {
-        SingletonLenguage.Lenguage leng = GameManager.configuration.currentLenguaje;
+        PaquetePalabrasParejas.GetInstance("1").ReiniciarPaquetes();
+        /*SingletonLenguage.Lenguage leng = GameManager.configuration.currentLenguaje;
         GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CASTELLANO;
         ActualizarPaqueteBit();
-        ActualizarPaqeuteParejas("1");
-        ActualizarPaqeuteParejas("2");
-        ActualizarPaqeuteParejas("3");
         ActualizarPaquetePuzzle("1");
         ActualizarPaquetePuzzle("2");
         GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CATALAN;
         ActualizarPaqueteBit();
-        ActualizarPaqeuteParejas("1");
-        ActualizarPaqeuteParejas("2");
-        ActualizarPaqeuteParejas("3");
         ActualizarPaquetePuzzle("1");
         ActualizarPaquetePuzzle("2");
-        GameManager.configuration.currentLenguaje = leng;
+        GameManager.configuration.currentLenguaje = leng;*/
     }
 
     private void ActualizarPaqueteBit()
@@ -627,24 +575,6 @@ public class ManagamentFalseBD : MonoBehaviour
         }
         PaqueteBit.GetInstance().CrearBinario();
         paraEliminar.Clear();
-    }
-
-    private void ActualizarPaqeuteParejas(string _lvl)
-    {
-        PaquetePalabrasParejas.GetInstance(_lvl).QuitarPalabras("culo");
-        int num = 0;
-        foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance(_lvl).currentParejasPaquet)
-        {
-            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-            {
-                num++;
-            }
-        }
-        if (num == 0)
-        {
-            PaquetePalabrasParejas.GetInstance(_lvl).CrearNuevoPaquete();
-        }
-        PaquetePalabrasParejas.GetInstance(_lvl).CrearBinario();
     }
 
     private void ActualizarPaquetePuzzle(string _lvl)

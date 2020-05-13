@@ -22,7 +22,6 @@ public class PairsLvl2 : MonoBehaviour
     private float timer = 0;
     public int numImage;
     public Text texto;
-    private float originalSizeText = 0.3f;
 
     private RectTransform rectTransform;
     private float currentTimerAnim = 0;

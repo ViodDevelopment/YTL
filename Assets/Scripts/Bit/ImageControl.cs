@@ -15,7 +15,6 @@ public class ImageControl : MonoBehaviour
     private List<Texture2D> m_ImagesPool = new List<Texture2D>();
     private List<Texture2D> m_ImagesPool2 = new List<Texture2D>();
     private List<Texture2D> m_ImagesPool3 = new List<Texture2D>();
-    private string imageAPoner = "";
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public List<Image> marcos = new List<Image>();
     private int firstImage = 0;

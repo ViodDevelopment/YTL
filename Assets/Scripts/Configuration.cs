@@ -15,5 +15,4 @@ public class Configuration
     public int paquete = 0;
     public bool palabrasConArticulo = false;
     public bool determinados = true;
-    public bool actualizacion = true;
 }

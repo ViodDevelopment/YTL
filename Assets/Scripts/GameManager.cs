@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int m_BitLevel = 1;
 
-
+    public static bool actualizacion = false;
     bool camAvaliable;
     WebCamTexture backCam;
     //[HideInInspector]
