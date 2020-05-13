@@ -524,7 +524,7 @@ public class ManagamentFalseBD : MonoBehaviour
     {
         PaquetePalabrasParejas.GetInstance("1").ReiniciarPaquetes();//da igual el numero que se le ponga
         PaqueteBit.GetInstance().ReiniciarPaquetes();
-        //aqui falta el puzzle
+        PaquetePuzzle.GetInstance("1").ReiniciarPaquetes();//da igual el numero que se le ponga
     }
 }
 
