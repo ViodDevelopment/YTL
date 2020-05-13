@@ -97,7 +97,7 @@ public class BitLvl2 : MonoBehaviour
                     m_GMBit.numLastImage = l_Number;
                 }
                 else
-                    Random.InitState(Random.seed + 1);
+                    Random.InitState(Random.Range(-15,15));
             }
         }
 

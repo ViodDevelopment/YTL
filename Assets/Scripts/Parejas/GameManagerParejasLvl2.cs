@@ -278,7 +278,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
             PalabraBD pal = new PalabraBD();
             CopyWords(p, ref pal);
             l_Pairs.Add(pal);
-            Random.InitState(Random.seed + 1);
+            Random.InitState(Random.Range(-15,15));
             switch (Random.Range(0, 3))
             {
                 case 0:
@@ -520,7 +520,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
             if (PaquetePalabrasParejas.GetInstance("2").acabado)
             {
-                Random.InitState(Random.seed + Random.Range(-2, 2));
+                Random.InitState(Random.Range(-15, 15));
                 if (Random.Range(0, 2) == 1)
                 {
                     m_IsHorizontal = true;
@@ -529,7 +529,7 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                 {
                     m_IsHorizontal = false;
                 }
-                Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
+                Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.Range(-15,15));
                 m_NumPairs = Random.Range(3, 5);
             }
             else

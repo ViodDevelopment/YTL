@@ -308,7 +308,7 @@ public class GameManagerParejas : MonoBehaviour
 
         if (PaquetePalabrasParejas.GetInstance("1").acabado)
         {
-            Random.InitState(Random.seed + Random.Range(-2, 2));
+            Random.InitState(Random.Range(-15, 15));
             if (Random.Range(0, 2) == 1)
             {
                 m_IsHorizontal = true;

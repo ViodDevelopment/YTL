@@ -50,7 +50,6 @@ public class GameManager : MonoBehaviour
     public int m_BitLevel = 1;
 
     public static bool actualizacion = false;
-    bool camAvaliable;
     WebCamTexture backCam;
     //[HideInInspector]
     public Texture PhotoFromCam;
@@ -83,7 +82,6 @@ public class GameManager : MonoBehaviour
 
         if (devices.Length == 0)
         {
-            camAvaliable = false;
             return;
         }
 

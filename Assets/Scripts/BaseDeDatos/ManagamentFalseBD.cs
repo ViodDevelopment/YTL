@@ -109,14 +109,17 @@ public class ManagamentFalseBD : MonoBehaviour
 
         if (GameManager.actualizacion)
         {
-            QuitarPalabrasQueYaNoExisten();
+            ActualizarPaquetesAlCompleto();
             Debug.LogWarning("cambiar esto cuando esté todo hecho");
+            StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
 
             GameManager.actualizacion = false;
         }
+        else
+            StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
 
 
-        StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
+
     }
 
     IEnumerator CopyPalabrasBinaryToPersistentPath(string fileName)
@@ -517,114 +520,12 @@ public class ManagamentFalseBD : MonoBehaviour
 
     }
 
-    private void QuitarPalabrasQueYaNoExisten()
+    private void ActualizarPaquetesAlCompleto()
     {
-        PaquetePalabrasParejas.GetInstance("1").ReiniciarPaquetes();
-        /*SingletonLenguage.Lenguage leng = GameManager.configuration.currentLenguaje;
-        GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CASTELLANO;
-        ActualizarPaqueteBit();
-        ActualizarPaquetePuzzle("1");
-        ActualizarPaquetePuzzle("2");
-        GameManager.configuration.currentLenguaje = SingletonLenguage.Lenguage.CATALAN;
-        ActualizarPaqueteBit();
-        ActualizarPaquetePuzzle("1");
-        ActualizarPaquetePuzzle("2");
-        GameManager.configuration.currentLenguaje = leng;*/
+        PaquetePalabrasParejas.GetInstance("1").ReiniciarPaquetes();//da igual el numero que se le ponga
+        PaqueteBit.GetInstance().ReiniciarPaquetes();
+        //aqui falta el puzzle
     }
-
-    private void ActualizarPaqueteBit()
-    {
-        List<int> paraEliminar = new List<int>();//current
-        for (int i = 0; i < PaqueteBit.GetInstance().currentBitPaquet.Count; i++)
-        {
-            if (PaqueteBit.GetInstance().currentBitPaquet[i].nameSpanish == "culo")
-            {
-                paraEliminar.Add(i);
-            }
-        }
-        paraEliminar.Reverse();
-        for (int i = 0; i < paraEliminar.Count; i++)
-        {
-            PaqueteBit.GetInstance().currentBitPaquet.RemoveAt(i);
-        }
-        paraEliminar.Clear();
-        //next
-        for (int i = 0; i < PaqueteBit.GetInstance().nextBitPaquet.Count; i++)
-        {
-            if (PaqueteBit.GetInstance().nextBitPaquet[i].nameSpanish == "culo")
-            {
-                paraEliminar.Add(i);
-            }
-        }
-        paraEliminar.Reverse();
-        for (int i = 0; i < paraEliminar.Count; i++)
-        {
-            PaqueteBit.GetInstance().nextBitPaquet.RemoveAt(i);
-        }
-        int num = 0;
-        foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
-        {
-            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-            {
-                num++;
-            }
-        }
-        if (num == 0)
-        {
-            PaqueteBit.GetInstance().CrearNuevoPaquete();
-        }
-        PaqueteBit.GetInstance().CrearBinario();
-        paraEliminar.Clear();
-    }
-
-    private void ActualizarPaquetePuzzle(string _lvl)
-    {
-        List<int> paraEliminar = new List<int>();//current
-        for (int i = 0; i < PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet.Count; i++)
-        {
-            if (PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet[i].nameSpanish == "culo")
-            {
-                paraEliminar.Add(i);
-            }
-        }
-        paraEliminar.Reverse();
-        for (int i = 0; i < paraEliminar.Count; i++)
-        {
-            PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet.RemoveAt(i);
-        }
-        paraEliminar.Clear();
-        //next
-        for (int i = 0; i < PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets.Count; i++)
-        {
-            if (PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets[i].nameSpanish == "culo")
-            {
-                paraEliminar.Add(i);
-            }
-        }
-        paraEliminar.Reverse();
-        for (int i = 0; i < paraEliminar.Count; i++)
-        {
-            PaquetePuzzle.GetInstance(_lvl).nextPuzzlePaquets.RemoveAt(i);
-        }
-        int num = 0;
-        foreach (PalabraBD p in PaquetePuzzle.GetInstance(_lvl).currentPuzzlePaquet)
-        {
-            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-            {
-                num++;
-            }
-        }
-        if (num == 0)
-        {
-            PaquetePuzzle.GetInstance(_lvl).CrearNuevoPaquete();
-        }
-        PaquetePuzzle.GetInstance(_lvl).CrearBinario();
-        paraEliminar.Clear();
-
-    }
-
-
-
 }
 
 

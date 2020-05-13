@@ -12,8 +12,6 @@ public class PuzzleCutter : MonoBehaviour
     public Texture2D m_ImagePuzzle;
     public GameObject m_Renderer;
     public GameObject m_Canvas;
-
-    int m_Difficulty = 4;
     
     void Start()
     {

@@ -25,7 +25,6 @@ public class SceneManagement : MonoBehaviour
 
     public GameObject[] AllCanvas;
 
-    private int numOfGames = 0;
 
 
     public void InicioScene(bool _DesdeActividad)

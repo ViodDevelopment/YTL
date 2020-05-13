@@ -265,7 +265,7 @@ public class GameManagerPuzzle : MonoBehaviour
             while (same)
             {
                 count++;
-                Random.InitState(Random.seed + Random.Range(-5, 5));
+                Random.InitState(Random.Range(-15, 15));
                 numRandom = Random.Range(0, palabrasDisponibles.Count);
                 if (rand != numRandom)
                     same = false;
@@ -273,7 +273,7 @@ public class GameManagerPuzzle : MonoBehaviour
         }
         CopyWords(palabrasDisponibles[numRandom], ref palabraActual);
 
-        Random.InitState(Random.seed + Random.Range(-5, 5));
+        Random.InitState(Random.Range(-15, 15));
         m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
         HowManyPieces(m_NumPieces);
         RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
@@ -380,7 +380,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 GameObject local = Instantiate(m_ImageTemplate, m_ImagesSpawn.transform);
                 m_Images.Add(local);
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-                Random.InitState(Random.seed + Random.Range(-5, 5));
+                Random.InitState(Random.Range(-15, 15));
                 l_Number = Random.Range(0, m_NumPieces);
 
                 float multiplier = 1;
@@ -545,7 +545,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 GameObject local = Instantiate(m_ImageTemplate, m_ImagesSpawn.transform);
                 m_Images.Add(local);
                 m_Images[m_Images.Count - 1].GetComponent<MoveTouch>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
-                Random.InitState(Random.seed + Random.Range(-5, 5));
+                Random.InitState(Random.Range(-15, 15));
                 l_Number = Random.Range(0, m_NumPieces);
 
                 float multiplier = 1;
