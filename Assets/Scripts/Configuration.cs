@@ -13,6 +13,7 @@ public class Configuration
     public bool refuerzoPositivo = true;
     public int difficult = 1;
     public int paquete = 0;
+    public bool registrado = false;
     public bool palabrasConArticulo = false;
     public bool determinados = true;
 }

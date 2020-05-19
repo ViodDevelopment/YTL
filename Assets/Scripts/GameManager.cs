@@ -5,6 +5,10 @@ using UnityEngine.UI;
 using System.Data;
 using System.IO;
 using Mono.Data.Sqlite;
+using System.Net.Mail;
+using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 public class GameManager : MonoBehaviour
 {
@@ -53,7 +57,11 @@ public class GameManager : MonoBehaviour
     WebCamTexture backCam;
     //[HideInInspector]
     public Texture PhotoFromCam;
-
+ 
+    public string m_UserName = "";
+    public string m_UserMail = "";
+    public bool m_AcceptedPolitics=false;
+    public Button m_Enviar;
     void Awake()
     {
         if (instance == null)
@@ -161,5 +169,62 @@ public class GameManager : MonoBehaviour
         SingletonLenguage.GetInstance().SetFont(configuration.currentFont);
     }
 
+    public void SaveUserName(InputField name)
+    {
+        m_UserName = name.text;
+        CheckOK();
+    }
+
+    public void SaveUserMail(InputField mail)
+    {
+        m_UserMail = mail.text;
+        CheckOK();
+    }
+
+    public void AcceptPolitics()
+    {
+        m_AcceptedPolitics = !m_AcceptedPolitics;
+        CheckOK();
+    }
+
+    public void CheckOK()
+    {
+        if (m_UserName != "" && m_UserMail.Contains("@") && m_AcceptedPolitics)
+            m_Enviar.interactable = true;
+        else if (m_Enviar.IsInteractable())
+            m_Enviar.interactable = false;
+    }
+
+    public void ReadPolitics()
+    {
+        Application.OpenURL("http://yotambienleo.com/politica-de-privacidad/");
+    }
+    public void SendMail()
+    {
+        MailMessage mail = new MailMessage();
+        mail.From = new MailAddress("vioddevelopment@gmail.com");
+        mail.To.Add("app@yotambienleo.com");
+        mail.Subject = "Usuario y Correo";
+
+        
+        mail.Body = "Versión: Android Lite   Name: " + m_UserName + " Correo: " + m_UserMail;
+#if UNITY_IOS
+        mail.Body = "Versión: iOS Lite   Name: " + m_UserName + " Correo: " + m_UserMail;
+#endif
+        // you can use others too.
+        SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
+        smtpServer.Port = 587;
+        smtpServer.Credentials = new System.Net.NetworkCredential("vioddevelopment@gmail.com", "Viod@1557") as ICredentialsByHost;
+        smtpServer.EnableSsl = true;
+
+        ServicePointManager.ServerCertificateValidationCallback =
+        delegate (object s, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslPolicyErrors)
+        { return true; };
+        smtpServer.Send(mail);
+
+
+        configuration.registrado = true;
+        ManagamentFalseBD.management.SaveConfig();
+    }
 
 }
