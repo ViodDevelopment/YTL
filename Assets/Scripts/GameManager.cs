@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     public static List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
     public static List<PalabraBD> palabrasUserDisponibles = new List<PalabraBD>();
     public static List<FraseBD> frasesDisponibles = new List<FraseBD>();
+    public static List<Articulo> totalArticulosDet = new List<Articulo>();
+    public static List<Articulo> totalArticulosInd = new List<Articulo>();
     public static int currentMiniGame = 0;
     public static int fallosPuzzle = 0;
     public static int fallosParejas = 0;
@@ -73,6 +75,10 @@ public class GameManager : MonoBehaviour
                 {
                     m_CurrentToMinigame.Add(0);
                 }
+                if(totalArticulosDet.Count == 0)
+                {
+                    InicialiceArticulosdet();
+                }
             }
         }
         else
@@ -84,7 +90,72 @@ public class GameManager : MonoBehaviour
 
     }
 
-    private void Start()
+    private void InicialiceArticulosdet()
+    {
+        Articulo newArt = new Articulo();
+        newArt.articuloSpanish = "el";
+        newArt.articuloCatalan = "el";
+        newArt.audiosArticuloSpanish = "el";
+        newArt.audiosArticuloCatalan = "el";
+        totalArticulosDet.Add(newArt);
+        Articulo newArt2 = new Articulo();
+        newArt2.articuloSpanish = "la";
+        newArt2.articuloCatalan = "la";
+        newArt2.audiosArticuloSpanish = "la";
+        newArt2.audiosArticuloCatalan = "la";
+        totalArticulosDet.Add(newArt2);
+        Articulo newArt7 = new Articulo();
+        newArt7.articuloSpanish = "";
+        newArt7.articuloCatalan = "l'";
+        newArt7.audiosArticuloSpanish = "";
+        newArt7.audiosArticuloCatalan = "l'";
+        totalArticulosDet.Add(newArt7);
+        Articulo newArt3 = new Articulo();
+        newArt3.articuloSpanish = "los";
+        newArt3.articuloCatalan = "els";
+        newArt3.audiosArticuloSpanish = "los";
+        newArt3.audiosArticuloCatalan = "els";
+        totalArticulosDet.Add(newArt3);
+        Articulo newArt4 = new Articulo();
+        newArt4.articuloSpanish = "las";
+        newArt4.articuloCatalan = "les";
+        newArt4.audiosArticuloSpanish = "las";
+        newArt4.audiosArticuloCatalan = "les";
+        totalArticulosDet.Add(newArt4);
+
+        InicialiceArticulosIndet();
+    }
+
+    private void InicialiceArticulosIndet()
+    {
+        Articulo newArt = new Articulo();
+        newArt.articuloSpanish = "un";
+        newArt.articuloCatalan = "un";
+        newArt.audiosArticuloSpanish = "un";
+        newArt.audiosArticuloCatalan = "un";
+        totalArticulosInd.Add(newArt);
+        Articulo newArt2 = new Articulo();
+        newArt2.articuloSpanish = "una";
+        newArt2.articuloCatalan = "una";
+        newArt2.audiosArticuloSpanish = "una";
+        newArt2.audiosArticuloCatalan = "una";
+        totalArticulosInd.Add(newArt2);
+        Articulo newArt3 = new Articulo();
+        newArt3.articuloSpanish = "unos";
+        newArt3.articuloCatalan = "uns";
+        newArt3.audiosArticuloSpanish = "unos";
+        newArt3.audiosArticuloCatalan = "uns";
+        totalArticulosInd.Add(newArt3);
+        Articulo newArt5 = new Articulo();
+        newArt5.articuloSpanish = "unas";
+        newArt5.articuloCatalan = "unes";
+        newArt5.audiosArticuloSpanish = "unas";
+        newArt5.audiosArticuloCatalan = "unes";
+        totalArticulosInd.Add(newArt5);
+
+    }
+
+        private void Start()
     {
         WebCamDevice[] devices = WebCamTexture.devices;
 

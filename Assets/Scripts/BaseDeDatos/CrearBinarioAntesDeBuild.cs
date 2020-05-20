@@ -22,7 +22,7 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                 file.Close();
             }
         }
-            
+
         ReadCSV();
         ReadCSVFrases();
         //ReadCSVLite();
@@ -141,39 +141,62 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                             break;
                     }
 
-                    if(valor[12] != null ||valor[12] == "")
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Articulo artCast = new Articulo();
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Add(artCast);
+                    }
+
+
+                    if (valor[12] != null || valor[12] == "")
                     {
                         var articuloCast = valor[12].Split(' ');
-                        foreach (var item in articuloCast)
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
                         {
-                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulosSpanish.Add(item);
+                            if (i < articuloCast.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloSpanish = articuloCast[i];
+                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloSpanish);
+                            }
                         }
                     }
 
                     if (valor[13] != null || valor[13] == "")
                     {
                         var audioArtCast = valor[13].Split(' ');
-                        foreach (var item in audioArtCast)
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
                         {
-                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audiosArticulosSpanish.Add(item);
+                            if (i < audioArtCast.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloSpanish = audioArtCast[i];
+                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloSpanish);
+                            }
                         }
                     }
 
                     if (valor[14] != null || valor[14] == "")
                     {
                         var articuloCat = valor[14].Split(' ');
-                        foreach (var item in articuloCat)
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
                         {
-                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulosCatalan.Add(item);
+                            if (i < articuloCat.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloCatalan = articuloCat[i];
+                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloCatalan);
+                            }
                         }
                     }
 
                     if (valor[15] != null || valor[15] == "")
                     {
                         var audioArtCat = valor[15].Split(' ');
-                        foreach (var item in audioArtCat)
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
                         {
-                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].audiosArticulosCatalan.Add(item);
+                            if (i < audioArtCat.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloCatalan = audioArtCat[i];
+                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloCatalan);
+                            }
                         }
                     }
 
@@ -209,7 +232,7 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
             {
                 string data = streamReader.ReadLine();
                 fila++;
-                
+
                 if (data == null || streamReader == null || fila > 999999)
                 {
                     ended = true;

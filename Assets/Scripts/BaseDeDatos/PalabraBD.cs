@@ -25,13 +25,9 @@ public class PalabraBD
     public List<string> silabasActuales = new List<string>();
     public string palabraActual;
     public bool user = false;
-    public List<string> articulosSpanish = new List<string>();
-    public List<string> articulosCatalan = new List<string>();
-    public List<string> audiosArticulosSpanish = new List<string>();
-    public List<string> audiosArticulosCatalan = new List<string>();
+    public List<Articulo> articulos = new List<Articulo>();
     public string actualArticulo;
     public string actualAudioArticulo;
-
     //eliminar en un futuro y cambiarlo por el original
     //
 
@@ -180,43 +176,39 @@ public class PalabraBD
 
     private void SetActualArticulo()
     {
-        if(GameManager.configuration.palabrasConArticulo)
+        if (GameManager.configuration.palabrasConArticulo)
         {
             switch (SingletonLenguage.GetInstance().GetLenguage())
             {
                 case SingletonLenguage.Lenguage.CASTELLANO:
-                    if (articulosSpanish != null)//no enrta si los usuarios tienen palabras ya creadas, tienen que crearlas de nuevo
+                    if (articulos != null)//no enrta si los usuarios tienen palabras ya creadas, tienen que crearlas de nuevo
                     {
-                        if (GameManager.configuration.determinados && articulosSpanish.Count > 0)
+                        if (GameManager.configuration.determinados && articulos.Count > 0)
                         {
-                            actualArticulo = articulosSpanish[0];
-                            if (audiosArticulosSpanish.Count > 0)
-                                actualAudioArticulo = audiosArticulosSpanish[0];
+                            actualArticulo = articulos[0].articuloSpanish;
+                            actualAudioArticulo = articulos[0].audiosArticuloSpanish;
                         }
-                        else if (!GameManager.configuration.determinados && articulosSpanish.Count > 1)
+                        else if (!GameManager.configuration.determinados && articulos.Count > 1)
                         {
-                            actualArticulo = articulosSpanish[1];
-                            if (audiosArticulosSpanish.Count > 1)
-                                actualAudioArticulo = audiosArticulosSpanish[1];
+                            actualArticulo = articulos[1].articuloSpanish;
+                            actualAudioArticulo = articulos[1].audiosArticuloSpanish;
                         }
                     }
-                   
+
 
                     break;
                 case SingletonLenguage.Lenguage.CATALAN:
-                    if (articulosCatalan != null)
+                    if (articulos != null)
                     {
-                        if (GameManager.configuration.determinados && articulosCatalan.Count > 0)
+                        if (GameManager.configuration.determinados && articulos.Count > 0)
                         {
-                            actualArticulo = articulosCatalan[0];
-                            if (audiosArticulosCatalan.Count > 0)
-                                actualAudioArticulo = audiosArticulosCatalan[0];
+                            actualArticulo = articulos[0].articuloCatalan;
+                            actualAudioArticulo = articulos[0].audiosArticuloCatalan;
                         }
-                        else if (!GameManager.configuration.determinados && articulosCatalan.Count > 1)
+                        else if (!GameManager.configuration.determinados && articulos.Count > 1)
                         {
-                            actualArticulo = articulosCatalan[1];
-                            if (audiosArticulosCatalan.Count > 1)
-                                actualAudioArticulo = audiosArticulosCatalan[1];
+                            actualArticulo = articulos[1].articuloCatalan;
+                            actualAudioArticulo = articulos[1].audiosArticuloCatalan;
                         }
                     }
                     break;
@@ -225,6 +217,11 @@ public class PalabraBD
                 case SingletonLenguage.Lenguage.FRANCES:
                     break;
             }
+        }
+        if (actualArticulo != null)
+        {
+            if (actualArticulo.Length > 0)
+                actualArticulo += " ";
         }
     }
 
