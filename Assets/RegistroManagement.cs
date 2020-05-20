@@ -5,7 +5,7 @@ using UnityEngine;
 public class RegistroManagement : MonoBehaviour
 {
     public GameObject Inicio;
-    private void Awake()
+    private void Start()
     {
         if (GameManager.configuration.registrado)
         {

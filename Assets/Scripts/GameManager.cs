@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckOK()
     {
-        if (m_UserName != "" && m_UserMail.Contains("@") && m_AcceptedPolitics)
+        if (m_UserName != "" && m_UserMail.Contains("@") /*&& m_AcceptedPolitics*/)
             m_Enviar.interactable = true;
         else if (m_Enviar.IsInteractable())
             m_Enviar.interactable = false;
@@ -276,12 +276,11 @@ public class GameManager : MonoBehaviour
         mail.From = new MailAddress("vioddevelopment@gmail.com");
         mail.To.Add("app@yotambienleo.com");
         mail.Subject = "Usuario y Correo";
-
         
         mail.Body = "Versión: Android Lite   Name: " + m_UserName + " Correo: " + m_UserMail;
-#if UNITY_IOS
+        #if UNITY_IOS
         mail.Body = "Versión: iOS Lite   Name: " + m_UserName + " Correo: " + m_UserMail;
-#endif
+        #endif
         // you can use others too.
         SmtpClient smtpServer = new SmtpClient("smtp.gmail.com");
         smtpServer.Port = 587;
@@ -294,6 +293,12 @@ public class GameManager : MonoBehaviour
         smtpServer.Send(mail);
 
 
+        configuration.registrado = true;
+        ManagamentFalseBD.management.SaveConfig();
+    }
+
+    public void noGracias()
+    {
         configuration.registrado = true;
         ManagamentFalseBD.management.SaveConfig();
     }
