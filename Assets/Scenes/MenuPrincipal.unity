@@ -24556,6 +24556,41 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1748085818}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SendMail
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1929230395}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_Interactable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6628548188297003514, guid: d88cdec73c2e5d54fb3353b16c3369ac,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -24705,41 +24740,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ReadPolitics
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 1748085818}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SendMail
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Target
-      value: 
-      objectReference: {fileID: 1929230395}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
-      value: SetActive
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
-        type: 3}
-      propertyPath: m_Interactable
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5420363351034272187, guid: d88cdec73c2e5d54fb3353b16c3369ac,
         type: 3}
