@@ -34,6 +34,7 @@ public class SceneManagement : MonoBehaviour
             GameManager.fallosParejas = 0;
             GameManager.fallosPuzzle = 0;
             GameManager.backFromActivity = true;
+           
         }
         else
         {

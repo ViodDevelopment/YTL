@@ -260,7 +260,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckOK()
     {
-        if (m_UserName != "" && m_UserMail.Contains("@") /*&& m_AcceptedPolitics*/)
+        if (m_UserName != "" && m_UserMail.Contains("@") && m_AcceptedPolitics)
             m_Enviar.interactable = true;
         else if (m_Enviar.IsInteractable())
             m_Enviar.interactable = false;

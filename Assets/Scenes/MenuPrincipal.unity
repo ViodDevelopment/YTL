@@ -8930,7 +8930,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &760369407
@@ -19785,7 +19785,7 @@ MonoBehaviour:
   buttonConf: {fileID: 1161951823}
   AccesToConf: {fileID: 2099629308}
   CameraCanvas: {fileID: 659167279}
-  "ConfiguracionPesta\xF1a": {fileID: 0}
+  "ConfiguracionPesta\xF1a": {fileID: 1929230395}
   AllCanvas:
   - {fileID: 1586881057}
   - {fileID: 1929230395}
@@ -24589,7 +24589,7 @@ PrefabInstance:
     - target: {fileID: 6628548188348178263, guid: d88cdec73c2e5d54fb3353b16c3369ac,
         type: 3}
       propertyPath: m_Interactable
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6628548188297003514, guid: d88cdec73c2e5d54fb3353b16c3369ac,
         type: 3}
@@ -24770,6 +24770,86 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188698066361, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 261
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188348178262, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548187760534878, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 126
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188431554414, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188027489871, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -136
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188027489871, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -176
+      objectReference: {fileID: 0}
+    - target: {fileID: 1258188530862824172, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188027489840, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548187869884444, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548187858500795, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 2530
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188314287666, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548187858500796, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188654820063, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1213
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548187980722318, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188654820032, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628548188929443951, guid: d88cdec73c2e5d54fb3353b16c3369ac,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d88cdec73c2e5d54fb3353b16c3369ac, type: 3}

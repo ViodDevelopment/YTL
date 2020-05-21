@@ -32,11 +32,11 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRuteUserFrase = Application.persistentDataPath + "/UserWords/datosFrasesUsuario.dat";
                 DontDestroyOnLoad(gameObject);
 
-                if (File.Exists(nameConfiguration))
+                if (File.Exists(nameConfiguration) && !File.Exists(Application.streamingAssetsPath + "/Update.dat"))
                 {
-                    management.LoadConfig();
+                    management.LoadConfig(); // se reinicia la configuracion actualmente, corregir
                 }
-                else if (!File.Exists(nameConfiguration))
+                else if (!File.Exists(nameConfiguration) || File.Exists(Application.streamingAssetsPath + "/Update.dat"))
                 {
                     if (GameManager.configuration == null)
                         GameManager.configuration = new Configuration();
@@ -428,6 +428,15 @@ public class ManagamentFalseBD : MonoBehaviour
         PlayerConfiguration datos = (PlayerConfiguration)bf.Deserialize(file);
 
         GameManager.configuration = datos.config;
+        /*GameManager.configuration.ayudaVisual = datos.config.ayudaVisual;
+        GameManager.configuration.currentFont = datos.config.currentFont;
+        GameManager.configuration.currentLenguaje= datos.config.currentLenguaje;
+        GameManager.configuration.difficult= datos.config.difficult;
+        GameManager.configuration.palabrasConArticulo= datos.config.palabrasConArticulo;
+        GameManager.configuration.paquete= datos.config.paquete;
+        GameManager.configuration.refuerzoPositivo= datos.config.refuerzoPositivo;
+        GameManager.configuration.repetitionsOfExercise= datos.config.repetitionsOfExercise;*/
+
 
         file.Close();
 

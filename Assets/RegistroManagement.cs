@@ -5,12 +5,15 @@ using UnityEngine;
 public class RegistroManagement : MonoBehaviour
 {
     public GameObject Inicio;
-    private void Start()
+    private void Awake()
     {
-        if (GameManager.configuration.registrado)
+        if (GameManager.configuration != null)
         {
-            this.gameObject.SetActive(false);
-            Inicio.SetActive(true);
+            if (GameManager.configuration.registrado)
+            {
+                this.gameObject.SetActive(false);
+                Inicio.SetActive(true);
+            }
         }
     }
 }
