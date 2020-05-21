@@ -26,7 +26,7 @@ public class PalabraBD
     public string palabraActual;
     public bool user = false;
     public List<Articulo> articulos = new List<Articulo>();
-    public string actualArticulo;
+    public string actualArticulo = "";
     public string actualAudioArticulo;
     //eliminar en un futuro y cambiarlo por el original
     //

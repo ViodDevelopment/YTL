@@ -239,153 +239,153 @@ public class PaqueteBit
 
     public void CrearNuevoPaqueteCat()
     {
-        if (currentBitPaquet.Count == 0)
+
+        if (!acabado)
+            fase++;
+
+        if (dificultad < 3 && (fase == 1 || fase == 4))
         {
-            if (!acabado)
-                fase++;
+            dificultad++;
+            fase = 1;
+        }
+        else if (dificultad == 3 && fase >= 4)
+        {
+            acabado = true;
+        }
 
-            if (dificultad < 3 && (fase == 1 || fase == 4))
+        if (!acabado)
+        {
+            if (fase == 1)
             {
-                dificultad++;
-                fase = 1;
-            }
-            else if (dificultad == 3 && fase >= 4)
-            {
-                acabado = true;
-            }
-            if (!acabado)
-            {
-                if (fase == 1)
+                currentBitPaquet.Clear();
+
+                List<PalabraBD> palabrasTotales = new List<PalabraBD>();
+                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
+                for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                 {
-                    currentBitPaquet.Clear();
-
-                    List<PalabraBD> palabrasTotales = new List<PalabraBD>();
-                    List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
+                    if (GameManager.palabrasDisponibles[i].paquet == 0)
                     {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
+                        if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
                         {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                        }
-                        else
-                        {
-                            if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
-                                palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
-                        }
-
-                    }
-
-                    for (int i = 0; i < palabrasTotales.Count; i++)
-                    {
-
-                        if (i < palabrasTotales.Count / 3)
-                        {
-                            currentBitPaquet.Add(palabrasTotales[i]);
-                            currentBitPaquet.Add(palabrasTotales[i]);
-                            currentBitPaquet.Add(palabrasTotales[i]);
-                        }
-                        else
-                        {
-                            nextBitPaquet.Add(palabrasTotales[i]);
+                            palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
                         }
                     }
-
-                    for (int i = 0; i < palabrasanimales.Count; i++)
+                    else
                     {
-
-                        if (i < palabrasanimales.Count / 3)
-                        {
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                        }
-                        else
-                        {
-                            nextBitPaquet.Add(palabrasanimales[i]);
-                        }
+                        if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
+                            palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
                     }
-
 
                 }
-                else if (fase == 2)
+
+                for (int i = 0; i < palabrasTotales.Count; i++)
                 {
-                    currentBitPaquet.Clear();
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-                    List<PalabraBD> palabrasanimales = new List<PalabraBD>();
 
-
-                    for (int i = 0; i < nextBitPaquet.Count; i++)
+                    if (i < palabrasTotales.Count / 3)
                     {
-                        if (nextBitPaquet[i].paquet == 0)
-                        {
-                            if (nextBitPaquet[i].image1 != "")
-                                palabras.Add(nextBitPaquet[i]);
-                        }
-                        else
-                        {
-                            if (nextBitPaquet[i].image1 != "") //poner dificultad animales
-                                palabrasanimales.Add(nextBitPaquet[i]);
-                        }
+                        currentBitPaquet.Add(palabrasTotales[i]);
+                        currentBitPaquet.Add(palabrasTotales[i]);
+                        currentBitPaquet.Add(palabrasTotales[i]);
                     }
-
-
-
-                    for (int i = 0; i < palabrasanimales.Count; i++)
+                    else
                     {
-                        if (palabrasanimales.Count / 2 > i)
-                        {
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                            currentBitPaquet.Add(palabrasanimales[i]);
-                        }
-                    }
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras.Count / 2 > i)
-                        {
-                            currentBitPaquet.Add(palabras[i]);
-                            currentBitPaquet.Add(palabras[i]);
-                            currentBitPaquet.Add(palabras[i]);
-                        }
-                    }
-
-                    for (int i = 0; i < currentBitPaquet.Count; i += 3)
-                    {
-                        nextBitPaquet.Remove(currentBitPaquet[i]);
+                        nextBitPaquet.Add(palabrasTotales[i]);
                     }
                 }
-                else
-                {
-                    currentBitPaquet.Clear();
-                    foreach (var item in nextBitPaquet)
-                    {
-                        currentBitPaquet.Add(item);
-                        currentBitPaquet.Add(item);
-                        currentBitPaquet.Add(item);
 
+                for (int i = 0; i < palabrasanimales.Count; i++)
+                {
+
+                    if (i < palabrasanimales.Count / 3)
+                    {
+                        currentBitPaquet.Add(palabrasanimales[i]);
+                        currentBitPaquet.Add(palabrasanimales[i]);
+                        currentBitPaquet.Add(palabrasanimales[i]);
                     }
-                    nextBitPaquet.Clear();
+                    else
+                    {
+                        nextBitPaquet.Add(palabrasanimales[i]);
+                    }
+                }
+
+
+            }
+            else if (fase == 2)
+            {
+                currentBitPaquet.Clear();
+                List<PalabraBD> palabras = new List<PalabraBD>();
+                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
+
+                for (int i = 0; i < nextBitPaquet.Count; i++)
+                {
+                    if (nextBitPaquet[i].paquet == 0)
+                    {
+                        if (nextBitPaquet[i].dificultCatalan == dificultad && nextBitPaquet[i].image1 != "")
+                            palabras.Add(nextBitPaquet[i]);
+                    }
+                    else
+                    {
+                        if (nextBitPaquet[i].image1 != "") //poner dificultad animales
+                            palabrasanimales.Add(nextBitPaquet[i]);
+                    }
+                }
+
+
+
+                for (int i = 0; i < palabrasanimales.Count; i++)
+                {
+                    if (palabrasanimales.Count / 2 > i)
+                    {
+                        currentBitPaquet.Add(palabrasanimales[i]);
+                        currentBitPaquet.Add(palabrasanimales[i]);
+                        currentBitPaquet.Add(palabrasanimales[i]);
+                    }
+                }
+
+                for (int i = 0; i < palabras.Count; i++)
+                {
+                    if (palabras.Count / 2 > i)
+                    {
+                        currentBitPaquet.Add(palabras[i]);
+                        currentBitPaquet.Add(palabras[i]);
+                        currentBitPaquet.Add(palabras[i]);
+                    }
+                }
+
+                for (int i = 0; i < currentBitPaquet.Count; i += 3)
+                {
+                    nextBitPaquet.Remove(currentBitPaquet[i]);
                 }
             }
             else
             {
-                foreach (var item in GameManager.palabrasDisponibles)
+                currentBitPaquet.Clear();
+                foreach (var item in nextBitPaquet)
                 {
-                    if (item.image1 != "")
-                    {
-                        currentBitPaquet.Add(item);
-                        currentBitPaquet.Add(item);
-                        currentBitPaquet.Add(item);
-                    }
+                    currentBitPaquet.Add(item);
+                    currentBitPaquet.Add(item);
+                    currentBitPaquet.Add(item);
+
+                }
+                nextBitPaquet.Clear();
+            }
+        }
+        else
+        {
+            foreach (var item in GameManager.palabrasDisponibles)
+            {
+                if (item.image1 != "")
+                {
+                    currentBitPaquet.Add(item);
+                    currentBitPaquet.Add(item);
+                    currentBitPaquet.Add(item);
                 }
             }
-
         }
+
+
     }
 
     public void CrearBinario()

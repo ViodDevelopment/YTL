@@ -32,11 +32,23 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRuteUserFrase = Application.persistentDataPath + "/UserWords/datosFrasesUsuario.dat";
                 DontDestroyOnLoad(gameObject);
 
-                if (File.Exists(nameConfiguration) && !File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+                if (!File.Exists(Application.persistentDataPath + "/Update.dat"))
+                {
+                    FileStream file = File.Create(Application.persistentDataPath + "/Update.dat");
+                    file.Close();
+                    GameManager.actualizacion = true;
+                }
+                else
+                {
+                    GameManager.actualizacion = false;
+                }
+
+
+                if (File.Exists(nameConfiguration) && !GameManager.actualizacion)
                 {
                     management.LoadConfig(); // se reinicia la configuracion actualmente, corregir
                 }
-                else if (!File.Exists(nameConfiguration) || File.Exists(Application.streamingAssetsPath + "/Update.dat"))
+                else if (!File.Exists(nameConfiguration) || GameManager.actualizacion)
                 {
                     if (GameManager.configuration == null)
                         GameManager.configuration = new Configuration();
@@ -45,11 +57,6 @@ public class ManagamentFalseBD : MonoBehaviour
                     management.LoadConfig();
                 }
 
-                if (File.Exists(Application.streamingAssetsPath + "/Update.dat"))
-                {
-                    File.Delete(Application.streamingAssetsPath + "/Update.dat");
-                    GameManager.actualizacion = true;
-                }
                 StartCoroutine(CopyPalabrasBinaryToPersistentPath("PalabrasBinario.dat"));
 
                 if (File.Exists(nameRuteBolasMinijuegos))
@@ -110,7 +117,6 @@ public class ManagamentFalseBD : MonoBehaviour
         if (GameManager.actualizacion)
         {
             ActualizarPaquetesAlCompleto();
-            Debug.LogWarning("cambiar esto cuando esté todo hecho");
             StartCoroutine(CopyFrasesBinaryToPersistentPath("FrasesBinario.dat"));
 
             GameManager.actualizacion = false;
@@ -427,6 +433,7 @@ public class ManagamentFalseBD : MonoBehaviour
 
         PlayerConfiguration datos = (PlayerConfiguration)bf.Deserialize(file);
 
+        GameManager.configuration = new Configuration();
         GameManager.configuration = datos.config;
         /*GameManager.configuration.ayudaVisual = datos.config.ayudaVisual;
         GameManager.configuration.currentFont = datos.config.currentFont;

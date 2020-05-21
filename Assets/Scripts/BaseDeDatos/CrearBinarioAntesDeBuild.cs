@@ -141,64 +141,6 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                             break;
                     }
 
-                    for (int i = 0; i < 2; i++)
-                    {
-                        Articulo artCast = new Articulo();
-                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Add(artCast);
-                    }
-
-
-                    if (valor[12] != null || valor[12] == "")
-                    {
-                        var articuloCast = valor[12].Split(' ');
-                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
-                        {
-                            if (i < articuloCast.Length)
-                            {
-                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloSpanish = articuloCast[i];
-                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloSpanish);
-                            }
-                        }
-                    }
-
-                    if (valor[13] != null || valor[13] == "")
-                    {
-                        var audioArtCast = valor[13].Split(' ');
-                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
-                        {
-                            if (i < audioArtCast.Length)
-                            {
-                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloSpanish = audioArtCast[i];
-                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloSpanish);
-                            }
-                        }
-                    }
-
-                    if (valor[14] != null || valor[14] == "")
-                    {
-                        var articuloCat = valor[14].Split(' ');
-                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
-                        {
-                            if (i < articuloCat.Length)
-                            {
-                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloCatalan = articuloCat[i];
-                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloCatalan);
-                            }
-                        }
-                    }
-
-                    if (valor[15] != null || valor[15] == "")
-                    {
-                        var audioArtCat = valor[15].Split(' ');
-                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
-                        {
-                            if (i < audioArtCat.Length)
-                            {
-                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloCatalan = audioArtCat[i];
-                                print(palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloCatalan);
-                            }
-                        }
-                    }
 
 
                 }
@@ -333,6 +275,62 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                             palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 1;
                             break;
                     }
+
+                    for (int i = 0; i < 2; i++)
+                    {
+                        Articulo artCast = new Articulo();
+                        palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Add(artCast);
+                    }
+
+
+                    if (valor[12] != null || valor[12] != "")
+                    {
+                        var articuloCast = valor[12].Split(' ');
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
+                        {
+                            if (i < articuloCast.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloSpanish = articuloCast[i];
+                            }
+                        }
+                    }
+
+                    if (valor[13] != null || valor[13] != "")
+                    {
+                        var audioArtCast = valor[13].Split(' ');
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
+                        {
+                            if (i < audioArtCast.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloSpanish = audioArtCast[i];
+                            }
+                        }
+                    }
+
+                    if (valor[14] != null || valor[14] != "")
+                    {
+                        var articuloCat = valor[14].Split(' ');
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
+                        {
+                            if (i < articuloCat.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].articuloCatalan = articuloCat[i];
+                            }
+                        }
+                    }
+
+                    if (valor[15] != null || valor[15] != "")
+                    {
+                        var audioArtCat = valor[15].Split(' ');
+                        for (int i = 0; i < palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos.Count; i++)
+                        {
+                            if (i < audioArtCat.Length)
+                            {
+                                palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].articulos[i].audiosArticuloCatalan = audioArtCat[i];
+                            }
+                        }
+                    }
+
 
 
                 }

@@ -38,16 +38,15 @@ public class ImageControl : MonoBehaviour
     private PalabraBD currentPalabra;
     void Awake()
     {
-       
         RecolectPalabrasBD();
         m_Length = palabrasDisponibles.Count;
         m_GMBit = GameObject.FindGameObjectWithTag("Bit").GetComponent<GameManagerBit>();
     }
 
-    private void RecolectPalabrasBD()
+    private void RecolectPalabrasBD(bool enter = false)
     {
         palabrasDisponibles.Clear();
-        if(!PaqueteBit.GetInstance().acabado)
+        if (!PaqueteBit.GetInstance().acabado)
         {
             int num = 0;
             foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
@@ -121,6 +120,7 @@ public class ImageControl : MonoBehaviour
                     palabrasDisponibles.Add(p);
             }
         }
+
     }
 
     void Start()
@@ -155,13 +155,14 @@ public class ImageControl : MonoBehaviour
         {
             int random = Random.Range(0, m_Length);
             l_Number = random;
-            if(l_Number >= lenghtPaquet)
+            if (l_Number >= lenghtPaquet)
             {
-                if(GameManagerBit.user)
+                if (GameManagerBit.user)
                 {
                     l_Number = Random.Range(0, lenghtPaquet);
                     GameManagerBit.user = false;
-                }else
+                }
+                else
                 {
                     GameManagerBit.user = true;
                 }
@@ -173,11 +174,11 @@ public class ImageControl : MonoBehaviour
             m_GMBit.numLastImage = l_Number;
 
         }
-        currentPalabra = palabrasDisponibles[l_Number];
+        if (palabrasDisponibles.Count > l_Number)
+            currentPalabra = palabrasDisponibles[l_Number];
         if (lastPalabra != null)
             currentPalabra = lastPalabra;
         m_GMBit.lastPalabra = currentPalabra;
-
 
         Color color = new Color();
         foreach (Image i in marcos)
@@ -242,14 +243,25 @@ public class ImageControl : MonoBehaviour
                 break;
         }
 
-        if(currentPalabra.user)
+        if (currentPalabra.user)
         {
             m_Image.sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(m_Image.sprite);
             m_ImageBehind.sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(m_ImageBehind.sprite);
         }
 
+        if (!GameManager.configuration.palabrasConArticulo)
+            m_Text.text = currentPalabra.palabraActual;
+        else
+        {
+            if (currentPalabra.actualArticulo != null && currentPalabra.actualArticulo != "")
+            {
+                m_Text.text = currentPalabra.actualArticulo + currentPalabra.palabraActual;
+            }
+            else
+                m_Text.text = currentPalabra.palabraActual;
 
-        m_Text.text = currentPalabra.palabraActual;
+        }
+
         SearchFont();
         if (m_Text.text.Length < 7)
         {
@@ -260,21 +272,39 @@ public class ImageControl : MonoBehaviour
         }
         else if (m_Text.text.Length < 8)
         {
-            m_Text.fontSize -= 20;
+            m_Text.fontSize -= 25;
             if (m_Text.font == ourFonts[2])
                 m_Text.fontSize -= 10;
         }
         else if (m_Text.text.Length < 9)
         {
-            m_Text.fontSize -= 30;
+            m_Text.fontSize -= 35;
             if (m_Text.font == ourFonts[2])
                 m_Text.fontSize -= 15;
         }
-        else
+        else if (m_Text.text.Length < 10)
         {
             m_Text.fontSize -= 40;
             if (m_Text.font == ourFonts[2])
                 m_Text.fontSize -= 20;
+        }
+        else if (m_Text.text.Length < 11)
+        {
+            m_Text.fontSize -= 50;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 25;
+        }
+        else if (m_Text.text.Length < 12)
+        {
+            m_Text.fontSize -= 55;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 30;
+        }
+        else
+        {
+            m_Text.fontSize -= 65;
+            if (m_Text.font == ourFonts[2])
+                m_Text.fontSize -= 40;
         }
         //m_Text.fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(m_Text.text);
         m_AS.clip = currentPalabra.GetAudioClip(currentPalabra.audio);
@@ -391,7 +421,7 @@ public class ImageControl : MonoBehaviour
                         int num = 0;
                         foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
                         {
-                            if(p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
+                            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
                             {
                                 num++;
                             }
