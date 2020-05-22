@@ -62,7 +62,7 @@ public class GameManager : MonoBehaviour
  
     public string m_UserName = "";
     public string m_UserMail = "";
-    public bool m_AcceptedPolitics=false;
+    public bool m_AcceptedPolitics = false;
     public Button m_Enviar;
     void Awake()
     {
@@ -226,7 +226,7 @@ public class GameManager : MonoBehaviour
         Word = input.text;
     }
 
-    public bool InputRecieved()
+    public static bool InputRecieved()
     {
         if (Input.GetMouseButton(0) || (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began))
             return true;

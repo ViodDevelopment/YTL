@@ -225,7 +225,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             StartCoroutine(WaitSeconds(1.5f));
 
         }
-        else if (m_ImageZoom.activeSelf && GameManager.GetInstance().InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
+        else if (m_ImageZoom.activeSelf && GameManager.InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
         {
 
             m_ImageZoom.SetActive(false);

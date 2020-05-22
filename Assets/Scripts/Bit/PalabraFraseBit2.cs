@@ -68,12 +68,11 @@ public class PalabraFraseBit2 : MonoBehaviour
             }
         }
 
-        if (GameManager.GetInstance().InputRecieved())
+        if (GameManager.InputRecieved())
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
             {
-                bool clicada = false;
                 for (int i = 0; i < Input.touchCount; i++)
                 {
                     positionInput = Camera.main.ScreenToWorldPoint(Input.GetTouch(i).position);
@@ -84,7 +83,6 @@ public class PalabraFraseBit2 : MonoBehaviour
                         timer = 0;
                         bit.currentWord++;
                         doingAnimation = false;
-                        clicada = true;
                         break;
                     }
 

@@ -15,7 +15,7 @@ public class WordTap : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.GetInstance().InputRecieved())
+        if (GameManager.InputRecieved())
         {
             if (Input.touchCount > 0)
             {

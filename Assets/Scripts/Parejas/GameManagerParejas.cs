@@ -228,7 +228,7 @@ public class GameManagerParejas : MonoBehaviour
             StartCoroutine(WaitSeconds(1.5f));
 
         }
-        else if (m_ImageZoom.activeSelf && GameManager.GetInstance().InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
+        else if (m_ImageZoom.activeSelf && GameManager.InputRecieved() && !m_RealCanvas.GetComponent<Animation>().isPlaying && m_CurrentPairs != m_NumPairs)
         {
 
             m_ImageZoom.SetActive(false);
@@ -918,6 +918,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().nombre = l_Pairs[l_RandomPair].palabraActual;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if(l_Pairs[l_RandomPair].actualArticulo != null)
+                             horizontal2Arriba[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
@@ -946,6 +952,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                horizontal2Arriba[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
+
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
                         horizontal2Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -972,6 +984,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
+                                horizontal3Arriba[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -996,6 +1014,12 @@ public class GameManagerParejas : MonoBehaviour
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                horizontal3Arriba[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
 
                         horizontal3Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
@@ -1025,6 +1049,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
+                                horizontal4Arriba[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -1048,6 +1078,12 @@ public class GameManagerParejas : MonoBehaviour
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                horizontal4Arriba[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
 
                         horizontal4Arriba[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
@@ -1082,6 +1118,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical2Left[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
+                                vertical2Left[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         vertical2Left[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         vertical2Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -1105,6 +1147,12 @@ public class GameManagerParejas : MonoBehaviour
                         vertical2Left[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
                         vertical2Left[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                vertical2Left[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
 
                         vertical2Left[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
@@ -1133,6 +1181,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
+                                vertical3Left[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         vertical3Left[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -1156,6 +1210,12 @@ public class GameManagerParejas : MonoBehaviour
                         vertical3Left[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                vertical3Left[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
 
                         vertical3Left[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
@@ -1184,6 +1244,12 @@ public class GameManagerParejas : MonoBehaviour
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().color = l_Pairs[l_RandomPair].color;
 
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
+                                vertical4Left[_currentPair].GetComponent<Pairs>().articulo = l_Pairs[l_RandomPair].actualArticulo;
+                        }
+
                         vertical4Left[_currentPair].GetComponent<Pairs>().audioClip = l_Pairs[l_RandomPair].GetAudioClip(l_Pairs[l_RandomPair].audio);
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().managerOnlyOne = gameObject.GetComponent<OnlyOneManager>();
@@ -1207,6 +1273,12 @@ public class GameManagerParejas : MonoBehaviour
                         vertical4Left[_currentPair].GetComponent<Pairs>().nombre = l_SecondPair[l_RandomPair].palabraActual;
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().color = l_SecondPair[l_RandomPair].color;
+
+                        if (GameManager.configuration.palabrasConArticulo)
+                        {
+                            if (l_SecondPair[l_RandomPair].actualArticulo != null)
+                                vertical4Left[_currentPair].GetComponent<Pairs>().articulo = l_SecondPair[l_RandomPair].actualArticulo;
+                        }
 
                         vertical4Left[_currentPair].GetComponent<Pairs>().audioClip = l_SecondPair[l_RandomPair].GetAudioClip(l_SecondPair[l_RandomPair].audio);
 
@@ -1417,6 +1489,15 @@ public class GameManagerParejas : MonoBehaviour
         palabra.user = toCopy.user;
         palabra.nameSpanish = toCopy.nameSpanish;
         palabra.nameCatalan = toCopy.nameCatalan;
+        foreach (var item in toCopy.articulos)
+        {
+            palabra.articulos.Add(new Articulo());
+            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+        }
+        palabra.SetPalabraActual();
     }
 
 

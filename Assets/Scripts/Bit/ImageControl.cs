@@ -320,7 +320,7 @@ public class ImageControl : MonoBehaviour
             m_ImageBehind.transform.parent.transform.SetSiblingIndex(1);
             AnimFinCaida = true;
         }
-        if (GameManager.GetInstance().InputRecieved() && m_0touch)
+        if (GameManager.InputRecieved() && m_0touch)
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
@@ -355,7 +355,7 @@ public class ImageControl : MonoBehaviour
 
         }
 
-        else if (GameManager.GetInstance().InputRecieved() && m_1touch && !m_Animation.isPlaying && !m_AS.isPlaying)
+        else if (GameManager.InputRecieved() && m_1touch && !m_Animation.isPlaying && !m_AS.isPlaying)
         {
             Vector3 positionInput;
             if (Input.touchCount > 0)
