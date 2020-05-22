@@ -192,7 +192,7 @@ public class ImageControl : MonoBehaviour
         Random.InitState(Random.seed + Random.Range(-5, 5));
         firstImage = Random.Range(0, 3);
 
-        switch (firstImage)
+        switch(firstImage)
         {
             case 0:
                 m_Image.sprite = currentPalabra.GetSprite(currentPalabra.image1);

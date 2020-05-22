@@ -254,166 +254,162 @@ public class PaquetePuzzle
 
     public void CrearNuevoPaqueteCat()
     {
-        if (currentPuzzlePaquet.Count == 0)
+        if (!acabado)
+            fase++;
+
+        if (dificultad < 3 && (fase == 1 || fase == 4))
         {
-            if (!acabado)
-                fase++;
+            dificultad++;
+            fase = 1;
+        }
+        else if (dificultad == 3 && fase >= 4)
+        {
+            acabado = true;
+        }
 
-            if (dificultad < 3 && (fase == 1 || fase == 4))
+        if (!acabado)
+        {
+            if (fase == 1)
             {
-                dificultad++;
-                fase = 1;
-            }
-            else if (dificultad == 3 && fase >= 4)
-            {
-                acabado = true;
-            }
+                currentPuzzlePaquet.Clear();
 
-            if (!acabado)
-            {
-                if (fase == 1)
+                List<PalabraBD> palabrasTotales = new List<PalabraBD>();
+                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
+                for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                 {
-                    currentPuzzlePaquet.Clear();
-
-                    List<PalabraBD> palabrasTotales = new List<PalabraBD>();
-                    List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
+                    if (GameManager.palabrasDisponibles[i].paquet == 0)
                     {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
+                        if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
                         {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                for (int j = 0; j < GameManager.palabrasDisponibles[i].piecesPuzzle.Count; j++)
-                                {
-                                    if (GameManager.palabrasDisponibles[i].piecesPuzzle[j] >= 4)
-                                    {
-                                        palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
-                                        break;
-
-                                    }
-                                }
-                            }
-                        }
-                        else
-                        {
-
                             for (int j = 0; j < GameManager.palabrasDisponibles[i].piecesPuzzle.Count; j++)
                             {
                                 if (GameManager.palabrasDisponibles[i].piecesPuzzle[j] >= 4)
                                 {
-                                    palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
+                                    palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
                                     break;
 
                                 }
                             }
-
                         }
                     }
-
-                    for (int i = 0; i < palabrasTotales.Count; i++)
+                    else
                     {
 
-                        if (i < palabrasTotales.Count / 3)
+                        for (int j = 0; j < GameManager.palabrasDisponibles[i].piecesPuzzle.Count; j++)
                         {
-                            currentPuzzlePaquet.Add(palabrasTotales[i]);
-                            currentPuzzlePaquet.Add(palabrasTotales[i]);
-                        }
-                        else
-                        {
-                            nextPuzzlePaquets.Add(palabrasTotales[i]);
-                        }
-                    }
+                            if (GameManager.palabrasDisponibles[i].piecesPuzzle[j] >= 4)
+                            {
+                                palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
+                                break;
 
-                    for (int i = 0; i < palabrasanimales.Count; i++)
-                    {
-
-                        if (i < palabrasanimales.Count / 3)
-                        {
-                            currentPuzzlePaquet.Add(palabrasanimales[i]);
-                            currentPuzzlePaquet.Add(palabrasanimales[i]);
+                            }
                         }
-                        else
-                        {
-                            nextPuzzlePaquets.Add(palabrasanimales[i]);
-                        }
-                    }
 
-
-                }
-                else if (fase == 2)
-                {
-                    currentPuzzlePaquet.Clear();
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-                    List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-
-                    for (int i = 0; i < nextPuzzlePaquets.Count; i++)
-                    {
-                        if (nextPuzzlePaquets[i].paquet == 0)
-                        {
-                            if (nextPuzzlePaquets[i].dificultCatalan == dificultad && nextPuzzlePaquets[i].image1 != "")
-                                palabras.Add(nextPuzzlePaquets[i]);
-                        }
-                        else
-                        {
-                            if (nextPuzzlePaquets[i].image1 != "") //poner dificultad animales
-                                palabrasanimales.Add(nextPuzzlePaquets[i]);
-                        }
-                    }
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras.Count / 2 > i)
-                        {
-                            currentPuzzlePaquet.Add(palabras[i]);
-                            currentPuzzlePaquet.Add(palabras[i]);
-                        }
-                    }
-
-                    for (int i = 0; i < palabrasanimales.Count; i++)
-                    {
-                        if (palabrasanimales.Count / 2 > i)
-                        {
-                            currentPuzzlePaquet.Add(palabrasanimales[i]);
-                            currentPuzzlePaquet.Add(palabrasanimales[i]);
-                        }
-                    }
-
-                    for (int i = 0; i < currentPuzzlePaquet.Count; i += 2)
-                    {
-                        nextPuzzlePaquets.Remove(currentPuzzlePaquet[i]);
                     }
                 }
-                else
-                {
-                    currentPuzzlePaquet.Clear();
-                    foreach (var item in nextPuzzlePaquets)
-                    {
-                        currentPuzzlePaquet.Add(item);
-                        currentPuzzlePaquet.Add(item);
 
+                for (int i = 0; i < palabrasTotales.Count; i++)
+                {
+
+                    if (i < palabrasTotales.Count / 3)
+                    {
+                        currentPuzzlePaquet.Add(palabrasTotales[i]);
+                        currentPuzzlePaquet.Add(palabrasTotales[i]);
                     }
-                    nextPuzzlePaquets.Clear();
+                    else
+                    {
+                        nextPuzzlePaquets.Add(palabrasTotales[i]);
+                    }
+                }
+
+                for (int i = 0; i < palabrasanimales.Count; i++)
+                {
+
+                    if (i < palabrasanimales.Count / 3)
+                    {
+                        currentPuzzlePaquet.Add(palabrasanimales[i]);
+                        currentPuzzlePaquet.Add(palabrasanimales[i]);
+                    }
+                    else
+                    {
+                        nextPuzzlePaquets.Add(palabrasanimales[i]);
+                    }
+                }
+
+
+            }
+            else if (fase == 2)
+            {
+                currentPuzzlePaquet.Clear();
+                List<PalabraBD> palabras = new List<PalabraBD>();
+                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
+                for (int i = 0; i < nextPuzzlePaquets.Count; i++)
+                {
+                    if (nextPuzzlePaquets[i].paquet == 0)
+                    {
+                        if (nextPuzzlePaquets[i].dificultCatalan == dificultad && nextPuzzlePaquets[i].image1 != "")
+                            palabras.Add(nextPuzzlePaquets[i]);
+                    }
+                    else
+                    {
+                        if (nextPuzzlePaquets[i].image1 != "") //poner dificultad animales
+                            palabrasanimales.Add(nextPuzzlePaquets[i]);
+                    }
+                }
+
+                for (int i = 0; i < palabras.Count; i++)
+                {
+                    if (palabras.Count / 2 > i)
+                    {
+                        currentPuzzlePaquet.Add(palabras[i]);
+                        currentPuzzlePaquet.Add(palabras[i]);
+                    }
+                }
+
+                for (int i = 0; i < palabrasanimales.Count; i++)
+                {
+                    if (palabrasanimales.Count / 2 > i)
+                    {
+                        currentPuzzlePaquet.Add(palabrasanimales[i]);
+                        currentPuzzlePaquet.Add(palabrasanimales[i]);
+                    }
+                }
+
+                for (int i = 0; i < currentPuzzlePaquet.Count; i += 2)
+                {
+                    nextPuzzlePaquets.Remove(currentPuzzlePaquet[i]);
                 }
             }
             else
             {
-                foreach (var item in GameManager.palabrasDisponibles)
+                currentPuzzlePaquet.Clear();
+                foreach (var item in nextPuzzlePaquets)
                 {
-                    if (item.image1 != "")
+                    currentPuzzlePaquet.Add(item);
+                    currentPuzzlePaquet.Add(item);
+
+                }
+                nextPuzzlePaquets.Clear();
+            }
+        }
+        else
+        {
+            foreach (var item in GameManager.palabrasDisponibles)
+            {
+                if (item.image1 != "")
+                {
+                    for (int j = 0; j < item.piecesPuzzle.Count; j++)
                     {
-                        for (int j = 0; j < item.piecesPuzzle.Count; j++)
+                        if (item.piecesPuzzle[j] >= 4)
                         {
-                            if (item.piecesPuzzle[j] >= 4)
-                            {
-                                currentPuzzlePaquet.Add(item);
-                                currentPuzzlePaquet.Add(item);
-                                break;
-                            }
+                            currentPuzzlePaquet.Add(item);
+                            currentPuzzlePaquet.Add(item);
+                            break;
                         }
                     }
                 }
-
             }
         }
     }

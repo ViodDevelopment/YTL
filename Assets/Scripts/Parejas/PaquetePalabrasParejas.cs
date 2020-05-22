@@ -389,6 +389,7 @@ public class PaquetePalabrasParejas
                         pantallasHorizontal.Add(false);
                     }
                 }
+
                 if (fase != l_firstFase)
                 {
                     if (l_firstDif == dificultad)
@@ -399,6 +400,7 @@ public class PaquetePalabrasParejas
                         }
                     }
                     currentParejasPaquet.Clear();
+
 
                     if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
                     {
@@ -437,7 +439,6 @@ public class PaquetePalabrasParejas
                         }
 
 
-
                         for (int i = 0; i < palabrasanimales.Count; i++)
                         {
 
@@ -452,6 +453,7 @@ public class PaquetePalabrasParejas
 
 
                         }
+
                     }
                     else
                     {
@@ -463,7 +465,7 @@ public class PaquetePalabrasParejas
                             {
                                 if (nextPalabrasPaquet[i].paquet == 0)
                                 {
-                                    if (nextPalabrasPaquet[i].image1 != "")
+                                    if (nextPalabrasPaquet[i].dificultCatalan == dificultad && nextPalabrasPaquet[i].image1 != "")
                                         palabras.Add(nextPalabrasPaquet[i]);
                                 }
                                 else
@@ -473,7 +475,6 @@ public class PaquetePalabrasParejas
                                 }
                             }
 
-
                             for (int i = 0; i < palabras.Count / 2; i++)
                             {
                                 currentParejasPaquet.Add(palabras[i]);
@@ -482,6 +483,7 @@ public class PaquetePalabrasParejas
                             {
                                 currentParejasPaquet.Add(palabrasanimales[i]);
                             }
+
 
                             foreach (PalabraBD item in currentParejasPaquet)
                             {
