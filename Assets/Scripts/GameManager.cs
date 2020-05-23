@@ -230,5 +230,11 @@ public class GameManager : MonoBehaviour
         ManagamentFalseBD.management.SaveConfig();
     }
 
+    public void noGracias()
+    {
+        configurartion.registrado = true;
+        ManagamentFalseBD.management.SaveConfig();
+    }
+
 
 }
