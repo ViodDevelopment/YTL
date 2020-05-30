@@ -67,6 +67,9 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
     {
         InitBaseOfDates();
 
+        if (GameManager.configuration.yaPuzzleCompletado)
+            m_Scener.InicioScene(true);
+
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
         {
@@ -436,6 +439,13 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
         {
             GameManager.ResetPointToMinigame(8);
             m_Canvas.SetActive(false);
+            GameManager.configuration.yaPuzzleCompletado = true;
+            /*
+             -SaveConfig
+             -LoadConfig (en Start)
+             -
+             -
+             -*/
             m_Scener.NextGame();
         }
         else

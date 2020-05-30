@@ -43,6 +43,13 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
         else
             numMiniGame = 7;
         //GameManager.Instance.m_CurrentToMinigame;
+
+        if ( levelBit==2 && GameManager.configuration.listosBitCompletado)
+            m_Scener.InicioScene(true);
+
+        else if (GameManager.configuration.listosPuzzleCompletado)
+            m_Scener.InicioScene(true);
+
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         m_Alea = Random.Range(0, BitLvl2.m_Length);
 
@@ -113,6 +120,18 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
         {
             m_CurrentBit.GetComponent<BitLvl2>().DeletingAllBit();
             GameManager.ResetPointToMinigame(numMiniGame);
+            if(levelBit==2)
+                GameManager.configuration.listosBitCompletado = true;
+            
+            else
+            GameManager.configuration.yaBitCompletado = true;
+
+            /*
+             -SaveConfig
+             -LoadConfig (en Start)
+             - 
+             -
+             -*/
             m_Scener.NextGame();
         }
         else

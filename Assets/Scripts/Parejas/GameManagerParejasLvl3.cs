@@ -122,6 +122,10 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     void Start()
     {
         InitPaabras();
+
+        if (GameManager.configuration.yaParejasCompletado)
+            m_Scener.InicioScene(true);
+
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
         if (PaquetePalabrasParejas.GetInstance("3").acabado)
             m_NumPairs = Random.Range(3, 5);
@@ -483,6 +487,14 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         if (GameManager.m_CurrentToMinigame[6] >= GameManager.GetInstance().m_NeededToMinigame)
         {
             GameManager.ResetPointToMinigame(6);
+
+            GameManager.configuration.yaParejasCompletado = true;
+            /*
+             -SaveConfig
+             -LoadConfig (en Start)
+             -
+             -
+             -*/
             m_Scener.NextGame();
         }
         else

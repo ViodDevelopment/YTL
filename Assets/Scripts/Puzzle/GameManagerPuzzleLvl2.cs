@@ -65,6 +65,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         lvl = "2";
         InitBaseOfDates();
 
+        if (GameManager.configuration.listosPuzzleCompletado)
+            m_Scener.InicioScene(true);
 
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
@@ -664,6 +666,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         {
             GameManager.ResetPointToMinigame(5);
             m_Canvas.SetActive(false);
+            GameManager.configuration.listosPuzzleCompletado = true;
+            /*
+             -SaveConfig
+             -LoadConfig (en Start)
+             -
+             -
+             -*/
             m_Scener.NextGame();
         }
         else

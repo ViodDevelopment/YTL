@@ -12,7 +12,36 @@ public class StartConfiguración : MonoBehaviour
     public List<GameObject> buttonsVisualHelp = new List<GameObject>();
     public List<GameObject> buttonsPositiveRefuerzo = new List<GameObject>();
     public List<GameObject> buttonsPaquet = new List<GameObject>();
+
     private bool done = false;
+
+    public Button listosParejasBoton;
+    public Button listosBitBoton;
+    public Button listosPuzzlesBoton;
+    public Button yaParejasBoton;
+    public Button yaBitBoton;
+    public Button yaPuzzleBoton;
+
+    private void Awake()
+    {
+        if (GameManager.configuration.listosBitCompletado)
+            listosBitBoton.interactable = false;
+
+        if (GameManager.configuration.listosPuzzleCompletado)
+            listosPuzzlesBoton.interactable = false;
+
+        if (GameManager.configuration.listosParejasCompletado)
+            listosParejasBoton.interactable = false;
+
+        if (GameManager.configuration.yaBitCompletado)
+            yaBitBoton.interactable = false;
+
+        if (GameManager.configuration.yaParejasCompletado)
+            yaParejasBoton.interactable = false;
+
+        if (GameManager.configuration.yaPuzzleCompletado)
+            yaPuzzleBoton.interactable = false;
+    }
 
     private void Update()
     {

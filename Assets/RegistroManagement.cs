@@ -18,5 +18,7 @@ public class RegistroManagement : MonoBehaviour
                 Inicio.SetActive(true);
             }
         }
+
+
     }
 }

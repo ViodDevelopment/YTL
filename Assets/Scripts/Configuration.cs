@@ -16,4 +16,11 @@ public class Configuration
     public bool registrado = false;
     public bool palabrasConArticulo = false;
     public bool determinados = true;
+    public bool listosParejasCompletado = false;
+    public bool listosPuzzleCompletado = false;
+    public bool listosBitCompletado = false;
+    public bool yaParejasCompletado = false;
+    public bool yaPuzzleCompletado = false;
+    public bool yaBitCompletado = false;
+
 }

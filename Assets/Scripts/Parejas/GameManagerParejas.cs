@@ -123,6 +123,9 @@ public class GameManagerParejas : MonoBehaviour
     void Start()
     {
         InitPaabras();
+
+       
+
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
         if (PaquetePalabrasParejas.GetInstance("1").acabado)
             m_NumPairs = Random.Range(3, 5);
