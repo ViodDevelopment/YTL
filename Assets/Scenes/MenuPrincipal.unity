@@ -6516,6 +6516,8 @@ MonoBehaviour:
   yaParejasBoton: {fileID: 1951917140}
   yaBitBoton: {fileID: 1224913063}
   yaPuzzleBoton: {fileID: 1902350369}
+  listosBoton: {fileID: 1338743485}
+  yaBoton: {fileID: 1001110915}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

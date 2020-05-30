@@ -22,6 +22,9 @@ public class StartConfiguración : MonoBehaviour
     public Button yaBitBoton;
     public Button yaPuzzleBoton;
 
+    public Button listosBoton;
+    public Button yaBoton;
+
     private void Awake()
     {
         if (GameManager.configuration.listosBitCompletado)
@@ -41,6 +44,12 @@ public class StartConfiguración : MonoBehaviour
 
         if (GameManager.configuration.yaPuzzleCompletado)
             yaPuzzleBoton.interactable = false;
+
+        if (GameManager.configuration.yaPuzzleCompletado && GameManager.configuration.yaParejasCompletado && GameManager.configuration.yaBitCompletado)
+            yaBoton.interactable = false;
+
+        if (GameManager.configuration.listosBitCompletado && GameManager.configuration.listosParejasCompletado && GameManager.configuration.listosPuzzleCompletado)
+            listosBoton.interactable = false;
     }
 
     private void Update()
