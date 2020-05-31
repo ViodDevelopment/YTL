@@ -534,6 +534,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             GameManager.ResetPointToMinigame(6);
 
             GameManager.configuration.yaParejasCompletado = true;
+            ManagamentFalseBD.management.SaveConfig();
             /*
              -SaveConfig
              -LoadConfig (en Start)
