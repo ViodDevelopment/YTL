@@ -197,20 +197,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 }
             }
         }
-        //ACTIVAR CUANDO VAYAN LAS PIEZAS DEL PUZZLE CON LAS PALABRAS DEL USUARIO
-        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
-        {
-            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-            {
-                if (p.nameSpanish != "")
-                    palabrasDisponibles.Add(p);
-            }
-            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
-            {
-                if (p.nameCatalan != "")
-                    palabrasDisponibles.Add(p);
-            }
-        }
+
     }
 
     private void Update()

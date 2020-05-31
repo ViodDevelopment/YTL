@@ -531,13 +531,15 @@ public class GameManagerParejasLvl2 : MonoBehaviour
         {
             GameManager.ResetPointToMinigame(3);
             GameManager.configuration.listosParejasCompletado = true;
+            ManagamentFalseBD.management.SaveConfig();
+
             /*
              -SaveConfig
              -LoadConfig (en Start)
              -
              -
              -*/
-            
+
             m_Scener.NextGame();
         }
         else

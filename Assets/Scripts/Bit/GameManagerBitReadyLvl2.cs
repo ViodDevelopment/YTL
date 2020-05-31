@@ -126,6 +126,8 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
             else
             GameManager.configuration.yaBitCompletado = true;
 
+            ManagamentFalseBD.management.SaveConfig();
+
             /*
              -SaveConfig
              -LoadConfig (en Start)
