@@ -104,7 +104,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     private void InitBaseOfDates()
     {
         palabrasDisponibles.Clear();
-        if (!PaquetePuzzle.GetInstance(lvl).acabado)
+        /*if (!PaquetePuzzle.GetInstance(lvl).acabado)
         {
             int num = 0;
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
@@ -121,10 +121,10 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     PaquetePuzzle.GetInstance(lvl).acabado = true;
                 PaquetePuzzle.GetInstance(lvl).CrearBinario();
             }
-        }
+        }*/
 
-        if (PaquetePuzzle.GetInstance(lvl).acabado)
-        {
+        //if (PaquetePuzzle.GetInstance(lvl).acabado)
+        //{
             int lvl1 = 0;
             int lvl2 = 0;
             int lvl3 = 0;
@@ -184,9 +184,9 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     }
                 }
             }
-        }
+        //}
 
-        else
+       /* else
         {
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
@@ -203,7 +203,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
                 }
             }
-        }
+        }*/
     }
 
     private void Update()

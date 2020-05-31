@@ -25,32 +25,6 @@ public class StartConfiguración : MonoBehaviour
     public Button listosBoton;
     public Button yaBoton;
 
-    private void Awake()
-    {
-        if (GameManager.configuration.listosBitCompletado)
-            listosBitBoton.interactable = false;
-
-        if (GameManager.configuration.listosPuzzleCompletado)
-            listosPuzzlesBoton.interactable = false;
-
-        if (GameManager.configuration.listosParejasCompletado)
-            listosParejasBoton.interactable = false;
-
-        if (GameManager.configuration.yaBitCompletado)
-            yaBitBoton.interactable = false;
-
-        if (GameManager.configuration.yaParejasCompletado)
-            yaParejasBoton.interactable = false;
-
-        if (GameManager.configuration.yaPuzzleCompletado)
-            yaPuzzleBoton.interactable = false;
-
-        if (GameManager.configuration.yaPuzzleCompletado && GameManager.configuration.yaParejasCompletado && GameManager.configuration.yaBitCompletado)
-            yaBoton.interactable = false;
-
-        if (GameManager.configuration.listosBitCompletado && GameManager.configuration.listosParejasCompletado && GameManager.configuration.listosPuzzleCompletado)
-            listosBoton.interactable = false;
-    }
 
     private void Update()
     {

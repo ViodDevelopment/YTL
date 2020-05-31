@@ -183,7 +183,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
     private void InitPaabras()
     {
         listOfPalabras.Clear();
-        if (!PaquetePalabrasParejas.GetInstance("3").acabado)
+        /*if (!PaquetePalabrasParejas.GetInstance("3").acabado)
         {
             foreach (PalabraBD p in PaquetePalabrasParejas.GetInstance("3").currentParejasPaquet)
             {
@@ -198,7 +198,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             }
         }
         else
-        {
+        {*/
             int lvl1 = 0;
             int lvl2 = 0;
             int lvl3 = 0;
@@ -256,7 +256,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                         }
 
                     }
-                }
+                //}
             }
         }
 
