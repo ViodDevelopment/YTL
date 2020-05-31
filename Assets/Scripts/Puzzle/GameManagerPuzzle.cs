@@ -309,9 +309,17 @@ public class GameManagerPuzzle : MonoBehaviour
 
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
+
+        if(GameManager.configuration.palabrasConArticulo)
+        {
+            if(palabraActual.actualArticulo != null)
+            {
+                m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
+            }
+        }
+
         m_TextAnim.GetComponent<ConvertFont>().Convert();
-        if (m_TextAnim.text.Length > 5)
-            m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
+        ModifyTextPair(m_TextAnim);
 
         Sprite l_sprite;
 
@@ -474,9 +482,17 @@ public class GameManagerPuzzle : MonoBehaviour
 
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
+
+        if (GameManager.configuration.palabrasConArticulo)
+        {
+            if (palabraActual.actualArticulo != null)
+            {
+                m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
+            }
+        }
         m_TextAnim.GetComponent<ConvertFont>().Convert();
-        if (m_TextAnim.text.Length > 5)
-            m_TextAnim.transform.localScale -= m_TextAnim.transform.localScale * 0.2f;
+        ModifyTextPair(m_TextAnim);
+
 
         Sprite l_sprite;
 
@@ -708,18 +724,30 @@ public class GameManagerPuzzle : MonoBehaviour
         GameObject l_Word = Instantiate(m_Word, m_WordTransform.transform);
         GameObject l_UnseenWord = Instantiate(m_UnseenWord, m_UnseenWordTransform.transform);
         l_Word.GetComponentInChildren<Text>().text = palabraActual.palabraActual;
+        if (GameManager.configuration.palabrasConArticulo)
+        {
+            if (palabraActual.actualArticulo != null)
+            {
+                l_Word.GetComponentInChildren<Text>().text = palabraActual.actualArticulo + l_Word.GetComponentInChildren<Text>().text;
+            }
+        }
         l_Word.GetComponentInChildren<ConvertFont>().Convert();
-        if (palabraActual.palabraActual.Length > 5)
-            l_Word.GetComponentInChildren<Text>().transform.localScale -= l_Word.GetComponentInChildren<Text>().transform.localScale * 0.2f;
+        ModifyTextPair(l_Word.GetComponentInChildren<Text>());
 
         // l_Word.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_Word.name = "Word";
         l_UnseenWord.GetComponentInChildren<Text>().text = palabraActual.palabraActual;
+        if (GameManager.configuration.palabrasConArticulo)
+        {
+            if (palabraActual.actualArticulo != null)
+            {
+                l_UnseenWord.GetComponentInChildren<Text>().text = palabraActual.actualArticulo + l_UnseenWord.GetComponentInChildren<Text>().text;
+            }
+        }
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
 
-        if (palabraActual.palabraActual.Length > 5)
-            l_UnseenWord.GetComponentInChildren<Text>().transform.localScale -= l_UnseenWord.GetComponentInChildren<Text>().transform.localScale * 0.2f;
-
+        ModifyTextPair(l_UnseenWord.GetComponentInChildren<Text>());
+      
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
         PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
@@ -867,6 +895,33 @@ public class GameManagerPuzzle : MonoBehaviour
         palabra.user = toCopy.user;
         palabra.nameSpanish = toCopy.nameSpanish;
         palabra.nameCatalan = toCopy.nameCatalan;
+        foreach (var item in toCopy.articulos)
+        {
+            palabra.articulos.Add(new Articulo());
+            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+        }
+        palabra.SetPalabraActual();
+    }
+
+
+    private void ModifyTextPair(Text _text)
+    {
+        Text texto = _text;
+        if (texto.text.Length < 9 && texto.text.Length > 7)
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.73f;
+        else if (texto.text.Length < 12 && texto.text.Length > 7)
+        {
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.68f;
+        }
+        else if (texto.text.Length > 7)
+        {
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.57f;
+
+        }
+
     }
 
 }

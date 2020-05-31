@@ -10,6 +10,7 @@ public class PairsLvl3 : MonoBehaviour
     public OnlyOneManager managerOnlyOne;
     public string nombre = "";
     public string color = "";
+    public string articulo = "";
     public AudioClip audioClip;
     private Image myImage;
     private bool dentro = false;
@@ -31,6 +32,7 @@ public class PairsLvl3 : MonoBehaviour
     private Vector3 lastSize;
     private Vector3 lastPosition;
     private bool lastPair;
+    public Text texto;
 
     private void Start()
     {
@@ -50,6 +52,8 @@ public class PairsLvl3 : MonoBehaviour
             lastPair = true;
         else lastPair = false;
     }
+
+
     private void Update()
     {
         if (managerOnlyOne != null)
@@ -255,12 +259,13 @@ public class PairsLvl3 : MonoBehaviour
                 {
                     this.transform.position = colision.gameObject.transform.position;
                     m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
-                    m_GameManagerParejas.m_TextZoomed.text = nombre;
+                    m_GameManagerParejas.m_TextZoomed.text = articulo + nombre;
 
                     foreach (Image i in m_GameManagerParejas.marcos)
                     {
                         m_GameManagerParejas.PonerColorMarco(color, i);
                     }
+                    ModifyText();
 
                     if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                         m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
@@ -336,12 +341,13 @@ public class PairsLvl3 : MonoBehaviour
                     {
                         this.transform.position = colision.gameObject.transform.position;
                         m_GameManagerParejas.m_ImageZoomed.sprite = this.gameObject.GetComponent<Image>().sprite;
-                        m_GameManagerParejas.m_TextZoomed.text = nombre;
+                        m_GameManagerParejas.m_TextZoomed.text = articulo + nombre;
 
                         foreach (Image i in m_GameManagerParejas.marcos)
                         {
                             m_GameManagerParejas.PonerColorMarco(color, i);
                         }
+                        ModifyText();
 
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                             m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.35f;
@@ -380,6 +386,28 @@ public class PairsLvl3 : MonoBehaviour
             }
 
         }
+    }
+
+
+    private void ModifyText()
+    {
+        if (articulo != "")
+        {
+            if (m_GameManagerParejas.m_TextZoomed.text.Length < 9 && m_GameManagerParejas.m_TextZoomed.text.Length > 7)
+            {
+                m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.275f;
+            }
+            else if (m_GameManagerParejas.m_TextZoomed.text.Length < 12 && m_GameManagerParejas.m_TextZoomed.text.Length > 7)
+            {
+                m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.255f;
+            }
+            else if (m_GameManagerParejas.m_TextZoomed.text.Length > 7)
+            {
+                m_GameManagerParejas.m_TextZoomed.gameObject.transform.localScale = Vector3.one * 0.235f;
+
+            }
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D _collision)

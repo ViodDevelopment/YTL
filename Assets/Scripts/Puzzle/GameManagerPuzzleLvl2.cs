@@ -12,6 +12,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     public Animation m_AnimationCenter;
     public Image m_ImageAnim;
     public Text m_TextAnim;
+    private Vector3 startSize;
     private List<PalabraBD> palabrasDisponibles = new List<PalabraBD>();
 
     List<GameObject> m_Words = new List<GameObject>();
@@ -62,6 +63,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private void Start()
     {
+        startSize = m_TextAnim.transform.localScale;
         lvl = "2";
         InitBaseOfDates();
 
@@ -317,7 +319,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -327,13 +329,22 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         ColorUtility.TryParseHtmlString(palabraActual.color, out color);
         m_TextAnim.transform.parent.GetChild(1).GetComponent<Image>().color = color;
         m_TextAnim.text = palabraActual.palabraActual;
-        m_TextAnim.GetComponent<ConvertFont>().Convert();
+        if (GameManager.configuration.palabrasConArticulo)
+        {
+            if (palabraActual != null)
+            {
+                m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
 
+            }
+        }
+        m_TextAnim.GetComponent<ConvertFont>().Convert();
+        m_TextAnim.transform.localScale = startSize;
+        ModifyTextPair(m_TextAnim);
         Sprite l_sprite;
 
         if (palabraActual.user)
         {
-            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
             l_sprite = palabraActual.GetSprite(palabraActual.image1);
@@ -491,8 +502,17 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         ColorUtility.TryParseHtmlString(palabraActual.color, out color);
         m_TextAnim.transform.parent.GetChild(1).GetComponent<Image>().color = color;
         m_TextAnim.text = palabraActual.palabraActual;
-        m_TextAnim.GetComponent<ConvertFont>().Convert();
+        if (GameManager.configuration.palabrasConArticulo)
+        {
+            if (palabraActual != null)
+            {
+                m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
 
+            }
+        }
+        m_TextAnim.GetComponent<ConvertFont>().Convert();
+        m_TextAnim.transform.localScale = startSize;
+        ModifyTextPair(m_TextAnim);
         Sprite l_sprite;
 
         if (palabraActual.user)
@@ -871,7 +891,6 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     InitBaseOfDates();
                 }
             }
-            print(PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count + " " + PaquetePuzzle.GetInstance(lvl).dificultad + " " + PaquetePuzzle.GetInstance(lvl).fase);
         }
         acabado = true;
     }
@@ -944,6 +963,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
     {
+
         palabra.image1 = toCopy.image1;
         palabra.image2 = toCopy.image2;
         palabra.image3 = toCopy.image3;
@@ -958,6 +978,34 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.silabasCatalan = toCopy.silabasCatalan;
         palabra.silabasSpanish = toCopy.silabasSpanish;
         palabra.silabasActuales = toCopy.silabasActuales;
+
+        foreach (var item in toCopy.articulos)
+        {
+            palabra.articulos.Add(new Articulo());
+            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+        }
+        palabra.SetPalabraActual();
+    }
+
+
+    private void ModifyTextPair(Text _text)
+    {
+        Text texto = _text;
+        if (texto.text.Length < 9 && texto.text.Length > 7)
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.73f;
+        else if (texto.text.Length < 12 && texto.text.Length > 7)
+        {
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.68f;
+        }
+        else if (texto.text.Length > 7)
+        {
+            texto.gameObject.transform.localScale = texto.gameObject.transform.localScale * 0.57f;
+
+        }
+
     }
 
     private void ConvertMarco(Image _imagen, Image _fondo, string _silaba)

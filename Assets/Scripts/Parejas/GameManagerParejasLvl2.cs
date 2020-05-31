@@ -926,7 +926,6 @@ public class GameManagerParejasLvl2 : MonoBehaviour
 
     private void RevertFont()
     {
-        print("horizontal  " + m_IsHorizontal + "  numpairs " + m_NumPairs);
         if (m_IsHorizontal)
         {
             switch (m_NumPairs)
@@ -1531,15 +1530,14 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
                             horizontal2Abajo[numJ].GetComponentInChildren<Text>().transform.localScale *= 1.3f;
 
-                        if(GameManager.configuration.palabrasConArticulo)
+                        if (GameManager.configuration.palabrasConArticulo)
                         {
-                            if(l_Pairs[l_RandomPair].actualArticulo != null)
+                            if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if(l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal2Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal2Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
 
@@ -1567,11 +1565,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal2Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal2Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal2Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         horizontal2Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1601,11 +1598,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal3Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal3Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1632,11 +1628,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal3Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal3Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal3Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         horizontal3Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1666,11 +1661,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal4Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal4Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1697,11 +1691,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(horizontal4Abajo[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                horizontal4Abajo[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(horizontal4Abajo[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         horizontal4Abajo[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1739,11 +1732,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical2Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical2Right[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                vertical2Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical2Right[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         vertical2Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1770,11 +1762,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical2Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical2Right[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                vertical2Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical2Right[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         vertical2Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1805,11 +1796,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical3Right[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                vertical3Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical3Right[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1836,11 +1826,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical3Right[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                vertical3Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical3Right[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         vertical3Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1871,11 +1860,10 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_Pairs[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_Pairs[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical4Right[numJ].GetComponentInChildren<Text>());
-                                }
+
+                                vertical4Right[numJ].GetComponentInChildren<Text>().text = l_Pairs[l_RandomPair].actualArticulo + l_Pairs[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical4Right[numJ].GetComponentInChildren<Text>());
+
                             }
                         }
                         vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();
@@ -1902,11 +1890,8 @@ public class GameManagerParejasLvl2 : MonoBehaviour
                         {
                             if (l_SecondPair[l_RandomPair].actualArticulo != null)
                             {
-                                if (l_SecondPair[l_RandomPair].actualArticulo != "")
-                                {
-                                    vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
-                                    ModifyTextPair(vertical4Right[numJ].GetComponentInChildren<Text>());
-                                }
+                                vertical4Right[numJ].GetComponentInChildren<Text>().text = l_SecondPair[l_RandomPair].actualArticulo + l_SecondPair[l_RandomPair].palabraActual;
+                                ModifyTextPair(vertical4Right[numJ].GetComponentInChildren<Text>());
                             }
                         }
                         vertical4Right[numJ].GetComponentInChildren<ConvertFont>().Convert();

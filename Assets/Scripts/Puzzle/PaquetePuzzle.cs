@@ -67,13 +67,11 @@ public class PaquetePuzzle
 
         foreach (PalabraBD item in instance.currentPuzzlePaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.nextPuzzlePaquets)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
     }

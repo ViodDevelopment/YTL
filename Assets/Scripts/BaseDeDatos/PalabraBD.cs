@@ -31,17 +31,23 @@ public class PalabraBD
     //eliminar en un futuro y cambiarlo por el original
     //
 
-    public void SeparateSilabas()//separa la linea de string de silabas segun el idioma a un lista en orden de las silabas.
+    private void SeparateSilabas()//separa la linea de string de silabas segun el idioma a un lista en orden de las silabas.
     {
         silabasActuales.Clear();
         string actualWord = "";
+
+        if(GameManager.configuration.palabrasConArticulo)
+        {
+            if (actualArticulo != null)
+                actualWord = actualArticulo + "-";
+        }
         switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
-                actualWord = silabasSpanish;
+                actualWord += silabasSpanish;
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
-                actualWord = silabasCatalan;
+                actualWord += silabasCatalan;
                 break;
             case SingletonLenguage.Lenguage.INGLES:
                 break;
@@ -90,6 +96,7 @@ public class PalabraBD
         }
 
         SetActualArticulo();
+        SeparateSilabas();
     }
 
     public Sprite GetSprite(string _name)
@@ -231,10 +238,10 @@ public class PalabraBD
         switch (SingletonLenguage.GetInstance().GetLenguage())
         {
             case SingletonLenguage.Lenguage.CASTELLANO:
-                completeRute = "Audios/Castellano/Version1.0/Art/" + actualAudioArticulo + "_esp";  //CAMBIAR EN UN FUTURO LA RUTA
+                completeRute = "Audios/Castellano/Version1.0/Art/" + actualAudioArticulo;  //CAMBIAR EN UN FUTURO LA RUTA
                 break;
             case SingletonLenguage.Lenguage.CATALAN:
-                completeRute = "Audios/Catalan/Version1.0/Art/" + actualAudioArticulo + "_cat"; //LOMISMO
+                completeRute = "Audios/Catalan/Version1.0/Art/" + actualAudioArticulo; //LOMISMO
                 break;
             case SingletonLenguage.Lenguage.INGLES:
                 break;

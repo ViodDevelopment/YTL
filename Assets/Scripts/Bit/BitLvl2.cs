@@ -610,7 +610,7 @@ public class BitLvl2 : MonoBehaviour
                 m_Animation.clip = m_Spin;
                 m_Animation.Play();
                 m_1touch = false;
-
+                StartCoroutine(WaitForOnlyPlay(1f));
 
                 StartCoroutine(WaitSeconds(m_AS.clip.length + m_Animation.clip.length + 0.2f));
 
@@ -630,7 +630,11 @@ public class BitLvl2 : MonoBehaviour
                 m_GMBit.AddCountMiniGameBit();
         }
     }
-
+    IEnumerator WaitForOnlyPlay(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        m_AS.Play();
+    }
 
     private void SearchFont(Text _text)
     {

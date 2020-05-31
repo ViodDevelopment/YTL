@@ -35,7 +35,6 @@ public class SingletonLenguage
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
             p.SetPalabraActual();
-            p.SeparateSilabas();
         }
 
         foreach (FraseBD f in GameManager.frasesDisponibles)
@@ -46,7 +45,6 @@ public class SingletonLenguage
         foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
         {
             p.SetPalabraActual();
-            p.SeparateSilabas();
         }
     }
 

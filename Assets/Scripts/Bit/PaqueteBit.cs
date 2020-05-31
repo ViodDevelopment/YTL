@@ -65,13 +65,11 @@ public class PaqueteBit
 
         foreach (PalabraBD item in instance.currentBitPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.nextBitPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
     }

@@ -74,19 +74,16 @@ public class PaquetePalabrasParejas
 
         foreach (PalabraBD item in instance.nextPalabrasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.currentParejasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.donePalabrasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
     }
