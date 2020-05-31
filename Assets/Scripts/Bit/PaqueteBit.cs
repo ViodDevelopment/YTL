@@ -65,13 +65,11 @@ public class PaqueteBit
 
         foreach (PalabraBD item in instance.currentBitPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.nextBitPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
     }
@@ -109,21 +107,28 @@ public class PaqueteBit
                 currentBitPaquet.Clear();
 
                 List<PalabraBD> palabrasTotales = new List<PalabraBD>();
-                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-
                 for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                 {
                     if (GameManager.palabrasDisponibles[i].paquet == 0)
                     {
                         if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
                         {
-                            palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            if (palabrasTotales.Count < 10 && dificultad == 1)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if (palabrasTotales.Count < 6 && dificultad == 2)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if (palabrasTotales.Count < 4 && dificultad == 3)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if(palabrasTotales.Count == 20)
+                                break;
+
                         }
-                    }
-                    else
-                    {
-                        if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
-                            palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
                     }
 
                 }
@@ -142,22 +147,6 @@ public class PaqueteBit
                         nextBitPaquet.Add(palabrasTotales[i]);
                     }
                 }
-
-                for (int i = 0; i < palabrasanimales.Count; i++)
-                {
-
-                    if (i < palabrasanimales.Count / 3)
-                    {
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                    }
-                    else
-                    {
-                        nextBitPaquet.Add(palabrasanimales[i]);
-                    }
-                }
-
 
             }
             else if (fase == 2)
@@ -221,19 +210,6 @@ public class PaqueteBit
                 nextBitPaquet.Clear();
             }
         }
-        else
-        {
-            foreach (var item in GameManager.palabrasDisponibles)
-            {
-                if (item.image1 != "")
-                {
-                    currentBitPaquet.Add(item);
-                    currentBitPaquet.Add(item);
-                    currentBitPaquet.Add(item);
-                }
-            }
-        }
-
 
     }
 
@@ -260,7 +236,6 @@ public class PaqueteBit
                 currentBitPaquet.Clear();
 
                 List<PalabraBD> palabrasTotales = new List<PalabraBD>();
-                List<PalabraBD> palabrasanimales = new List<PalabraBD>();
 
                 for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                 {
@@ -268,13 +243,22 @@ public class PaqueteBit
                     {
                         if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
                         {
-                            palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            if (palabrasTotales.Count < 10 && dificultad == 1)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if (palabrasTotales.Count < 6 && dificultad == 2)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if (palabrasTotales.Count < 4 && dificultad == 3)
+                            {
+                                palabrasTotales.Add(GameManager.palabrasDisponibles[i]);
+                            }
+                            else if (palabrasTotales.Count == 20)
+                                break;
+
                         }
-                    }
-                    else
-                    {
-                        if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
-                            palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
                     }
 
                 }
@@ -293,22 +277,6 @@ public class PaqueteBit
                         nextBitPaquet.Add(palabrasTotales[i]);
                     }
                 }
-
-                for (int i = 0; i < palabrasanimales.Count; i++)
-                {
-
-                    if (i < palabrasanimales.Count / 3)
-                    {
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                        currentBitPaquet.Add(palabrasanimales[i]);
-                    }
-                    else
-                    {
-                        nextBitPaquet.Add(palabrasanimales[i]);
-                    }
-                }
-
 
             }
             else if (fase == 2)
@@ -372,19 +340,6 @@ public class PaqueteBit
                 nextBitPaquet.Clear();
             }
         }
-        else
-        {
-            foreach (var item in GameManager.palabrasDisponibles)
-            {
-                if (item.image1 != "")
-                {
-                    currentBitPaquet.Add(item);
-                    currentBitPaquet.Add(item);
-                    currentBitPaquet.Add(item);
-                }
-            }
-        }
-
 
     }
 

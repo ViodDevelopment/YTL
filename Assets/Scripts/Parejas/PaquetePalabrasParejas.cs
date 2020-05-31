@@ -74,19 +74,16 @@ public class PaquetePalabrasParejas
 
         foreach (PalabraBD item in instance.nextPalabrasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.currentParejasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
         foreach (PalabraBD item in instance.donePalabrasPaquet)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
     }
@@ -195,19 +192,31 @@ public class PaquetePalabrasParejas
                     if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
                     {
                         List<PalabraBD> palabras = new List<PalabraBD>();
-                        List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
                             if (GameManager.palabrasDisponibles[i].paquet == 0)
                             {
                                 if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
+                                {
+                                    if (palabras.Count < 10 && dificultad == 1)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count < 6 && dificultad == 2)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count < 4 && dificultad == 3)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count == 20)
+                                        break;
+
+                                }
                             }
-                            else
-                            {
-                                if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
-                                    palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
-                            }
+
                         }
 
                         int numEnter = 0;
@@ -228,21 +237,6 @@ public class PaquetePalabrasParejas
 
                         }
 
-
-                        for (int i = 0; i < palabrasanimales.Count; i++)
-                        {
-
-                            if (i <= (palabrasanimales.Count) / 3)
-                            {
-                                currentParejasPaquet.Add(palabrasanimales[i]);
-                            }
-                            else
-                            {
-                                nextPalabrasPaquet.Add(palabrasanimales[i]);
-                            }
-
-
-                        }
 
                     }
                     else
@@ -297,14 +291,6 @@ public class PaquetePalabrasParejas
                             }
                         }
                     }
-                }
-            }
-            else
-            {
-                nextPalabrasPaquet.Clear();
-                foreach (var item in GameManager.palabrasDisponibles)
-                {
-                    currentParejasPaquet.Add(item);
                 }
             }
 
@@ -405,19 +391,31 @@ public class PaquetePalabrasParejas
                     if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
                     {
                         List<PalabraBD> palabras = new List<PalabraBD>();
-                        List<PalabraBD> palabrasanimales = new List<PalabraBD>();
+
                         for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
                         {
                             if (GameManager.palabrasDisponibles[i].paquet == 0)
                             {
                                 if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
+                                {
+                                    if (palabras.Count < 10 && dificultad == 1)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count < 6 && dificultad == 2)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count < 4 && dificultad == 3)
+                                    {
+                                        palabras.Add(GameManager.palabrasDisponibles[i]);
+                                    }
+                                    else if (palabras.Count == 20)
+                                        break;
+
+                                }
                             }
-                            else
-                            {
-                                if (GameManager.palabrasDisponibles[i].image1 != "") //poner dificultad animales
-                                    palabrasanimales.Add(GameManager.palabrasDisponibles[i]);
-                            }
+
                         }
 
                         int numEnter = 0;
@@ -438,21 +436,6 @@ public class PaquetePalabrasParejas
 
                         }
 
-
-                        for (int i = 0; i < palabrasanimales.Count; i++)
-                        {
-
-                            if (i <= (palabrasanimales.Count) / 3)
-                            {
-                                currentParejasPaquet.Add(palabrasanimales[i]);
-                            }
-                            else
-                            {
-                                nextPalabrasPaquet.Add(palabrasanimales[i]);
-                            }
-
-
-                        }
 
                     }
                     else
@@ -507,14 +490,6 @@ public class PaquetePalabrasParejas
                             }
                         }
                     }
-                }
-            }
-            else
-            {
-                nextPalabrasPaquet.Clear();
-                foreach (var item in GameManager.palabrasDisponibles)
-                {
-                    currentParejasPaquet.Add(item);
                 }
             }
 

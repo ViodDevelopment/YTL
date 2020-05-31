@@ -32,9 +32,9 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRuteUserFrase = Application.persistentDataPath + "/UserWords/datosFrasesUsuario.dat";
                 DontDestroyOnLoad(gameObject);
 
-                if (!File.Exists(Application.persistentDataPath + "/Update.dat"))
+                if (!File.Exists(Application.persistentDataPath + "/Update01.dat"))
                 {
-                    FileStream file = File.Create(Application.persistentDataPath + "/Update.dat");
+                    FileStream file = File.Create(Application.persistentDataPath + "/Update01.dat");
                     file.Close();
                     GameManager.actualizacion = true;
                 }
@@ -185,7 +185,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
             foreach (PalabraBD p in palabrasPredeterminadass)
             {
-                p.SeparateSilabas();
                 p.SetPalabraActual();
             }
         }
@@ -303,7 +302,6 @@ public class ManagamentFalseBD : MonoBehaviour
         palabrasPredeterminadass.Clear();
         foreach (PalabraBD p in palabras)
         {
-            p.SeparateSilabas();
             p.SetPalabraActual();
             palabrasPredeterminadass.Add(p);
             GameManager.palabrasDisponibles.Add(p);
@@ -477,7 +475,6 @@ public class ManagamentFalseBD : MonoBehaviour
         file.Close();
         foreach (PalabraBD item in palabrasUserGuardadas)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
@@ -497,7 +494,6 @@ public class ManagamentFalseBD : MonoBehaviour
 
         foreach (PalabraBD item in palabrasUserGuardadas)
         {
-            item.SeparateSilabas();
             item.SetPalabraActual();
         }
 
