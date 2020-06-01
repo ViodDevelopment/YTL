@@ -270,4 +270,8 @@ public class SceneManagement : MonoBehaviour
             }
         }
     }
+    public void FullVersion()
+    {
+        Application.OpenURL("https://play.google.com/store/apps/details?id=com.diversityapps.leer");
+    }
 }

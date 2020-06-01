@@ -2989,6 +2989,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 1
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1 &229721565
 GameObject:
   m_ObjectHideFlags: 0
@@ -11012,6 +11013,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 2
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1 &953711819
 GameObject:
   m_ObjectHideFlags: 0
@@ -11960,6 +11962,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 0
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1 &1018388164
 GameObject:
   m_ObjectHideFlags: 0
@@ -14276,6 +14279,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 4
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1001 &1237014352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14412,14 +14416,20 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1748085817}
+      objectReference: {fileID: 1657563399}
     - target: {fileID: 4792397307898433638, guid: a504aec9d77cdb944a240bcda98dde5d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: FullVersion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a504aec9d77cdb944a240bcda98dde5d, type: 3}
+--- !u!1 &1237014353 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4792397307146888576, guid: a504aec9d77cdb944a240bcda98dde5d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1237014352}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1238332939
 GameObject:
   m_ObjectHideFlags: 0
@@ -23409,6 +23419,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 5
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1 &1912865076
 GameObject:
   m_ObjectHideFlags: 0
@@ -24310,6 +24321,7 @@ MonoBehaviour:
   sceneManagement: {fileID: 1657563399}
   numButton: 3
   panelToActivate: {fileID: 0}
+  panelFullVersion: {fileID: 1237014353}
 --- !u!1 &1974128352
 GameObject:
   m_ObjectHideFlags: 0

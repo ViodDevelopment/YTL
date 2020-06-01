@@ -11,6 +11,8 @@ public class BottonLite : MonoBehaviour
     private Button myButton;
     private GirarImagenEternamente myGirar;
 
+    public GameObject panelFullVersion;
+
     private void Start()
     {
         myButton = GetComponent<Button>();
@@ -73,7 +75,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true);
                 }
                 break;
             case 1:
@@ -84,7 +86,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true);
 
                 }
                 break;
@@ -96,7 +98,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true); 
 
                 }
                 break;
@@ -108,7 +110,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true);
 
                 }
                 break;
@@ -120,7 +122,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true);
 
                 }
                 break;
@@ -132,7 +134,7 @@ public class BottonLite : MonoBehaviour
                 }
                 else
                 {
-                    //poner el panel
+                    panelFullVersion.SetActive(true);
 
                 }
                 break;
