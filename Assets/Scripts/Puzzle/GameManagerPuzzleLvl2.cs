@@ -67,8 +67,6 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         lvl = "2";
         InitBaseOfDates();
 
-        if (GameManager.configuration.listosPuzzleCompletado)
-            m_Scener.InicioScene(true);
 
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
         if (l_NumReps % 2 == 0)
@@ -104,7 +102,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     private void InitBaseOfDates()
     {
         palabrasDisponibles.Clear();
-        /*if (!PaquetePuzzle.GetInstance(lvl).acabado)
+        if (!PaquetePuzzle.GetInstance(lvl).acabado)
         {
             int num = 0;
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
@@ -121,75 +119,50 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     PaquetePuzzle.GetInstance(lvl).acabado = true;
                 PaquetePuzzle.GetInstance(lvl).CrearBinario();
             }
-        }*/
+        }
 
-        //if (PaquetePuzzle.GetInstance(lvl).acabado)
-        //{
-            int lvl1 = 0;
-            int lvl2 = 0;
-            int lvl3 = 0;
+        if (PaquetePuzzle.GetInstance(lvl).acabado)
+        {
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
                 if (p.paquet == GameManager.configuration.paquete)
                 {
-                    if (p.image1 != "")
-                    {
-                        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-                        {
-                            if (p.dificultSpanish == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
-                        else
-                        {
-                            if (p.dificultCatalan == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
 
+                    if (p.imagePuzzle != 0)
+                    {
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                        {
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (GameManager.configuration.paquete == -1)
+                {
+                    if (p.imagePuzzle != 0)
+                    {
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                        {
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
+                        }
                     }
                 }
             }
-        //}
-
-       /* else
+        }
+        else
         {
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
+
                 if (p.paquet == GameManager.configuration.paquete)
                 {
 
@@ -202,8 +175,23 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
                     palabrasDisponibles.Add(p);
 
                 }
+
             }
-        }*/
+        }
+        //ACTIVAR CUANDO LAS PIEZAS DEL PUZZLE VAYAN BIEN CON LAS IMAGENES
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        {
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            {
+                if (p.nameSpanish != "")
+                    palabrasDisponibles.Add(p);
+            }
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            {
+                if (p.nameCatalan != "")
+                    palabrasDisponibles.Add(p);
+            }
+        }
     }
 
     private void Update()
@@ -698,13 +686,6 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             m_Canvas.SetActive(false);
             GameManager.configuration.listosPuzzleCompletado = true;
             ManagamentFalseBD.management.SaveConfig();
-
-            /*
-             -SaveConfig
-             -LoadConfig (en Start)
-             -
-             -
-             -*/
             m_Scener.NextGame();
         }
         else

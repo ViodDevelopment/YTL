@@ -118,86 +118,81 @@ public class GameManagerPuzzle : MonoBehaviour
         }
         if (PaquetePuzzle.GetInstance(lvl).acabado)
         {
-            int lvl1 = 0;
-            int lvl2 = 0;
-            int lvl3 = 0;
             foreach (PalabraBD p in GameManager.palabrasDisponibles)
             {
                 if (p.paquet == GameManager.configuration.paquete)
                 {
-                    if (p.image1 != "")
-                    {
-                        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-                        {
-                            if (p.dificultSpanish == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
-                        else
-                        {
-                            if (p.dificultCatalan == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
 
+                    if (p.imagePuzzle != 0)
+                    {
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                        {
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                p.SetPalabraActual();
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
+                        }
+                    }
+                }
+                else if (GameManager.configuration.paquete == -1)
+                {
+                    if (p.imagePuzzle != 0)
+                    {
+
+                        for (int i = 0; i < p.piecesPuzzle.Count; i++)
+                        {
+                            if (p.piecesPuzzle[i] >= 4)
+                            {
+                                p.SetPalabraActual();
+                                palabrasDisponibles.Add(p);
+                                break;
+                            }
+                        }
                     }
                 }
             }
         }
-    
         else
         {
             foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
             {
                 if (p.paquet == GameManager.configuration.paquete)
                 {
-
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
 
                 }
                 else if (GameManager.configuration.paquete == -1)
                 {
-
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
 
                 }
             }
         }
-
+        //ACTIVAR CUANDO VAYAN LAS PIEZAS DEL PUZZLE CON LAS PALABRAS DEL USUARIO
+        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
+        {
+            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+            {
+                if (p.nameSpanish != "")
+                {
+                    p.SetPalabraActual();
+                    palabrasDisponibles.Add(p);
+                }
+            }
+            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
+            {
+                if (p.nameCatalan != "")
+                {
+                    p.SetPalabraActual();
+                    palabrasDisponibles.Add(p);
+                }
+            }
+        }
     }
 
     private void Update()
