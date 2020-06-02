@@ -7,7 +7,6 @@ public class BottonLite : MonoBehaviour
 {
     public SceneManagement sceneManagement;
     public int numButton;
-    public GameObject panelToActivate;
     private Button myButton;
     private GirarImagenEternamente myGirar;
 
