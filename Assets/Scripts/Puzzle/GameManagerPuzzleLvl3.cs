@@ -440,6 +440,7 @@ public class GameManagerPuzzleLvl3 : MonoBehaviour
             GameManager.ResetPointToMinigame(8);
             m_Canvas.SetActive(false);
             GameManager.configuration.yaPuzzleCompletado = true;
+            ManagamentFalseBD.management.SaveConfig();
             /*
              -SaveConfig
              -LoadConfig (en Start)
