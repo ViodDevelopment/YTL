@@ -11796,6 +11796,7 @@ MonoBehaviour:
   backgro: {fileID: 592734746}
   inicioBack: {fileID: 1187852467}
   animacion: {fileID: 1922465425}
+  panelToActivate: {fileID: 1237014353}
   numButton: 1
 --- !u!1 &1018027226
 GameObject:
@@ -15828,6 +15829,7 @@ MonoBehaviour:
   backgro: {fileID: 1187852467}
   inicioBack: {fileID: 592734746}
   animacion: {fileID: 1296458808}
+  panelToActivate: {fileID: 1237014353}
   numButton: 0
 --- !u!1 &1346190549
 GameObject:

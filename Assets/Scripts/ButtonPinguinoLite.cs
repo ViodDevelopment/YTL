@@ -9,6 +9,8 @@ public class ButtonPinguinoLite : MonoBehaviour
     public GameObject backgro;
     public GameObject inicioBack;
     public GameObject animacion;
+    public GameObject panelToActivate;
+
     public int numButton;
     // Start is called before the first frame update
     void Start()
@@ -39,7 +41,7 @@ public class ButtonPinguinoLite : MonoBehaviour
             case 0:
                 if (GameManager.configuration.listosBitCompletado && GameManager.configuration.listosParejasCompletado && GameManager.configuration.listosPuzzleCompletado)
                 {
-                    //poner el panel
+                    panelToActivate.SetActive(true);
                 }
                 else
                 {
@@ -52,7 +54,7 @@ public class ButtonPinguinoLite : MonoBehaviour
             case 1:
                 if (GameManager.configuration.yaBitCompletado && GameManager.configuration.yaParejasCompletado && GameManager.configuration.yaPuzzleCompletado)
                 {
-                    //poner el panel
+                    panelToActivate.SetActive(true);
                 }
                 else
                 {
