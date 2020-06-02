@@ -130,6 +130,7 @@ public class GameManagerPuzzle : MonoBehaviour
                         {
                             if (p.piecesPuzzle[i] >= 4)
                             {
+                                p.SetPalabraActual();
                                 palabrasDisponibles.Add(p);
                                 break;
                             }
@@ -145,6 +146,7 @@ public class GameManagerPuzzle : MonoBehaviour
                         {
                             if (p.piecesPuzzle[i] >= 4)
                             {
+                                p.SetPalabraActual();
                                 palabrasDisponibles.Add(p);
                                 break;
                             }
@@ -159,13 +161,13 @@ public class GameManagerPuzzle : MonoBehaviour
             {
                 if (p.paquet == GameManager.configuration.paquete)
                 {
-
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
 
                 }
                 else if (GameManager.configuration.paquete == -1)
                 {
-
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
 
                 }
@@ -177,12 +179,18 @@ public class GameManagerPuzzle : MonoBehaviour
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
                 if (p.nameSpanish != "")
+                {
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
+                }
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
                 if (p.nameCatalan != "")
+                {
+                    p.SetPalabraActual();
                     palabrasDisponibles.Add(p);
+                }
             }
         }
     }

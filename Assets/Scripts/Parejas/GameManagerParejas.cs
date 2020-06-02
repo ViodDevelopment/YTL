@@ -186,6 +186,7 @@ public class GameManagerParejas : MonoBehaviour
             {
                 if (p.image1 != "")
                 {
+                    p.SetPalabraActual();
                     listOfPalabras.Add(p);
                 }
             }
@@ -193,6 +194,7 @@ public class GameManagerParejas : MonoBehaviour
             {
                 if (p.image1 != "")
                 {
+                    p.SetPalabraActual();
                     listOfPalabras.Add(p);
                 }
             }
@@ -203,12 +205,18 @@ public class GameManagerParejas : MonoBehaviour
             if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
             {
                 if (p.nameSpanish != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
+                {
+                    p.SetPalabraActual();
                     listOfPalabras.Add(p);
+                }
             }
             else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
             {
                 if (p.nameCatalan != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
+                {
+                    p.SetPalabraActual();
                     listOfPalabras.Add(p);
+                }
             }
         }
 
