@@ -119,7 +119,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.4
+  bundleVersion: 1.51
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -160,11 +160,11 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.diversityapps.leer
+    Android: com.diversityapps.leer1
     Standalone: com.Company.ProductName
     iPhone: com.diversity-apps.YoTambienLeo
   buildNumber: {}
-  AndroidBundleVersionCode: 17
+  AndroidBundleVersionCode: 15
   AndroidMinSdkVersion: 16
   AndroidTargetSdkVersion: 28
   AndroidPreferredInstallLocation: 0

@@ -282,7 +282,7 @@ public class GameManagerPuzzle : MonoBehaviour
         CopyWords(palabrasDisponibles[numRandom], ref palabraActual);
 
         Random.InitState(Random.Range(-15, 15));
-        m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
+        m_NumPieces = 4;
         HowManyPieces(m_NumPieces);
         RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
         RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
@@ -866,6 +866,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
     public void HowManyPieces(int l_NumPieces)
     {
+        l_NumPieces = 4;
         m_NumPieces = l_NumPieces;
         if (Mathf.Sqrt(l_NumPieces) / (int)Mathf.Sqrt(l_NumPieces) == 1)
         {

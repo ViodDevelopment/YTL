@@ -85,6 +85,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
             m_Points[i] = Instantiate(m_Point, m_CurrentSpawn.transform);
             m_Points[i].GetComponent<RectTransform>().anchoredPosition += new Vector2(m_Points[i].transform.position.x + (i * 75), 0);
         }
+        m_NumPieces = 4;
         HowManyPieces(m_NumPieces);
 
         for (int i = 0; i <= GameManager.m_CurrentToMinigame[5]; i++)
@@ -950,6 +951,7 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     public void HowManyPieces(int l_NumPieces)
     {
+        l_NumPieces = 4;
         m_NumPieces = l_NumPieces;
         if (Mathf.Sqrt(l_NumPieces) / (int)Mathf.Sqrt(l_NumPieces) == 1)
         {
