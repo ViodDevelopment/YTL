@@ -98,101 +98,62 @@ public class GameManagerPuzzle : MonoBehaviour
     private void InitBaseOfDates()
     {
         palabrasDisponibles.Clear();
-        if (!PaquetePuzzle.GetInstance(lvl).acabado)
+
+        int lvl1 = 0;
+        int lvl2 = 0;
+        int lvl3 = 0;
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            int num = 0;
-            foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
+            if (p.paquet == GameManager.configuration.paquete)
             {
-                if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
+                if (p.image1 != "")
                 {
-                    num++;
-                }
-            }
-            if (num == 0)
-            {
-                PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
-                if (PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count == 0)
-                    PaquetePuzzle.GetInstance(lvl).acabado = true;
-                PaquetePuzzle.GetInstance(lvl).CrearBinario();
-            }
-        }
-        if (PaquetePuzzle.GetInstance(lvl).acabado)
-        {
-            int lvl1 = 0;
-            int lvl2 = 0;
-            int lvl3 = 0;
-            foreach (PalabraBD p in GameManager.palabrasDisponibles)
-            {
-                if (p.paquet == GameManager.configuration.paquete)
-                {
-                    if (p.image1 != "")
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
                     {
-                        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+                        if (p.dificultSpanish == 1 && lvl1 < 10)
                         {
-                            if (p.dificultSpanish == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
+                            lvl1++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
                         }
-                        else
+                        else if (p.dificultSpanish == 2 && lvl2 < 6)
                         {
-                            if (p.dificultCatalan == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
+                            lvl2++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
                         }
-
+                        else if (p.dificultSpanish == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (palabrasDisponibles.Count == 20)
+                            break;
                     }
-                }
-            }
-        }
-    
-        else
-        {
-            foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
-            {
-                if (p.paquet == GameManager.configuration.paquete)
-                {
-
-                    palabrasDisponibles.Add(p);
-
-                }
-                else if (GameManager.configuration.paquete == -1)
-                {
-
-                    palabrasDisponibles.Add(p);
+                    else
+                    {
+                        if (p.dificultCatalan == 1 && lvl1 < 10)
+                        {
+                            lvl1++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultCatalan == 2 && lvl2 < 6)
+                        {
+                            lvl2++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultCatalan == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (palabrasDisponibles.Count == 20)
+                            break;
+                    }
 
                 }
             }
@@ -264,30 +225,23 @@ public class GameManagerPuzzle : MonoBehaviour
         int l_CurrentPiece = 0;
         int k = 0;
 
-        if (m_ImagePuzzle == null || !PaquetePuzzle.GetInstance(lvl).acabado)
+
+        bool same = true;
+        int count = 0;
+        int rand = numRandom;
+        while (same)
         {
-            Random.InitState(Random.seed + Random.Range(-5, 5));
+            count++;
+            Random.InitState(Random.Range(-15, 15));
             numRandom = Random.Range(0, palabrasDisponibles.Count);
-            //numRandom = palabrasDisponibles.Count - 1;
+            if (rand != numRandom)
+                same = false;
         }
-        else
-        {
-            bool same = true;
-            int count = 0;
-            int rand = numRandom;
-            while (same)
-            {
-                count++;
-                Random.InitState(Random.Range(-15, 15));
-                numRandom = Random.Range(0, palabrasDisponibles.Count);
-                if (rand != numRandom)
-                    same = false;
-            }
-        }
+
         CopyWords(palabrasDisponibles[numRandom], ref palabraActual);
 
         Random.InitState(Random.Range(-15, 15));
-        m_NumPieces = palabraActual.piecesPuzzle[Random.Range(0, palabraActual.piecesPuzzle.Count)];
+        m_NumPieces = 4;
         HowManyPieces(m_NumPieces);
         RectTransform l_Colliders = m_CollidersSpawns.GetComponent<RectTransform>();
         RectTransform l_Images = m_ImagesSpawn.GetComponent<RectTransform>();
@@ -315,7 +269,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -323,9 +277,9 @@ public class GameManagerPuzzle : MonoBehaviour
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
 
-        if(GameManager.configuration.palabrasConArticulo)
+        if (GameManager.configuration.palabrasConArticulo)
         {
-            if(palabraActual.actualArticulo != null)
+            if (palabraActual.actualArticulo != null)
             {
                 m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
             }
@@ -338,7 +292,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
             l_sprite = palabraActual.GetSprite(palabraActual.image1);
@@ -360,7 +314,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2)
                     {
                         if (ancho)
-                        { 
+                        {
                             rect = new Rect(new Vector2(j * l_tamanoPiezas + l_sprite.texture.width / 8, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
 
                         }
@@ -488,7 +442,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -511,7 +465,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
             l_sprite = palabraActual.GetSprite(palabraActual.image1);
@@ -760,7 +714,7 @@ public class GameManagerPuzzle : MonoBehaviour
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
 
         ModifyTextPair(l_UnseenWord.GetComponentInChildren<Text>());
-      
+
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
         PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
@@ -794,39 +748,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 if (i > 0 && m_Points.Length > i - 1)
                     m_Points[i - 1].GetComponent<Image>().sprite = m_CompletedPoint;
             }
-            if (!PaquetePuzzle.GetInstance(lvl).acabado)
-            {
-                if (numRandom < PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Count)
-                {
-                    PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet.Remove(palabrasDisponibles[numRandom]);
-                    int num = 0;
-                    foreach (PalabraBD p in PaquetePuzzle.GetInstance(lvl).currentPuzzlePaquet)
-                    {
-                        if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-                        {
-                            if (p.imagePuzzle != 0)
-                            {
 
-                                for (int i = 0; i < p.piecesPuzzle.Count; i++)
-                                {
-                                    if (p.piecesPuzzle[i] >= 4)
-                                    {
-                                        num++;
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                    }
-
-                    if (num == 0)
-                    {
-                        PaquetePuzzle.GetInstance(lvl).CrearNuevoPaquete();
-                    }
-                    PaquetePuzzle.GetInstance(lvl).CrearBinario();
-                    InitBaseOfDates();
-                }
-            }
         }
         acabado = true;
     }

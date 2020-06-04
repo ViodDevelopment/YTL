@@ -49,99 +49,64 @@ public class ImageControl : MonoBehaviour
     private void RecolectPalabrasBD(bool enter = false)
     {
         palabrasDisponibles.Clear();
-        if (!PaqueteBit.GetInstance().acabado)
-        {
-            int num = 0;
-            foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
-            {
-                if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-                {
-                    num++;
-                }
-            }
-            if (num == 0)
-            {
-                PaqueteBit.GetInstance().CrearNuevoPaquete();
-                if (PaqueteBit.GetInstance().currentBitPaquet.Count == 0)
-                    PaqueteBit.GetInstance().acabado = true;
-                PaqueteBit.GetInstance().CrearBinario();
-            }
-        }
-        if (PaqueteBit.GetInstance().acabado)
-        {
-            int lvl1 = 0;
-            int lvl2 = 0;
-            int lvl3 = 0;
-            foreach (PalabraBD p in GameManager.palabrasDisponibles)
-            {
-                if (p.paquet == GameManager.configuration.paquete)
-                {
-                    if (p.image1 != "")
-                    {
-                        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-                        {
-                            if (p.dificultSpanish == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultSpanish == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
-                        else
-                        {
-                            if (p.dificultCatalan == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (p.dificultCatalan == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                palabrasDisponibles.Add(p);
-                            }
-                            else if (palabrasDisponibles.Count == 20)
-                                break;
-                        }
 
-                    }
-                }
-            }
-        }
-        else
+        int lvl1 = 0;
+        int lvl2 = 0;
+        int lvl3 = 0;
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
+            if (p.paquet == GameManager.configuration.paquete)
             {
-                if (p.paquet == GameManager.configuration.paquete)
+                if (p.image1 != "")
                 {
-                    if (p.image1 != "")
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
                     {
-                        p.SetPalabraActual();
-                        palabrasDisponibles.Add(p);
+                        if (p.dificultSpanish == 1 && lvl1 < 10)
+                        {
+                            lvl1++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultSpanish == 2 && lvl2 < 6)
+                        {
+                            lvl2++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultSpanish == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (palabrasDisponibles.Count == 20)
+                            break;
                     }
-                }
+                    else
+                    {
+                        if (p.dificultCatalan == 1 && lvl1 < 10)
+                        {
+                            lvl1++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultCatalan == 2 && lvl2 < 6)
+                        {
+                            lvl2++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (p.dificultCatalan == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            palabrasDisponibles.Add(p);
+                        }
+                        else if (palabrasDisponibles.Count == 20)
+                            break;
+                    }
 
+                }
             }
         }
 
@@ -177,10 +142,9 @@ public class ImageControl : MonoBehaviour
         {
             l_Number = m_GMBit.numLastImage;
             m_GMBit.repetir = false;
-            if (!PaqueteBit.GetInstance().acabado)
-                lastPalabra = m_GMBit.lastPalabra;
+
         }
-        else if (PaqueteBit.GetInstance().acabado)
+        else
         {
             bool same = true;
             while (same && m_Length > 1)
@@ -197,29 +161,7 @@ public class ImageControl : MonoBehaviour
                     Random.InitState(Random.seed + 1);
             }
         }
-        else
-        {
-            int random = Random.Range(0, m_Length);
-            l_Number = random;
-            if (l_Number >= lenghtPaquet)
-            {
-                if (GameManagerBit.user)
-                {
-                    l_Number = Random.Range(0, lenghtPaquet);
-                    GameManagerBit.user = false;
-                }
-                else
-                {
-                    GameManagerBit.user = true;
-                }
-            }
-            else
-            {
-                GameManagerBit.user = false;
-            }
-            m_GMBit.numLastImage = l_Number;
 
-        }
         if (palabrasDisponibles.Count > l_Number)
             currentPalabra = palabrasDisponibles[l_Number];
         if (lastPalabra != null)
@@ -485,7 +427,7 @@ public class ImageControl : MonoBehaviour
                     m_Animation.Play();
                     if (m_ASArticle.clip != null)
                     {
-                       StartCoroutine(WaitForPlayArt(1f));
+                        StartCoroutine(WaitForPlayArt(1f));
                     }
                     else
                     {
@@ -538,27 +480,8 @@ public class ImageControl : MonoBehaviour
             if (!m_GMBit.repeating)
             {
                 m_GMBit.AddCountMiniGameBit();
-                if (!PaqueteBit.GetInstance().acabado)
-                {
-                    if (PaqueteBit.GetInstance().currentBitPaquet.Count > l_Number)
-                    {
-                        PaqueteBit.GetInstance().currentBitPaquet.Remove(currentPalabra);
-                        int num = 0;
-                        foreach (PalabraBD p in PaqueteBit.GetInstance().currentBitPaquet)
-                        {
-                            if (p.paquet == GameManager.configuration.paquete || GameManager.configuration.paquete == -1)
-                            {
-                                num++;
-                            }
-                        }
-                        if (num == 0)
-                        {
-                            PaqueteBit.GetInstance().CrearNuevoPaquete();
-                        }
-                        PaqueteBit.GetInstance().CrearBinario();
 
-                    }
-                }
+
             }
             acabado = true;
 
