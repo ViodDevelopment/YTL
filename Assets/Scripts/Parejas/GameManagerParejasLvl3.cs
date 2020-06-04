@@ -199,63 +199,63 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         }
         else
         {*/
-            int lvl1 = 0;
-            int lvl2 = 0;
-            int lvl3 = 0;
-            foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        int lvl1 = 0;
+        int lvl2 = 0;
+        int lvl3 = 0;
+        foreach (PalabraBD p in GameManager.palabrasDisponibles)
+        {
+            if (p.paquet == GameManager.configuration.paquete)
             {
-                if (p.paquet == GameManager.configuration.paquete)
+                if (p.image1 != "")
                 {
-                    if (p.image1 != "")
+                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
                     {
-                        if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
+                        if (p.dificultSpanish == 1 && lvl1 < 10)
                         {
-                            if (p.dificultSpanish == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (p.dificultSpanish == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (p.dificultSpanish == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (listOfPalabras.Count == 20)
-                                break;
+                            lvl1++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
                         }
-                        else
+                        else if (p.dificultSpanish == 2 && lvl2 < 6)
                         {
-                            if (p.dificultCatalan == 1 && lvl1 < 10)
-                            {
-                                lvl1++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (p.dificultCatalan == 2 && lvl2 < 6)
-                            {
-                                lvl2++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (p.dificultCatalan == 3 && lvl3 < 4)
-                            {
-                                lvl3++;
-                                p.SetPalabraActual();
-                                listOfPalabras.Add(p);
-                            }
-                            else if (listOfPalabras.Count == 20)
-                                break;
+                            lvl2++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
                         }
-
+                        else if (p.dificultSpanish == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
+                        }
+                        else if (listOfPalabras.Count == 20)
+                            break;
                     }
+                    else
+                    {
+                        if (p.dificultCatalan == 1 && lvl1 < 10)
+                        {
+                            lvl1++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
+                        }
+                        else if (p.dificultCatalan == 2 && lvl2 < 6)
+                        {
+                            lvl2++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
+                        }
+                        else if (p.dificultCatalan == 3 && lvl3 < 4)
+                        {
+                            lvl3++;
+                            p.SetPalabraActual();
+                            listOfPalabras.Add(p);
+                        }
+                        else if (listOfPalabras.Count == 20)
+                            break;
+                    }
+
+                }
                 //}
             }
         }
@@ -353,25 +353,20 @@ public class GameManagerParejasLvl3 : MonoBehaviour
         repetirPalabras = l_ThirdPair;
 
 
-        if (PaquetePalabrasParejas.GetInstance("3").acabado)
+
+        Random.InitState(Random.Range(-15, 15));
+        if (Random.Range(0, 2) == 1)
         {
-            Random.InitState(Random.Range(-15, 15));
-            if (Random.Range(0, 2) == 1)
-            {
-                m_IsHorizontal = true;
-            }
-            else
-            {
-                m_IsHorizontal = false;
-            }
-            Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
-            m_NumPairs = Random.Range(3, 5);
+            m_IsHorizontal = true;
         }
         else
         {
-            m_IsHorizontal = PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal[0];
-            m_NumPairs = PaquetePalabrasParejas.GetInstance("3").parejas;
+            m_IsHorizontal = false;
         }
+        Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
+        m_NumPairs = Random.Range(3, 5);
+
+
 
         m_FirstPair = true;
 
@@ -580,25 +575,20 @@ public class GameManagerParejasLvl3 : MonoBehaviour
             repetirPalabras = l_ThirdPair;
 
 
-            if (PaquetePalabrasParejas.GetInstance("3").acabado)
+
+            Random.InitState(Random.seed + Random.Range(-2, 2));
+            if (Random.Range(0, 2) == 1)
             {
-                Random.InitState(Random.seed + Random.Range(-2, 2));
-                if (Random.Range(0, 2) == 1)
-                {
-                    m_IsHorizontal = true;
-                }
-                else
-                {
-                    m_IsHorizontal = false;
-                }
-                Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
-                m_NumPairs = Random.Range(3, 5);
+                m_IsHorizontal = true;
             }
             else
             {
-                m_IsHorizontal = PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal[0];
-                m_NumPairs = PaquetePalabrasParejas.GetInstance("3").parejas;
+                m_IsHorizontal = false;
             }
+            Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute + Random.seed + 1);
+            m_NumPairs = Random.Range(2, 5);
+
+
 
             m_FirstPair = true;
 
@@ -1035,16 +1025,7 @@ public class GameManagerParejasLvl3 : MonoBehaviour
                 GameManager.SumPointToMinigame(6);
             if (GameManager.m_CurrentToMinigame[6] > 0 && m_Points.Length > GameManager.m_CurrentToMinigame[6] - 1)
                 m_Points[GameManager.m_CurrentToMinigame[6] - 1].GetComponent<Image>().sprite = m_CompletedPoint;
-            if (!PaquetePalabrasParejas.GetInstance("3").acabado)
-            {
-                PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal.RemoveAt(0);
-                if (PaquetePalabrasParejas.GetInstance("3").pantallasHorizontal.Count == 0)
-                {
-                    PaquetePalabrasParejas.GetInstance("3").CrearNuevoPaquete();
-                    InitPaabras();
-                }
-                PaquetePalabrasParejas.GetInstance("3").CrearBinario();
-            }
+
         }
         acabado = true;
     }

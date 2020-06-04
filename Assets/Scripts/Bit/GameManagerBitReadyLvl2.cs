@@ -47,7 +47,7 @@ public class GameManagerBitReadyLvl2 : MonoBehaviour
         if ( levelBit==2 && GameManager.configuration.listosBitCompletado)
             m_Scener.InicioScene(true);
 
-        else if (GameManager.configuration.listosPuzzleCompletado)
+        else if (levelBit == 3 && GameManager.configuration.yaBitCompletado)
             m_Scener.InicioScene(true);
 
         Random.InitState(System.DateTime.Now.Second + System.DateTime.Now.Minute);
