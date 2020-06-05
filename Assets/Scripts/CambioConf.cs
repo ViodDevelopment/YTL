@@ -76,6 +76,10 @@ public class CambioConf : MonoBehaviour
         textos[34].text = "Amb la col·laboració de:";
 
         textos[36].text = "Art. indeterminat";
+        textos[37].text = "Articles";
+        textos[38].text = "Art. determinat";
+        textos[39].text = "Art. indeterminat";
+
 
     }
 
@@ -118,5 +122,8 @@ public class CambioConf : MonoBehaviour
         textos[34].text = "Con la colaboración de:";
 
         textos[36].text = "Art. indeterminado";
+        textos[37].text = "Artículos";
+        textos[38].text = "Art. determinado";
+        textos[39].text = "Art. indeterminado";
     }
 }

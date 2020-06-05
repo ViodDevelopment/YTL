@@ -34,6 +34,7 @@ public class PairsLvl3 : MonoBehaviour
     private Vector3 lastPosition;
     private bool lastPair;
     public Text texto;
+    public bool onlyArt = false;
 
     private void Start()
     {
@@ -285,7 +286,7 @@ public class PairsLvl3 : MonoBehaviour
 
                             audioSource.clip = audioArt;
                             audioSource.Play();
-                            m_GameManagerParejas.CallCoroutine(audioClip);
+                            m_GameManagerParejas.CallCoroutine(audioClip, onlyArt);
 
                         }
                     }
@@ -378,7 +379,7 @@ public class PairsLvl3 : MonoBehaviour
 
                                 audioSource.clip = audioArt;
                                 audioSource.Play();
-                                m_GameManagerParejas.CallCoroutine(audioClip);
+                                m_GameManagerParejas.CallCoroutine(audioClip, onlyArt);
 
                             }
                         }

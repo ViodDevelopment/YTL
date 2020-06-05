@@ -266,7 +266,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
             l_AS.clip = palabraActual.GetAudioArticulo();
             l_AS.Play();
-            StartCoroutine(WaitForArticle());
+            if (!palabraActual.onlyArticulo)
+                StartCoroutine(WaitForArticle());
 
         }
 
@@ -279,8 +280,10 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + (palabraActual.actualArticulo != null ? 1f : 0)));
-
+        if (!palabraActual.onlyArticulo)
+            StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + 0.2f + (palabraActual.actualArticulo != null ? 1f : 0)));
+        else
+            StartCoroutine(WaitSeconds( 0.2f + (palabraActual.actualArticulo != null ? 2f : 0)));
     }
 
     public void ImagesCollsInstantiation()
@@ -989,14 +992,16 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.silabasCatalan = toCopy.silabasCatalan;
         palabra.silabasSpanish = toCopy.silabasSpanish;
         palabra.silabasActuales = toCopy.silabasActuales;
-
-        foreach (var item in toCopy.articulos)
+        if (toCopy.articulos != null)
         {
-            palabra.articulos.Add(new Articulo());
-            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            foreach (var item in toCopy.articulos)
+            {
+                palabra.articulos.Add(new Articulo());
+                palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            }
         }
         palabra.SetPalabraActual();
     }

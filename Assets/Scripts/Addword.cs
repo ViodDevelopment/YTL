@@ -21,6 +21,8 @@ public class Addword : MonoBehaviour
     PalabraBD palabraBD;
     public CreateWord crateWord;
     public RemoveWord removeWord;
+    public DropDownArticles articlesDet;
+    public DropDownArticlesIndet articlesIndet;
 
     string imgLocation, audioLocation;
 
@@ -116,6 +118,11 @@ public class Addword : MonoBehaviour
                 palabraBD.silabasCatalan = sumSilabas;
             }
 
+            if (articlesDet != null)
+                palabraBD.articulos.Add(articlesDet.GetArticuloDet());
+            if(articlesIndet != null)
+                palabraBD.articulos.Add(articlesIndet.GetArticuloIndet());
+
             palabraBD.user = true;
             palabraBD.color = "#eb6424";
             palabraBD.paquet = 0;
@@ -140,6 +147,10 @@ public class Addword : MonoBehaviour
                 silaba.gameObject.GetComponent<InputField>().text = null;
             }
         }
+        if (articlesDet != null)
+            articlesDet.Unselected();
+        if (articlesIndet != null)
+            articlesIndet.Unselected();
     }
 
     public static Texture2D ToTexture2D(Texture2D texture)

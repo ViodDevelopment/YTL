@@ -28,6 +28,7 @@ public class PalabraBD
     public List<Articulo> articulos = new List<Articulo>();
     public string actualArticulo = "";
     public string actualAudioArticulo;
+    public bool onlyArticulo = false;
     //eliminar en un futuro y cambiarlo por el original
     //
 
@@ -194,11 +195,13 @@ public class PalabraBD
                         {
                             actualArticulo = articulos[0].articuloSpanish;
                             actualAudioArticulo = articulos[0].audiosArticuloSpanish;
+                            onlyArticulo = false;
                         }
                         else if (!GameManager.configuration.determinados && articulos.Count > 1)
                         {
                             actualArticulo = articulos[1].articuloSpanish;
                             actualAudioArticulo = articulos[1].audiosArticuloSpanish;
+                            onlyArticulo = false;
                         }
                     }
 
@@ -211,11 +214,18 @@ public class PalabraBD
                         {
                             actualArticulo = articulos[0].articuloCatalan;
                             actualAudioArticulo = articulos[0].audiosArticuloCatalan;
+                            if(actualArticulo == "l'" )
+                            {
+                                onlyArticulo = true;
+                            }
+                            else onlyArticulo = false;
+
                         }
                         else if (!GameManager.configuration.determinados && articulos.Count > 1)
                         {
                             actualArticulo = articulos[1].articuloCatalan;
                             actualAudioArticulo = articulos[1].audiosArticuloCatalan;
+                            onlyArticulo = false;
                         }
                     }
                     break;
@@ -227,7 +237,7 @@ public class PalabraBD
         }
         if (actualArticulo != null)
         {
-            if (actualArticulo.Length > 0)
+            if (actualArticulo.Length > 0 && !onlyArticulo)
                 actualArticulo += " ";
         }
     }

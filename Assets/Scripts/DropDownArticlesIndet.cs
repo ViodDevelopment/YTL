@@ -94,6 +94,16 @@ public class DropDownArticlesIndet : MonoBehaviour
         {
             buttonSelected.myButton.image.sprite = unselected;
             buttonSelected.myText.color = Color.black;
+            buttonSelected = null;
         }
+    }
+
+    public Articulo GetArticuloIndet()
+    {
+        if (buttonSelected != null)
+        {
+            return buttonSelected.articulo;
+        }
+        else return null;
     }
 }

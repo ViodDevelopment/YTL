@@ -32,9 +32,9 @@ public class ManagamentFalseBD : MonoBehaviour
                 nameRuteUserFrase = Application.persistentDataPath + "/UserWords/datosFrasesUsuario.dat";
                 DontDestroyOnLoad(gameObject);
 
-                if (!File.Exists(Application.persistentDataPath + "/Update01.dat"))
+                if (!File.Exists(Application.persistentDataPath + "/Update02.dat"))
                 {
-                    FileStream file = File.Create(Application.persistentDataPath + "/Update01.dat");
+                    FileStream file = File.Create(Application.persistentDataPath + "/Update02.dat");
                     file.Close();
                     GameManager.actualizacion = true;
                 }

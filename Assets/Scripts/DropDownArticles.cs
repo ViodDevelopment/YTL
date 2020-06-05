@@ -94,6 +94,16 @@ public class DropDownArticles : MonoBehaviour
         {
             buttonSelected.myButton.image.sprite = unselected;
             buttonSelected.myText.color = Color.black;
+            buttonSelected = null;
         }
+    }
+
+    public Articulo GetArticuloDet()
+    {
+        if (buttonSelected != null)
+        {
+            return buttonSelected.articulo;
+        }
+        else return null;
     }
 }

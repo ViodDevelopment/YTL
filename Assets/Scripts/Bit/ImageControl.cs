@@ -351,7 +351,8 @@ public class ImageControl : MonoBehaviour
                 {
                     finished = true;
                 }
-                m_AS.Play();
+                if (!currentPalabra.onlyArticulo)
+                    m_AS.Play();
             }
         }
 
@@ -438,7 +439,10 @@ public class ImageControl : MonoBehaviour
                         }
                         m_1touch = false;
 
-                        StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
+                        if (!currentPalabra.onlyArticulo)
+                            StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
+                        else
+                            StartCoroutine(WaitSeconds(0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
                         break;
                     }
                 }
@@ -452,7 +456,7 @@ public class ImageControl : MonoBehaviour
                     m_Animation.Play();
                     if (m_ASArticle.clip != null)
                     {
-                       StartCoroutine(WaitForPlayArt(1f));
+                        StartCoroutine(WaitForPlayArt(1f));
                     }
                     else
                     {
@@ -460,7 +464,10 @@ public class ImageControl : MonoBehaviour
                     }
                     m_1touch = false;
 
-                    StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
+                    if (!currentPalabra.onlyArticulo)
+                        StartCoroutine(WaitSeconds(m_Animation.clip.length + m_AS.clip.length + 0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
+                    else
+                        StartCoroutine(WaitSeconds(0.2f + (m_ASArticle.clip == null ? 0 : m_ASArticle.clip.length)));
                 }
             }
 

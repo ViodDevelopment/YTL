@@ -244,8 +244,9 @@ public class GameManagerPuzzle : MonoBehaviour
             else
             {
 
-                    l_AS.clip = palabraActual.GetAudioArticulo();
-                    l_AS.Play();
+                l_AS.clip = palabraActual.GetAudioArticulo();
+                l_AS.Play();
+                if (!palabraActual.onlyArticulo)
                     StartCoroutine(WaitForArticle());
 
             }
@@ -260,7 +261,10 @@ public class GameManagerPuzzle : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + (palabraActual.actualArticulo != null ? 1f : 0)));
+            if (!palabraActual.onlyArticulo)
+                StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + 0.2f +(palabraActual.actualArticulo != null ? 1f : 0)));
+            else
+                StartCoroutine(WaitSeconds((palabraActual.actualArticulo != null ? 2f : 0)));
 
         }
     }
@@ -321,7 +325,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -329,9 +333,9 @@ public class GameManagerPuzzle : MonoBehaviour
         WordInstantiation();
         m_TextAnim.text = palabraActual.palabraActual;
 
-        if(GameManager.configuration.palabrasConArticulo)
+        if (GameManager.configuration.palabrasConArticulo)
         {
-            if(palabraActual.actualArticulo != null)
+            if (palabraActual.actualArticulo != null)
             {
                 m_TextAnim.text = palabraActual.actualArticulo + m_TextAnim.text;
             }
@@ -344,7 +348,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
             l_sprite = palabraActual.GetSprite(palabraActual.image1);
@@ -366,7 +370,7 @@ public class GameManagerPuzzle : MonoBehaviour
                     if ((float)l_sprite.texture.width / (float)l_sprite.texture.height < 2)
                     {
                         if (ancho)
-                        { 
+                        {
                             rect = new Rect(new Vector2(j * l_tamanoPiezas + l_sprite.texture.width / 8, i * l_tamanoPiezas), new Vector2(l_tamanoPiezas, l_tamanoPiezas));
 
                         }
@@ -494,7 +498,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true).texture;
+            m_ImagePuzzle = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true).texture;
         }
         else
             m_ImagePuzzle = palabraActual.GetTexture2D(palabraActual.image1); //por ahora solo imagen 1
@@ -517,7 +521,7 @@ public class GameManagerPuzzle : MonoBehaviour
 
         if (palabraActual.user)
         {
-            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1),true);
+            l_sprite = SiLoTienesBienSinoPaCasa.GetSpriteFromUser(palabraActual.GetSprite(palabraActual.image1), true);
         }
         else
             l_sprite = palabraActual.GetSprite(palabraActual.image1);
@@ -766,7 +770,7 @@ public class GameManagerPuzzle : MonoBehaviour
         l_UnseenWord.GetComponentInChildren<ConvertFont>().Convert();
 
         ModifyTextPair(l_UnseenWord.GetComponentInChildren<Text>());
-      
+
         // l_UnseenWord.GetComponentInChildren<Text>().fontSize = SingletonLenguage.GetInstance().ConvertSizeDependWords(l_Word.GetComponentInChildren<Text>().text);
         l_UnseenWord.name = "Word";
         PonerColorMarco(palabraActual.color, l_Word.GetComponent<MoveTouch>().marco);
@@ -914,13 +918,16 @@ public class GameManagerPuzzle : MonoBehaviour
         palabra.user = toCopy.user;
         palabra.nameSpanish = toCopy.nameSpanish;
         palabra.nameCatalan = toCopy.nameCatalan;
-        foreach (var item in toCopy.articulos)
+        if (toCopy.articulos != null)
         {
-            palabra.articulos.Add(new Articulo());
-            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            foreach (var item in toCopy.articulos)
+            {
+                palabra.articulos.Add(new Articulo());
+                palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            }
         }
         palabra.SetPalabraActual();
     }

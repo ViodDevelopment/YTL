@@ -50,7 +50,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,huevo_01 huevo_02 huevo_03,huevo,4 6,1,2,huevo,hue-vo,2,ou,ou,x,el un,el un,l' un,lou un
 #5bb030,jugar_01 jugar_02 jugar_03,jugar,9 12,2,3,jugar,ju-gar,2,jugar,ju-gar,x,,,,
 #eb6424,lapiz_01 lapiz_02 lapiz_03,lapiz,,,2,lápiz,lá-piz,3,llapis,lla-pis,x,el un,el un,el un,el un
-#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x,la una,la una,la una,la una
+#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x,la,la,la,la
 #eb6424,limon_01 limon_02 limon_03,limon,4 6,2,2,limón,li-món,3,llimona,lli-mo-na,x,el un,el un,la una,la una
 #eb6424,luna_01 luna_02 luna_03,luna,4,3,1,luna,lu-na,2,lluna,llu-na,x,la una,la una,la una,la una
 #eb6424,mano_01 mano_02 mano_03,mano,4,3,1,mano,ma-no,1,mà,mà,x,la una,la una,la una,la una
@@ -62,9 +62,9 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,nina_01 nina_02 nina_03,nina,6 9 12 16,1,2,niña,ni-ña,1,nena,ne-na,x,la una,la una,la una,la una
 #eb6424,nino_01 nino_02 nino_03,nino,6 9,2,2,niño,ni-ño,1,nen,nen,x,el un,el un,el un,el un
 #eb6424,nube_01 nube_02 nube_03,nube,4,3,1,nube,nu-be,3,núvol,nú-vol,x,la una,la una,el un,el un
-#eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 2009,1,1,ojo,o-jo,2,ull,ull,x,el un,el un,el un,el un
+#eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 2009,1,1,ojo,o-jo,2,ull,ull,x,el un,el un,l' un,lull un
 #eb6424,pajaro_01 pajaro_02 pajaro_03,pajaro,6 9 12 16,2,3,pájaro,pá-ja-ro,2,ocell,o-cell,x,el un,el un,l' un,locell un
-#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,x,el un,el un,el un,el un
+#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,x,el,el,el,el
 #eb6424,pantalon_01 pantalon_02 pantalon_03,pantalon,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x,el un,el un,el un,el un
 #eb6424,papel_01 papel_02 papel_03,papel,4 6,1,2,papel,pa-pel,3,paper,pa-per,x,el un,el un,el un,el un
 #eb6424,pelo_01 pelo_02 pelo_03,pelo,,,1,pelo,pe-lo,2,cabell,ca-bell,x,el,el,el,el
