@@ -14312,6 +14312,19 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4792397307337466285, guid: a504aec9d77cdb944a240bcda98dde5d,
+        type: 3}
+      propertyPath: m_Text
+      value: 'CANCELAR
+
+'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792397308020304931, guid: a504aec9d77cdb944a240bcda98dde5d,
+        type: 3}
+      propertyPath: m_Text
+      value: "Esta es la versi\xF3n ESPECIAL de \"Yo tambi\xE9n leo\"\n\n\xBFQuieres
+        instalar la versi\xF3n completa?"
+      objectReference: {fileID: 0}
     - target: {fileID: 4792397307146888604, guid: a504aec9d77cdb944a240bcda98dde5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14436,12 +14449,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: FullVersion
-      objectReference: {fileID: 0}
-    - target: {fileID: 4792397308020304931, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_Text
-      value: "Esta es la versi\xF3n ESPECIAL de \"Yo tambi\xE9n leo\"\n\n\xBFQuieres
-        instalar la versi\xF3n completa?"
       objectReference: {fileID: 0}
     - target: {fileID: 4792397308020304929, guid: a504aec9d77cdb944a240bcda98dde5d,
         type: 3}

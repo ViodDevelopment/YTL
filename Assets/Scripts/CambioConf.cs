@@ -77,9 +77,9 @@ public class CambioConf : MonoBehaviour
 
         textos[36].text = "Art. indeterminat";
         textos[37].text = "Aquesta és la versió ESPECIAL de 'Yo también leo'\n\nVols instal·lar la versió completa?";
-        textos[38].text = "ARA NO";
+        textos[38].text = "ARA NO/n";
         textos[39].text = "INSTAL·LAR";
-        textos[40].text = "Disponible en la próxima actualización.";
+        textos[40].text = "Disponible a la propera actualització.";
 
     }
 
@@ -123,7 +123,7 @@ public class CambioConf : MonoBehaviour
 
         textos[36].text = "Art. indeterminado";
         textos[37].text = "Esta es la versión ESPECIAL de 'Yo también leo'\n\n¿Quieres instalar la versión completa?";
-        textos[38].text = "CANCELAR";
+        textos[38].text = "CANCELAR/n";
         textos[39].text = "INSTALAR";
         textos[40].text = "Disponible en la próxima actualización.";
     }
