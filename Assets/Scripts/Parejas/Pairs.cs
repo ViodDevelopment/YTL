@@ -12,6 +12,7 @@ public class Pairs : MonoBehaviour
     public string color = "";
     public string articulo = "";
     public AudioClip audioClip;
+    public AudioClip audioArt;
     private Image myImage;
     private bool dentro = false;
     private int lastFallos = 0;
@@ -266,8 +267,19 @@ public class Pairs : MonoBehaviour
                     m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
                     if (!audioSource.isPlaying)
                     {
-                        audioSource.clip = audioClip;
-                        audioSource.Play();
+                        if (!GameManager.configuration.palabrasConArticulo || audioArt == null)
+                        {
+                            audioSource.clip = audioClip;
+                            audioSource.Play();
+                        }
+                        else
+                        {
+
+                            audioSource.clip = audioArt;
+                            audioSource.Play();
+                            m_GameManagerParejas.CallCoroutine(audioClip);
+
+                        }
                     }
                     m_GameManagerParejas.PairDone();
 
@@ -344,8 +356,19 @@ public class Pairs : MonoBehaviour
                         m_GameManagerParejas.m_TextZoomed.GetComponent<ConvertFont>().Convert();
                         if (!audioSource.isPlaying)
                         {
-                            audioSource.clip = audioClip;
-                            audioSource.Play();
+                            if (!GameManager.configuration.palabrasConArticulo || audioArt == null)
+                            {
+                                audioSource.clip = audioClip;
+                                audioSource.Play();
+                            }
+                            else
+                            {
+
+                                audioSource.clip = audioArt;
+                                audioSource.Play();
+                                m_GameManagerParejas.CallCoroutine(audioClip);
+
+                            }
                         }
                         m_GameManagerParejas.PairDone();
 
@@ -394,7 +417,6 @@ public class Pairs : MonoBehaviour
         }
 
     }
-
 
 
     private void OnTriggerEnter2D(Collider2D _collision)

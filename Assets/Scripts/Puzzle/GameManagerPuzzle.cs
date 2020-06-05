@@ -236,8 +236,19 @@ public class GameManagerPuzzle : MonoBehaviour
         else if (m_Puntuacion == m_NumPieces + 1 && !m_Completed)
         {
             AudioSource l_AS = GetComponent<AudioSource>();
-            l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
-            l_AS.Play();
+            if (!GameManager.configuration.palabrasConArticulo || palabraActual.actualArticulo == null)
+            {
+                l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
+                l_AS.Play();
+            }
+            else
+            {
+
+                    l_AS.clip = palabraActual.GetAudioArticulo();
+                    l_AS.Play();
+                    StartCoroutine(WaitForArticle());
+
+            }
 
             m_Completed = true;
             m_ImageAnim.gameObject.SetActive(true);
@@ -249,7 +260,7 @@ public class GameManagerPuzzle : MonoBehaviour
                 Destroy(child.gameObject);
             }
 
-            StartCoroutine(WaitSeconds(2));
+            StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + (palabraActual.actualArticulo != null ? 1f : 0)));
 
         }
     }
@@ -930,6 +941,14 @@ public class GameManagerPuzzle : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator WaitForArticle()
+    {
+        AudioSource l_AS = GetComponent<AudioSource>();
+        yield return new WaitForSeconds(l_AS.clip.length);
+        l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
+        l_AS.Play();
     }
 
 }
