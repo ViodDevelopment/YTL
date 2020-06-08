@@ -50,87 +50,23 @@ public class ImageControl : MonoBehaviour
     {
         palabrasDisponibles.Clear();
 
-        int lvl1 = 0;
-        int lvl2 = 0;
-        int lvl3 = 0;
         foreach (PalabraBD p in GameManager.palabrasDisponibles)
         {
-            if (p.paquet == GameManager.configuration.paquete)
+            if (p.paquet == 5)
             {
                 if (p.image1 != "")
                 {
-                    if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-                    {
-                        if (p.dificultSpanish == 1 && lvl1 < 10)
-                        {
-                            lvl1++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (p.dificultSpanish == 2 && lvl2 < 6)
-                        {
-                            lvl2++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (p.dificultSpanish == 3 && lvl3 < 4)
-                        {
-                            lvl3++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (palabrasDisponibles.Count == 20)
-                            break;
-                    }
-                    else
-                    {
-                        if (p.dificultCatalan == 1 && lvl1 < 10)
-                        {
-                            lvl1++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (p.dificultCatalan == 2 && lvl2 < 6)
-                        {
-                            lvl2++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (p.dificultCatalan == 3 && lvl3 < 4)
-                        {
-                            lvl3++;
-                            p.SetPalabraActual();
-                            palabrasDisponibles.Add(p);
-                        }
-                        else if (palabrasDisponibles.Count == 20)
-                            break;
-                    }
+                    p.SetPalabraActual();
+                    palabrasDisponibles.Add(p);
 
+                    if (palabrasDisponibles.Count >= 19)
+                        break;
                 }
             }
         }
 
         lenghtPaquet = palabrasDisponibles.Count;
 
-        foreach (PalabraBD p in GameManager.palabrasUserDisponibles)
-        {
-            if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CASTELLANO)
-            {
-                if (p.nameSpanish != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
-                {
-                    p.SetPalabraActual();
-                    palabrasDisponibles.Add(p);
-                }
-            }
-            else if (SingletonLenguage.GetInstance().GetLenguage() == SingletonLenguage.Lenguage.CATALAN)
-            {
-                if (p.nameCatalan != "" && (GameManager.configuration.paquete == 0 || GameManager.configuration.paquete == -1))
-                {
-                    p.SetPalabraActual();
-                    palabrasDisponibles.Add(p);
-                }
-            }
-        }
 
     }
 

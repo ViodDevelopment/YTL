@@ -274,6 +274,9 @@ public class CrearBinarioAntesDeBuild : MonoBehaviour
                         case "escuela":
                             palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 1;
                             break;
+                        case "5":
+                            palabrasPredeterminadas[palabrasPredeterminadas.Count - 1].paquet = 5;
+                            break;
                     }
 
                     for (int i = 0; i < 2; i++)

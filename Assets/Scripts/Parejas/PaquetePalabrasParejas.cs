@@ -8,10 +8,6 @@ using System.IO;
 public class PaquetePalabrasParejas
 {
     private static PaquetePalabrasParejas instance;
-
-    public List<PalabraBD> currentParejasPaquet = new List<PalabraBD>();
-    private List<PalabraBD> donePalabrasPaquet = new List<PalabraBD>();
-    private List<PalabraBD> nextPalabrasPaquet = new List<PalabraBD>();
     public List<bool> pantallasHorizontal = new List<bool>();
     public int parejas = 0;
     public int dificultad = 0;
@@ -51,9 +47,6 @@ public class PaquetePalabrasParejas
         instance.dificultad = 0;
         instance.fase = 0;
         instance.acabado = false;
-        currentParejasPaquet.Clear();
-        donePalabrasPaquet.Clear();
-        nextPalabrasPaquet.Clear();
         pantallasHorizontal.Clear();
     }
 
@@ -71,21 +64,6 @@ public class PaquetePalabrasParejas
 
         instance.lastLvl = _lvl;
         instance.lastLenguaje = SingletonLenguage.GetInstance().GetLenguage();
-
-        foreach (PalabraBD item in instance.nextPalabrasPaquet)
-        {
-            item.SetPalabraActual();
-        }
-
-        foreach (PalabraBD item in instance.currentParejasPaquet)
-        {
-            item.SetPalabraActual();
-        }
-
-        foreach (PalabraBD item in instance.donePalabrasPaquet)
-        {
-            item.SetPalabraActual();
-        }
     }
 
     public void CrearNuevoPaquete()
@@ -124,7 +102,6 @@ public class PaquetePalabrasParejas
             if ((dificultad == 0 || fase == 5) && dificultad < 3)
             {
                 dificultad++;
-                donePalabrasPaquet.Clear();
                 fase = 1;
                 parejas = 2;
             }
@@ -174,122 +151,6 @@ public class PaquetePalabrasParejas
                     for (int i = 0; i < 5; i++)
                     {
                         pantallasHorizontal.Add(false);
-                    }
-                }
-
-                if (fase != l_firstFase)
-                {
-                    if (l_firstDif == dificultad)
-                    {
-                        foreach (var item in currentParejasPaquet)
-                        {
-                            donePalabrasPaquet.Add(item);
-                        }
-                    }
-                    currentParejasPaquet.Clear();
-
-
-                    if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
-                    {
-                        List<PalabraBD> palabras = new List<PalabraBD>();
-
-                        for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                        {
-                            if (GameManager.palabrasDisponibles[i].paquet == 0)
-                            {
-                                if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                                {
-                                    if (palabras.Count < 10 && dificultad == 1)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count < 6 && dificultad == 2)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count < 4 && dificultad == 3)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count == 20)
-                                        break;
-
-                                }
-                            }
-
-                        }
-
-                        int numEnter = 0;
-                        for (int i = 0; i < palabras.Count; i++)
-                        {
-                            if (palabras[i].dificultSpanish == dificultad && palabras[i].image1 != "")
-                            {
-                                if (numEnter < palabras.Count / 3)
-                                {
-                                    numEnter++;
-                                    currentParejasPaquet.Add(palabras[i]);
-                                }
-                                else
-                                {
-                                    nextPalabrasPaquet.Add(palabras[i]);
-                                }
-                            }
-
-                        }
-
-
-                    }
-                    else
-                    {
-                        if (fase == 2)
-                        {
-                            List<PalabraBD> palabras = new List<PalabraBD>();
-                            List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
-                            {
-                                if (nextPalabrasPaquet[i].paquet == 0)
-                                {
-                                    if (nextPalabrasPaquet[i].dificultSpanish == dificultad && nextPalabrasPaquet[i].image1 != "")
-                                        palabras.Add(nextPalabrasPaquet[i]);
-                                }
-                                else
-                                {
-                                    if (nextPalabrasPaquet[i].image1 != "") //poner dificultad animales
-                                        palabrasanimales.Add(nextPalabrasPaquet[i]);
-                                }
-                            }
-
-                            for (int i = 0; i < palabras.Count / 2; i++)
-                            {
-                                currentParejasPaquet.Add(palabras[i]);
-                            }
-                            for (int i = 0; i < palabrasanimales.Count / 2; i++)
-                            {
-                                currentParejasPaquet.Add(palabrasanimales[i]);
-                            }
-
-
-                            foreach (PalabraBD item in currentParejasPaquet)
-                            {
-                                nextPalabrasPaquet.Remove(item);
-                            }
-
-                        }
-                        else if (fase == 3)
-                        {
-                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
-                            {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
-                            }
-                            nextPalabrasPaquet.Clear();
-                        }
-                        else if (fase == 4)
-                        {
-                            foreach (var item in donePalabrasPaquet)
-                            {
-                                currentParejasPaquet.Add(item);
-                            }
-                        }
                     }
                 }
             }
@@ -325,7 +186,6 @@ public class PaquetePalabrasParejas
             if ((dificultad == 0 || fase == 5) && dificultad < 3)
             {
                 dificultad++;
-                donePalabrasPaquet.Clear();
                 fase = 1;
                 parejas = 2;
             }
@@ -378,121 +238,7 @@ public class PaquetePalabrasParejas
                     }
                 }
 
-                if (fase != l_firstFase)
-                {
-                    if (l_firstDif == dificultad)
-                    {
-                        foreach (var item in currentParejasPaquet)
-                        {
-                            donePalabrasPaquet.Add(item);
-                        }
-                    }
-                    currentParejasPaquet.Clear();
 
-
-                    if (nextPalabrasPaquet.Count == 0 && currentParejasPaquet.Count == 0 && fase == 1)
-                    {
-                        List<PalabraBD> palabras = new List<PalabraBD>();
-
-                        for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                        {
-                            if (GameManager.palabrasDisponibles[i].paquet == 0)
-                            {
-                                if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                                {
-                                    if (palabras.Count < 10 && dificultad == 1)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count < 6 && dificultad == 2)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count < 4 && dificultad == 3)
-                                    {
-                                        palabras.Add(GameManager.palabrasDisponibles[i]);
-                                    }
-                                    else if (palabras.Count == 20)
-                                        break;
-
-                                }
-                            }
-
-                        }
-
-                        int numEnter = 0;
-                        for (int i = 0; i < palabras.Count; i++)
-                        {
-                            if (palabras[i].dificultCatalan == dificultad && palabras[i].image1 != "")
-                            {
-                                if (numEnter < palabras.Count / 3)
-                                {
-                                    numEnter++;
-                                    currentParejasPaquet.Add(palabras[i]);
-                                }
-                                else
-                                {
-                                    nextPalabrasPaquet.Add(palabras[i]);
-                                }
-                            }
-
-                        }
-
-
-                    }
-                    else
-                    {
-                        if (fase == 2)
-                        {
-                            List<PalabraBD> palabras = new List<PalabraBD>();
-                            List<PalabraBD> palabrasanimales = new List<PalabraBD>();
-                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
-                            {
-                                if (nextPalabrasPaquet[i].paquet == 0)
-                                {
-                                    if (nextPalabrasPaquet[i].dificultCatalan == dificultad && nextPalabrasPaquet[i].image1 != "")
-                                        palabras.Add(nextPalabrasPaquet[i]);
-                                }
-                                else
-                                {
-                                    if (nextPalabrasPaquet[i].image1 != "") //poner dificultad animales
-                                        palabrasanimales.Add(nextPalabrasPaquet[i]);
-                                }
-                            }
-
-                            for (int i = 0; i < palabras.Count / 2; i++)
-                            {
-                                currentParejasPaquet.Add(palabras[i]);
-                            }
-                            for (int i = 0; i < palabrasanimales.Count / 2; i++)
-                            {
-                                currentParejasPaquet.Add(palabrasanimales[i]);
-                            }
-
-
-                            foreach (PalabraBD item in currentParejasPaquet)
-                            {
-                                nextPalabrasPaquet.Remove(item);
-                            }
-
-                        }
-                        else if (fase == 3)
-                        {
-                            for (int i = 0; i < nextPalabrasPaquet.Count; i++)
-                            {
-                                currentParejasPaquet.Add(nextPalabrasPaquet[i]);
-                            }
-                            nextPalabrasPaquet.Clear();
-                        }
-                        else if (fase == 4)
-                        {
-                            foreach (var item in donePalabrasPaquet)
-                            {
-                                currentParejasPaquet.Add(item);
-                            }
-                        }
-                    }
-                }
             }
 
         }
@@ -504,10 +250,7 @@ public class PaquetePalabrasParejas
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Create(Application.persistentDataPath + nameRute);
 
-        PaquetesPalabras datos = new PaquetesPalabras();
-        datos.currentParejasPaquet = currentParejasPaquet;
-        datos.donePalabrasPaquet = donePalabrasPaquet;
-        datos.nextPalabrasPaquet = nextPalabrasPaquet;
+        PaquetesPalabras datos = new PaquetesPalabras(); ;
         datos.pantallasHorizontal = pantallasHorizontal;
         datos.parejas = parejas;
         datos.dificultad = dificultad;
@@ -527,9 +270,6 @@ public class PaquetePalabrasParejas
 
         PaquetesPalabras datos = (PaquetesPalabras)bf.Deserialize(file);
 
-        currentParejasPaquet = datos.currentParejasPaquet;
-        donePalabrasPaquet = datos.donePalabrasPaquet;
-        nextPalabrasPaquet = datos.nextPalabrasPaquet;
         pantallasHorizontal = datos.pantallasHorizontal;
         parejas = datos.parejas;
         dificultad = datos.dificultad;
@@ -619,204 +359,7 @@ public class PaquetePalabrasParejas
                     }
                 }
             }
-
-            currentParejasPaquet.Clear();
-            nextPalabrasPaquet.Clear();
-            donePalabrasPaquet.Clear();
-
-            if (fase == 1)
-            {
-                List<PalabraBD> palabras = new List<PalabraBD>();
-
-                for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                {
-                    if (GameManager.palabrasDisponibles[i].paquet == 0)
-                    {
-                        if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                        {
-                            if (palabras.Count < 10 && dificultad == 1)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count < 6 && dificultad == 2)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count < 4 && dificultad == 3)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count == 20)
-                                break;
-
-                        }
-                    }
-
-                }
-
-                int numEnter = 0;
-                for (int i = 0; i < palabras.Count; i++)
-                {
-                    if (palabras[i].dificultSpanish == dificultad && palabras[i].image1 != "")
-                    {
-                        if (numEnter < palabras.Count / 3)
-                        {
-                            numEnter++;
-                            currentParejasPaquet.Add(palabras[i]);
-                        }
-                        else
-                        {
-                            nextPalabrasPaquet.Add(palabras[i]);
-                        }
-                    }
-
-                }
-
-            }
-            else
-            {
-                if (fase == 2)
-                {
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
-                        {
-                            if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                if (palabras.Count < 10 && dificultad == 1)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 6 && dificultad == 2)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 4 && dificultad == 3)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count == 20)
-                                    break;
-
-                            }
-                        }
-
-                    }
-
-                    int numEnter = 0;
-                    List<PalabraBD> palabras2 = new List<PalabraBD>();
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras[i].dificultSpanish == dificultad && palabras[i].image1 != "")
-                        {
-                            if (numEnter < palabras.Count / 3)
-                            {
-                                numEnter++;
-                                donePalabrasPaquet.Add(palabras[i]);
-                            }
-                            else
-                            {
-                                palabras2.Add(palabras[i]);
-                            }
-                        }
-
-                    }
-
-
-                    for (int i = 0; i < palabras2.Count; i++)
-                    {
-                        if (i < palabras2.Count / 2)
-                            currentParejasPaquet.Add(palabras2[i]);
-                        else
-                            nextPalabrasPaquet.Add(palabras2[i]);
-
-                    }
-
-                }
-                else if (fase == 3)
-                {
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
-                        {
-                            if (GameManager.palabrasDisponibles[i].dificultSpanish == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                if (palabras.Count < 10 && dificultad == 1)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 6 && dificultad == 2)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 4 && dificultad == 3)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count == 20)
-                                    break;
-
-                            }
-                        }
-
-                    }
-
-                    int numEnter = 0;
-                    List<PalabraBD> palabras2 = new List<PalabraBD>();
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras[i].dificultSpanish == dificultad && palabras[i].image1 != "")
-                        {
-                            if (numEnter < palabras.Count / 3)
-                            {
-                                numEnter++;
-                                donePalabrasPaquet.Add(palabras[i]);
-                            }
-                            else
-                            {
-                                palabras2.Add(palabras[i]);
-                            }
-                        }
-
-                    }
-
-                    for (int i = 0; i < palabras2.Count; i++)
-                    {
-                        if (i < palabras2.Count / 2)
-                            donePalabrasPaquet.Add(palabras2[i]);
-                        else
-                            currentParejasPaquet.Add(palabras2[i]);
-
-                    }
-                }
-                else if (fase == 4)
-                {
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        currentParejasPaquet.Add(GameManager.palabrasDisponibles[i]);
-                        donePalabrasPaquet.Add(GameManager.palabrasDisponibles[i]);
-                    }
-                }
-
-            }
         }
-        else
-        {
-            nextPalabrasPaquet.Clear();
-            currentParejasPaquet.Clear();
-            donePalabrasPaquet.Clear();
-            foreach (var item in GameManager.palabrasDisponibles)
-            {
-                currentParejasPaquet.Add(item);
-            }
-        }
-
         CrearBinario();
 
 
@@ -883,208 +426,13 @@ public class PaquetePalabrasParejas
                 }
             }
 
-            currentParejasPaquet.Clear();
-            nextPalabrasPaquet.Clear();
-            donePalabrasPaquet.Clear();
 
-            if (fase == 1)
-            {
-                List<PalabraBD> palabras = new List<PalabraBD>();
-
-                for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                {
-                    if (GameManager.palabrasDisponibles[i].paquet == 0)
-                    {
-                        if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                        {
-                            if (palabras.Count < 10 && dificultad == 1)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count < 6 && dificultad == 2)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count < 4 && dificultad == 3)
-                            {
-                                palabras.Add(GameManager.palabrasDisponibles[i]);
-                            }
-                            else if (palabras.Count == 20)
-                                break;
-
-                        }
-                    }
-
-                }
-
-                int numEnter = 0;
-                for (int i = 0; i < palabras.Count; i++)
-                {
-                    if (palabras[i].dificultCatalan == dificultad && palabras[i].image1 != "")
-                    {
-                        if (numEnter < palabras.Count / 3)
-                        {
-                            numEnter++;
-                            currentParejasPaquet.Add(palabras[i]);
-                        }
-                        else
-                        {
-                            nextPalabrasPaquet.Add(palabras[i]);
-                        }
-                    }
-
-                }
-
-            }
-            else
-            {
-                if (fase == 2)
-                {
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
-                        {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                if (palabras.Count < 10 && dificultad == 1)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 6 && dificultad == 2)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 4 && dificultad == 3)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count == 20)
-                                    break;
-
-                            }
-                        }
-
-                    }
-
-                    int numEnter = 0;
-                    List<PalabraBD> palabras2 = new List<PalabraBD>();
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras[i].dificultCatalan == dificultad && palabras[i].image1 != "")
-                        {
-                            if (numEnter < palabras.Count / 3)
-                            {
-                                numEnter++;
-                                donePalabrasPaquet.Add(palabras[i]);
-                            }
-                            else
-                            {
-                                palabras2.Add(palabras[i]);
-                            }
-                        }
-
-                    }
+            CrearBinario();
 
 
-                    for (int i = 0; i < palabras2.Count; i++)
-                    {
-                        if (i < palabras2.Count / 2)
-                            currentParejasPaquet.Add(palabras2[i]);
-                        else
-                            nextPalabrasPaquet.Add(palabras2[i]);
-
-                    }
-
-                }
-                else if (fase == 3)
-                {
-                    List<PalabraBD> palabras = new List<PalabraBD>();
-
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        if (GameManager.palabrasDisponibles[i].paquet == 0)
-                        {
-                            if (GameManager.palabrasDisponibles[i].dificultCatalan == dificultad && GameManager.palabrasDisponibles[i].image1 != "")
-                            {
-                                if (palabras.Count < 10 && dificultad == 1)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 6 && dificultad == 2)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count < 4 && dificultad == 3)
-                                {
-                                    palabras.Add(GameManager.palabrasDisponibles[i]);
-                                }
-                                else if (palabras.Count == 20)
-                                    break;
-
-                            }
-                        }
-
-                    }
-
-                    int numEnter = 0;
-                    List<PalabraBD> palabras2 = new List<PalabraBD>();
-
-                    for (int i = 0; i < palabras.Count; i++)
-                    {
-                        if (palabras[i].dificultCatalan == dificultad && palabras[i].image1 != "")
-                        {
-                            if (numEnter < palabras.Count / 3)
-                            {
-                                numEnter++;
-                                donePalabrasPaquet.Add(palabras[i]);
-                            }
-                            else
-                            {
-                                palabras2.Add(palabras[i]);
-                            }
-                        }
-
-                    }
-
-                    for (int i = 0; i < palabras2.Count; i++)
-                    {
-                        if (i < palabras2.Count / 2)
-                            donePalabrasPaquet.Add(palabras2[i]);
-                        else
-                            currentParejasPaquet.Add(palabras2[i]);
-
-                    }
-                }
-                else if (fase == 4)
-                {
-                    for (int i = 0; i < GameManager.palabrasDisponibles.Count; i++)
-                    {
-                        currentParejasPaquet.Add(GameManager.palabrasDisponibles[i]);
-                        donePalabrasPaquet.Add(GameManager.palabrasDisponibles[i]);
-                    }
-                }
-
-            }
         }
-        else
-        {
-            nextPalabrasPaquet.Clear();
-            currentParejasPaquet.Clear();
-            donePalabrasPaquet.Clear();
-            foreach (var item in GameManager.palabrasDisponibles)
-            {
-                currentParejasPaquet.Add(item);
-            }
-        }
-
-        CrearBinario();
-
 
     }
-
 }
 
 
@@ -1092,9 +440,7 @@ public class PaquetePalabrasParejas
 [Serializable]
 public class PaquetesPalabras
 {
-    public List<PalabraBD> currentParejasPaquet = new List<PalabraBD>();
-    public List<PalabraBD> donePalabrasPaquet = new List<PalabraBD>();
-    public List<PalabraBD> nextPalabrasPaquet = new List<PalabraBD>();
+
     public List<bool> pantallasHorizontal = new List<bool>();
     public int parejas;
     public int dificultad;
