@@ -11,6 +11,7 @@ public class DropDownArticles : MonoBehaviour
     public BotonDropDown buttonSelected;
     public List<BotonDropDown> buttons = new List<BotonDropDown>();
     public Sprite selected, unselected;
+    private bool doingFate = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +60,11 @@ public class DropDownArticles : MonoBehaviour
                 l_scale.y = 1;
             container.localScale = l_scale;
             if (container.localScale.y == 0 || container.localScale.y == 1)
+            {
                 doing = false;
+                if (!isOpen)
+                    doingFate = false;
+            }
         }
         else if (lastOpen != isOpen)
         {
@@ -76,16 +81,26 @@ public class DropDownArticles : MonoBehaviour
 
     public void Selected(BotonDropDown _button)
     {
-        if (buttonSelected != null)
+        if (!doingFate)
         {
-            buttonSelected.myButton.image.sprite = unselected;
-            buttonSelected.myText.color = Color.black;
+            doingFate = true;
+            if (buttonSelected != null)
+            {
+                buttonSelected.myButton.image.sprite = unselected;
+                buttonSelected.myText.color = Color.black;
+            }
+
+            buttonSelected = _button;
+            buttonSelected.myButton.image.sprite = selected;
+            buttonSelected.myText.color = Color.white;
+            StartCoroutine(WaitToOpen());
         }
+    }
 
-        buttonSelected = _button;
-        buttonSelected.myButton.image.sprite = selected;
-        buttonSelected.myText.color = Color.white;
-
+    IEnumerator WaitToOpen()
+    {
+        yield return new WaitForSeconds(0.25f);
+        Open();
     }
 
     public void Unselected()
