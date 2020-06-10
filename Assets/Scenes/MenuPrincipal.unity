@@ -14204,11 +14204,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CompraVersionCompleta
       objectReference: {fileID: 0}
-    - target: {fileID: 4792397307146888576, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4792397307146888604, guid: a504aec9d77cdb944a240bcda98dde5d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -14314,41 +14309,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4792397307146888605, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_RenderMode
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4792397307146888605, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: 10000
-      objectReference: {fileID: 0}
     - target: {fileID: 4792397307898433638, guid: a504aec9d77cdb944a240bcda98dde5d,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1657563399}
-    - target: {fileID: 4792397307898433638, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: FullVersion
-      objectReference: {fileID: 0}
-    - target: {fileID: 4792397308020304929, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_Name
-      value: MensajeCompra
-      objectReference: {fileID: 0}
-    - target: {fileID: 4792397307337466195, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_Name
-      value: Cancelar
-      objectReference: {fileID: 0}
-    - target: {fileID: 4792397308358535821, guid: a504aec9d77cdb944a240bcda98dde5d,
-        type: 3}
-      propertyPath: m_Name
-      value: Aceptar
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a504aec9d77cdb944a240bcda98dde5d, type: 3}
 --- !u!1 &1237014353 stripped
