@@ -992,6 +992,8 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.silabasCatalan = toCopy.silabasCatalan;
         palabra.silabasSpanish = toCopy.silabasSpanish;
         palabra.silabasActuales = toCopy.silabasActuales;
+        palabra.articulos.Clear();
+
         if (toCopy.articulos != null)
         {
             foreach (var item in toCopy.articulos)

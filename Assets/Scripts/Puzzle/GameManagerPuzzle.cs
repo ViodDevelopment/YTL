@@ -918,6 +918,8 @@ public class GameManagerPuzzle : MonoBehaviour
         palabra.user = toCopy.user;
         palabra.nameSpanish = toCopy.nameSpanish;
         palabra.nameCatalan = toCopy.nameCatalan;
+        palabra.articulos.Clear();
+
         if (toCopy.articulos != null)
         {
             foreach (var item in toCopy.articulos)
