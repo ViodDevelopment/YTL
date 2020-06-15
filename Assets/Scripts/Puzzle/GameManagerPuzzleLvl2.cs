@@ -184,8 +184,20 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         AudioSource l_AS = GetComponent<AudioSource>();
-        l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
-        l_AS.Play();
+        if (!GameManager.configuration.palabrasConArticulo || palabraActual.actualArticulo == null)
+        {
+            l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
+            l_AS.Play();
+        }
+        else
+        {
+
+            l_AS.clip = palabraActual.GetAudioArticulo();
+            l_AS.Play();
+            if (!palabraActual.onlyArticulo)
+                StartCoroutine(WaitForArticle());
+
+        }
 
         currentSilaba = 0;
         m_ImageAnim.gameObject.SetActive(true);
@@ -196,8 +208,10 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
-        StartCoroutine(WaitSeconds(l_AS.clip.length + m_AnimationCenter.clip.length));
-
+        if (!palabraActual.onlyArticulo)
+            StartCoroutine(WaitSeconds(palabraActual.GetAudioClip(palabraActual.audio).length + 0.2f + (palabraActual.actualArticulo != null ? 1f : 0)));
+        else
+            StartCoroutine(WaitSeconds(0.2f + (palabraActual.actualArticulo != null ? 2f : 0)));
     }
 
     public void ImagesCollsInstantiation()
@@ -861,7 +875,6 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
     private void CopyWords(PalabraBD toCopy, ref PalabraBD palabra)
     {
-
         palabra.image1 = toCopy.image1;
         palabra.image2 = toCopy.image2;
         palabra.image3 = toCopy.image3;
@@ -873,17 +886,17 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
         palabra.user = toCopy.user;
         palabra.nameSpanish = toCopy.nameSpanish;
         palabra.nameCatalan = toCopy.nameCatalan;
-        palabra.silabasCatalan = toCopy.silabasCatalan;
-        palabra.silabasSpanish = toCopy.silabasSpanish;
-        palabra.silabasActuales = toCopy.silabasActuales;
-
-        foreach (var item in toCopy.articulos)
+        palabra.articulos.Clear();
+        if (toCopy.articulos != null)
         {
-            palabra.articulos.Add(new Articulo());
-            palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
-            palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
-            palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            foreach (var item in toCopy.articulos)
+            {
+                palabra.articulos.Add(new Articulo());
+                palabra.articulos[palabra.articulos.Count - 1].articuloSpanish = item.articuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloSpanish = item.audiosArticuloSpanish;
+                palabra.articulos[palabra.articulos.Count - 1].articuloCatalan = item.articuloCatalan;
+                palabra.articulos[palabra.articulos.Count - 1].audiosArticuloCatalan = item.audiosArticuloCatalan;
+            }
         }
         palabra.SetPalabraActual();
     }
@@ -929,5 +942,13 @@ public class GameManagerPuzzleLvl2 : MonoBehaviour
 
         }
 
+    }
+
+    IEnumerator WaitForArticle()
+    {
+        AudioSource l_AS = GetComponent<AudioSource>();
+        yield return new WaitForSeconds(l_AS.clip.length);
+        l_AS.clip = palabraActual.GetAudioClip(palabraActual.audio);
+        l_AS.Play();
     }
 }

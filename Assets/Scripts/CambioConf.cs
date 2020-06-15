@@ -79,7 +79,6 @@ public class CambioConf : MonoBehaviour
         textos[37].text = "Aquesta és la versió LITE de 'Yo también leo'\n\nVols instal·lar la versió completa?";
         textos[38].text = "ARA NO";
         textos[39].text = "INSTAL·LAR";
-        textos[40].text = "Disponible en la próxima actualización.";
 
     }
 
@@ -125,7 +124,6 @@ public class CambioConf : MonoBehaviour
         textos[37].text = "Esta es la versión LITE de 'Yo también leo'\n\n¿Quieres instalar la versión completa?";
         textos[38].text = "CANCELAR";
         textos[39].text = "INSTALAR";
-        textos[40].text = "Disponible en la próxima actualización.";
 
     }
 

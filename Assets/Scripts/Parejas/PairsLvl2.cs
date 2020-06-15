@@ -12,6 +12,7 @@ public class PairsLvl2 : MonoBehaviour
     public string color = "";
     public string articulo = "";
     public AudioClip audioClip;
+    public AudioClip audioArt;
     private Image myImage;
     private bool dentro = false;
     private int lastFallos = 0;
@@ -33,6 +34,7 @@ public class PairsLvl2 : MonoBehaviour
     private Vector3 lastPosition;
     private Vector3 lastSizeText;
     private bool lastPair;
+    public bool onlyArt = false;
 
     private void Start()
     {
@@ -58,7 +60,7 @@ public class PairsLvl2 : MonoBehaviour
 
     public void Init()
     {
-        if(lastSizeText.x == 0)
+        if (lastSizeText.x == 0)
             lastSizeText = texto.transform.localScale;
         GetComponent<PairsLvl2>().texto.text = articulo + nombre;
         ModifyTextPair();
@@ -282,8 +284,19 @@ public class PairsLvl2 : MonoBehaviour
 
                     if (!audioSource.isPlaying)
                     {
-                        audioSource.clip = audioClip;
-                        audioSource.Play();
+                        if (!GameManager.configuration.palabrasConArticulo || audioArt == null)
+                        {
+                            audioSource.clip = audioClip;
+                            audioSource.Play();
+                        }
+                        else
+                        {
+
+                            audioSource.clip = audioArt;
+                            audioSource.Play();
+                            m_GameManagerParejas.CallCoroutine(audioClip, onlyArt);
+
+                        }
                     }
                     m_GameManagerParejas.PairDone();
 
@@ -362,8 +375,19 @@ public class PairsLvl2 : MonoBehaviour
 
                         if (!audioSource.isPlaying)
                         {
-                            audioSource.clip = audioClip;
-                            audioSource.Play();
+                            if (!GameManager.configuration.palabrasConArticulo || audioArt == null)
+                            {
+                                audioSource.clip = audioClip;
+                                audioSource.Play();
+                            }
+                            else
+                            {
+
+                                audioSource.clip = audioArt;
+                                audioSource.Play();
+                                m_GameManagerParejas.CallCoroutine(audioClip, onlyArt);
+
+                            }
                         }
                         m_GameManagerParejas.PairDone();
 
@@ -415,7 +439,7 @@ public class PairsLvl2 : MonoBehaviour
 
     private void ModifyTextPair()
     {
-        if(articulo != "")
+        if (articulo != "")
         {
             if (texto.text.Length < 9 && texto.text.Length > 7)
                 texto.gameObject.transform.localScale = lastSizeText * 0.9f;
@@ -431,7 +455,7 @@ public class PairsLvl2 : MonoBehaviour
         }
 
     }
-    
+
 
 
 

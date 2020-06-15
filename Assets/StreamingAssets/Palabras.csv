@@ -50,7 +50,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,huevo_01 huevo_02 huevo_03,huevo,4 6,1,2,huevo,hue-vo,2,ou,ou,x,el un,el un,l' un,lou un
 #5bb030,jugar_01 jugar_02 jugar_03,jugar,9 12,2,3,jugar,ju-gar,2,jugar,ju-gar,x,,,,
 #eb6424,lapiz_01 lapiz_02 lapiz_03,lapiz,,,2,lápiz,lá-piz,3,llapis,lla-pis,x,el un,el un,el un,el un
-#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x,la una,la una,la una,la una
+#eb6424,leche_01 leche_02 leche_03,leche,9 12,3,3,leche,le-che,2,llet,llet,x,la,la,la,la
 #eb6424,limon_01 limon_02 limon_03,limon,4 6,2,2,limón,li-món,3,llimona,lli-mo-na,x,el un,el un,la una,la una
 #eb6424,luna_01 luna_02 luna_03,luna,4,3,1,luna,lu-na,2,lluna,llu-na,5,la una,la una,la una,la una
 #eb6424,mano_01 mano_02 mano_03,mano,4,3,1,mano,ma-no,1,mà,mà,5,la una,la una,la una,la una
@@ -64,7 +64,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,nube_01 nube_02 nube_03,nube,4,3,1,nube,nu-be,3,núvol,nú-vol,x,la una,la una,el un,el un
 #eb6424,ojo_01 ojo_02 ojo_03,ojo,4 6 2009,1,1,ojo,o-jo,2,ull,ull,5,el un,el un,el un,el un
 #eb6424,pajaro_01 pajaro_02 pajaro_03,pajaro,6 9 12 16,2,3,pájaro,pá-ja-ro,2,ocell,o-cell,x,el un,el un,l' un,locell un
-#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,5,el un,el un,el un,el un
+#eb6424,pan_01 pan_02 pan_03,pan,4,1,2,pan,pan,1,pa,pa,5,el,el,el,el
 #eb6424,pantalon_01 pantalon_02 pantalon_03,pantalon,6 9,2,3,pantalón,pan-ta-lón,3,pantaló,pan-ta-ló,x,el un,el un,el un,el un
 #eb6424,papel_01 papel_02 papel_03,papel,4 6,1,2,papel,pa-pel,3,paper,pa-per,x,el un,el un,el un,el un
 #eb6424,pelo_01 pelo_02 pelo_03,pelo,,,1,pelo,pe-lo,2,cabell,ca-bell,x,el,el,el,el
@@ -81,7 +81,7 @@ Color por Función lexica,IMAGENES,AUDIO,piezas PUZZLE,imagen PUZZLE,Nivel dific
 #eb6424,silla_01 silla_02 silla_03,silla,4,2,2,silla,si-lla,3,cadira,ca-di-ra,x,la una,la una,la una,la una
 #eb6424,sofa_01 sofa_02 sofa_03,sofa,4 6,2,1,sofá,so-fá,1,sofà,so-fà,x,el un,el un,el un,el un
 #eb6424,sol_01 sol_02 sol_03,sol,4,2,2,sol,sol,1,sol,sol,5,el un,el un,el un,el un
-#eb6424,sopa_01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x,la una,la una,la una,la una
+#eb6424,sopa_01 sopa_02 sopa_03,sopa,4 6 9,2,1,sopa,so-pa,1,sopa,so-pa,x,la,la,la,la
 #eb6424,tele_01 tele_02 tele_03,tele,4 6,1,1,tele,te-le,1,tele,te-le,x,la una,la una,la una,la una
 #eb6424,tren_01 tren_02 tren_03,tren,6 9,1,2,tren,tren,2,tren,tren,x,el un,el un,el un,el un
 #eb6424,vaso_01 vaso_02 vaso_03,vaso,4,1,1,vaso,va-so,2,got,got,5,el un,el un,el un,el un

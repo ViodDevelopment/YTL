@@ -127,7 +127,7 @@ public class StartConfiguración : MonoBehaviour
                 buttonsRepetitions[i].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             }
         }
-        /*
+        
 
         if (GameManager.configuration.palabrasConArticulo)
         {
@@ -156,7 +156,7 @@ public class StartConfiguración : MonoBehaviour
             buttonsWordsArticle[0].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_WhiteColor;
             buttonsWordsArticle[2].GetComponent<Image>().sprite = GameManager.GetInstance().DesactivateButton;
             buttonsWordsArticle[2].GetComponentInChildren<Text>().color = GameManager.GetInstance().m_PurpleColor;
-        }*/
+        }
 
         if (!GameManager.configuration.ayudaVisual)
         {
