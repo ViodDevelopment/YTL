@@ -37,7 +37,7 @@ public class PalabraBD
         silabasActuales.Clear();
         string actualWord = "";
 
-        if(GameManager.configuration.palabrasConArticulo)
+        if (GameManager.configuration.palabrasConArticulo)
         {
             if (actualArticulo != null)
                 actualWord = actualArticulo + "-";
@@ -214,8 +214,10 @@ public class PalabraBD
                         {
                             actualArticulo = articulos[0].articuloCatalan;
                             actualAudioArticulo = articulos[0].audiosArticuloCatalan;
-                            if(actualArticulo == "l'" )
+                            if (actualArticulo == "l'")
                             {
+                                if (SingletonLenguage.GetInstance().GetFont() == SingletonLenguage.OurFont.MANUSCRITA)
+                                    actualArticulo = "l’";
                                 onlyArticulo = true;
                             }
                             else onlyArticulo = false;
